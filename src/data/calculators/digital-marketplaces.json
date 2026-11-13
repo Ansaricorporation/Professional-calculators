@@ -148,9 +148,1061 @@
       ]
     },
     "relatedSlugs": [
-      "shopify-profit-margin-calculator",
-      "youtube-shorts-vs-long-form-calculator",
-      "wholesale-to-retail-markup-calculator"
+      "gumroad-fee-calculator",
+      "gumroad-vs-payhip-fee-calculator",
+      "payhip-fee-calculator"
+    ]
+  },
+  {
+    "slug": "gumroad-fee-calculator",
+    "title": "Gumroad Fee Calculator (2026 Flat 10% vs. Discover Marketplace Rates)",
+    "metaTitle": "Gumroad Fee Calculator 2026 | Direct 10% vs Discover 30% Net Payout",
+    "metaDescription": "Calculate exact Gumroad creator payout deductions under 2026 rules: 10% flat platform cut, Stripe 2.9% + $0.30 credit card processing, and Discover 30% affiliate fees.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Gumroad Pricing & Official Fee Guide (2026)",
+    "officialSourceUrl": "https://gumroad.com/pricing",
+    "defaultInputs": {
+      "sellingPrice": 45.0,
+      "cogs": 0.0,
+      "shippingCharged": 0.0,
+      "shippingActualCost": 0.0,
+      "monthlyUnits": 120,
+      "planTier": "direct",
+      "appFeesMonthly": 0.0,
+      "marketingPerOrder": 5.0,
+      "returnsRate": 2.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "direct": {
+          "name": "Direct Creator Link (10% Platform + Stripe Card Processing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 12.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "Combines Gumroad's flat 10.0% platform fee with Stripe standard credit card interchange processing of 2.9% + $0.30 per sale."
+        },
+        "discover": {
+          "name": "Gumroad Discover Marketplace (30% Commission + Card Processing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 32.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "Assesses Gumroad's 30.0% marketplace discovery commission plus 2.9% + $0.30 card processing on sales originating from Discover search or recommendations."
+        },
+        "intl-direct": {
+          "name": "Direct Sale via International Card (1.5% Cross-Border Surcharge)",
+          "monthlyFee": 0.0,
+          "percentageRate": 14.4,
+          "fixedFee": 0.30,
+          "additionalNotes": "Includes 10% Gumroad platform fee, 2.9% base processing, 1.5% international cross-border currency conversion fee, and $0.30 fixed fee."
+        }
+      },
+      "extraParameters": {
+        "platformCutPct": 10.0,
+        "discoverCutPct": 30.0,
+        "stripeProcessingPct": 2.9,
+        "stripeProcessingFixed": 0.30,
+        "paypalPayoutFeePct": 1.0,
+        "intlCardSurchargePct": 1.5
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Gumroad's pricing overhaul to a flat 10% platform fee has permanently restructured the financial calculus for digital product creators, e-book authors, and software developers in 2026. Prior to this structural change, high-volume merchants enjoyed volume discounts dipping as low as 2.9% plus 30 cents per transaction. Under the current schedule, creators pay a mandatory 10% platform fee across every single checkout regardless of cumulative sales volume, which compounds directly on top of pass-through credit card payment processing fees of 2.9% plus $0.30 per successful charge. Furthermore, if a customer purchases through Gumroad Discover—the platform's algorithmic marketplace directory and cross-recommendation engine—Gumroad extracts a staggering 30% affiliate commission plus payment processing, absorbing nearly 33% of gross customer spend. To accurately forecast digital cash flow, merchants must rigorously model their ratio of direct email list traffic versus Discover marketplace acquisitions, along with chargeback dispute exposure and payout settlement timelines.",
+      "formulaBreakdown": {
+        "formulaString": "Gumroad Direct Fee = (Gross Order Value * 10%) + (Gross Order Value * 2.9% + $0.30); Discover Fee = (Gross Order Value * 30%) + (Gross Order Value * 2.9% + $0.30); Net Creator Payout = Gross Order Value - Platform Fee - Payment Processing - Refund Allowance",
+        "variables": [
+          {
+            "symbol": "Gross Digital Sale (V_gross)",
+            "meaning": "Total checkout price paid by the customer for digital downloads, access licenses, or memberships before any deductions."
+          },
+          {
+            "symbol": "Gumroad Core Cut (F_gum)",
+            "meaning": "Contractual platform fee assessed by Gumroad: exactly 10% for direct seller links or 30% for Discover marketplace attributed purchases."
+          },
+          {
+            "symbol": "Gateway Interchange Fee (F_gw)",
+            "meaning": "Standard Stripe credit card processing deduction passing through to banking rails: 2.9% of order value plus $0.30 fixed domestic swipe."
+          },
+          {
+            "symbol": "Effective Platform Take-Rate (R_eff)",
+            "meaning": "Total fees divided by gross revenue ((Total Fees / Gross Sales) * 100), typically ranging from 13.5% to 33.5% depending on order channel."
+          },
+          {
+            "symbol": "Net Digital Take-Home (P_net)",
+            "meaning": "Actual spendable cash transferred to the creator's connected bank account or PayPal wallet after deducting fees, customer refunds, and ad spend."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Digital Template Creator: $45.00 Figma & Notion System (120 Monthly Sales)",
+        "narrative": "A digital product designer sells a comprehensive UI workflow toolkit priced at $45.00. The store generates 120 monthly orders ($5,400.00 gross revenue). Of these orders, 100 are generated through the creator's direct newsletter link (Direct Tier), while 20 orders originate via the Gumroad Discover recommendation directory (Discover Tier). The creator budgets $5.00 per order in paid acquisition and experiences a 2.5% refund rate.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Volume: 120 orders * $45.00 = $5,400.00 total monthly sales.",
+          "Step 2: Calculate Direct Channel Fees (100 orders = $4,500 gross): Gumroad 10% fee = $450.00; Stripe 2.9% + $0.30 = ($4,500 * 2.9%) + (100 * $0.30) = $130.50 + $30.00 = $160.50. Direct fees = $610.50 (13.57% effective rate).",
+          "Step 3: Calculate Discover Channel Fees (20 orders = $900 gross): Gumroad 30% fee = $270.00; Stripe 2.9% + $0.30 = ($900 * 2.9%) + (20 * $0.30) = $26.10 + $6.00 = $32.10. Discover fees = $302.10 (33.57% effective rate).",
+          "Step 4: Compute Total Aggregate Monthly Fees: $610.50 (Direct) + $302.10 (Discover) = $912.60 total platform deductions (16.90% blended take-rate).",
+          "Step 5: Deduct Refunds and Advertising Overhead: Refund allowance (2.5% of $5,400) = $135.00. Marketing ad spend (120 orders * $5.00) = $600.00.",
+          "Step 6: Compute Final Net Cash Take-Home Payout: $5,400.00 gross - $912.60 fees - $135.00 refunds - $600.00 ads = $3,752.40 net monthly profit ($31.27 per unit sold, net margin 69.49%)."
+        ],
+        "finalTakeaway": "While the creator generates $5,400.00 in top-line volume, Gumroad and Stripe capture $912.60 in fees, largely driven by the aggressive 30% Discover tax on the 20 marketplace sales. Managing traffic attribution protects over $170 monthly in profit."
+      },
+      "benchmarkTable": {
+        "title": "2026 Gumroad Fee Matrix: Effective Deductions Across Sales Channels & Price Tiers",
+        "headers": [
+          "Checkout Channel / Order Type",
+          "Gumroad Platform Cut",
+          "Stripe Card Processing",
+          "Total Effective Fee Rate",
+          "Creator Net on $50 SKU"
+        ],
+        "rows": [
+          [
+            "Direct Creator Link (Domestic)",
+            "10.0% flat fee",
+            "2.9% + $0.30 fixed",
+            "13.50% ($6.75 fee)",
+            "$43.25 net payout"
+          ],
+          [
+            "Direct Link (International Card)",
+            "10.0% flat fee",
+            "4.4% + $0.30 (inc. FX)",
+            "15.00% ($7.50 fee)",
+            "$42.50 net payout"
+          ],
+          [
+            "Gumroad Discover Directory",
+            "30.0% affiliate cut",
+            "2.9% + $0.30 fixed",
+            "33.50% ($16.75 fee)",
+            "$33.25 net payout"
+          ],
+          [
+            "Micro-Transaction ($5.00 SKU)",
+            "10.0% flat ($0.50)",
+            "2.9% + $0.30 ($0.45)",
+            "18.90% ($0.95 fee)",
+            "$4.05 net payout"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Drive Checkouts Exclusively Through Direct Referral Links",
+          "actionableAdvice": "Gumroad assesses an extraordinary 30% commission when a shopper browses through the Discover directory. Embed direct checkout widgets on your personal portfolio, documentation site, or Substack newsletter. Direct traffic avoids the 20% Discover premium, immediately recovering $10.00 on every $50.00 sale."
+        },
+        {
+          "title": "Eliminate Sub-$10 SKUs to Minimize Fixed Gateway Drag",
+          "actionableAdvice": "The $0.30 fixed credit card fee represents a severe 6.0% margin hit on a $5.00 product, pushing total deductions to nearly 19%. Bundle icon packs, cheatsheets, and mini-templates into comprehensive asset bundles priced at $29 to $49 to compress the fixed fee to under 1% of transaction value."
+        },
+        {
+          "title": "Incentivize Annual Memberships Over Monthly Recurring Billings",
+          "actionableAdvice": "On recurring community memberships, Gumroad incurs the $0.30 fixed processing charge twelve times every year ($3.60 annually). Transitioning members to an annual pass billed as a single $120.00 charge eliminates 11 redundant fixed fee deductions, boosting annual retention cash flow by 3.2%."
+        },
+        {
+          "title": "Audit Chargeback and Dispute Overhead Reserves",
+          "actionableAdvice": "When an unverified buyer initiates a credit card chargeback through their financial institution, payment processors levy a non-refundable $15.00 dispute surcharge. Implement Gumroad's license key verification and clear refund policy disclosures to reduce fraudulent refund claims below 1.5%."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the official Gumroad platform fee schedule in 2026?",
+          "answer": "In 2026, Gumroad operates under a simplified pricing structure featuring a flat 10% platform fee on all standard direct sales, regardless of a creator's total lifetime or monthly sales volume. In addition to this 10% platform fee, creators pay standard credit card processing fees, which are 2.9% plus $0.30 per transaction for domestic cards, or 4.4% plus $0.30 for international cards. There is no recurring monthly software subscription cost to host products on Gumroad."
+        },
+        {
+          "question": "How does the Gumroad Discover 30% marketplace fee work?",
+          "answer": "Gumroad Discover is a search engine and recommendation directory that displays products across the platform to browsing consumers. When a buyer discovers and purchases your digital product through a Discover search result, category page, or recommended product carousel, Gumroad takes a 30% commission instead of the standard 10% platform fee. Combined with credit card processing, total fees on Discover transactions reach approximately 33.5%, meaning creators sacrifice a third of gross revenue for algorithmic discovery."
+        },
+        {
+          "question": "Does Gumroad collect and remit global sales tax and EU VAT?",
+          "answer": "Yes. Gumroad acts as an intermediary marketplace that automatically calculates, collects, and remits value-added tax (VAT) for digital product sales made to customers residing in the European Union, United Kingdom, Australia, and various other jurisdictions. In the United States, Gumroad collects and remits state sales tax where marketplace facilitator laws mandate it. These tax amounts are added to the customer's checkout total on top of your list price and do not reduce your agreed net creator payout."
+        },
+        {
+          "question": "What are Gumroad's payout options, transfer schedules, and banking fees?",
+          "answer": "Gumroad distributes creator payouts on a weekly basis every Friday for all cleared balance transactions. United States creators can receive direct deposits via ACH to their domestic bank accounts without additional transfer fees. International creators can receive payouts via direct bank deposit (through Stripe Connect) or PayPal. Payouts through PayPal may incur standard transfer or cross-border currency conversion fees of 1% to 2%, and a minimum $10 balance is required before a payout cycle initiates."
+        },
+        {
+          "question": "Are Gumroad fees refunded when a customer requests a refund?",
+          "answer": "When you issue a full or partial refund to a customer, Gumroad returns its 10% platform fee (or 30% Discover fee) in proportion to the refunded amount. However, the third-party payment processing fees charged by credit card networks and Stripe (2.9% plus $0.30) are permanently retained by the payment gateway and cannot be recovered. Consequently, issuing frequent refunds creates an unrecoverable operational deficit that must be covered by the creator's remaining account balance."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "gumroad-vs-lemon-squeezy-fee-calculator",
+      "gumroad-vs-payhip-fee-calculator",
+      "payhip-fee-calculator"
+    ]
+  },
+  {
+    "slug": "patreon-fee-calculator",
+    "title": "Patreon Fee & Creator Payout Calculator (2026 Pro, Premium & Founders Tiers)",
+    "metaTitle": "Patreon Fee Calculator 2026 | Pro 8% vs Premium 12% Net Earnings",
+    "metaDescription": "Model Patreon membership net revenue across Pro 8% and Premium 12% platform tiers, standard 2.9% + 30¢ card processing, 5% + 10¢ micropayments, and payout costs.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Patreon Official Creator Pricing & Payment Processing Documentation (2026)",
+    "officialSourceUrl": "https://support.patreon.com/hc/en-us/articles/360027878831",
+    "defaultInputs": {
+      "sellingPrice": 12.0,
+      "cogs": 1.2,
+      "shippingCharged": 0.0,
+      "shippingActualCost": 0.0,
+      "monthlyUnits": 280,
+      "planTier": "pro",
+      "appFeesMonthly": 25.0,
+      "marketingPerOrder": 0.0,
+      "returnsRate": 1.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "pro": {
+          "name": "Patreon Pro Plan (8% Platform Cut + Standard Processing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 10.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "Standard 8.0% platform fee for tiered memberships, unlimited membership tiers, analytics, and special offers, combined with 2.9% + $0.30 card processing."
+        },
+        "premium": {
+          "name": "Patreon Premium Plan (12% Platform Cut + Dedicated Partner)",
+          "monthlyFee": 0.0,
+          "percentageRate": 14.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "12.0% platform fee featuring dedicated partner management, merch for membership fulfillment automation, team accounts, and priority creator support."
+        },
+        "micropayment": {
+          "name": "Patreon Micropayment Rate (Pledges Under $3.00: 5% + $0.10 Processing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 13.0,
+          "fixedFee": 0.10,
+          "additionalNotes": "Applies 8% Pro fee alongside optimized 5.0% + $0.10 payment processing on micro-pledges under $3.00 (e.g., $1 or $2 community tiers)."
+        },
+        "founders": {
+          "name": "Legacy Founders Plan (5% Platform Cut — Grandfathered Creators)",
+          "monthlyFee": 0.0,
+          "percentageRate": 7.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "Grandfathered 5.0% platform rate available only to creators who launched their Patreon campaigns prior to May 2019, plus standard card processing."
+        }
+      },
+      "extraParameters": {
+        "proFeePct": 8.0,
+        "premiumFeePct": 12.0,
+        "foundersFeePct": 5.0,
+        "cardProcessingStandardPct": 2.9,
+        "cardProcessingStandardFixed": 0.30,
+        "cardProcessingMicroPct": 5.0,
+        "cardProcessingMicroFixed": 0.10,
+        "payoutDirectDepositCost": 0.25,
+        "payoutPaypalPct": 1.0,
+        "payoutPaypalMax": 20.0
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Operating a recurring membership community on Patreon in 2026 requires understanding a multi-layered fee ecosystem comprising platform tier commissions, payment processing structures, currency exchange friction, and payout transfer charges. Patreon segments its pricing into two primary modern tiers: the Pro Plan (8% of earned patron pledge revenue) and the Premium Plan (12% of revenue), while a diminishing cohort of grandfathered early adopters retains the legacy Founders Plan (5%). Crucially, payment processing is assessed separately from Patreon's platform commission. Standard pledges over $3.00 incur credit card interchange fees of 2.9% plus $0.30, whereas micro-pledges of $3.00 or less utilize a specialized micropayment structure of 5.0% plus $0.10 per transaction. When compounding these processing fees with involuntary churn from expired credit cards (averaging 3% to 6% monthly), creators often see their gross pledged headline earnings diminish by 13% to 17% prior to reaching their business checking account.",
+      "formulaBreakdown": {
+        "formulaString": "Total Monthly Payout = Gross Pledges - (Gross Pledges * Platform Cut%) - (Card Processing Fees) - Declined Pledge Reserve - Payout Transfer Fee",
+        "variables": [
+          {
+            "symbol": "Gross Monthly Pledges (P_gross)",
+            "meaning": "Total monthly pledged support across all active membership tiers before platform deductions (Average Pledge * Active Patrons)."
+          },
+          {
+            "symbol": "Patreon Platform Fee (F_plat)",
+            "meaning": "Contractual platform take-rate based on plan tier: 8% for Pro, 12% for Premium, or 5% for legacy Founders accounts."
+          },
+          {
+            "symbol": "Interchange Card Processing (F_proc)",
+            "meaning": "Transaction fee charged to process member payment methods: 2.9% + $0.30 for tiers >$3, or 5% + $0.10 for micro-pledges <=$3."
+          },
+          {
+            "symbol": "Failed Pledge Allowance (L_decline)",
+            "meaning": "Uncollected revenue from expired credit cards, insufficient funds, or banking declines, averaging 1.5% to 5.0% of gross volume."
+          },
+          {
+            "symbol": "Net Disbursed Take-Home (P_net)",
+            "meaning": "Final cash balance available for payout transfer to the creator's bank account or PayPal after all deductions."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Podcaster / Video Creator: 280 Patrons ($12.00 Average Pledge, Pro Plan)",
+        "narrative": "An independent investigative podcast hosts an exclusive subscriber community on Patreon's Pro Plan (8% platform cut). The creator has 280 active patrons contributing an average pledge of $12.00 per month ($3,360.00 gross monthly pledge volume). Digital bonus episode hosting and community Discord bot automation cost $25.00 monthly, with fulfillment costs of $1.20 per member. Card processing follows the standard 2.9% + $0.30 schedule, and payment decline rates sit at 1.5%.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Pledged Revenue: 280 patrons * $12.00 = $3,360.00 monthly volume.",
+          "Step 2: Calculate Patreon Pro Platform Fee (8%): $3,360.00 * 8% = $268.80 monthly platform fee.",
+          "Step 3: Calculate Payment Processing Fees (2.9% + $0.30): ($3,360.00 * 2.9%) + (280 transactions * $0.30) = $97.44 + $84.00 = $181.44 processing deduction.",
+          "Step 4: Compute Total Platform & Payment Deductions: $268.80 (Platform) + $181.44 (Processing) = $450.24 (Effective Take-Rate: 13.40%).",
+          "Step 5: Account for Declined Payments and Direct Overhead: Failed payment reserve (1.5% of $3,360) = $50.40. Member fulfillment costs (280 * $1.20) = $336.00. Software bot tools = $25.00.",
+          "Step 6: Compute Final Monthly Creator Net Payout: $3,360.00 gross - $450.24 fees - $50.40 declines - $336.00 fulfillment - $25.00 software = $2,498.36 net cash ($8.92 per patron, net margin 74.36%)."
+        ],
+        "finalTakeaway": "At $3,360.00 in monthly pledges, Patreon and payment rails deduct $450.24 in fees (13.4% of revenue). Eliminating low $2 and $3 pledge tiers in favor of $10+ tiers prevents fixed per-patron processing fees from eroding creator margins."
+      },
+      "benchmarkTable": {
+        "title": "2026 Patreon Pricing Breakdown: Plan Tiers, Processing Rates & Payout Fees",
+        "headers": [
+          "Patreon Account Tier",
+          "Platform Cut (%)",
+          "Payment Processing (Per Pledge)",
+          "Effective Deduction on $10 Pledge",
+          "Target Creator Profile"
+        ],
+        "rows": [
+          [
+            "Patreon Pro Plan",
+            "8.0% of pledges",
+            "2.9% + $0.30 (Standard)",
+            "13.90% ($1.39 total fee)",
+            "Independent creators scaling community"
+          ],
+          [
+            "Patreon Premium Plan",
+            "12.0% of pledges",
+            "2.9% + $0.30 (Standard)",
+            "17.90% ($1.79 total fee)",
+            "Large media studios needing dedicated reps"
+          ],
+          [
+            "Micropayment ($2 Pledge)",
+            "8.0% Pro cut",
+            "5.0% + $0.10 (Micro rate)",
+            "18.00% ($0.36 total fee)",
+            "Casual tip-jar or low-cost supporter tiers"
+          ],
+          [
+            "Legacy Founders Plan",
+            "5.0% of pledges",
+            "2.9% + $0.30 (Standard)",
+            "10.90% ($1.09 total fee)",
+            "Grandfathered pre-May 2019 accounts"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Establish an Anchor Tier at $10 to $15 to Dilute Fixed Swipes",
+          "actionableAdvice": "On a $3.00 monthly pledge, the $0.30 fixed payment fee consumes 10% of gross revenue, yielding an exorbitant 20.9% all-in fee. Consolidate your membership structure around a primary $10.00 or $15.00 anchor tier, which suppresses the fixed transaction fee to under 3% and drastically increases net revenue retention."
+        },
+        {
+          "title": "Incentivize Annual Upfront Pledges with a Discount",
+          "actionableAdvice": "Patreon supports upfront annual billing. Offering patrons 2 months free (a 16% discount) in exchange for an annual subscription replaces 12 individual monthly card transactions with 1 single charge. This saves $3.30 in fixed gateway fees per subscriber and completely eliminates monthly involuntary churn."
+        },
+        {
+          "title": "Automate Failed Payment Recovery and Dunning Sequences",
+          "actionableAdvice": "Credit card expiration is the number one driver of subscriber attrition on Patreon, causing 2% to 5% of monthly pledges to fail. Enable Patreon's automated decline retry logic and send personalized gentle renewal alerts via Discord and email before removing patron community access."
+        },
+        {
+          "title": "Consolidate Direct Deposit Payouts into Monthly Cycles",
+          "actionableAdvice": "Patreon assesses a fixed $0.25 transfer fee on every direct deposit ACH transfer to US bank accounts, or up to 1% ($20 cap) for PayPal transfers. Rather than initiating daily or weekly withdrawals, execute a single scheduled monthly payout to minimize cumulative banking transfer overhead."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the difference between Patreon Pro and Premium plans in 2026?",
+          "answer": "Patreon Pro charges an 8% platform fee and includes core membership features: unlimited tier creation, integrated community posts, analytics dashboards, patron relationship management tools, and promo offers. Patreon Premium charges a 12% platform fee and adds dedicated partner manager consultation, early access to new platform beta features, team accounts with granular staff permissions, and automated merchandise fulfillment integration. Most independent creators maximize profit retention on the 8% Pro Plan."
+        },
+        {
+          "question": "How are payment processing fees calculated on Patreon?",
+          "answer": "Payment processing fees on Patreon depend on the size of the pledge. Pledges greater than $3.00 are processed at standard credit card rates of 2.9% plus $0.30 per successful transaction. Pledges of $3.00 or less are routed through a micropayment rate of 5.0% plus $0.10. For international patrons paying in foreign currencies, an additional 2.5% currency conversion fee may be applied to cover foreign exchange hedging costs."
+        },
+        {
+          "question": "How does Patreon handle sales tax and VAT on patron pledges?",
+          "answer": "Patreon operates as a marketplace facilitator in the United States and complies with international indirect tax requirements. Patreon automatically calculates, adds, and collects applicable state sales tax, European Union VAT, and UK VAT directly on top of the patron's pledge total during checkout. These tax revenues are remitted directly to the relevant tax authorities by Patreon, so creators do not have them deducted from their advertised pledge rates."
+        },
+        {
+          "question": "Why do patron pledge totals in Creator Studio differ from actual payouts?",
+          "answer": "The headline pledge amount in Patreon represents gross active commitments, not collected cash. The difference between gross pledges and your actual payout stems from three sources: Patreon's platform commission (8% to 12%), payment processing fees (2.9% + $0.30), and payment declines from expired or blocked credit cards. Declined pledges typically represent 2% to 6% of gross commitments at the start of every billing cycle."
+        },
+        {
+          "question": "Can creators switch from Patreon to other membership platforms?",
+          "answer": "Yes, but migrating subscribers involves friction because patron billing tokens are legally secured by Patreon's merchant account and cannot be exported directly to an external Stripe account. Creators migrating to platforms like Substack, Ghost, or Payhip must persuade patrons to cancel their Patreon pledge and re-enter credit card information on the new platform, typically resulting in a 30% to 50% transitional subscriber drop-off."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "patreon-vs-substack-calculator",
+      "substack-revenue-calculator",
+      "gumroad-fee-calculator"
+    ]
+  },
+  {
+    "slug": "substack-revenue-calculator",
+    "title": "Substack Revenue & Creator Take-Home Calculator (2026 10% Cut + Stripe Billing)",
+    "metaTitle": "Substack Revenue Calculator 2026 | 10% Cut & Stripe Billing Take-Home",
+    "metaDescription": "Calculate net creator revenue from paid Substack newsletters, accounting for Substack 10% cut, Stripe 2.9% + $0.30 card processing, and 0.7% Stripe Billing fees.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Substack Publisher Monetization & Stripe Billing Agreement (2026)",
+    "officialSourceUrl": "https://support.substack.com/hc/en-us/articles/360037466252",
+    "defaultInputs": {
+      "sellingPrice": 10.0,
+      "cogs": 0.0,
+      "shippingCharged": 0.0,
+      "shippingActualCost": 0.0,
+      "monthlyUnits": 350,
+      "planTier": "monthly-standard",
+      "appFeesMonthly": 0.0,
+      "marketingPerOrder": 1.5,
+      "returnsRate": 2.0,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "monthly-standard": {
+          "name": "Standard Monthly Subscription (10% Substack + 2.9% + $0.30 Stripe + 0.7% Billing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 13.6,
+          "fixedFee": 0.30,
+          "additionalNotes": "Combines Substack's 10.0% platform fee, Stripe credit card interchange processing (2.9% + $0.30), and Stripe Billing recurring software fee (0.7%)."
+        },
+        "annual-discount": {
+          "name": "Annual Subscription ($100/yr Lump Sum: Amortized $0.025 Fixed Processing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 13.6,
+          "fixedFee": 0.03,
+          "additionalNotes": "Assesses identical 13.6% combined percentage rate, but fixed $0.30 card swipe fee is amortized across 12 months ($0.025 per subscriber per month)."
+        },
+        "founding-member": {
+          "name": "Founding Member Tier ($150+ Annual Pledge: Amortized Processing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 13.6,
+          "fixedFee": 0.02,
+          "additionalNotes": "High-tier annual supporter pledge minimizing fixed transaction overhead to negligible fractions of gross revenue."
+        }
+      },
+      "extraParameters": {
+        "substackCutPct": 10.0,
+        "stripeProcessingPct": 2.9,
+        "stripeProcessingFixed": 0.30,
+        "stripeBillingPct": 0.7,
+        "freeToPaidConversionPct": 3.0,
+        "customDomainAnnualCost": 50.0
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Publishing an independent subscription publication on Substack in 2026 offers zero upfront software costs, but creators must model the compounding impact of revenue-share deductions on recurring subscriber cash flow. While publishing free newsletters on Substack incurs zero software or hosting fees, turning on paid subscriptions triggers an immediate 10% platform revenue cut claimed by Substack. Furthermore, because subscriptions are powered under the hood by Stripe, publishers are subject to standard credit card processing fees of 2.9% plus $0.30 per charge, as well as Stripe Billing's 0.7% recurring subscription management fee. This results in an effective baseline deduction rate of approximately 13.6% plus $0.30 on every single monthly recurring payment. For newsletters charging $7.00 to $10.00 monthly, total platform and financial network deductions routinely capture 16% to 18% of top-line subscription revenue before publishing overhead, email list acquisition costs, and self-employment taxes.",
+      "formulaBreakdown": {
+        "formulaString": "Substack Total Fee = (Gross Subscription Revenue * 10%) + (Gross Subscription Revenue * 3.6%) + (Subscribers * $0.30); Net Monthly Payout = Gross Revenue - Total Fees - Churn/Refund Reserve - Acquisition Ad Spend",
+        "variables": [
+          {
+            "symbol": "Gross Subscription Revenue (R_sub)",
+            "meaning": "Total monthly recurring revenue collected across all active monthly and annual paying subscribers."
+          },
+          {
+            "symbol": "Substack Platform Cut (F_sub)",
+            "meaning": "Contractual 10% revenue share retained by Substack on all paid subscriber transactions."
+          },
+          {
+            "symbol": "Stripe Combined Processing (F_stripe)",
+            "meaning": "Total merchant processing cost: 2.9% card fee + 0.7% recurring Stripe Billing fee + $0.30 per charge."
+          },
+          {
+            "symbol": "Effective Platform Take-Rate (R_take)",
+            "meaning": "Percentage of gross subscription income deducted by Substack and Stripe combined (((Total Fees) / Gross Revenue) * 100)."
+          },
+          {
+            "symbol": "Net Publisher Take-Home (P_net)",
+            "meaning": "Actual monthly cash deposited into the creator's bank account after platform cuts, payment fees, refunds, and growth marketing."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Industry Analysis Newsletter: 350 Paid Subscribers ($10.00/mo, Standard Monthly Tier)",
+        "narrative": "A tech analyst publishes an executive newsletter charging $10.00 per month. The publication has 350 active paid monthly subscribers ($3,500.00 gross monthly recurring revenue). The author spends $1.50 per subscriber monthly in promotional growth campaigns and experiences a 2.0% refund/chargeback rate.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Subscription Revenue: 350 subscribers * $10.00 = $3,500.00 monthly revenue.",
+          "Step 2: Calculate Substack 10% Platform Cut: $3,500.00 * 10% = $350.00 monthly platform fee.",
+          "Step 3: Calculate Stripe Processing & Recurring Billing Fees: Card fee (2.9% of $3,500) = $101.50; Stripe Billing (0.7% of $3,500) = $24.50; Fixed per-charge fees (350 * $0.30) = $105.00. Total Stripe fees = $231.00.",
+          "Step 4: Compute Total Combined Platform & Processing Deductions: $350.00 (Substack) + $231.00 (Stripe) = $581.00 total deductions (16.60% effective take-rate).",
+          "Step 5: Account for Churn / Refund Allowance and Marketing Costs: Refund allowance (2% of $3,500) = $70.00. Growth advertising (350 * $1.50) = $525.00.",
+          "Step 6: Compute Final Net Cash Deposited: $3,500.00 gross - $581.00 fees - $70.00 refunds - $525.00 ads = $2,324.00 net monthly profit ($6.64 net per subscriber, net margin 66.40%)."
+        ],
+        "finalTakeaway": "On a $10.00 monthly plan, Substack and Stripe capture $1.66 per subscriber every month. Migrating subscribers to a $100.00 annual subscription reduces the fixed $0.30 swipe fee from 12 charges down to 1, saving $3.30 in transaction fees per subscriber annually."
+      },
+      "benchmarkTable": {
+        "title": "2026 Substack Fee Structure: Effective Deductions Across Pricing Models",
+        "headers": [
+          "Subscription Pricing Tier",
+          "Substack Cut (10%)",
+          "Stripe Processing (2.9% + 30¢)",
+          "Stripe Billing (0.7%)",
+          "Effective Total Take-Rate"
+        ],
+        "rows": [
+          [
+            "$5.00 Monthly Subscription",
+            "$0.50 per subscriber",
+            "$0.45 ($0.15 + $0.30)",
+            "$0.04 per subscriber",
+            "19.80% ($0.99 total fee)"
+          ],
+          [
+            "$10.00 Monthly Subscription",
+            "$1.00 per subscriber",
+            "$0.59 ($0.29 + $0.30)",
+            "$0.07 per subscriber",
+            "16.60% ($1.66 total fee)"
+          ],
+          [
+            "$100.00 Annual Pass",
+            "$10.00 per member",
+            "$3.20 ($2.90 + $0.30)",
+            "$0.70 per member",
+            "13.90% ($13.90 total fee)"
+          ],
+          [
+            "$250.00 Founding Member",
+            "$25.00 per member",
+            "$7.55 ($7.25 + $0.30)",
+            "$1.75 per member",
+            "13.72% ($34.30 total fee)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Aggressively Incentivize Annual Subscription Upgrades",
+          "actionableAdvice": "On a $7.00 monthly subscription, fixed credit card fees of $0.30 represent 4.3% of top-line revenue, which adds up to $3.60 across a full year. By pricing annual memberships at $70.00, you collect a single charge with one $0.30 fee, diluting fixed gateway costs to just 0.4% and improving annual cash collections."
+        },
+        {
+          "title": "Avoid Setting Monthly Subscriptions Below $8.00",
+          "actionableAdvice": "Setting a low $5.00 monthly subscription produces an alarming 19.8% effective take-rate between Substack's 10% cut and Stripe's fixed 30-cent charge. Maintain a minimum $8.00 or $10.00 monthly baseline so that fixed transaction fees do not consume double-digit fractions of your recurring cash flow."
+        },
+        {
+          "title": "Model Self-Hosted Ghost Migration When Scaling Past $5k MRR",
+          "actionableAdvice": "Because Substack charges a flat 10% commission with no volume cap, a publication generating $10,000 monthly pays Substack $1,000 every month ($12,000 annually) in platform fees alone. Migrating to a self-hosted or managed open-source Ghost installation ($36 to $99/mo flat) eliminates the 10% cut entirely, saving over $10,000 yearly."
+        },
+        {
+          "title": "Activate Founding Member Tiers to Boost Customer Lifetime Value",
+          "actionableAdvice": "Substack allows readers to pledge a custom 'Founding Member' amount above standard annual rates (typically $150 to $300). Approximately 2% to 5% of dedicated subscribers will choose this option, injecting upfront non-dilutive capital that compensates for promotional ad spend."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What are Substack's exact fees in 2026?",
+          "answer": "Substack charges zero upfront fees, zero hosting fees, and zero email delivery charges to publish free newsletters to an unlimited number of subscribers. However, when you enable paid subscriptions, Substack takes a mandatory 10% cut of all subscription gross revenues. In addition, credit card processing is handled via your connected Stripe account, which assesses 2.9% plus $0.30 per successful transaction, plus a 0.7% Stripe Billing recurring subscription fee, bringing total deductions to approximately 13.6% plus $0.30 per charge."
+        },
+        {
+          "question": "Can you bring your own Stripe account to Substack?",
+          "answer": "Yes. Substack requires every publisher who turns on paid subscriptions to connect their own independent Stripe account via Stripe Connect. This means that customer credit card billing tokens are legally stored in your own Stripe account rather than locked inside a proprietary Substack vault. If you ever decide to leave Substack for another publishing platform like Ghost or WordPress, you retain full ownership of your subscriber payment relationships and can export them smoothly."
+        },
+        {
+          "question": "Does Substack charge fees on free subscribers?",
+          "answer": "No. Substack does not charge any software fees, bandwidth fees, or email sending costs for free subscribers, regardless of your list size. Whether you have 100 or 100,000 free subscribers, publishing and emailing is 100% free. Substack only monetizes by taking its 10% commission when a subscriber converts to a paying tier."
+        },
+        {
+          "question": "How much does a custom domain cost on Substack in 2026?",
+          "answer": "Substack charges a one-time setup fee of $50.00 per publication to connect a custom domain (such as yourdomain.com instead of yourdomain.substack.com). Once this one-time $50 administrative fee is paid, Substack provides free automatic SSL certificate generation and hosting for that custom domain with no ongoing annual domain renewal surcharge from Substack (though you must still maintain your standard domain registration with a registrar like Namecheap or Cloudflare)."
+        },
+        {
+          "question": "What is the average free-to-paid conversion rate for Substack newsletters?",
+          "answer": "Across the Substack network, typical free-to-paid email list conversion rates range between 2% and 5% for general interest publications, and between 5% and 10% for specialized professional, financial, or B2B industry newsletters. For example, a publication with 10,000 free subscribers typically achieves between 200 and 500 paid subscribers, generating $1,600 to $5,000 in monthly recurring revenue."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "patreon-vs-substack-calculator",
+      "patreon-fee-calculator",
+      "gumroad-fee-calculator"
+    ]
+  },
+  {
+    "slug": "payhip-fee-calculator",
+    "title": "Payhip Fee & Membership Calculator (2026 Free, Plus & Pro Plan Break-Even)",
+    "metaTitle": "Payhip Fee Calculator 2026 | Free 5% vs Plus 2% vs Pro 0% Break-Even",
+    "metaDescription": "Model Payhip digital product and course fees across Free Forever (5%), Plus ($29/mo + 2%), and Pro ($99/mo + 0%) plans with automated break-even volume threshold analysis.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Payhip Official Pricing & Feature Tiers (2026)",
+    "officialSourceUrl": "https://payhip.com/pricing",
+    "defaultInputs": {
+      "sellingPrice": 35.0,
+      "cogs": 0.0,
+      "shippingCharged": 0.0,
+      "shippingActualCost": 0.0,
+      "monthlyUnits": 150,
+      "planTier": "free",
+      "appFeesMonthly": 0.0,
+      "marketingPerOrder": 4.0,
+      "returnsRate": 1.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "free": {
+          "name": "Free Forever Plan (5% Transaction Fee + Stripe/PayPal Processing)",
+          "monthlyFee": 0.0,
+          "percentageRate": 7.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "Payhip charges a 5.0% transaction fee on sales, with zero monthly SaaS subscription costs, plus standard credit card processing of 2.9% + $0.30."
+        },
+        "plus": {
+          "name": "Plus Plan ($29/month + 2% Transaction Fee + Processing)",
+          "monthlyFee": 29.0,
+          "percentageRate": 4.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "Fixed $29/mo subscription reducing Payhip transaction fee to 2.0%, plus standard 2.9% + $0.30 gateway processing."
+        },
+        "pro": {
+          "name": "Pro Plan ($99/month + 0% Transaction Fee + Processing)",
+          "monthlyFee": 99.0,
+          "percentageRate": 2.9,
+          "fixedFee": 0.30,
+          "additionalNotes": "Fixed $99/mo subscription with 0.0% Payhip transaction cut; creator pays only underlying 2.9% + $0.30 merchant card processing."
+        }
+      },
+      "extraParameters": {
+        "freeFeePct": 5.0,
+        "plusMonthlyCost": 29.0,
+        "plusFeePct": 2.0,
+        "proMonthlyCost": 99.0,
+        "proFeePct": 0.0,
+        "stripeProcessingPct": 2.9,
+        "stripeProcessingFixed": 0.30,
+        "breakEvenFreeToPlus": 967.0,
+        "breakEvenPlusToPro": 3500.0
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Payhip represents one of the most flexible e-commerce platforms for digital downloads, online video courses, software licenses, and recurring memberships in 2026. Unlike competitors with mandatory percentage commissions that penalize scaling merchants, Payhip offers a tiered pricing hierarchy: the Free Forever plan (which charges a 5% transaction fee with $0 monthly subscription), the Plus Plan ($29/month plus a reduced 2% transaction fee), and the Pro Plan ($99/month with an absolute 0% platform transaction fee). Across all plans, creators pay underlying credit card processing fees directly to Stripe or PayPal (typically 2.9% plus $0.30). Crucially, this pricing structure creates distinct mathematical break-even volume thresholds: merchants generating over $967 monthly achieve lower total expenses on the Plus plan, while stores generating over $3,500 monthly save money on the $99 Pro plan. Furthermore, Payhip handles EU & UK VAT compliance automatically without imposing the 10% to 15% platform markups charged by legacy marketplaces.",
+      "formulaBreakdown": {
+        "formulaString": "Total Cost = Monthly Plan Fee + (Gross Sales * Payhip Fee%) + (Gross Sales * 2.9% + $0.30 * Units); Break-Even Volume (Plus) = ($29 - $0) / (0.05 - 0.02) = $966.67; Break-Even Volume (Pro) = ($99 - $29) / (0.02 - 0.00) = $3,500.00",
+        "variables": [
+          {
+            "symbol": "Gross Monthly Sales (V_gross)",
+            "meaning": "Total dollar volume of digital goods, courses, or memberships sold through Payhip checkout."
+          },
+          {
+            "symbol": "Payhip Plan Cut (F_payhip)",
+            "meaning": "Platform transaction fee based on plan tier: 5% on Free, 2% on Plus ($29/mo), or 0% on Pro ($99/mo)."
+          },
+          {
+            "symbol": "Payment Gateway Fee (F_gw)",
+            "meaning": "Standard Stripe or PayPal credit card processing fee (2.9% of gross revenue plus $0.30 per transaction)."
+          },
+          {
+            "symbol": "Plus Plan Break-Even (BE_plus)",
+            "meaning": "Monthly gross sales volume ($966.67) above which the $29/mo Plus plan becomes cheaper than the Free plan."
+          },
+          {
+            "symbol": "Pro Plan Break-Even (BE_pro)",
+            "meaning": "Monthly gross sales volume ($3,500.00) above which the $99/mo Pro plan becomes cheaper than the Plus plan."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Digital Course Creator: $35.00 E-Book & Audio Bundle (150 Monthly Sales)",
+        "narrative": "An educator sells a self-paced digital bundle priced at $35.00, generating 150 monthly orders ($5,250.00 gross sales). The creator currently uses the Free Forever plan (5% fee), but evaluates whether upgrading to the Plus ($29/mo + 2%) or Pro ($99/mo + 0%) plan yields higher net profit. Marketing ad spend is $4.00 per order, and refunds are 1.5%.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Volume: 150 units * $35.00 = $5,250.00 monthly sales.",
+          "Step 2: Calculate Costs on Free Plan: Payhip 5% cut = $262.50; Stripe 2.9% + $0.30 = ($5,250 * 2.9%) + (150 * $0.30) = $152.25 + $45.00 = $197.25. Total Free plan fees = $459.75.",
+          "Step 3: Calculate Costs on Plus Plan ($29/mo + 2%): Monthly fee = $29.00; Payhip 2% cut = $105.00; Stripe processing = $197.25. Total Plus fees = $331.25 (Saves $128.50/mo vs Free).",
+          "Step 4: Calculate Costs on Pro Plan ($99/mo + 0%): Monthly fee = $99.00; Payhip 0% cut = $0.00; Stripe processing = $197.25. Total Pro fees = $296.25 (Saves $163.50/mo vs Free, and $35.00/mo vs Plus).",
+          "Step 5: Deduct Refunds and Marketing Expenses: Refund reserve (1.5% of $5,250) = $78.75. Acquisition ads (150 * $4.00) = $600.00.",
+          "Step 6: Compute Final Pro Plan Net Take-Home: $5,250.00 gross - $296.25 fees - $78.75 refunds - $600.00 ads = $4,275.00 net monthly profit ($28.50 per unit, net margin 81.43%)."
+        ],
+        "finalTakeaway": "Because monthly revenue ($5,250.00) comfortably exceeds Payhip's $3,500.00 Pro break-even threshold, upgrading from the Free plan to the Pro plan puts an extra $163.50 in net profit into the creator's pocket every month—or $1,962.00 in annual savings."
+      },
+      "benchmarkTable": {
+        "title": "2026 Payhip Plan Comparison: Total Fees & Creator Payouts Across Volume Tiers",
+        "headers": [
+          "Monthly Sales Volume",
+          "Free Plan Total Fees (5% + Stripe)",
+          "Plus Plan Total Fees ($29 + 2%)",
+          "Pro Plan Total Fees ($99 + 0%)",
+          "Recommended Optimal Plan"
+        ],
+        "rows": [
+          [
+            "$500/month (Entry Level)",
+            "$39.50 + swipe fees",
+            "$39.00 + swipe fees",
+            "$99.00 + swipe fees",
+            "Free Forever Plan (Lowest cost)"
+          ],
+          [
+            "$2,000/month (Growing)",
+            "$158.00 + swipe fees",
+            "$69.00 + swipe fees",
+            "$99.00 + swipe fees",
+            "Plus Plan (Saves $89.00/month)"
+          ],
+          [
+            "$5,000/month (Established)",
+            "$395.00 + swipe fees",
+            "$129.00 + swipe fees",
+            "$99.00 + swipe fees",
+            "Pro Plan (Saves $296.00/month)"
+          ],
+          [
+            "$15,000/month (High-Volume)",
+            "$1,185.00 + swipe fees",
+            "$329.00 + swipe fees",
+            "$99.00 + swipe fees",
+            "Pro Plan (Saves $1,086.00/month)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Upgrade to Payhip Plus Immediately Once Sales Exceed $967/mo",
+          "actionableAdvice": "On Payhip's Free plan, the 5% transaction fee equals the $29.00 Plus monthly subscription fee at exactly $966.67 in gross monthly sales. Once your store averages more than $1,000 in monthly volume, staying on the Free plan needlessly wastes hundreds of dollars in percentage commissions."
+        },
+        {
+          "title": "Upgrade to Payhip Pro at $3,500/mo to Eliminate Transaction Fees",
+          "actionableAdvice": "The $70 price difference between the Plus plan ($29/mo) and Pro plan ($99/mo) equals 2% of $3,500.00. Once your digital courses or downloads generate more than $3,500 monthly, switching to Pro drops your platform transaction fee to absolute zero, maximizing margin retention as volume scales."
+        },
+        {
+          "title": "Leverage Built-In EU & UK VAT Compliance Automation",
+          "actionableAdvice": "Selling digital files to European and British customers requires registering for VAT MOSS and filing periodic foreign tax returns. Payhip automatically calculates the correct destination VAT rate at checkout, adds it to the transaction, and generates detailed tax reports, eliminating expensive third-party tax software subscriptions."
+        },
+        {
+          "title": "Bundle Digital Downloads with Video Courses and Memberships",
+          "actionableAdvice": "Unlike specialized platforms that charge extra add-on fees for course video hosting or membership tiers, Payhip includes video hosting, student progress tracking, dripping content, and community forums within all plans. Consolidating your tech stack onto Payhip eliminates duplicate software subscriptions like Teachable or Kajabi."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What are Payhip's pricing plans and fees in 2026?",
+          "answer": "Payhip offers three transparent pricing tiers in 2026: The Free Forever plan has no monthly subscription fee and charges a 5% transaction fee on all sales. The Plus plan costs $29 per month and lowers the transaction fee to 2%. The Pro plan costs $99 per month and features a 0% transaction fee. All three plans include identical access to all features, including unlimited products, video course hosting, recurring memberships, software license keys, and affiliate management."
+        },
+        {
+          "question": "At what sales volume should I upgrade from Payhip Free to Plus or Pro?",
+          "answer": "You should upgrade from the Free plan to the Plus plan ($29/mo) as soon as your monthly sales exceed $966.67, because the 3% difference in transaction fees (5% down to 2%) exceeds the $29 monthly fee. You should upgrade from Plus to the Pro plan ($99/mo) once your monthly sales exceed $3,500.00, as eliminating the remaining 2% transaction fee saves more than the $70 plan difference."
+        },
+        {
+          "question": "How does payment processing work on Payhip?",
+          "answer": "Payhip connects directly to your own Stripe and PayPal accounts. When a customer makes a purchase, the customer's payment is deposited directly and immediately into your connected Stripe or PayPal balance. Payhip does not hold your funds in escrow or enforce delayed weekly payout schedules. Standard Stripe and PayPal processing fees (typically 2.9% plus $0.30) apply to transactions."
+        },
+        {
+          "question": "Does Payhip handle EU and UK VAT for digital sellers?",
+          "answer": "Yes. Payhip has built-in 1999/2006 EU VAT compliance mechanics. It detects the buyer's country of residence at checkout, automatically applies the correct localized VAT or GST percentage, adds it to the purchase price, and accounts for digital tax thresholds. Payhip then provides automated reports showing exactly how much tax was collected by country, simplifying quarterly MOSS remittance filings."
+        },
+        {
+          "question": "Can I host and stream video courses directly on Payhip?",
+          "answer": "Yes. Payhip includes full online course hosting and secure video streaming capabilities across all plans, including the Free Forever plan. Creators can upload video lessons, assign downloadable PDF worksheets, configure automated email quizzes, drip lessons over time, and issue completion certificates without paying extra video bandwidth charges or hosting surcharges."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "gumroad-vs-payhip-fee-calculator",
+      "gumroad-fee-calculator",
+      "gumroad-vs-lemon-squeezy-fee-calculator"
+    ]
+  },
+  {
+    "slug": "gumroad-vs-payhip-fee-calculator",
+    "title": "Gumroad vs. Payhip Fee Comparison Calculator (2026 10% vs. 0%–5% Margin Analysis)",
+    "metaTitle": "Gumroad vs Payhip Fee Calculator 2026 | Compare 10% Cut vs $29/$99 Plans",
+    "metaDescription": "Compare Gumroad 10% flat fee against Payhip Free (5%), Plus (2%), and Pro (0%) plans. Audit net earnings, subscription churn, EU VAT handling, and annual dollar savings.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Gumroad & Payhip Official Merchant Fee Documentation (2026)",
+    "officialSourceUrl": "https://payhip.com/pricing",
+    "defaultInputs": {
+      "productPrice": 42.0,
+      "monthlyUnits": 200,
+      "refundRate": 2.5,
+      "internationalSales": true
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Gumroad (10% Flat Cut)",
+        "platformAFeePct": 10.0,
+        "platformAFixed": 0.0,
+        "platformAGatewayPct": 2.9,
+        "platformAGatewayFixed": 0.30,
+        "platformBName": "Payhip (Pro 0% Fee Tier)",
+        "platformBFeePct": 2.9,
+        "platformBFixed": 0.30,
+        "internationalFxSurcharge": 1.5
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Comparing Gumroad and Payhip in 2026 highlights the critical strategic choice between a high-commission marketplace model and a creator-first software checkout solution. Following Gumroad's shift to a flat 10% platform fee on all direct link checkouts (and an eye-watering 30% on Discover marketplace recommendations), creators with established audiences face severe margin erosion. On a store generating $8,400 monthly ($42.00 product across 200 monthly sales), Gumroad extracts $840.00 every month in platform fees alone, in addition to standard payment processing fees. In stark contrast, Payhip offers a Pro plan for a flat $99.00 per month that features an absolute 0% transaction fee, requiring only standard payment gateway costs. For creators generating more than $1,500 to $2,000 monthly, switching from Gumroad to Payhip Pro routinely unlocks $6,000 to $12,000 in additional annualized take-home profit while maintaining instant direct Stripe/PayPal payouts and comprehensive EU VAT compliance.",
+      "formulaBreakdown": {
+        "formulaString": "Gumroad Total Deductions = (Gross Sales * 10%) + (Gross Sales * 2.9% + $0.30 * Units) + FX Surcharge; Payhip Pro Total Deductions = $99 Monthly Subscription + (Gross Sales * 2.9% + $0.30 * Units) + FX Surcharge; Net Annual Profit Delta = (Annual Gumroad Fees - Annual Payhip Pro Fees)",
+        "variables": [
+          {
+            "symbol": "Gross Monthly Volume (V_gross)",
+            "meaning": "Total dollar receipts generated from digital product sales (Product Price * Units Sold)."
+          },
+          {
+            "symbol": "Gumroad Platform Cut (F_gum)",
+            "meaning": "Mandatory 10% fee retained by Gumroad on all direct sales transactions regardless of scale."
+          },
+          {
+            "symbol": "Payhip Platform Fee (F_payhip)",
+            "meaning": "Platform fee on Payhip: 0% on the Pro tier ($99/mo), 2% on Plus ($29/mo), or 5% on Free."
+          },
+          {
+            "symbol": "Payment Gateway Fee (F_gw)",
+            "meaning": "Pass-through credit card processing via Stripe or PayPal (2.9% + $0.30 domestic plus international currency conversion fees)."
+          },
+          {
+            "symbol": "Annual Creator Savings (S_ann)",
+            "meaning": "Cumulative net cash retained annually by operating on Payhip Pro compared to Gumroad's 10% cut."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Digital Assets Creator: $42.00 3D Model Pack (200 Monthly Sales)",
+        "narrative": "A digital 3D artist sells an asset bundle priced at $42.00, averaging 200 orders monthly ($8,400.00 gross revenue). The seller evaluates the fee impact of hosting the store on Gumroad (10% flat cut) versus migrating to Payhip Pro ($99.00/mo with 0% fee). 40% of sales are international credit cards (1.5% FX fee), and the refund rate is 2.5%.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Sales Volume: 200 units * $42.00 = $8,400.00 monthly revenue.",
+          "Step 2: Calculate Gumroad 10% Platform Cut: $8,400.00 * 10% = $840.00 monthly platform fee.",
+          "Step 3: Calculate Payment Gateway Fees: ($8,400 * 2.9%) + (200 * $0.30) + ($8,400 * 40% intl * 1.5% FX) = $243.60 + $60.00 + $50.40 = $354.00 gateway deduction.",
+          "Step 4: Compute Total Gumroad Monthly Fees: $840.00 + $354.00 = $1,194.00 total deductions (Effective Fee Rate: 14.21%).",
+          "Step 5: Calculate Payhip Pro Total Costs: $99.00 fixed monthly SaaS fee + $0.00 transaction fee + $354.00 gateway processing = $453.00 total costs (Effective Fee Rate: 5.39%).",
+          "Step 6: Compute Monthly & Annual Take-Home Delta: Monthly Savings = $1,194.00 (Gumroad) - $453.00 (Payhip) = $741.00 net cash saved per month. Annualized Savings = $8,892.00 extra profit per year."
+        ],
+        "finalTakeaway": "At $8,400.00 in monthly sales, hosting on Payhip Pro saves this creator $741.00 every single month—or $8,892.00 annually. Gumroad's 10% fee severely taxes successful digital creators who bring their own audience."
+      },
+      "benchmarkTable": {
+        "title": "Gumroad vs. Payhip: Comprehensive Structural & Financial Comparison (2026)",
+        "headers": [
+          "Operational Feature / Fee Metric",
+          "Gumroad (10% Flat Model)",
+          "Payhip (Tiered Pro Model)",
+          "Net Creator Advantage"
+        ],
+        "rows": [
+          [
+            "Base Platform Transaction Cut",
+            "10.0% on direct sales",
+            "0.0% on Pro plan ($99/mo)",
+            "Payhip saves 10% on gross sales"
+          ],
+          [
+            "Discover / Marketplace Fee",
+            "30.0% affiliate discovery fee",
+            "No forced marketplace fee",
+            "Gumroad takes nearly 1/3 of Discover orders"
+          ],
+          [
+            "Payout Velocity & Fund Escrow",
+            "Weekly payout batch (Fridays)",
+            "Instant deposit to Stripe/PayPal",
+            "Payhip eliminates cash flow holdbacks"
+          ],
+          [
+            "Effective Fee on $10k Monthly Sales",
+            "$1,390.00 in total deductions",
+            "$489.00 in total deductions",
+            "Payhip saves $901.00/mo ($10,812/year)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Migrate Owned Email List Checkouts from Gumroad to Payhip",
+          "actionableAdvice": "If your sales originate primarily from your own YouTube channel, Twitter/X audience, or email newsletter, Gumroad's 10% fee is purely lost profit. Transitioning your direct checkout links to Payhip Pro eliminates the 10% cut while maintaining a clean, modern checkout experience for your audience."
+        },
+        {
+          "title": "Calculate the Discover Marketplace Break-Even Threshold",
+          "actionableAdvice": "Gumroad proponents often cite Discover marketplace traffic as justification for high fees. However, Discover orders are taxed at 30% plus card processing. If less than 25% of your total store revenue originates from Discover, you lose far more money subsidizing Gumroad's 10% fee on direct traffic than you gain from Discover sales."
+        },
+        {
+          "title": "Enjoy Immediate Cash Liquidity with Direct Gateway Payouts",
+          "actionableAdvice": "Gumroad holds your funds for up to 7 to 14 days before executing its weekly Friday batch payouts. On Payhip, transactions process directly into your connected Stripe or PayPal merchant account, providing immediate same-day liquidity to reinvest in advertising campaigns or inventory."
+        },
+        {
+          "title": "Host Video Courses and Communities Under One Domain",
+          "actionableAdvice": "Gumroad offers limited course hosting functionality and relies on basic file downloads. Payhip provides an integrated video course builder with student progress tracking, interactive quizzes, and membership community features, allowing you to replace external tools like Teachable or Circle."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is Payhip really cheaper than Gumroad in 2026?",
+          "answer": "Yes, Payhip is mathematically cheaper than Gumroad for almost all creators. Even on Payhip's Free Forever plan, the platform transaction fee is 5%—exactly half of Gumroad's 10% fee. For creators generating more than $3,500 monthly, Payhip's Pro plan ($99/month with a 0% fee) eliminates platform transaction fees entirely, saving thousands of dollars every year compared to Gumroad's uncapped 10% take-rate."
+        },
+        {
+          "question": "Does Payhip have a marketplace like Gumroad Discover?",
+          "answer": "No. Payhip operates as an independent e-commerce storefront builder and checkout system rather than an aggregated public marketplace directory. This means Payhip does not promote competitors' products on your checkout pages, nor does it charge an aggressive 30% Discover marketplace fee. Creators who use Payhip drive their own traffic via social media, content marketing, SEO, and email newsletters."
+        },
+        {
+          "question": "How do Gumroad and Payhip handle EU and international VAT?",
+          "answer": "Both Gumroad and Payhip provide automated value-added tax (VAT) handling for digital sales in the European Union and United Kingdom. Gumroad acts as the marketplace facilitator, collecting and remitting VAT under its own tax identification numbers. Payhip automatically calculates the appropriate destination VAT rate, charges it to the customer, and generates comprehensive audit reports for filing via the EU VAT One Stop Shop (OSS) scheme."
+        },
+        {
+          "question": "How difficult is it to migrate digital products from Gumroad to Payhip?",
+          "answer": "Migrating products from Gumroad to Payhip is straightforward. You can easily export your existing Gumroad customer database (names, email addresses, and purchase history) as a CSV file and import them into Payhip. You then recreate your product pages, upload your digital files or course videos, and connect your existing Stripe and PayPal accounts to receive payments immediately."
+        },
+        {
+          "question": "Can I sell software licenses and issue license keys on Payhip?",
+          "answer": "Yes. Payhip includes an automated software license key generation and management engine across all plans. You can either upload a pre-generated list of license keys or let Payhip dynamically generate unique activation keys upon completed customer checkout. Payhip also provides a developer API allowing desktop and web software to verify license activations and seat limits remotely."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "gumroad-fee-calculator",
+      "payhip-fee-calculator",
+      "gumroad-vs-lemon-squeezy-fee-calculator"
+    ]
+  },
+  {
+    "slug": "patreon-vs-substack-calculator",
+    "title": "Patreon vs. Substack Creator Take-Home & Fee Calculator (2026 Comparison)",
+    "metaTitle": "Patreon vs Substack Calculator 2026 | Membership vs Newsletter Net Payout",
+    "metaDescription": "Compare net creator income between Patreon (8% Pro cut) and Substack (10% newsletter cut + 0.7% Stripe Billing). Audit subscriber retention, credit card processing, and community revenue.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Patreon & Substack Official Pricing & Platform Guidelines (2026)",
+    "officialSourceUrl": "https://support.patreon.com/hc/en-us/articles/360027878831",
+    "defaultInputs": {
+      "productPrice": 10.0,
+      "monthlyUnits": 400,
+      "refundRate": 2.0,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Patreon (Pro 8% Plan)",
+        "platformAFeePct": 8.0,
+        "platformAFixed": 0.0,
+        "platformAGatewayPct": 2.9,
+        "platformAGatewayFixed": 0.30,
+        "platformBName": "Substack (10% Cut + Stripe Billing)",
+        "platformBFeePct": 10.7,
+        "platformBFixed": 0.0,
+        "platformBGatewayPct": 2.9,
+        "platformBGatewayFixed": 0.30,
+        "internationalFxSurcharge": 1.5
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Choosing between Patreon and Substack in 2026 defines whether your creator business operates as a community-driven patronage membership or a content-centric editorial publication. While both platforms empower creators to generate predictable recurring revenue directly from their audience, their monetization mechanics and cost structures differ substantially. Patreon operates primarily on an 8% platform fee (Pro Plan) or 12% (Premium Plan), plus standard credit card processing of 2.9% plus $0.30 (or 5% + $0.10 for micropayments under $3.00). Substack takes a mandatory 10% platform cut on all paid newsletter subscriptions, while routing payments through a connected Stripe account that adds standard 2.9% plus $0.30 processing plus Stripe Billing's 0.7% recurring subscription charge (resulting in an effective 13.6% + $0.30 deduction). However, Substack includes free email newsletter hosting and deliverability for an unlimited free audience, whereas Patreon requires external tools to maintain free email newsletters.",
+      "formulaBreakdown": {
+        "formulaString": "Patreon Net Payout = Gross Pledges - (Gross Pledges * 8%) - (Card Processing: 2.9% + $0.30 * Patrons); Substack Net Payout = Gross Subscriptions - (Gross Subscriptions * 10%) - (Stripe Card: 2.9% + $0.30 * Subs) - (Stripe Billing: 0.7%); Payout Delta = Patreon Net - Substack Net",
+        "variables": [
+          {
+            "symbol": "Gross Monthly Volume (V_gross)",
+            "meaning": "Total monthly revenue pledged or subscribed by patrons or readers (Subscription Price * Member Count)."
+          },
+          {
+            "symbol": "Patreon Pro Cut (F_pat)",
+            "meaning": "Contractual 8% revenue deduction retained by Patreon on Pro plan accounts."
+          },
+          {
+            "symbol": "Substack Platform Cut (F_sub)",
+            "meaning": "Contractual 10% revenue share taken by Substack on all paid publication subscriptions."
+          },
+          {
+            "symbol": "Stripe Recurring Billing Surcharge (F_bill)",
+            "meaning": "Stripe's 0.7% recurring billing fee assessed on Substack transactions that is absorbed directly within Patreon's infrastructure."
+          },
+          {
+            "symbol": "Annual Platform Net Delta (D_ann)",
+            "meaning": "Annualized difference in spendable creator income between hosting on Patreon versus Substack."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Content Creator / Writer: 400 Members ($10.00/month Monthly Pledge)",
+        "narrative": "A culture writer and video essayist evaluates whether to monetize an audience of 400 paying supporters ($4,000.00 gross monthly revenue) via Patreon Pro (8% cut) or Substack (10% cut + 0.7% Stripe Billing). The creator charges $10.00 per month with a 2.0% refund allowance.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Volume: 400 members * $10.00 = $4,000.00 monthly gross income.",
+          "Step 2: Calculate Patreon Pro Fees: Platform cut (8% of $4,000) = $320.00; Payment processing (2.9% + $0.30 * 400) = $116.00 + $120.00 = $236.00. Total Patreon fees = $556.00 (13.90% effective rate). Patreon Net = $3,444.00.",
+          "Step 3: Calculate Substack Fees: Platform cut (10% of $4,000) = $400.00; Stripe processing (2.9% + $0.30 * 400) = $236.00; Stripe Billing recurring fee (0.7% of $4,000) = $28.00. Total Substack fees = $664.00 (16.60% effective rate). Substack Net = $3,336.00.",
+          "Step 4: Compute Monthly Net Payout Difference: Patreon Net ($3,444.00) - Substack Net ($3,336.00) = $108.00 monthly advantage for Patreon.",
+          "Step 5: Account for Third-Party Tool Offsets: If the Patreon creator must pay $50/mo for a separate email marketing tool (e.g., Mailchimp or ConvertKit) to email free subscribers, the true net advantage shrinks to $58.00/mo.",
+          "Step 6: Compute Annual Net Payout Comparison: In pure platform transaction fees, Patreon retains $1,296.00 more per year in gross member payouts than Substack."
+        ],
+        "finalTakeaway": "On pure transaction fees, Patreon saves $108.00 per month ($1,296.00 annually) at $4,000 monthly volume due to its 8% fee versus Substack's 10% fee plus 0.7% Stripe Billing surcharge. However, Substack's free unlimited email sending can offset this difference for large free audiences."
+      },
+      "benchmarkTable": {
+        "title": "Patreon vs. Substack: Strategic Monetization & Technical Comparison (2026)",
+        "headers": [
+          "Platform Feature / Fee Metric",
+          "Patreon (Community Model)",
+          "Substack (Publication Model)",
+          "Strategic Creator Impact"
+        ],
+        "rows": [
+          [
+            "Platform Cut on Gross Pledges",
+            "8.0% (Pro) or 12.0% (Premium)",
+            "10.0% flat platform cut",
+            "Patreon Pro is 2.0% cheaper"
+          ],
+          [
+            "Payment Processing Deductions",
+            "2.9% + $0.30 (or 5% + 10¢ micro)",
+            "2.9% + $0.30 + 0.7% Stripe Billing",
+            "Substack has extra 0.7% Stripe Billing"
+          ],
+          [
+            "Free Audience Email Hosting",
+            "Limited free member messaging",
+            "100% Free unlimited email sending",
+            "Substack saves $50–$300/mo on ESP tools"
+          ],
+          [
+            "Customer Relationship Ownership",
+            "Patreon controls billing vault",
+            "Direct Stripe Connect ownership",
+            "Substack allows seamless data migration"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Evaluate Email Service Provider (ESP) Costs in Your Decision",
+          "actionableAdvice": "While Patreon's 8% fee is mathematically lower than Substack's 10.7% effective take-rate, Substack includes free email newsletter delivery to unlimited free subscribers. If you have 25,000 free subscribers, maintaining that list on ConvertKit or Mailchimp costs $150 to $250 monthly, easily erasing Patreon's 2% fee advantage."
+        },
+        {
+          "title": "Weigh Subscriber Migration and Payment Portability",
+          "actionableAdvice": "On Substack, paying subscribers are held in your own connected Stripe account, meaning you can export customer tokens and migrate to another platform (like Ghost) with zero subscriber churn. On Patreon, credit card vault tokens belong to Patreon, making platform migration far more difficult."
+        },
+        {
+          "title": "Choose Patreon for Multi-Tier Community Perks and Discord",
+          "actionableAdvice": "If your monetization model relies on Discord role automation, physical merchandise fulfillment, voting polls, or multi-tiered reward benefits ($5, $15, $50 tiers), Patreon's infrastructure is vastly superior to Substack's single paid tier architecture."
+        },
+        {
+          "title": "Drive Annual Subscriptions to Minimize Gateway Swipe Fees",
+          "actionableAdvice": "Whether on Patreon or Substack, annual subscriptions eliminate 11 out of 12 fixed $0.30 per-transaction credit card fees, increasing effective margin retention by 3% to 5% across both platforms."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Which platform has lower fees: Patreon or Substack?",
+          "answer": "Patreon's Pro Plan has lower direct transaction fees than Substack. Patreon Pro charges an 8% platform fee plus 2.9% + $0.30 payment processing (totaling ~10.9% + $0.30). Substack charges a 10% platform fee plus 2.9% + $0.30 Stripe card processing plus a 0.7% Stripe Billing fee (totaling ~13.6% + $0.30). On a $10 monthly subscription, Patreon takes approximately $1.39 while Substack takes $1.66."
+        },
+        {
+          "question": "Can I use Substack without charging my readers?",
+          "answer": "Yes. Substack is 100% free to use if you publish free newsletters. You can create articles, host podcasts, publish video posts, and send unlimited emails to an unlimited subscriber list without paying any subscription or delivery fees. Substack only takes its 10% cut if and when you decide to turn on paid subscriptions."
+        },
+        {
+          "question": "Does Patreon support email newsletters to free members?",
+          "answer": "Patreon allows creators to let supporters follow their page for free and receive automated email notifications whenever a public post is published. However, Patreon's broadcast and email formatting features are relatively rudimentary compared to dedicated publishing platforms like Substack, lacking rich customizable typography layouts, open-rate segmentation, detailed deliverability analytics, automated welcome funnels, and branded custom email sending domain options. Publishers prioritizing text-based newsletter delivery usually prefer Substack's dedicated publishing engine."
+        },
+        {
+          "question": "Who owns subscriber credit card information on Patreon vs Substack?",
+          "answer": "On Substack, you connect your own Stripe account, meaning your business is the legal merchant of record and customer billing records remain in your Stripe account. If you ever leave Substack, you can export your payment tokens to another platform without asking readers to resubscribe. On Patreon, Patreon is the merchant of record and owns the payment vault, meaning you cannot export credit card tokens if you leave."
+        },
+        {
+          "question": "Can a creator use both Patreon and Substack simultaneously?",
+          "answer": "Yes. Many prolific creators maintain an open free publication on Substack to build top-of-funnel discovery, capture search traffic, and deliver serialized thought leadership, while simultaneously hosting an exclusive private membership community with livestreams, Discord roles, voting power, and behind-the-scenes digital perks on Patreon. However, dividing paid monetization tiers across two separate platforms can confuse prospective supporters and fragment your core recurring community."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "patreon-fee-calculator",
+      "substack-revenue-calculator",
+      "gumroad-fee-calculator"
     ]
   }
 ]

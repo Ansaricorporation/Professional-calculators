@@ -182,8 +182,8 @@
     },
     "relatedSlugs": [
       "shopify-shipping-calculator",
-      "gumroad-vs-lemon-squeezy-fee-calculator",
-      "wholesale-to-retail-markup-calculator"
+      "shopify-aov-calculator",
+      "etsy-vs-shopify-fee-calculator"
     ]
   },
   {
@@ -346,8 +346,1027 @@
     },
     "relatedSlugs": [
       "shopify-profit-margin-calculator",
-      "gumroad-vs-lemon-squeezy-fee-calculator",
-      "wholesale-to-retail-markup-calculator"
+      "etsy-shipping-calculator",
+      "etsy-vs-shopify-fee-calculator"
+    ]
+  },
+  {
+    "slug": "etsy-fee-calculator",
+    "title": "Etsy Fee & Profit Margin Calculator (2026 Schedule & Offsite Ads)",
+    "metaTitle": "Etsy Fee Calculator 2026 | Transaction, Listing & Offsite Ads Net Yield",
+    "metaDescription": "Calculate exact Etsy seller fees, including $0.20 listing renewals, 6.5% transaction charges on item and shipping, 3% + $0.25 payment processing, and mandatory 12%–15% Offsite Ads.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Etsy Seller Handbook — Fees & Payments Policy (2026)",
+    "officialSourceUrl": "https://www.etsy.com/legal/fees",
+    "defaultInputs": {
+      "sellingPrice": 38.0,
+      "cogs": 9.5,
+      "shippingCharged": 4.5,
+      "shippingActualCost": 5.2,
+      "monthlyUnits": 150,
+      "planTier": "standard",
+      "appFeesMonthly": 15.0,
+      "marketingPerOrder": 0.0,
+      "returnsRate": 2.0,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "standard": {
+          "name": "Standard Organic Sale",
+          "monthlyFee": 0.0,
+          "percentageRate": 9.5,
+          "fixedFee": 0.45,
+          "additionalNotes": "Combines 6.5% transaction cut + 3.0% Etsy Payments fee, with $0.20 listing fee + $0.25 fixed card processing fee."
+        },
+        "offsite-optional": {
+          "name": "Offsite Ads Sale (Under $10k GMV)",
+          "monthlyFee": 0.0,
+          "percentageRate": 24.5,
+          "fixedFee": 0.45,
+          "additionalNotes": "Adds optional 15.0% Offsite Ads commission to the standard 9.5% + $0.45 baseline."
+        },
+        "offsite-mandatory": {
+          "name": "Offsite Ads Sale ($10k+ GMV Mandatory)",
+          "monthlyFee": 0.0,
+          "percentageRate": 21.5,
+          "fixedFee": 0.45,
+          "additionalNotes": "Adds mandatory 12.0% Offsite Ads fee (capped at $100 per attributed transaction) to standard baseline."
+        }
+      },
+      "extraParameters": {
+        "listingFee": 0.20,
+        "transactionFeePct": 6.5,
+        "processingFeePct": 3.0,
+        "processingFixed": 0.25,
+        "offsiteAdsTier1Pct": 15.0,
+        "offsiteAdsTier2Pct": 12.0,
+        "offsiteAdsMaxFee": 100.0
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Selling handmade goods, vintage collections, and craft supplies on Etsy in 2026 involves navigating a compound multi-tiered fee structure that surprises new and scaling artisans alike. Unlike straightforward retail platforms, Etsy assesses fees against multiple layers of every transaction: a $0.20 fixed listing fee renewed every four months or upon each sale, a 6.5% transaction fee applied to the combined total of product price plus customer shipping charges, and a 3% plus $0.25 payment processing charge. Furthermore, sellers who exceed $10,000 in trailing 12-month sales are permanently enrolled in Etsy's mandatory Offsite Ads program, which assesses an additional 12% attribution cut on attributed sales (capped at $100 per order), while shops under $10,000 pay an optional 15%. When combined, Etsy's effective take-rate routinely ranges between 10% and 27% of top-line revenue, making exact unit economic modeling vital for defending artisan gross margins.",
+      "formulaBreakdown": {
+        "formulaString": "Total Etsy Fee = Listing Fee ($0.20) + ((Item Price + Shipping Charged) * 6.5%) + ((Item Price + Shipping Charged) * 3.0% + $0.25) + (Gross Order Value * Offsite Ads % [0%, 12%, or 15%])",
+        "variables": [
+          {
+            "symbol": "Listing Fee ($0.20)",
+            "meaning": "Fixed listing fee charged per item published or renewed upon each completed multi-quantity unit sale."
+          },
+          {
+            "symbol": "Transaction Cut (6.5%)",
+            "meaning": "Etsy core marketplace commission assessed on total order checkout value, including customer-paid postage and gift wrap."
+          },
+          {
+            "symbol": "Etsy Payments Processing (3.0% + $0.25)",
+            "meaning": "Merchant credit card gateway deductible for processing transactions securely through Etsy Payments in the United States."
+          },
+          {
+            "symbol": "Offsite Ads Attribution Cut (12% or 15%)",
+            "meaning": "Marketing fee deducted when an order originates from an external Etsy-funded ad on Google, Facebook, Instagram, or Pinterest."
+          },
+          {
+            "symbol": "Net Artisan Profit",
+            "meaning": "True take-home cash flow after deducting product COGS, packaging, carrier labels, Etsy platform fees, and return allowances."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Handmade Ceramic Pottery Studio Selling a $38.00 Mug on Etsy",
+        "narrative": "A studio artisan sells handcrafted ceramic coffee mugs on Etsy for $38.00 each, charging $4.50 flat-rate customer shipping ($42.50 total order value collected). Landed materials and kiln firing cost $9.50 per unit. Outbound commercial postal shipping costs $5.20. The shop has surpassed $10,000 in annual GMV, subjecting attributed marketing sales to Etsy's mandatory 12% Offsite Ads program.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Checkout Value: $38.00 item price + $4.50 customer shipping = $42.50 gross transaction value.",
+          "Step 2: Calculate Etsy Listing Renewal Fee: $0.20 fixed renewal deduction per unit sold.",
+          "Step 3: Calculate Etsy 6.5% Transaction Fee: $42.50 gross * 6.5% = $2.76 marketplace transaction fee.",
+          "Step 4: Calculate Etsy Payments Processing Fee: ($42.50 * 3.0%) + $0.25 = $1.28 + $0.25 = $1.53 processing fee.",
+          "Step 5: Compute Standard Organic Fee Total: $0.20 listing + $2.76 transaction + $1.53 payment processing = $4.49 total fees (10.56% effective take-rate).",
+          "Step 6: Compute Scenario with 12% Offsite Ads Attribution: $42.50 * 12% = $5.10 ad cut. Total Etsy deductions increase to $4.49 + $5.10 = $9.59 (22.56% effective take-rate!).",
+          "Step 7: Calculate Net Take-Home on Offsite Ads Sale: $42.50 gross - $9.50 COGS - $5.20 actual carrier label - $9.59 total Etsy fees = $18.21 net profit (42.85% net margin vs. 54.85% on organic sales)."
+        ],
+        "finalTakeaway": "On an organic sale, the artisan nets $23.31 per mug. However, when an order is driven by Etsy Offsite Ads, the additional $5.10 attribution fee reduces net profit to $18.21—an immediate 21.9% reduction in take-home cash. Artisans must set list prices high enough to absorb mandatory 12% advertising cuts without slipping into margin insolvency."
+      },
+      "benchmarkTable": {
+        "title": "2026 Etsy Seller Fee Schedule & Effective Take-Rate Benchmarks",
+        "headers": [
+          "Sale Acquisition Channel",
+          "Platform Fee Components",
+          "Effective Fee on $20 Order",
+          "Effective Fee on $50 Order",
+          "Seller Impact & Optimization"
+        ],
+        "rows": [
+          [
+            "Direct Organic Search Sale",
+            "$0.20 listing + 6.5% trans + 3% + 25¢",
+            "11.75% ($2.35 total fee)",
+            "10.40% ($5.20 total fee)",
+            "Base baseline for self-driven or SEO traffic"
+          ],
+          [
+            "Offsite Ads (Shops < $10k GMV)",
+            "Standard baseline + 15.0% ad fee",
+            "26.75% ($5.35 total fee)",
+            "25.40% ($12.70 total fee)",
+            "Can be manually toggled off in settings"
+          ],
+          [
+            "Offsite Ads (Shops >= $10k GMV)",
+            "Standard baseline + 12.0% ad fee",
+            "23.75% ($4.75 total fee)",
+            "22.40% ($11.20 total fee)",
+            "Mandatory lifetime enrollment; $100 fee cap"
+          ],
+          [
+            "In-Person Square Sale via Etsy",
+            "$0.20 listing + Square 2.6% + 10¢",
+            "4.10% ($0.82 total fee)",
+            "3.20% ($1.60 total fee)",
+            "Ideal for craft fairs and pop-up markets"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Bake the Mandatory 12% Offsite Ads Attribution Buffer into Base Pricing",
+          "actionableAdvice": "If your shop generates over $10,000 annually, you cannot opt out of Etsy Offsite Ads. Because approximately 15% to 25% of orders for mature shops originate from external Google and Meta campaigns, build a 3% blended price cushion into your entire catalog. This prevents external advertising orders from eroding your operational margin floor."
+        },
+        {
+          "title": "Incorporate Postage Subsidies Directly into Listing Prices",
+          "actionableAdvice": "Because Etsy assesses its 6.5% transaction fee on both the product price and the customer shipping fee, separating shipping does not avoid platform fees. Pricing items with built-in shipping allows you to qualify for Etsy's search algorithm preference for listings offering the $35+ Free Shipping Guarantee without sacrificing dollar margin."
+        },
+        {
+          "title": "Leverage Etsy Share & Save Direct Referral Links",
+          "actionableAdvice": "Promote your custom Etsy Share & Save link across your own social media channels, email newsletters, and business cards. When a buyer completes a purchase via your unique trackable link, Etsy discounts 4.0% of the transaction fee from the order total, reducing your platform transaction fee from 6.5% down to just 2.5%."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What are the official Etsy seller fees in 2026?",
+          "answer": "In 2026, Etsy charges four primary types of selling fees. First is a $0.20 fixed listing fee for every item published, renewed every four months or upon each sale of multi-quantity inventory. Second is a 6.5% transaction fee assessed on the total order value, including the item price, customer shipping charge, and gift wrapping. Third is an Etsy Payments processing fee of 3.0% plus $0.25 per transaction for United States sellers. Fourth, if a buyer purchases through an external advertisement funded by Etsy on Google, Facebook, or Pinterest, an Offsite Ads fee applies: 15% for shops under $10,000 in trailing 12-month sales, or 12% for shops that have cleared $10,000."
+        },
+        {
+          "question": "Can Etsy sellers opt out of Offsite Ads?",
+          "answer": "Sellers who have generated less than $10,000 in gross merchandise sales over the preceding 365 consecutive days have the legal right to toggle Offsite Ads off in their Etsy Shop Manager settings. However, once a shop reaches or exceeds $10,000 in trailing 12-month revenue, enrollment in the Offsite Ads program becomes mandatory for the lifetime of that shop, even if future sales drop below the threshold. In exchange for mandatory participation, Etsy lowers the advertising cut from 15% to 12% and caps the maximum single-order advertising fee at $100.00."
+        },
+        {
+          "question": "Does Etsy charge transaction fees on customer-paid shipping?",
+          "answer": "Yes. Etsy explicitly calculates its 6.5% marketplace transaction fee on the full gross checkout amount collected from the buyer, which includes the item retail price plus any shipping charges billed to the customer. For example, if you sell an item for $30.00 and charge $10.00 for shipping, Etsy applies the 6.5% cut to the full $40.00 order value ($2.60 transaction fee). This policy was instituted to prevent sellers from listing items for $1.00 with $39.00 shipping fees to evade platform commissions."
+        },
+        {
+          "question": "What is the Etsy Share & Save program and how does it save fees?",
+          "answer": "Etsy Share & Save is an official seller incentive program designed to reward merchants who drive external traffic to their Etsy storefronts. When a seller shares their unique tracked store link on social media, blogs, or marketing emails, and a buyer completes an order within 30 days of clicking that link, Etsy refunds 4.0% of the order total back to the seller's payment account. This effectively lowers the transaction fee from the standard 6.5% down to just 2.5%, saving substantial cash flow on repeat customers."
+        },
+        {
+          "question": "How often do Etsy listings expire and incur the $0.20 renewal fee?",
+          "answer": "An Etsy listing is active for a period of four months unless the item sells out sooner. If a single-quantity listing remains unsold after four months, it automatically renews for another four-month term, triggering a $0.20 renewal fee. If you list multiple quantities of the same item (e.g., 10 units in stock), you pay an initial $0.20 fee to list the item, and each time a unit is sold, Etsy automatically renews the listing for the remaining quantity, charging an additional $0.20 fee for each completed transaction."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "etsy-shipping-calculator",
+      "etsy-vs-shopify-fee-calculator",
+      "shopify-profit-margin-calculator"
+    ]
+  },
+  {
+    "slug": "etsy-shipping-calculator",
+    "title": "Etsy Shipping & Free-Shipping Guarantee ($35+) Margin Calculator (2026)",
+    "metaTitle": "Etsy Shipping Calculator 2026 | Free Shipping Guarantee & DIM Surcharge",
+    "metaDescription": "Calculate Etsy shipping rates, commercial USPS discounts, volumetric dimensional weight adjustments, and margin erosion under the official $35+ Free Shipping Guarantee.",
+    "category": "ecommerce",
+    "engineType": "shipping-cost",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Etsy Shipping Labels & USPS Commercial Pricing Policy (2026)",
+    "officialSourceUrl": "https://www.etsy.com/legal/fees",
+    "defaultInputs": {
+      "actualWeightLbs": 1.2,
+      "lengthInches": 9.0,
+      "widthInches": 7.0,
+      "heightInches": 4.0,
+      "dimDivisor": 166,
+      "packagingCost": 1.1,
+      "handlingCost": 1.2,
+      "shippingCharged": 0.0,
+      "productPrice": 42.0,
+      "targetMargin": 45.0,
+      "carrierPreset": "usps-ground"
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "etsyFreeShippingMin": 35.0,
+        "uspsGroundBase": 4.85,
+        "uspsGroundPerLb": 0.85,
+        "uspsPriorityBase": 8.25,
+        "uspsPriorityPerLb": 1.25,
+        "upsGroundBase": 8.9,
+        "upsGroundPerLb": 1.1
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Shipping handmade crafts, fragile ceramics, and vintage apparel on Etsy requires balancing buyer expectations with unforgiving postal carrier rate tables in 2026. Etsy's search placement algorithm actively favors US domestic listings that offer free shipping to shoppers on individual items priced at $35.00 and above, or shops that offer an automated $35+ Free Shipping Guarantee order threshold. However, offering 'Free Shipping' without mathematically engineering your item base prices to absorb carrier label costs, protective bubble wrap, custom mailer boxes, and dimensional weight penalties directly leads to merchant cash-flow exhaustion. Because commercial couriers (USPS, UPS, FedEx) bill bulky parcels at volumetric dimensional rates (Length * Width * Height / 166), shipping an irregular handcrafted item can cost 50% to 100% more than its physical scale weight implies. This calculator audits exact billable postage, packaging consumables, labor overhead, and break-even item pricing to protect your artisan margins.",
+      "formulaBreakdown": {
+        "formulaString": "Total Landed Delivery Cost = Carrier Postage + Packaging Box & Protective Wrap + Packing Labor; Free Shipping Threshold Delta = Total Delivery Cost / Target Gross Margin %",
+        "variables": [
+          {
+            "symbol": "Scale Weight vs. DIM Weight",
+            "meaning": "The courier bills at whichever value is greater: the physical scale weight (lbs) or the volumetric cubic weight (L * W * H / 166)."
+          },
+          {
+            "symbol": "Carrier Postage (C_post)",
+            "meaning": "Commercial base discounted postage label purchased directly through Etsy Shipping Labels (USPS Ground Advantage or Priority Mail)."
+          },
+          {
+            "symbol": "Packaging Consumables (C_pack)",
+            "meaning": "Direct expense for cardboard shipping cartons, padded mailers, custom branded tissue, crinkle paper, and sealing tape."
+          },
+          {
+            "symbol": "Free Shipping Margin Erosion",
+            "meaning": "Dollar subsidy absorbed by the seller when offering $0.00 shipping, calculated as a direct percentage deduction from item selling price."
+          },
+          {
+            "symbol": "Etsy Transaction Cut on Shipping (6.5%)",
+            "meaning": "Etsy takes a 6.5% platform cut even if you charge shipping separately, meaning separating shipping fees provides zero fee avoidance."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Artisan Jewelry & Wooden Keepsake Box Merchant Offering $35+ Free Shipping",
+        "narrative": "An Etsy maker sells handcrafted walnut keepsake boxes for $42.00 with free domestic shipping to comply with Etsy's $35 Free Shipping Guarantee. The package weighs 1.2 lbs on the scale. Packed in a 9x7x4 inch corrugated box with protective foam inserts ($1.10 packaging cost), the maker spends $1.20 in labor preparation. The parcel ships via USPS Ground Advantage under commercial base rates.",
+        "stepByStepMath": [
+          "Step 1: Calculate Cubic Volume: 9 in * 7 in * 4 in = 252 cubic inches.",
+          "Step 2: Calculate Dimensional Weight (USPS 166 Divisor): 252 / 166 = 1.52 lbs (rounded up to 2 lbs by postal rules).",
+          "Step 3: Determine Billable Weight: Max(1.2 lbs actual, 1.52 lbs DIM) = 1.52 lbs billable weight (Courier bills at the 2-lb bracket).",
+          "Step 4: Compute Commercial Postage Label Cost: $4.85 base + (0.52 lbs * $0.85/lb) = $5.29 postage label.",
+          "Step 5: Compute Total Landed Fulfillment Cost: $5.29 postage + $1.10 box + $1.20 packing labor = $7.59 all-in delivery cost.",
+          "Step 6: Calculate Margin Erosion on $42.00 Sale: $7.59 absorbed delivery / $42.00 product price = 18.07% margin erosion directly off top-line revenue.",
+          "Step 7: Determine Re-priced Target to Protect 45% Net Margin: To absorb $7.59 while maintaining a 45% margin, the product price should be adjusted from $42.00 to $45.50."
+        ],
+        "finalTakeaway": "Absorbing $7.59 in shipping costs erodes 18% of this artisan's selling price. Raising the price by $3.50 (to $45.50) fully recovers the carrier label while maintaining the promotional Free Shipping Guarantee badge that boosts search impressions."
+      },
+      "benchmarkTable": {
+        "title": "2026 Etsy Shipping Cost Benchmarks & Postal Tier Rates",
+        "headers": [
+          "Parcel Weight Category",
+          "USPS Ground Advantage (Etsy Label)",
+          "USPS Priority Mail (Etsy Label)",
+          "Average Packaging Expense",
+          "Recommended Free Shipping Action"
+        ],
+        "rows": [
+          [
+            "Under 8 oz (Jewelry, stickers)",
+            "$3.85 to $4.40",
+            "$7.80 to $8.60",
+            "$0.50 to $0.85 (Poly mailer)",
+            "Safely absorb in $35+ order prices"
+          ],
+          [
+            "8 oz to 1 lb (Apparel, small crafts)",
+            "$4.60 to $5.20",
+            "$8.40 to $9.20",
+            "$0.85 to $1.25 (Rigid box)",
+            "Add $3.00 to base item price"
+          ],
+          [
+            "1 to 3 lbs (Ceramics, decor)",
+            "$5.80 to $8.40",
+            "$9.50 to $13.50",
+            "$1.25 to $2.10 (Padded box)",
+            "Set $35 free threshold with $5 buffer"
+          ],
+          [
+            "3+ lbs or Bulky (Furniture, sets)",
+            "$9.20 to $18.50+",
+            "$14.00 to $28.00+",
+            "$2.50 to $4.50 (Heavy carton)",
+            "Do NOT offer free shipping; charge calculated"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Purchase Postage Exclusively Through Etsy Shipping Labels",
+          "actionableAdvice": "Never purchase postage at retail post office counter rates. Buying labels directly inside Etsy Shop Manager provides automated commercial base discounts of up to 30% on USPS Ground Advantage and Priority Mail, and automatically updates tracking numbers for Star Seller qualification."
+        },
+        {
+          "title": "Exempt Heavy or Bulky SKUs from the Free Shipping Guarantee",
+          "actionableAdvice": "Etsy allows sellers to apply the $35+ Free Shipping Guarantee selectively or use calculated shipping for heavy items. For fragile or dense items weighing over 4 pounds where shipping varies from $10 to $30 across national zones, charging calculated carrier rates protects you from severe West Coast/Zone 8 margin deficits."
+        },
+        {
+          "title": "Optimize Box Dimensions to Prevent Volumetric Surcharges",
+          "actionableAdvice": "Keeping package dimensions under 1 cubic foot (1,728 cubic inches) prevents carrier cubic volume penalties. Use standardized snug boxes or padded mailers rather than oversized cartons stuffed with excess bubble wrap."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does Etsy's $35+ Free Shipping Guarantee impact search ranking in 2026?",
+          "answer": "In 2026, Etsy's search algorithm gives priority placement in US domestic search results to items that ship for free and to shops that offer the $35+ Free Shipping Guarantee. When a shop activates this guarantee, US buyers receive automated free shipping whenever their total order from that shop reaches $35.00 or more. While this policy dramatically improves search visibility and cart conversion, sellers must incorporate average fulfillment costs into baseline product pricing to avoid absorbing carrier postage at a net operational loss."
+        },
+        {
+          "question": "Does Etsy discount carrier postage when purchasing labels through Shop Manager?",
+          "answer": "Yes. When you purchase shipping labels through Etsy, you receive discounted commercial base rates from carriers like the United States Postal Service (USPS), FedEx, and Canada Post. These commercial rates are up to 30% cheaper than retail counter rates at your local post office. Furthermore, using Etsy shipping labels automatically populates tracking numbers, provides delivery confirmation, and fulfills Star Seller on-time shipping requirements without manual data entry."
+        },
+        {
+          "question": "Can I charge shipping on heavy items while offering free shipping on light items?",
+          "answer": "Yes. Etsy allows sellers to create multiple customized Shipping Profiles. You can assign lightweight, high-margin products to a Free Shipping profile, while assigning heavy, oversized, or fragile merchandise to a Calculated Shipping profile where the buyer pays exact postage based on their zip code and package weight. You can also customize your shop guarantee so that only orders under a certain weight qualify for free delivery."
+        },
+        {
+          "question": "How does Dimensional Weight affect Etsy sellers shipping fragile items?",
+          "answer": "Fragile items like ceramic mugs, glass decor, and sculptures require generous protective bubble wrap and larger corrugated boxes. If the package's cubic size is large relative to its scale weight, carriers apply Dimensional Weight (DIM Weight), calculated as Length * Width * Height / 166 for USPS. If a 1.5-pound ceramic bowl is packed in a 12x10x8 inch box (960 cubic inches), the carrier bills the parcel as 5.78 lbs (6 lbs rounded), doubling or tripling your postage bill."
+        },
+        {
+          "question": "What is the Etsy Star Seller on-time shipping requirement?",
+          "answer": "To qualify for the Star Seller badge, Etsy requires shops to maintain a 95% or higher on-time dispatch and tracking rate. This means that at least 95% of orders must be shipped within your stated processing timeframe and must include valid carrier tracking or an official shipping label purchased directly through Etsy. Star Sellers receive distinctive trust badges on their storefronts, which measurably improves conversion rates."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "etsy-fee-calculator",
+      "shopify-shipping-calculator",
+      "etsy-vs-shopify-fee-calculator"
+    ]
+  },
+  {
+    "slug": "shopify-aov-calculator",
+    "title": "Shopify AOV (Average Order Value) & Bundle Profit Margin Calculator (2026)",
+    "metaTitle": "Shopify AOV Calculator 2026 | Bundle Profit Margin & CAC Dilution",
+    "metaDescription": "Calculate how increasing Average Order Value (AOV) from $40 to $80+ via product bundles dilutes fixed gateway transaction fees, amortizes CAC, and expands net margins.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Shopify Enterprise Merchant Analytics & Unit Economics Guidelines",
+    "officialSourceUrl": "https://www.shopify.com/pricing",
+    "defaultInputs": {
+      "sellingPrice": 78.0,
+      "cogs": 22.0,
+      "shippingCharged": 0.0,
+      "shippingActualCost": 7.5,
+      "monthlyUnits": 320,
+      "planTier": "shopify",
+      "appFeesMonthly": 129.0,
+      "marketingPerOrder": 16.0,
+      "returnsRate": 3.0,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "single-sku": {
+          "name": "Single Item Purchase (Baseline $38 AOV)",
+          "monthlyFee": 105.0,
+          "percentageRate": 2.7,
+          "fixedFee": 0.3,
+          "additionalNotes": "Standard $105/mo Shopify plan processing single low-ticket orders."
+        },
+        "bundle-tier": {
+          "name": "Bundled 2-Pack / Cross-Sell ($78 AOV)",
+          "monthlyFee": 105.0,
+          "percentageRate": 2.7,
+          "fixedFee": 0.3,
+          "additionalNotes": "Higher AOV bundle diluting fixed $0.30 fee and flat customer acquisition cost."
+        },
+        "vip-tier": {
+          "name": "VIP Collection Bundle ($140 AOV)",
+          "monthlyFee": 105.0,
+          "percentageRate": 2.7,
+          "fixedFee": 0.3,
+          "additionalNotes": "Maximum basket size optimizing pick-and-pack warehouse labor."
+        }
+      },
+      "extraParameters": {
+        "fixedPerOrderProcessingFee": 0.30,
+        "baseShopifyCardRate": 2.7
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "In the hyper-competitive direct-to-consumer (DTC) advertising environment of 2026, scaling a Shopify brand on low-ticket, single-item orders ($30 to $40 AOV) is mathematically prohibitive. Because major advertising networks (Meta, Google, TikTok) charge rising blended Customer Acquisition Costs (CAC)—frequently $15 to $25 per converted purchase—and fulfillment centers charge flat pick-and-pack minimums ($3.50 to $6.00 per package), low-AOV stores operate at razor-thin or negative contribution margins. Increasing Average Order Value (AOV) through curated product bundles, tiered quantity discounts, and post-purchase one-click upsells fundamentally restructures your unit economics. Every incremental dollar added to a cart dilutes fixed transactional overhead (like Shopify's $0.30 card fee and carrier base parcel rates) and spreads paid acquisition costs across higher gross dollar contributions, unlocking massive free cash flow expansion.",
+      "formulaBreakdown": {
+        "formulaString": "Contribution Margin $ = (AOV - Landed Bundle COGS - Gateway Fees - Landed Carrier Shipping - Fixed Blended CAC); Net Margin % = (Contribution Margin $ / AOV) * 100",
+        "variables": [
+          {
+            "symbol": "Average Order Value (AOV)",
+            "meaning": "Mean gross dollar transaction value generated per completed checkout session across all customer orders."
+          },
+          {
+            "symbol": "Landed Bundle COGS",
+            "meaning": "Aggregated manufacturing, packaging, and inbound freight cost for all items bundled within the order."
+          },
+          {
+            "symbol": "Fixed Transaction Fee ($0.30)",
+            "meaning": "The non-negotiable credit card gateway fee deducted on every checkout, which drops from 0.79% of revenue on a $38 order to 0.38% on a $78 order."
+          },
+          {
+            "symbol": "Customer Acquisition Cost (CAC)",
+            "meaning": "Total paid media expenditure divided by total acquired orders, which remains fixed whether a customer buys 1 item or a 3-piece bundle."
+          },
+          {
+            "symbol": "Operating Leverage",
+            "meaning": "The multiplier effect where incremental revenue drops directly to bottom-line net profit because customer acquisition is already paid for."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Skincare Brand Scaling from Single Cleanser ($38.00) to 3-Step Routine Bundle ($78.00)",
+        "narrative": "A DTC organic skincare merchant spends $16.00 in blended Meta ad spend to acquire a customer. When selling a single facial cleanser for $38.00 (COGS $8.50, shipping $6.20), the store nets minimal cash flow. By introducing an all-in-one 'Daily Glow 3-Step Routine' bundle priced at $78.00 (COGS $22.00, combined shipping $7.50 in a single box), the merchant evaluates the exact profit expansion achieved across 320 monthly orders on the $105/mo Shopify plan.",
+        "stepByStepMath": [
+          "Step 1: Baseline Single-Item Unit Economics ($38.00 AOV): $38.00 revenue - $8.50 COGS - ($38 * 2.7% + $0.30 = $1.33 fee) - $6.20 shipping - $16.00 CAC = $5.97 net profit per order (15.71% net margin).",
+          "Step 2: Bundle Unit Economics ($78.00 AOV): $78.00 revenue collected from buyer.",
+          "Step 3: Calculate Bundle COGS: 3 bundled items produced at scale = $22.00 landed cost.",
+          "Step 4: Calculate Payment Processing on Bundle: ($78.00 * 2.7%) + $0.30 = $2.11 + $0.30 = $2.41 gateway deduction.",
+          "Step 5: Calculate Landed Shipping: Consolidated box postage = $7.50 carrier delivery expense.",
+          "Step 6: Allocate Fixed Marketing CAC: Blended ad spend remains constant at $16.00 per customer.",
+          "Step 7: Allocate Monthly App Overhead: ($105 plan + $129 bundle apps) / 320 orders = $0.73 per order.",
+          "Step 8: Compute Net Take-Home on Bundle: $78.00 - $22.00 COGS - $2.41 gateway - $7.50 shipping - $16.00 CAC - $0.73 SaaS = $29.36 net profit per order (37.64% net margin!)."
+        ],
+        "finalTakeaway": "Doubling AOV from $38.00 to $78.00 nearly quintuples net cash profit per order from $5.97 to $29.36. Across 320 monthly orders, monthly net operating profit leaps from $1,910 to $9,395—a staggering +391% profit increase from identical advertising spend."
+      },
+      "benchmarkTable": {
+        "title": "2026 Shopify AOV Scaling Benchmarks & Unit Economic Multipliers",
+        "headers": [
+          "Order Basket Configuration",
+          "Average Order Value (AOV)",
+          "Blended Ad CAC Impact (% of AOV)",
+          "Net Contribution Margin %",
+          "Monthly Cash Flow (500 Orders)"
+        ],
+        "rows": [
+          [
+            "Single Low-Ticket Item",
+            "$30.00 to $40.00",
+            "40.0% to 55.0% of order",
+            "8.0% to 15.0% margin",
+            "$1,500 to $2,800 / mo"
+          ],
+          [
+            "Dual-Pack / Accessory Cross-Sell",
+            "$55.00 to $75.00",
+            "25.0% to 32.0% of order",
+            "25.0% to 35.0% margin",
+            "$7,500 to $12,500 / mo"
+          ],
+          [
+            "Full Routine / 3-Item Bundle",
+            "$80.00 to $120.00",
+            "15.0% to 20.0% of order",
+            "35.0% to 48.0% margin",
+            "$16,000 to $26,000 / mo"
+          ],
+          [
+            "VIP Collector Box / Annual Supply",
+            "$150.00 to $250.00+",
+            "8.0% to 12.0% of order",
+            "45.0% to 58.0% margin",
+            "$35,000 to $65,000 / mo"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Implement Frictionless Post-Purchase One-Click Upsells",
+          "actionableAdvice": "Integrate post-purchase upsell checkout extensions that display complementary add-ons immediately after initial payment authorization. Because the customer has already entered billing and shipping details, post-purchase offers convert at 12% to 18%, adding pure incremental gross margin with zero additional customer acquisition cost."
+        },
+        {
+          "title": "Design Tiered 'Spend More, Save More' Quantity Thresholds",
+          "actionableAdvice": "Incentivize bulk purchasing by offering volume discounts on high-frequency consumable items: Buy 1 at $35, Buy 2 for $60 (14% off), or Buy 3 for $80 (24% off). Even with a 24% discount, shipping all 3 items in a single package preserves higher absolute dollar contribution than three separate individual shipments."
+        },
+        {
+          "title": "Curate Pre-Packaged Bundles at a 15% Perceived Value Discount",
+          "actionableAdvice": "Group 3 related SKUs into a cohesive starter kit with custom gift packaging. Price the bundle at a 15% discount compared to purchasing items individually. The perceived bargain accelerates buying decisions while lifting your store's baseline AOV past the critical $75 operational threshold."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is Average Order Value (AOV) and why is it critical for Shopify stores?",
+          "answer": "Average Order Value (AOV) measures the average dollar amount spent each time a customer places an order on your online store, calculated by dividing total revenue by total completed orders. In 2026, AOV is the single most critical lever for direct-to-consumer e-commerce profitability because advertising acquisition costs (Meta, Google, TikTok ads) and fulfillment labor costs are largely fixed per transaction. A store with a $75 AOV can comfortably afford a $20 ad acquisition cost while netting healthy profits, whereas a store with a $35 AOV will operate at an operational deficit."
+        },
+        {
+          "question": "How does increasing AOV dilute fixed transaction and processing fees?",
+          "answer": "Every credit card checkout incurs both a percentage fee (e.g., 2.7%) and a fixed per-order fee (e.g., $0.30 on Shopify Payments). On a small $20.00 purchase, the $0.30 fixed fee represents 1.5% of gross revenue, elevating your effective fee rate to 4.2%. When order value increases to $100.00, the $0.30 fixed fee represents just 0.30% of revenue, lowering your total processing fee rate to 3.0%. More importantly, packaging materials, warehouse pick fees, and base carrier postage costs are absorbed much more efficiently by larger order totals."
+        },
+        {
+          "question": "What is the difference between an upsell and a cross-sell?",
+          "answer": "An upsell encourages a customer to purchase a higher-end, upgraded, or larger version of the product they are currently viewing (e.g., upgrading from a 250ml shampoo bottle to a 1,000ml salon size with pump). A cross-sell recommends complementary or related products that enhance the main item's utility (e.g., suggesting a moisturizing conditioner and wide-tooth comb when adding shampoo to cart). Both tactics increase overall cart value when presented seamlessly in the checkout flow."
+        },
+        {
+          "question": "What apps or tools are best for increasing AOV on Shopify?",
+          "answer": "Top Shopify apps for increasing AOV include post-purchase upsell tools (such as Zipify OCU, AfterSell, or ReConvert), tiered bundle builders (such as Bundles.app or Fast Bundle), and cart drawer upselling tools (such as Monster Upsells or Slide Cart). These applications display automated cross-sell carousels, dynamic free-shipping progress bars, and one-click add-on items directly inside the shopping cart without disrupting checkout friction."
+        },
+        {
+          "question": "How do bundle discounts affect gross profit versus contribution margin?",
+          "answer": "Offering a 15% discount on a 3-item bundle slightly reduces product-level gross margin percentage. However, it substantially expands contribution margin dollars because shipping multiple items in a single package saves carrier base postage, and customer acquisition cost (CAC) is incurred only once. For example, three separate orders each paying $6.00 in postage cost $18.00 to ship, whereas shipping all three items together costs only $7.50, generating $10.50 in fulfillment savings that far outweigh the bundle discount."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "shopify-shipping-calculator",
+      "etsy-vs-shopify-fee-calculator"
+    ]
+  },
+  {
+    "slug": "tiktok-shop-fee-calculator",
+    "title": "TikTok Shop US Seller Fee, Affiliate Cut & Profit Calculator (2026)",
+    "metaTitle": "TikTok Shop Fee Calculator 2026 | Referral Commission & Affiliate Net Yield",
+    "metaDescription": "Calculate TikTok Shop US marketplace referral fees (6%–8%), creator affiliate commission cuts (10%–20%), shipping subsidies, and net profit margins under 2026 terms.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "TikTok Shop Academy US Seller Fee Schedule & Merchant Policy",
+    "officialSourceUrl": "https://seller-us.tiktok.com/",
+    "defaultInputs": {
+      "sellingPrice": 29.99,
+      "cogs": 7.5,
+      "shippingCharged": 0.0,
+      "shippingActualCost": 4.25,
+      "monthlyUnits": 600,
+      "planTier": "standard-referral",
+      "appFeesMonthly": 39.0,
+      "marketingPerOrder": 4.5,
+      "returnsRate": 5.0,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "standard-referral": {
+          "name": "Standard Referral Fee (6.0%)",
+          "monthlyFee": 0.0,
+          "percentageRate": 6.0,
+          "fixedFee": 0.3,
+          "additionalNotes": "Standard 2026 marketplace referral commission across most apparel, beauty, and general merchandise categories."
+        },
+        "high-commission": {
+          "name": "Electronics & Specialized Category (8.0%)",
+          "monthlyFee": 0.0,
+          "percentageRate": 8.0,
+          "fixedFee": 0.3,
+          "additionalNotes": "Assessed on selected specialty categories including consumer electronics and digital media goods."
+        },
+        "promotional-intro": {
+          "name": "Promotional Incentive Tier (2.0%)",
+          "monthlyFee": 0.0,
+          "percentageRate": 2.0,
+          "fixedFee": 0.3,
+          "additionalNotes": "Subsidized promotional tier for newly verified shop onboarding campaigns."
+        }
+      },
+      "extraParameters": {
+        "standardCommissionPct": 6.0,
+        "refundAdminFeePct": 20.0,
+        "averageAffiliateCutPct": 15.0
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "TikTok Shop has rapidly evolved from a subsidized introductory marketplace into a mature commercial social commerce channel with rigid unit economic requirements in 2026. Following the conclusion of introductory fee holidays, TikTok Shop US assesses standard marketplace referral commission fees ranging from 6.0% to 8.0% per transaction (plus a $0.30 fixed processing charge). However, the primary cost driver on TikTok Shop is not merely platform commission, but creator affiliate commissions—typically 10% to 20% negotiated with live-streamers and short-video creators who drive viral discovery. Additionally, impulse buying behavior on social platforms fuels higher return rates (averaging 5% to 12%), where TikTok retains a 20% refund administration fee on reversed transactions. Sellers operating on TikTok Shop must rigorously model their all-in fee stacks to ensure viral sales velocity translates into real bankable cash flow.",
+      "formulaBreakdown": {
+        "formulaString": "Net TikTok Profit = Gross Order Revenue - COGS - Platform Referral Fee (6-8% + $0.30) - Creator Affiliate Commission (10-20%) - Net Shipping Deficit - Return Administration Provision",
+        "variables": [
+          {
+            "symbol": "Platform Referral Fee (F_tt)",
+            "meaning": "Contractual category referral commission (typically 6.0% to 8.0% of retail price + shipping) plus $0.30 per order payment transaction fee."
+          },
+          {
+            "symbol": "Creator Affiliate Commission (C_aff)",
+            "meaning": "Performance commission paid to TikTok creators who link your product showcase in viral videos or live shopping streams."
+          },
+          {
+            "symbol": "Landed Fulfillment Cost (C_ful)",
+            "meaning": "Cost of packaging and carrier postage label, whether using Fulfilled by TikTok (FBT) logistics or merchant shipping."
+          },
+          {
+            "symbol": "Refund Administration Retention",
+            "meaning": "TikTok retains 20% of its original referral fee when an order is refunded, representing unrecoverable platform overhead."
+          },
+          {
+            "symbol": "Net Unit Margin",
+            "meaning": "Percentage of retail selling price retained by the brand after paying COGS, creator commissions, TikTok cuts, and logistics."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Beauty & Skincare Brand Selling a $29.99 Viral Lip Oil on TikTok Shop US",
+        "narrative": "A beauty brand launches a viral hydrating lip oil on TikTok Shop US priced at $29.99 with free shipping. The product has a landed manufacturing cost of $7.50. To incentivize creator showcase videos, the brand sets an open affiliate commission of 15.0%. The store ships via USPS Ground Advantage at $4.25 per unit, experiences a 5.0% return rate, and sells 600 units monthly under standard 6.0% referral fees.",
+        "stepByStepMath": [
+          "Step 1: Gross Order Revenue: $29.99 retail selling price collected from buyer.",
+          "Step 2: Calculate TikTok Shop Referral Fee (6.0% + $0.30): ($29.99 * 6.0%) + $0.30 = $1.80 + $0.30 = $2.10 platform deduction.",
+          "Step 3: Calculate Creator Affiliate Cut (15.0%): $29.99 * 15.0% = $4.50 paid directly to the referring TikTok creator.",
+          "Step 4: Account for Landed Delivery Shipping: Outbound carrier postage = $4.25 absorbed by the merchant.",
+          "Step 5: Allocate Product Landed COGS: Direct manufacturing & bottle unit cost = $7.50.",
+          "Step 6: Provision for Returns & Admin Fee: 5.0% refund rate * ($29.99 * 50% unrecoverable shipping/refurbishing loss) = $0.75 reserve.",
+          "Step 7: Compute Net Realized Cash Profit: $29.99 revenue - $7.50 COGS - $2.10 TikTok fee - $4.50 affiliate cut - $4.25 shipping - $0.75 return reserve = $10.89 Net Profit per Unit.",
+          "Step 8: Compute Net Realized Margin: ($10.89 Net Profit / $29.99 Price) * 100 = 36.31% Net Realized Margin."
+        ],
+        "finalTakeaway": "At 600 monthly orders, this brand generates $6,534.00 in monthly net income. Creator affiliate commissions ($4.50) represent more than double the platform fee ($2.10), illustrating that managing creator commission tiers is the most powerful operational lever on TikTok Shop."
+      },
+      "benchmarkTable": {
+        "title": "2026 TikTok Shop US Category Commission & Affiliate Benchmarks",
+        "headers": [
+          "Merchandise Category",
+          "TikTok Referral Fee %",
+          "Average Creator Affiliate Cut",
+          "Average Return Rate %",
+          "Net Margin Profile"
+        ],
+        "rows": [
+          [
+            "Beauty & Personal Care",
+            "6.0% + $0.30",
+            "15.0% to 20.0%",
+            "4.0% to 7.0%",
+            "High gross margin (60-75% COGS room)"
+          ],
+          [
+            "Women's & Men's Apparel",
+            "6.0% + $0.30",
+            "10.0% to 15.0%",
+            "12.0% to 22.0%",
+            "Heavy return drag; size chart critical"
+          ],
+          [
+            "Home Decor & Kitchenware",
+            "6.0% + $0.30",
+            "10.0% to 12.0%",
+            "5.0% to 8.0%",
+            "Volumetric shipping costs compress margin"
+          ],
+          [
+            "Consumer Electronics & Tech",
+            "8.0% + $0.30",
+            "5.0% to 8.0%",
+            "6.0% to 10.0%",
+            "Tight margins; requires high AOV accessories"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Structure Tiered Affiliate Commission Rates Based on Creator Sales Volume",
+          "actionableAdvice": "Do not offer a blanket 20% affiliate commission to all creators indiscriminately. Establish an open baseline rate of 10% to 12% for nano-creators, and reserve targeted 18% to 22% invite-only affiliate collaborations for established creators with proven live-stream sales records who commit to dedicated video hooks."
+        },
+        {
+          "title": "Bundle Low-Ticket SKUs into Minimum $25 Bundles",
+          "actionableAdvice": "Products priced below $15 are rapidly destroyed on TikTok Shop by flat $0.30 fixed processing fees and $4.00 carrier labels. Bundle 2 or 3 items together to elevate basket value above $25, creating sufficient gross margin dollars to comfortably pay 15% creator commissions while preserving 35%+ net margins."
+        },
+        {
+          "title": "Leverage Fulfilled by TikTok (FBT) Shipping Subsidies",
+          "actionableAdvice": "TikTok frequently offers shipping subsidies and discounted postal rates to merchants utilizing Fulfilled by TikTok (FBT) warehouse fulfillment services. Storing inventory in FBT warehouses qualifies your listings for platform-funded free shipping promotions, reducing out-of-pocket merchant postage liabilities."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What are the official TikTok Shop US seller referral fees in 2026?",
+          "answer": "In 2026, TikTok Shop US assesses a standard marketplace referral fee of 6.0% on most consumer product categories, including beauty, apparel, footwear, and home goods, plus a $0.30 fixed transaction fee per order. Certain specialized categories, such as select electronics and digital products, are subject to an 8.0% referral fee. These fees are charged on the total order value paid by the buyer, minus any platform-funded discounts."
+        },
+        {
+          "question": "How do creator affiliate commissions work on TikTok Shop?",
+          "answer": "TikTok Shop features a built-in Affiliate Center that connects sellers with video creators and live-streamers. Sellers configure commission percentages (typically between 8% and 20%) on their product showcase listings. When a creator tags the product in a short video or live stream and a viewer buys the item through the video's yellow shopping bag link, TikTok automatically deducts the agreed affiliate commission from the seller's escrow payout and remits it directly to the creator after the return window closes."
+        },
+        {
+          "question": "What is TikTok Shop's policy on customer returns and refund fees?",
+          "answer": "When a customer returns a product or requests an order cancellation, TikTok refunds the customer and reverses the affiliate commission paid to the creator. However, TikTok retains a 20% administration fee on the original referral commission. For example, if the initial referral fee was $2.00, TikTok keeps $0.40 as an unrefunded processing fee, refunding only $1.60 back to the merchant. High return rates can therefore generate non-trivial administrative fee leakage."
+        },
+        {
+          "question": "What is Fulfilled by TikTok (FBT) and how does it compare to merchant shipping?",
+          "answer": "Fulfilled by TikTok (FBT) is an integrated warehousing and fulfillment service where sellers ship bulk inventory to TikTok-managed fulfillment centers across the United States. TikTok handles pick-and-pack warehousing, automated order fulfillment, carrier delivery, and return logistics. FBT orders receive priority delivery badges in the TikTok algorithm and often qualify for platform-funded shipping discounts, whereas merchant-fulfilled orders require sellers to meet strict 2-day dispatch deadlines to maintain high Shop Health Ratings."
+        },
+        {
+          "question": "How long does TikTok Shop hold seller payout funds in escrow?",
+          "answer": "For standard sellers, TikTok Shop operates a post-delivery settlement window. Payouts are generally released into the seller's balance 8 to 14 days after the carrier confirms successful delivery of the order, allowing sufficient time for customers to report delivery issues or initiate returns. Highly rated Tier-1 merchants with established sales history and low dispute rates can qualify for accelerated settlement within 3 to 5 days post-delivery."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "etsy-fee-calculator",
+      "shopify-aov-calculator"
+    ]
+  },
+  {
+    "slug": "etsy-vs-shopify-fee-calculator",
+    "title": "Etsy vs. Shopify Fee & Break-Even Volume Calculator (2026)",
+    "metaTitle": "Etsy vs Shopify Fee Calculator 2026 | Break-Even Sales Volume & Crossover",
+    "metaDescription": "Compare Etsy variable fees (6.5% + $0.20 listing + 3% + 25¢ + Offsite Ads) vs. Shopify fixed $39/mo subscription + 2.9% + 30¢ to find your exact monthly crossover point.",
+    "category": "ecommerce",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Etsy & Shopify Merchant Fee Agreements (2026 Rate Schedules)",
+    "officialSourceUrl": "https://www.etsy.com/legal/fees",
+    "defaultInputs": {
+      "productPrice": 45.0,
+      "monthlyUnits": 80,
+      "refundRate": 2.5,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Etsy Marketplace",
+        "platformAFeePct": 9.5,
+        "platformAFixed": 0.45,
+        "platformAGatewayPct": 0.0,
+        "platformAGatewayFixed": 0.0,
+        "platformBName": "Shopify Basic Store",
+        "platformBFeePct": 2.9,
+        "platformBFixed": 0.3,
+        "platformBGatewayPct": 0.0,
+        "platformBGatewayFixed": 0.0,
+        "shopifyMonthlyBase": 39.0,
+        "internationalFxSurcharge": 1.0
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "For creative entrepreneurs, artisans, and direct-to-consumer founders, deciding between Etsy and Shopify in 2026 is one of the most critical structural decisions in e-commerce. The two platforms represent completely opposing economic models: Etsy operates as a built-in marketplace charging zero monthly subscription fees, but assessing heavy compound variable take-rates (6.5% transaction fee + $0.20 per listing + 3% + $0.25 payment processing + optional or mandatory 12%–15% Offsite Ads). In contrast, Shopify operates as standalone store software charging a fixed $39.00/month base subscription, but offering substantially lower transaction processing fees (2.9% + $0.30 on Basic). At low sales volumes ($0 to $1,000/month), Etsy's zero fixed cost is highly advantageous for hobbyists. However, because Etsy extracts approximately 10% to 22% of every sale, there is an exact mathematical crossover threshold—typically between $1,200 and $1,800 in monthly sales—where Shopify becomes significantly cheaper, allowing scaling brands to retain thousands of dollars in annual profits.",
+      "formulaBreakdown": {
+        "formulaString": "Etsy Monthly Fees = (Units * $0.20 listing) + (GMV * 6.5%) + (GMV * 3.0% + Units * $0.25); Shopify Monthly Fees = $39.00 subscription + (GMV * 2.9% + Units * $0.30); Break-Even GMV = ($39.00 - Units * $0.15) / (0.095 - 0.029)",
+        "variables": [
+          {
+            "symbol": "Etsy Take-Rate (9.5% + $0.45)",
+            "meaning": "Combined marketplace transaction cut (6.5%) and payment processing (3.0%), plus $0.20 listing renewal and $0.25 card charge."
+          },
+          {
+            "symbol": "Shopify Rate (2.9% + $0.30)",
+            "meaning": "Shopify Basic domestic online credit card processing fee through Shopify Payments."
+          },
+          {
+            "symbol": "Shopify Fixed Subscription ($39/mo)",
+            "meaning": "Recurring monthly software fee required to host an independent storefront on Shopify Basic."
+          },
+          {
+            "symbol": "Crossover Revenue Threshold",
+            "meaning": "The exact monthly sales volume where Shopify's transaction fee savings surpass its $39.00 monthly subscription cost."
+          },
+          {
+            "symbol": "Audience Equity",
+            "meaning": "Shopify grants 100% ownership of customer email lists and pixel data, whereas Etsy restricts direct customer marketing."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Handcrafted Leather Goods Brand Selling $45.00 Wallets (80 Monthly Sales)",
+        "narrative": "A craftsman handmakes leather wallets selling for $45.00 each. The business currently processes 80 sales per month ($3,600.00 gross monthly volume) with a 2.5% refund rate. The founder wants to determine whether migrating from Etsy to an independent Shopify Basic store will save money on transaction fees.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Sales: 80 units * $45.00 = $3,600.00 monthly GMV.",
+          "Step 2: Calculate Etsy Platform & Transaction Fees: 80 listing renewals * $0.20 = $16.00 listing fees. $3,600 * 6.5% transaction cut = $234.00.",
+          "Step 3: Calculate Etsy Payments Processing Fees: ($3,600 * 3.0%) + (80 orders * $0.25) = $108.00 + $20.00 = $128.00.",
+          "Step 4: Compute Total Etsy Monthly Fees: $16.00 listing + $234.00 transaction + $128.00 processing = $378.00 total monthly fees (Effective Fee Rate: 10.50%).",
+          "Step 5: Compute Net Monthly Take-Home on Etsy: $3,600 GMV - $378.00 fees - ($3,600 * 2.5% return allowance) = $3,132.00 net payout.",
+          "Step 6: Calculate Shopify Basic Monthly Fees: $39.00 subscription + ($3,600 * 2.9%) + (80 orders * $0.30) = $39.00 + $104.40 + $24.00 = $167.40 total monthly fees (Effective Fee Rate: 4.65%).",
+          "Step 7: Compute Net Monthly Take-Home on Shopify: $3,600 GMV - $167.40 fees - ($3,600 * 2.5% return allowance) = $3,342.60 net payout.",
+          "Step 8: Calculate Savings Verdict: Shopify Take-Home ($3,342.60) - Etsy Take-Home ($3,132.00) = $210.60 monthly savings ($2,527.20 annual savings on Shopify!)."
+        ],
+        "finalTakeaway": "At $3,600 monthly volume, running on Shopify saves this merchant $210.60 every month—more than $2,500 annually—in transaction fees, while building an independent brand asset with full customer email list ownership."
+      },
+      "benchmarkTable": {
+        "title": "Etsy vs. Shopify: Comprehensive 2026 Structural & Economic Comparison",
+        "headers": [
+          "Operational Feature",
+          "Etsy Marketplace",
+          "Shopify Standalone Store",
+          "Strategic Recommendation"
+        ],
+        "rows": [
+          [
+            "Monthly Fixed Subscription",
+            "$0.00 / month (Pay as you sell)",
+            "$39.00 / month (Basic Plan)",
+            "Etsy wins for low-volume hobbyists"
+          ],
+          [
+            "Variable Fee on $100 Sale",
+            "9.5% + $0.45 ($9.95 total fee)",
+            "2.9% + $0.30 ($3.20 total fee)",
+            "Shopify saves $6.75 per $100 processed"
+          ],
+          [
+            "Customer Data & Email Marketing",
+            "Prohibited; Etsy owns customer relationship",
+            "100% merchant ownership of customer list",
+            "Shopify essential for building enterprise equity"
+          ],
+          [
+            "Organic Search Traffic",
+            "Built-in marketplace discovery (90M+ buyers)",
+            "Zero organic traffic; requires paid ads/SEO",
+            "Etsy wins for launch without ad budget"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Use Etsy for Discovery While Migrating Repeat Buyers to Shopify",
+          "actionableAdvice": "The optimal strategy for mature e-commerce brands is hybrid multi-channel: utilize Etsy as a top-of-funnel customer acquisition channel to capture built-in marketplace search traffic, and include branded packaging inserts offering an exclusive 15% discount for ordering future refills or accessories directly through your independent Shopify storefront."
+        },
+        {
+          "title": "Audit the Mathematical Break-Even Point at $1,200/mo GMV",
+          "actionableAdvice": "As soon as your shop consistently exceeds $1,200 to $1,500 in monthly sales, the fee savings on Shopify completely offset the $39.00 subscription cost. At $5,000 monthly GMV, remaining exclusively on Etsy costs you roughly $325/month in excess fees that could be reinvested into Meta ad campaigns or email marketing software."
+        },
+        {
+          "title": "Account for Marketing Customer Acquisition Costs on Standalone Shopify",
+          "actionableAdvice": "While Shopify's fees are dramatically lower than Etsy's, Shopify provides zero built-in buyer foot-traffic. When migrating to Shopify, budget 15% to 25% of top-line revenue for paid advertising (Meta, Google, TikTok), search engine optimization (SEO), and content marketing to drive your own store visitors."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "At what monthly sales revenue does switching from Etsy to Shopify make financial sense?",
+          "answer": "The mathematical break-even point where Shopify becomes cheaper than Etsy occurs between $1,200 and $1,800 in monthly sales, depending on your Average Order Value (AOV). Because Etsy charges a 6.5% transaction fee plus 3.0% + $0.25 in processing fees and $0.20 per listing (totaling roughly 10% to 11%), while Shopify Basic charges only 2.9% + $0.30, Shopify saves approximately 6.5% on every dollar processed. At $1,500 in monthly sales, that 6.5% savings equals $97.50, which easily covers Shopify's $39.00 monthly subscription with $58.50 in net cash savings."
+        },
+        {
+          "question": "What is the biggest advantage of Shopify over Etsy?",
+          "answer": "The single greatest operational advantage of Shopify is complete customer data ownership and brand autonomy. On Etsy, the customer belongs to Etsy: you cannot export customer email addresses for newsletter marketing, you cannot retarget visitors with Meta or Google tracking pixels, and competitors' listings are actively displayed directly beneath your product descriptions. On Shopify, you own 100% of customer contact data, enabling high-margin email marketing and lifetime value optimization."
+        },
+        {
+          "question": "What is the biggest advantage of Etsy over Shopify?",
+          "answer": "The primary advantage of Etsy is immediate access to a built-in search marketplace containing over 90 million active global buyers. If you launch a Shopify store, nobody will visit your site unless you invest heavily in paid advertising, influencer marketing, or search engine optimization (SEO). For a new artisan without an advertising budget or an established social media following, Etsy provides instant commercial discovery with zero upfront monthly subscription costs."
+        },
+        {
+          "question": "Can I run an Etsy shop and a Shopify store simultaneously?",
+          "answer": "Yes. Most successful direct-to-consumer lifestyle brands operate both an Etsy storefront and a standalone Shopify website concurrently. By using multi-channel inventory synchronization apps (such as Trunk or Sellbrite), inventory quantities update automatically across both channels when an order occurs, preventing overselling. This allows you to capture organic marketplace sales on Etsy while directing repeat customers to your higher-margin Shopify store."
+        },
+        {
+          "question": "Do I have to pay sales tax on Shopify compared to Etsy?",
+          "answer": "On Etsy, the platform operates as a Marketplace Facilitator, meaning Etsy automatically calculates, collects, and remits state and international sales taxes on your behalf in virtually all jurisdictions. On Shopify, while the platform automatically calculates accurate sales tax at checkout based on buyer zip codes, you are legally responsible for registering for sales tax permits in states where you establish economic nexus and remitting those collected funds to state revenue departments."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "etsy-fee-calculator",
+      "shopify-profit-margin-calculator",
+      "shopify-aov-calculator"
+    ]
+  },
+  {
+    "slug": "printify-profit-margin-calculator",
+    "title": "Printify & Print-on-Demand (POD) Profit Margin Calculator (2026)",
+    "metaTitle": "Printify Profit Margin Calculator 2026 | Standard vs Premium Plan POD Margins",
+    "metaDescription": "Calculate print-on-demand profit margins, compare Printify Standard vs. $29/mo Premium plan 20% blank discounts, fulfillment postage, and net seller take-home pay.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Printify Merchant Pricing Schedule & Product Catalog (2026)",
+    "officialSourceUrl": "https://printify.com/pricing/",
+    "defaultInputs": {
+      "sellingPrice": 26.0,
+      "cogs": 9.15,
+      "shippingCharged": 4.75,
+      "shippingActualCost": 4.75,
+      "monthlyUnits": 120,
+      "planTier": "standard",
+      "appFeesMonthly": 0.0,
+      "marketingPerOrder": 5.0,
+      "returnsRate": 2.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "standard": {
+          "name": "Printify Standard (Free Plan)",
+          "monthlyFee": 0.0,
+          "percentageRate": 2.9,
+          "fixedFee": 0.3,
+          "additionalNotes": "Free plan with standard base product catalog pricing (e.g., Bella+Canvas 3001 t-shirt at $9.15 base)."
+        },
+        "premium": {
+          "name": "Printify Premium ($29/mo - Up to 20% Discount)",
+          "monthlyFee": 29.0,
+          "percentageRate": 2.9,
+          "fixedFee": 0.3,
+          "additionalNotes": "Unlocks up to 20% discount on all blank merchandise (e.g., Bella+Canvas 3001 drops to $7.32 base)."
+        }
+      },
+      "extraParameters": {
+        "premiumBlankDiscountPct": 20.0,
+        "standardTShirtBase": 9.15,
+        "premiumTShirtBase": 7.32,
+        "standardShippingFee": 4.75
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Operating a Print-on-Demand (POD) apparel or merchandise business through Printify in 2026 offers low barrier-to-entry and zero unsold inventory liability, but introduces tight unit economic constraints. Unlike traditional retail where merchants buy bulk inventory at wholesale discounts (often 70% below retail), POD suppliers charge custom on-demand printing fees on every single blank garment. For example, printing a classic Bella+Canvas 3001 unisex jersey tee costs approximately $9.15 on Printify's free Standard plan, plus $4.75 in domestic carrier shipping. When retailing the shirt for $26.00 and selling through Shopify or Etsy, channel listing fees, payment processing (2.9% + $0.30), and customer acquisition ad spend can easily compress gross margins into single digits. However, upgrading to the $29.00/month Printify Premium plan unlocks up to a 20% discount on all blank catalog items ($7.32 for the same t-shirt), creating an exact break-even sales volume threshold where subscription costs pay for themselves.",
+      "formulaBreakdown": {
+        "formulaString": "Net POD Profit = Retail Selling Price + Shipping Charged - Printify Base Blank Cost - Printify Print Provider Shipping - Merchant Gateway Fees - Blended Ad CAC - (Printify Premium Fee / Monthly Units)",
+        "variables": [
+          {
+            "symbol": "Retail Selling Price",
+            "meaning": "Gross retail price billed to the customer on your connected sales channel (Shopify, Etsy, WooCommerce, or TikTok Shop)."
+          },
+          {
+            "symbol": "Printify Base Production Cost (C_pod)",
+            "meaning": "Landed manufacturing and direct-to-garment (DTG) printing charge invoiced by the chosen Printify print provider."
+          },
+          {
+            "symbol": "Fulfillment Postage",
+            "meaning": "Commercial shipping fee charged by Printify's print partner to package and deliver the parcel to your end consumer."
+          },
+          {
+            "symbol": "Printify Premium Crossover",
+            "meaning": "The sales volume where the $1.83 savings per shirt surpasses the $29.00 monthly subscription fee (exactly 16 shirts per month!)."
+          },
+          {
+            "symbol": "Channel Gateway Deduction",
+            "meaning": "Merchant credit card processing fee deducted by your retail sales channel (typically 2.9% + $0.30)."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Apparel Brand Selling Bella+Canvas 3001 Graphic T-Shirts (120 Sales/Month)",
+        "narrative": "A creator launches an indie streetwear brand on Shopify selling graphic t-shirts printed on Bella+Canvas 3001 blanks. The shirts retail for $26.00 with $4.75 shipping charged to the customer ($30.75 total order value). The print provider charges $9.15 for the printed shirt on Printify Standard (or $7.32 on Printify Premium) and bills $4.75 for domestic delivery. The merchant spends $5.00 in ad spend per order and evaluates whether upgrading to Printify Premium ($29/mo) is profitable across 120 monthly orders.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Checkout Value: $26.00 product retail + $4.75 customer shipping = $30.75 collected.",
+          "Step 2: Calculate Store Payment Gateway Fee: ($30.75 * 2.9%) + $0.30 = $0.89 + $0.30 = $1.19 gateway deduction.",
+          "Step 3: Analyze Standard Free Plan Economics: $30.75 revenue - $9.15 Printify blank - $4.75 Printify shipping - $1.19 gateway - $5.00 ad CAC = $10.66 net profit per shirt (34.67% net margin). Monthly net profit across 120 units = $1,279.20.",
+          "Step 4: Analyze Printify Premium ($29/mo) Economics: Bella+Canvas blank drops from $9.15 to $7.32 (saving $1.83 per shirt!).",
+          "Step 5: Allocate Monthly Premium Subscription: $29.00 fee / 120 shirts = $0.24 amortized cost per shirt.",
+          "Step 6: Compute Net Take-Home on Premium: $30.75 revenue - $7.32 blank - $4.75 shipping - $1.19 gateway - $5.00 CAC - $0.24 subscription = $12.25 net profit per shirt (39.84% net margin).",
+          "Step 7: Compute Monthly Net Profit with Premium: $12.25 * 120 units = $1,470.00 net monthly profit ($190.80 net monthly increase!)."
+        ],
+        "finalTakeaway": "Because Printify Premium saves $1.83 on every shirt, the $29.00 plan pays for itself after just 16 orders ($29 / $1.83 = 15.8 units). At 120 orders per month, the merchant pockets an extra $190.80 monthly—over $2,280 in annual free cash flow—from the exact same sales volume."
+      },
+      "benchmarkTable": {
+        "title": "2026 Printify Blank Pricing: Standard vs. Premium Plan Comparison",
+        "headers": [
+          "Popular Printify Blank Product",
+          "Standard Catalog Price",
+          "Premium Catalog Price (20% Off)",
+          "Per-Unit Savings",
+          "Monthly Break-Even Sales"
+        ],
+        "rows": [
+          [
+            "Bella+Canvas 3001 Unisex Tee",
+            "$9.15 base cost",
+            "$7.32 base cost",
+            "$1.83 savings per shirt",
+            "16 units / month"
+          ],
+          [
+            "Gildan 18000 Heavy Blend Sweatshirt",
+            "$14.25 base cost",
+            "$11.40 base cost",
+            "$2.85 savings per piece",
+            "11 units / month"
+          ],
+          [
+            "Gildan 18500 Unisex Hoodie",
+            "$18.90 base cost",
+            "$15.12 base cost",
+            "$3.78 savings per hoodie",
+            "8 units / month"
+          ],
+          [
+            "Ceramic Accent Coffee Mug (11oz)",
+            "$4.80 base cost",
+            "$3.84 base cost",
+            "$0.96 savings per mug",
+            "31 units / month"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Activate Printify Premium As Soon As You Clear 15 Monthly Sales",
+          "actionableAdvice": "On classic t-shirts and hoodies, the $1.80 to $3.80 per-unit blank discount means Printify Premium breaks even after selling approximately 10 to 15 garments. If your store consistently sells more than 15 items a month, staying on the free tier burns profit on every subsequent order."
+        },
+        {
+          "title": "Select Print Providers Geographically Close to Your Core Demographic",
+          "actionableAdvice": "Printify features a decentralized network of independent print facilities (e.g., Monster Digital, SwiftPOD, Stoked On Printing). Selecting a provider with multiple regional US facilities reduces standard transit times from 5 days to 2-3 days and lowers shipping costs, cutting down on customer support tickets."
+        },
+        {
+          "title": "Upsell Embroidered Hoodies and Heavyweight Sweatshirts",
+          "actionableAdvice": "Standard t-shirts have low perceived value ceilings ($25 to $30), leaving tight dollar margins. Expanding your catalog to premium heavyweight fleece sweatshirts (Gildan 18000) or oversized hoodies retailing for $50 to $65 expands your gross dollar margin from $10 up to $25+ per unit."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is Printify Premium and is it worth the $29 monthly fee?",
+          "answer": "Printify Premium is an optional paid merchant subscription priced at $29.00 per month (or $24.99/mo billed annually) that grants sellers up to a 20% discount on all blank merchandise in Printify's product catalog. For example, popular items like the Bella+Canvas 3001 t-shirt drop from $9.15 to $7.32. Because the subscription saves between $1.80 and $4.00 on every garment sold, the plan mathematically pays for itself as soon as you sell 15 to 16 t-shirts or just 8 hoodies per month, making it essential for active stores."
+        },
+        {
+          "question": "Who pays for customer shipping in Print-on-Demand (POD)?",
+          "answer": "When an order is placed on your connected store (e.g., Shopify or Etsy), Printify charges your linked business credit card for the product base production cost plus carrier shipping (e.g., $4.75 for standard delivery). You can either pass this shipping fee directly to the buyer at checkout (charging $4.75 shipping) or offer Free Shipping by incorporating the $4.75 delivery cost directly into your retail selling price."
+        },
+        {
+          "question": "How does Printify handle customer returns and misprints?",
+          "answer": "Because print-on-demand items are custom manufactured upon order, Printify does not accept returns or offer refunds for customer buyer's remorse or incorrect size selection. However, if a product arrives damaged, defective, or with an obvious printing error, Printify will issue a free reprint or credit your account balance upon submitting photographic proof within 30 days of delivery. Sellers must outline a clear POD return policy on their storefront."
+        },
+        {
+          "question": "What is the difference between Printify and Printful?",
+          "answer": "Printify operates as an open marketplace connecting merchants with dozens of third-party commercial print providers worldwide, allowing sellers to compare prices, printing technologies, and geographic facilities. This decentralized structure generally yields lower base product costs. In contrast, Printful owns and operates its own centralized fulfillment factories, providing more consistent quality control and custom branding options, but with slightly higher base catalog prices."
+        },
+        {
+          "question": "Can I connect multiple sales channels to a single Printify account?",
+          "answer": "Yes. A single Printify account can connect up to 5 individual online stores on the free plan, or up to 10 stores on Printify Premium. You can publish your catalog simultaneously across Shopify, Etsy, WooCommerce, TikTok Shop, and Walmart Marketplace. Printify automatically routes incoming orders from all channels to your chosen print providers without manual intervention."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "etsy-fee-calculator",
+      "shopify-shipping-calculator"
     ]
   }
 ]

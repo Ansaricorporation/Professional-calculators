@@ -1,5 +1,6 @@
 import type { CalculatorDefinition, CalculatorCategory } from './schema';
 import { validateCalculatorDefinition } from './schema';
+import { auditAllCalculators } from '../utils/auditContent';
 import ecommerceCalculators from './calculators/ecommerce.json';
 import creatorEconomyCalculators from './calculators/creator-economy.json';
 import digitalMarketplacesCalculators from './calculators/digital-marketplaces.json';
@@ -16,6 +17,13 @@ const allRawCalculators: CalculatorDefinition[] = [
 allRawCalculators.forEach(calc => {
   validateCalculatorDefinition(calc);
 });
+
+// Run Anti-Spam Quality Gate Audit during build
+let hasAudited = false;
+if (!hasAudited) {
+  auditAllCalculators(allRawCalculators);
+  hasAudited = true;
+}
 
 export function getAllCalculators(): CalculatorDefinition[] {
   return allRawCalculators;

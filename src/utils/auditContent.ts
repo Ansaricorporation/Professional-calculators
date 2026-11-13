@@ -45,6 +45,48 @@ export function calculateGuideWords(calc: CalculatorDefinition): number {
   return countWords(text);
 }
 
+export function extractTextForNGram(calc: CalculatorDefinition): string {
+  const g = calc.guideContent;
+  let text = '';
+  text += (g.executiveSummary || '') + ' ';
+  if (g.workedExample?.narrative) {
+    text += g.workedExample.narrative + ' ';
+  }
+  if (g.optimizationLevers) {
+    text += g.optimizationLevers.map(l => `${l.title} ${l.actionableAdvice}`).join(' ') + ' ';
+  }
+  if (g.faqs) {
+    text += g.faqs.map(f => `${f.question} ${f.answer}`).join(' ') + ' ';
+  }
+  return text;
+}
+
+export function get4GramShingles(text: string): Set<string> {
+  const words = text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+
+  const shingles = new Set<string>();
+  for (let i = 0; i <= words.length - 4; i++) {
+    shingles.add(`${words[i]} ${words[i + 1]} ${words[i + 2]} ${words[i + 3]}`);
+  }
+  return shingles;
+}
+
+export function calculateJaccardSimilarity(setA: Set<string>, setB: Set<string>): number {
+  if (setA.size === 0 || setB.size === 0) return 0;
+  let intersection = 0;
+  for (const item of setA) {
+    if (setB.has(item)) {
+      intersection++;
+    }
+  }
+  const union = setA.size + setB.size - intersection;
+  return union === 0 ? 0 : intersection / union;
+}
+
 export function auditAllCalculators(calculators: CalculatorDefinition[]): AuditResult[] {
   const allSlugs = new Set(calculators.map(c => c.slug));
   const results: AuditResult[] = [];
@@ -55,6 +97,7 @@ export function auditAllCalculators(calculators: CalculatorDefinition[]): AuditR
   const seenTitles = new Map<string, string>();
   const seenMetaTitles = new Map<string, string>();
   const seenComparisonPairs = new Map<string, string>();
+  const seenInputsByEngine = new Map<string, string>();
 
   for (const calc of calculators) {
     // 1. Slug uniqueness
@@ -82,7 +125,6 @@ export function auditAllCalculators(calculators: CalculatorDefinition[]): AuditR
 
     // 4. Comparison Pair Normalization (Anti-Mirror-Image Cannibalization)
     if (calc.slug.includes('-vs-')) {
-      // Extract comparison tokens: remove common suffixes like '-calculator', '-fee-calculator'
       const basePair = calc.slug.replace(/-(fee-)?calculator$/, '');
       const parts = basePair.split('-vs-');
       if (parts.length === 2) {
@@ -94,6 +136,52 @@ export function auditAllCalculators(calculators: CalculatorDefinition[]): AuditR
         } else {
           seenComparisonPairs.set(normalizedKey, calc.slug);
         }
+      }
+    }
+
+    // 5. Unique Default Inputs per Engine Check
+    const sortedKeys = Object.keys(calc.defaultInputs || {}).sort();
+    const sortedObj: Record<string, any> = {};
+    for (const k of sortedKeys) {
+      sortedObj[k] = calc.defaultInputs[k];
+    }
+    const inputKey = `${calc.engineType}::${JSON.stringify(sortedObj)}`;
+    if (seenInputsByEngine.has(inputKey)) {
+      globalErrors.push(
+        `Duplicate defaultInputs detected: "${calc.slug}" has 100% identical default inputs to "${seenInputsByEngine.get(inputKey)}" under engine "${calc.engineType}". Every niche calculator must feature unique, realistic defaults.`
+      );
+    } else {
+      seenInputsByEngine.set(inputKey, calc.slug);
+    }
+  }
+
+  // Step 2: 4-Gram Shingle Similarity & Anti-Boilerplate Check (< 0.18 Jaccard)
+  const shingleMap = new Map<string, Set<string>>();
+  for (const calc of calculators) {
+    const text = extractTextForNGram(calc);
+    shingleMap.set(calc.slug, get4GramShingles(text));
+  }
+
+  let maxSimilarity = 0;
+  let maxSimilarityPair = 'N/A';
+
+  for (let i = 0; i < calculators.length; i++) {
+    for (let j = i + 1; j < calculators.length; j++) {
+      const slugA = calculators[i].slug;
+      const slugB = calculators[j].slug;
+      const setA = shingleMap.get(slugA)!;
+      const setB = shingleMap.get(slugB)!;
+      const sim = calculateJaccardSimilarity(setA, setB);
+
+      if (sim > maxSimilarity) {
+        maxSimilarity = sim;
+        maxSimilarityPair = `${slugA} vs ${slugB}`;
+      }
+
+      if (sim >= 0.18) {
+        globalErrors.push(
+          `Excessive 4-Gram Content Similarity (${(sim * 100).toFixed(2)}% >= 18% limit) between "${slugA}" and "${slugB}". Prohibited under Anti-Scaled Content Abuse rules.`
+        );
       }
     }
   }
@@ -165,6 +253,7 @@ export function auditAllCalculators(calculators: CalculatorDefinition[]): AuditR
   // Print a formatted audit table to console
   console.log('\n========================================================================================');
   console.log('🛡️  CREATORCALCLAB QUALITY GATE: 2026 YMYL & ANTI-SPAM CONTENT AUDIT');
+  console.log(`🔍  Max 4-Gram Shingle Similarity: ${(maxSimilarity * 100).toFixed(2)}% (${maxSimilarityPair}) | Threshold: < 18.00%`);
   console.log('========================================================================================');
   console.log(
     'Slug'.padEnd(46) +

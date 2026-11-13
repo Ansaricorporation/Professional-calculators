@@ -10,24 +10,24 @@
     "officialSourceName": "Gumroad & Lemon Squeezy Official Merchant Pricing Schedules",
     "officialSourceUrl": "https://gumroad.com/pricing",
     "defaultInputs": {
-      "productPrice": 49.0,
+      "productPrice": 49,
       "monthlyUnits": 250,
-      "refundRate": 3.0,
+      "refundRate": 3,
       "internationalSales": true
     },
     "platformRates": {
       "baseCurrency": "USD",
       "extraParameters": {
         "platformAName": "Gumroad",
-        "platformAFeePct": 10.0,
-        "platformAFixed": 0.0,
+        "platformAFeePct": 10,
+        "platformAFixed": 0,
         "platformAGatewayPct": 2.9,
         "platformAGatewayFixed": 0.3,
         "platformBName": "Lemon Squeezy",
-        "platformBFeePct": 5.0,
+        "platformBFeePct": 5,
         "platformBFixed": 0.5,
-        "platformBGatewayPct": 0.0,
-        "platformBGatewayFixed": 0.0,
+        "platformBGatewayPct": 0,
+        "platformBGatewayFixed": 0,
         "internationalFxSurcharge": 1.5
       }
     },
@@ -164,14 +164,14 @@
     "officialSourceName": "Gumroad Pricing & Official Fee Guide (2026)",
     "officialSourceUrl": "https://gumroad.com/pricing",
     "defaultInputs": {
-      "sellingPrice": 45.0,
-      "cogs": 0.0,
-      "shippingCharged": 0.0,
-      "shippingActualCost": 0.0,
+      "sellingPrice": 45,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
       "monthlyUnits": 120,
       "planTier": "direct",
-      "appFeesMonthly": 0.0,
-      "marketingPerOrder": 5.0,
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 5,
       "returnsRate": 2.5,
       "useThirdPartyGateway": false
     },
@@ -180,32 +180,32 @@
       "tiers": {
         "direct": {
           "name": "Direct Creator Link (10% Platform + Stripe Card Processing)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 12.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Combines Gumroad's flat 10.0% platform fee with Stripe standard credit card interchange processing of 2.9% + $0.30 per sale."
         },
         "discover": {
           "name": "Gumroad Discover Marketplace (30% Commission + Card Processing)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 32.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Assesses Gumroad's 30.0% marketplace discovery commission plus 2.9% + $0.30 card processing on sales originating from Discover search or recommendations."
         },
         "intl-direct": {
           "name": "Direct Sale via International Card (1.5% Cross-Border Surcharge)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 14.4,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Includes 10% Gumroad platform fee, 2.9% base processing, 1.5% international cross-border currency conversion fee, and $0.30 fixed fee."
         }
       },
       "extraParameters": {
-        "platformCutPct": 10.0,
-        "discoverCutPct": 30.0,
+        "platformCutPct": 10,
+        "discoverCutPct": 30,
         "stripeProcessingPct": 2.9,
-        "stripeProcessingFixed": 0.30,
-        "paypalPayoutFeePct": 1.0,
+        "stripeProcessingFixed": 0.3,
+        "paypalPayoutFeePct": 1,
         "intlCardSurchargePct": 1.5
       }
     },
@@ -347,14 +347,14 @@
     "officialSourceName": "Patreon Official Creator Pricing & Payment Processing Documentation (2026)",
     "officialSourceUrl": "https://support.patreon.com/hc/en-us/articles/360027878831",
     "defaultInputs": {
-      "sellingPrice": 12.0,
+      "sellingPrice": 12,
       "cogs": 1.2,
-      "shippingCharged": 0.0,
-      "shippingActualCost": 0.0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
       "monthlyUnits": 280,
       "planTier": "pro",
-      "appFeesMonthly": 25.0,
-      "marketingPerOrder": 0.0,
+      "appFeesMonthly": 25,
+      "marketingPerOrder": 0,
       "returnsRate": 1.5,
       "useThirdPartyGateway": false
     },
@@ -363,44 +363,44 @@
       "tiers": {
         "pro": {
           "name": "Patreon Pro Plan (8% Platform Cut + Standard Processing)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 10.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Standard 8.0% platform fee for tiered memberships, unlimited membership tiers, analytics, and special offers, combined with 2.9% + $0.30 card processing."
         },
         "premium": {
           "name": "Patreon Premium Plan (12% Platform Cut + Dedicated Partner)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 14.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "12.0% platform fee featuring dedicated partner management, merch for membership fulfillment automation, team accounts, and priority creator support."
         },
         "micropayment": {
           "name": "Patreon Micropayment Rate (Pledges Under $3.00: 5% + $0.10 Processing)",
-          "monthlyFee": 0.0,
-          "percentageRate": 13.0,
-          "fixedFee": 0.10,
+          "monthlyFee": 0,
+          "percentageRate": 13,
+          "fixedFee": 0.1,
           "additionalNotes": "Applies 8% Pro fee alongside optimized 5.0% + $0.10 payment processing on micro-pledges under $3.00 (e.g., $1 or $2 community tiers)."
         },
         "founders": {
           "name": "Legacy Founders Plan (5% Platform Cut — Grandfathered Creators)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 7.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Grandfathered 5.0% platform rate available only to creators who launched their Patreon campaigns prior to May 2019, plus standard card processing."
         }
       },
       "extraParameters": {
-        "proFeePct": 8.0,
-        "premiumFeePct": 12.0,
-        "foundersFeePct": 5.0,
+        "proFeePct": 8,
+        "premiumFeePct": 12,
+        "foundersFeePct": 5,
         "cardProcessingStandardPct": 2.9,
-        "cardProcessingStandardFixed": 0.30,
-        "cardProcessingMicroPct": 5.0,
-        "cardProcessingMicroFixed": 0.10,
+        "cardProcessingStandardFixed": 0.3,
+        "cardProcessingMicroPct": 5,
+        "cardProcessingMicroFixed": 0.1,
         "payoutDirectDepositCost": 0.25,
-        "payoutPaypalPct": 1.0,
-        "payoutPaypalMax": 20.0
+        "payoutPaypalPct": 1,
+        "payoutPaypalMax": 20
       }
     },
     "guideContent": {
@@ -541,15 +541,15 @@
     "officialSourceName": "Substack Publisher Monetization & Stripe Billing Agreement (2026)",
     "officialSourceUrl": "https://support.substack.com/hc/en-us/articles/360037466252",
     "defaultInputs": {
-      "sellingPrice": 10.0,
-      "cogs": 0.0,
-      "shippingCharged": 0.0,
-      "shippingActualCost": 0.0,
+      "sellingPrice": 10,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
       "monthlyUnits": 350,
       "planTier": "monthly-standard",
-      "appFeesMonthly": 0.0,
+      "appFeesMonthly": 0,
       "marketingPerOrder": 1.5,
-      "returnsRate": 2.0,
+      "returnsRate": 2,
       "useThirdPartyGateway": false
     },
     "platformRates": {
@@ -557,33 +557,33 @@
       "tiers": {
         "monthly-standard": {
           "name": "Standard Monthly Subscription (10% Substack + 2.9% + $0.30 Stripe + 0.7% Billing)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 13.6,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Combines Substack's 10.0% platform fee, Stripe credit card interchange processing (2.9% + $0.30), and Stripe Billing recurring software fee (0.7%)."
         },
         "annual-discount": {
           "name": "Annual Subscription ($100/yr Lump Sum: Amortized $0.025 Fixed Processing)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 13.6,
           "fixedFee": 0.03,
           "additionalNotes": "Assesses identical 13.6% combined percentage rate, but fixed $0.30 card swipe fee is amortized across 12 months ($0.025 per subscriber per month)."
         },
         "founding-member": {
           "name": "Founding Member Tier ($150+ Annual Pledge: Amortized Processing)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 13.6,
           "fixedFee": 0.02,
           "additionalNotes": "High-tier annual supporter pledge minimizing fixed transaction overhead to negligible fractions of gross revenue."
         }
       },
       "extraParameters": {
-        "substackCutPct": 10.0,
+        "substackCutPct": 10,
         "stripeProcessingPct": 2.9,
-        "stripeProcessingFixed": 0.30,
+        "stripeProcessingFixed": 0.3,
         "stripeBillingPct": 0.7,
-        "freeToPaidConversionPct": 3.0,
-        "customDomainAnnualCost": 50.0
+        "freeToPaidConversionPct": 3,
+        "customDomainAnnualCost": 50
       }
     },
     "guideContent": {
@@ -724,14 +724,14 @@
     "officialSourceName": "Payhip Official Pricing & Feature Tiers (2026)",
     "officialSourceUrl": "https://payhip.com/pricing",
     "defaultInputs": {
-      "sellingPrice": 35.0,
-      "cogs": 0.0,
-      "shippingCharged": 0.0,
-      "shippingActualCost": 0.0,
+      "sellingPrice": 35,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
       "monthlyUnits": 150,
       "planTier": "free",
-      "appFeesMonthly": 0.0,
-      "marketingPerOrder": 4.0,
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 4,
       "returnsRate": 1.5,
       "useThirdPartyGateway": false
     },
@@ -740,36 +740,36 @@
       "tiers": {
         "free": {
           "name": "Free Forever Plan (5% Transaction Fee + Stripe/PayPal Processing)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 7.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Payhip charges a 5.0% transaction fee on sales, with zero monthly SaaS subscription costs, plus standard credit card processing of 2.9% + $0.30."
         },
         "plus": {
           "name": "Plus Plan ($29/month + 2% Transaction Fee + Processing)",
-          "monthlyFee": 29.0,
+          "monthlyFee": 29,
           "percentageRate": 4.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Fixed $29/mo subscription reducing Payhip transaction fee to 2.0%, plus standard 2.9% + $0.30 gateway processing."
         },
         "pro": {
           "name": "Pro Plan ($99/month + 0% Transaction Fee + Processing)",
-          "monthlyFee": 99.0,
+          "monthlyFee": 99,
           "percentageRate": 2.9,
-          "fixedFee": 0.30,
+          "fixedFee": 0.3,
           "additionalNotes": "Fixed $99/mo subscription with 0.0% Payhip transaction cut; creator pays only underlying 2.9% + $0.30 merchant card processing."
         }
       },
       "extraParameters": {
-        "freeFeePct": 5.0,
-        "plusMonthlyCost": 29.0,
-        "plusFeePct": 2.0,
-        "proMonthlyCost": 99.0,
-        "proFeePct": 0.0,
+        "freeFeePct": 5,
+        "plusMonthlyCost": 29,
+        "plusFeePct": 2,
+        "proMonthlyCost": 99,
+        "proFeePct": 0,
         "stripeProcessingPct": 2.9,
-        "stripeProcessingFixed": 0.30,
-        "breakEvenFreeToPlus": 967.0,
-        "breakEvenPlusToPro": 3500.0
+        "stripeProcessingFixed": 0.3,
+        "breakEvenFreeToPlus": 967,
+        "breakEvenPlusToPro": 3500
       }
     },
     "guideContent": {
@@ -910,7 +910,7 @@
     "officialSourceName": "Gumroad & Payhip Official Merchant Fee Documentation (2026)",
     "officialSourceUrl": "https://payhip.com/pricing",
     "defaultInputs": {
-      "productPrice": 42.0,
+      "productPrice": 42,
       "monthlyUnits": 200,
       "refundRate": 2.5,
       "internationalSales": true
@@ -919,13 +919,13 @@
       "baseCurrency": "USD",
       "extraParameters": {
         "platformAName": "Gumroad (10% Flat Cut)",
-        "platformAFeePct": 10.0,
-        "platformAFixed": 0.0,
+        "platformAFeePct": 10,
+        "platformAFixed": 0,
         "platformAGatewayPct": 2.9,
-        "platformAGatewayFixed": 0.30,
+        "platformAGatewayFixed": 0.3,
         "platformBName": "Payhip (Pro 0% Fee Tier)",
         "platformBFeePct": 2.9,
-        "platformBFixed": 0.30,
+        "platformBFixed": 0.3,
         "internationalFxSurcharge": 1.5
       }
     },
@@ -1062,24 +1062,24 @@
     "officialSourceName": "Patreon & Substack Official Pricing & Platform Guidelines (2026)",
     "officialSourceUrl": "https://support.patreon.com/hc/en-us/articles/360027878831",
     "defaultInputs": {
-      "productPrice": 10.0,
+      "productPrice": 10,
       "monthlyUnits": 400,
-      "refundRate": 2.0,
+      "refundRate": 2,
       "internationalSales": false
     },
     "platformRates": {
       "baseCurrency": "USD",
       "extraParameters": {
         "platformAName": "Patreon (Pro 8% Plan)",
-        "platformAFeePct": 8.0,
-        "platformAFixed": 0.0,
+        "platformAFeePct": 8,
+        "platformAFixed": 0,
         "platformAGatewayPct": 2.9,
-        "platformAGatewayFixed": 0.30,
+        "platformAGatewayFixed": 0.3,
         "platformBName": "Substack (10% Cut + Stripe Billing)",
         "platformBFeePct": 10.7,
-        "platformBFixed": 0.0,
+        "platformBFixed": 0,
         "platformBGatewayPct": 2.9,
-        "platformBGatewayFixed": 0.30,
+        "platformBGatewayFixed": 0.3,
         "internationalFxSurcharge": 1.5
       }
     },
@@ -1216,14 +1216,14 @@
     "officialSourceName": "Lemon Squeezy Pricing & Merchant of Record Merchant Agreement (2026)",
     "officialSourceUrl": "https://www.lemonsqueezy.com/pricing",
     "defaultInputs": {
-      "sellingPrice": 49.0,
-      "cogs": 0.0,
-      "shippingCharged": 0.0,
-      "shippingActualCost": 0.0,
+      "sellingPrice": 49,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
       "monthlyUnits": 200,
       "planTier": "standard-mor",
-      "appFeesMonthly": 0.0,
-      "marketingPerOrder": 6.0,
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 6,
       "returnsRate": 2.5,
       "useThirdPartyGateway": false
     },
@@ -1232,32 +1232,32 @@
       "tiers": {
         "standard-mor": {
           "name": "Standard Domestic Sale (5% + $0.50 All-Inclusive MoR)",
-          "monthlyFee": 0.0,
-          "percentageRate": 5.0,
-          "fixedFee": 0.50,
+          "monthlyFee": 0,
+          "percentageRate": 5,
+          "fixedFee": 0.5,
           "additionalNotes": "Includes merchant card processing, automated VAT/sales tax calculation and remittance, fraud protection, and chargeback handling."
         },
         "intl-mor": {
           "name": "International Cross-Border Sale (6.5% + $0.50 inc. 1.5% FX)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 6.5,
-          "fixedFee": 0.50,
+          "fixedFee": 0.5,
           "additionalNotes": "Applies 1.5% international card payment surcharge for foreign transactions processed outside merchant domestic territory."
         },
         "subscription-mor": {
           "name": "Recurring SaaS Subscription (5.5% + $0.50 inc. Billing Engine)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 5.5,
-          "fixedFee": 0.50,
+          "fixedFee": 0.5,
           "additionalNotes": "Adds 0.5% subscription management fee for automated recurring dunning, prorated upgrades, and pause/resume logic."
         }
       },
       "extraParameters": {
-        "baseMorPct": 5.0,
-        "baseMorFixed": 0.50,
+        "baseMorPct": 5,
+        "baseMorFixed": 0.5,
         "intlCardSurcharge": 1.5,
         "subBillingFee": 0.5,
-        "payoutMinimum": 50.0
+        "payoutMinimum": 50
       }
     },
     "guideContent": {
@@ -1385,6 +1385,647 @@
       "gumroad-vs-lemon-squeezy-fee-calculator",
       "gumroad-fee-calculator",
       "payhip-fee-calculator"
+    ]
+  },
+  {
+    "slug": "etsy-digital-download-profit-calculator",
+    "title": "Etsy Digital Download Fee, Net Margin & Listing Renewal Calculator (2026)",
+    "metaTitle": "Etsy Digital Download Profit Calculator 2026 | Fee Breakdown & Margin",
+    "metaDescription": "Calculate true Etsy digital download profits: $0.20 listing renewals, 6.5% transaction cut, 3% + $0.25 payment processing, zero shipping COGS, and Offsite Ads impact.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Etsy Seller Handbook — Fees & Digital Item Listing Regulations (2026)",
+    "officialSourceUrl": "https://www.etsy.com/legal/fees/",
+    "defaultInputs": {
+      "sellingPrice": 4.5,
+      "cogs": 0.15,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 250,
+      "planTier": "standard",
+      "appFeesMonthly": 15,
+      "marketingPerOrder": 0.4,
+      "returnsRate": 1.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "standardPercentage": 6.5,
+      "extraParameters": {
+        "transactionFeePercentage": 6.5,
+        "listingFeeFixed": 0.2,
+        "paymentProcessingPercent": 3,
+        "paymentProcessingFixed": 0.25,
+        "regulatoryOperatingFeePercent": 0.35,
+        "offsiteAdsPercentUnder10k": 15,
+        "offsiteAdsPercentOver10k": 12
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Selling instant digital downloads on Etsy—such as printable wedding stationery, editable Canva templates, Notion dashboards, and vector SVG cut files—represents one of the highest margin business models in modern e-commerce. Because digital products incur zero physical manufacturing costs, zero inventory warehousing, and zero package shipping postage, gross margins routinely exceed 90%. However, independent digital designers frequently misjudge their true take-home earnings on Etsy due to the cumulative friction of multi-layered micro-fees. Every individual digital sale triggers a mandatory $0.20 listing renewal fee, a 6.5% marketplace transaction fee, and a standard 3% + $0.25 Etsy Payments merchant processing fee. On low-ticket items priced at $3.00 to $5.00, fixed charges ($0.45 total in fixed overhead) devour 10% to 15% of the gross sale price alone. Modeling unit economics before publishing listings prevents creators from burning profit on promotional discounts and external ad campaigns.",
+      "formulaBreakdown": {
+        "formulaString": "Net Take-Home = Selling Price - (Listing Renewal $0.20) - (Price * 6.5% Transaction Fee) - (Price * 3% + $0.25 Payment Fee) - COGS - Ad Spend",
+        "variables": [
+          {
+            "symbol": "Selling Price (P)",
+            "meaning": "Customer checkout price for the instant downloadable digital file package before sales tax."
+          },
+          {
+            "symbol": "Listing Renewal Fee ($0.20)",
+            "meaning": "Statutory Etsy fee assessed every time a multi-quantity listing sells and automatically renews for another 4-month cycle."
+          },
+          {
+            "symbol": "Transaction Fee (6.5%)",
+            "meaning": "Marketplace commission deducted by Etsy on the gross item sale price."
+          },
+          {
+            "symbol": "Etsy Payments Processing (3% + $0.25)",
+            "meaning": "Domestic merchant payment gateway fee deducted automatically from seller payment account balance."
+          },
+          {
+            "symbol": "COGS & Storage Overhead (C_cogs)",
+            "meaning": "Direct variable file delivery expenses (cloud hosting, template software licensing amortized per sale)."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Wedding Stationery Designer: Editable Invitation Suite ($4.50 Price, 250 Monthly Sales)",
+        "narrative": "A graphic designer sells an editable minimalist wedding invitation template suite on Etsy for $4.50. The listing contains multi-quantity inventory and generates 250 sales over a 30-day period ($1,125.00 in gross revenue). For each $4.50 sale, Etsy deducts a $0.20 automatic listing renewal fee, a 6.5% transaction fee ($0.29), and a 3.0% + $0.25 Etsy Payments fee ($0.385), resulting in $0.875 in total platform deductions per transaction (19.4% effective platform cut). The designer expends $0.15 per unit in software licensing and spends an average of $0.40 per order in targeted Etsy Onsite Search Ads. Subtracting all fees ($218.75 in platform cuts), variable COGS ($37.50), Etsy Onsite advertising ($100.00), and a monthly $15.00 Canva Pro subscription yields $753.75 in clean net profit, delivering a remarkable 67.0% net operating margin.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Sales: 250 sales * $4.50 = $1,125.00 gross revenue.",
+          "Step 2: Calculate Etsy Fixed & Listing Renewal Fees: 250 sales * $0.20 listing renewal fee = $50.00.",
+          "Step 3: Calculate Etsy Transaction Commission (6.5%): $1,125.00 * 6.5% = $73.13.",
+          "Step 4: Calculate Etsy Payments Processing (3.0% + $0.25): ($1,125.00 * 3.0%) + (250 * $0.25) = $33.75 + $62.50 = $96.25.",
+          "Step 5: Total Platform Deductions: $50.00 + $73.13 + $96.25 = $219.38 (Effective Etsy take-rate: 19.5%).",
+          "Step 6: Deduct Variable Advertising & Operational COGS: (250 * $0.40 Etsy Ads = $100.00) + (250 * $0.15 cloud delivery = $37.50) + $15.00 Canva Pro = $152.50.",
+          "Step 7: Compute Clean Net Seller Profit: $1,125.00 - $219.38 - $152.50 = $753.12 net profit (66.9% net operating margin)."
+        ],
+        "finalTakeaway": "Despite micro-fees consuming 19.5% of gross revenue on a low-ticket $4.50 download, digital products deliver an exceptional 66.9% net profit margin ($753.12 monthly take-home) because inventory COGS and shipping postage are non-existent."
+      },
+      "benchmarkTable": {
+        "title": "2026 Etsy Digital Download Product Category Margin Benchmarks",
+        "headers": [
+          "Digital Product Vertical",
+          "Typical Price Range",
+          "Average Effective Etsy Fee %",
+          "Net Operating Margin Range"
+        ],
+        "rows": [
+          [
+            "Printable Wall Art & Poster Bundles",
+            "$3.50 - $6.50",
+            "17.5% - 22.0%",
+            "65% - 75% Net Margin"
+          ],
+          [
+            "Notion & Digital GoodNotes Planners",
+            "$8.00 - $18.00",
+            "12.5% - 15.5%",
+            "78% - 85% Net Margin"
+          ],
+          [
+            "Wedding Invitation & Event Suites",
+            "$5.00 - $12.00",
+            "14.0% - 18.0%",
+            "70% - 82% Net Margin"
+          ],
+          [
+            "Embroidery, Laser & SVG Cut Files",
+            "$2.50 - $4.50",
+            "20.0% - 26.5%",
+            "55% - 68% Net Margin"
+          ],
+          [
+            "Spreadsheet Financial & Budget Templates",
+            "$7.00 - $15.00",
+            "13.0% - 16.0%",
+            "75% - 84% Net Margin"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Bundle Complementary Digital Assets to Increase Order Values Above $10",
+          "actionableAdvice": "Fixed fees ($0.20 listing renewal + $0.25 payment fixed) penalize single $3.00 items heavily, consuming 15% of the transaction. Creating multi-item bundles—such as pairing wedding invitations with RSVP cards and table menus for $12.00—reduces the fixed fee burden from 15% down to under 4%, immediately expanding profit margins."
+        },
+        {
+          "title": "Deactivate Etsy Offsite Ads If Annual Shop Sales Are Under $10,000",
+          "actionableAdvice": "For shops generating under $10,000 in trailing 12-month sales, Etsy Offsite Ads are optional. When enabled, Etsy deducts a steep 15% advertising fee on any sale driven by Google or Facebook ads. Turn Offsite Ads off in Shop Settings to protect your baseline 65%+ margin unless your conversion funnel is heavily optimized."
+        },
+        {
+          "title": "Automate Customer Delivery via Dropbox or Google Drive PDF Portals",
+          "actionableAdvice": "Etsy enforces a 20MB file attachment limit per digital listing with a maximum of five files. For massive high-resolution graphic packs or template suites, upload a sleek, branded 1-page PDF delivering instant one-click access to a secured Google Drive or Dropbox repository, eliminating customer download errors."
+        },
+        {
+          "title": "Cross-Sell Standalone Storefronts with Post-Purchase Coupons",
+          "actionableAdvice": "Use Etsy as an organic top-of-funnel customer acquisition channel. Include a 25% discount coupon inside the downloaded PDF instructions directing buyers to your self-hosted Shopify or Payhip store for future purchases, bypassing Etsy's 6.5% transaction fee on returning customers."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does Etsy calculate listing renewal fees on digital items?",
+          "answer": "When you list a digital item on Etsy with a quantity greater than one, Etsy charges an initial $0.20 listing fee that covers the listing for four months. When a customer purchases a copy, Etsy automatically renews the listing for another four months and assesses an additional $0.20 renewal fee against your payment account."
+        },
+        {
+          "question": "Are digital downloads exempt from shipping fees and sales tax on Etsy?",
+          "answer": "Digital downloads do not incur physical postage or shipping transaction fees because fulfillment is executed electronically via instant download. However, digital goods are subject to state sales tax and European VAT based on the buyer's billing jurisdiction, which Etsy automatically calculates, collects, and remits on your behalf as a marketplace facilitator."
+        },
+        {
+          "question": "What is Etsy's Offsite Ads fee and can digital sellers opt out?",
+          "answer": "Etsy advertises seller listings across Google, Facebook, and Instagram. If an ad click produces an order within 30 days, Etsy deducts an Offsite Ads fee: 15% for sellers earning under $10,000 annually (which is optional and can be turned off in settings), or 12% mandatory for shops exceeding $10,000 in trailing annual sales."
+        },
+        {
+          "question": "Can customers request refunds on Etsy digital download purchases?",
+          "answer": "Etsy's standard terms state that instant digital downloads are non-refundable once downloaded, provided the seller explicitly states this in their shop policies. However, if a buyer files a formal case claiming corrupted files or misleading item descriptions, Etsy Support may issue a refund from the seller's account if the issue remains unaddressed."
+        },
+        {
+          "question": "How can I prevent unauthorized file sharing and piracy of my digital templates?",
+          "answer": "While it is impossible to eliminate digital piracy completely, creators can deter theft by licensing templates through editable Canva template links, password-protecting PDF files, flattening design vector layers, and applying invisible digital watermarks. In addition, embedding clear commercial licensing guidelines and copyright warnings directly within the instructional download packet informs buyers of legal usage boundaries."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "etsy-fee-calculator",
+      "etsy-shipping-calculator",
+      "etsy-vs-shopify-fee-calculator",
+      "gumroad-fee-calculator"
+    ]
+  },
+  {
+    "slug": "3d-model-marketplace-royalty-calculator",
+    "title": "3D Model Marketplace Royalty, TurboSquid vs CGTrader Profit Calculator (2026)",
+    "metaTitle": "3D Model Marketplace Royalty Calculator 2026 | TurboSquid vs CGTrader",
+    "metaDescription": "Calculate 3D asset marketplace royalties: CGTrader 70%–80% author share vs TurboSquid Guild tiers, wire payout fees, exclusive agreements, and net seller profit.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "CGTrader Royalty Schedule & TurboSquid Guild Terms (2026)",
+    "officialSourceUrl": "https://help.cgtrader.com/en/articles/2405072-royalties-and-payouts",
+    "defaultInputs": {
+      "sellingPrice": 35,
+      "cogs": 0.5,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 90,
+      "planTier": "cgtrader-standard",
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 2,
+      "returnsRate": 2,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "standardPercentage": 30,
+      "extraParameters": {
+        "cgtraderStandardRoyaltyPercent": 70,
+        "cgtraderClubRoyaltyPercent": 80,
+        "turbosquidNonExclusiveRoyalty": 40,
+        "turbosquidGuildDiamondRoyalty": 60,
+        "sketchfabStandardRoyalty": 70,
+        "unrealEngineRoyaltyPercent": 88,
+        "paymentProcessingFixed": 0.3
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Monetizing 3D digital assets—spanning low-poly game models, architectural PBR materials, rigged characters, and CAD engineering components—requires navigating dramatic royalty variances across stock platforms. Unlike physical products or standard 2D vector graphic shops, 3D model marketplaces enforce wildly divergent commission structures based on marketplace exclusivity. On CGTrader, artists retain a competitive 70% standard royalty (which scales up to 80% with loyalty club tier progression) without surrendering commercial exclusivity. Conversely, TurboSquid enforces an aggressive 60% marketplace commission on non-exclusive listings (leaving artists with just 40% of the sale price), requiring artists to join the exclusive SquidGuild to unlock higher 50% to 60% royalty tiers. When modeling studio cash flow, 3D artists must account for international payment withholding taxes, wire transfer withdrawal deductions, and platform return rates caused by software version incompatibilities.",
+      "formulaBreakdown": {
+        "formulaString": "Net Take-Home = Selling Price * Royalty Rate% - Transaction Gateway Fees - Operational COGS - Ad Spend",
+        "variables": [
+          {
+            "symbol": "Selling Price (P)",
+            "meaning": "Marketplace catalog retail price set for the 3D asset package across supported formats (.FBX, .OBJ, .BLEND)."
+          },
+          {
+            "symbol": "Royalty Rate (R)",
+            "meaning": "Contractual percentage retained by the artist: 70% to 80% on CGTrader, 40% on TurboSquid non-exclusive, 88% on Unreal FAB/Epic Games."
+          },
+          {
+            "symbol": "Platform Commission (1 - R)",
+            "meaning": "Cut retained by the 3D marketplace for server hosting, customer billing, format conversion, and global distribution."
+          },
+          {
+            "symbol": "Gateway & Wire Fees (F_wire)",
+            "meaning": "Banking withdrawal deductions (typically $15 to $35 for international SWIFT wires or 2% for PayPal transfers)."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Game Environment Artist: Modular Sci-Fi Asset Pack ($35.00 Price, 90 Monthly Units)",
+        "narrative": "A freelance 3D environment artist creates a modular sci-fi laboratory asset pack priced at $35.00 on CGTrader. The artist operates on a non-exclusive 70% standard royalty contract and sells 90 units over a calendar month ($3,150.00 in gross marketplace volume). Under the 70% royalty terms, the artist earns $24.50 per unit sold, while CGTrader retains $10.50 per transaction ($945.00 total platform commission). The artist expends $0.50 per unit on cloud rendering and backup storage, and allocates $2.00 per unit to targeted art portfolio advertising ($180.00 total). Subtracting an estimated 2.0% return rate ($63.00) from customer technical support requests leaves the artist with $1,917.00 in clean monthly take-home profit. If the exact same volume were sold on TurboSquid non-exclusive at 40% royalty, the artist's gross cut would drop to just $1,260.00, demonstrating an annual income penalty of over $11,000 for selecting the wrong contract.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Marketplace Volume: 90 units * $35.00 = $3,150.00 gross sales.",
+          "Step 2: Calculate CGTrader Standard Royalty (70% Non-Exclusive): $3,150.00 * 70% = $2,205.00 author royalty earnings ($945.00 retained by CGTrader).",
+          "Step 3: Calculate Alternative TurboSquid Non-Exclusive Royalty (40%): $3,150.00 * 40% = $1,260.00 author royalty earnings ($1,890.00 retained by TurboSquid).",
+          "Step 4: Deduct Advertising, Cloud Storage & Technical Returns (2%): ($180.00 ads) + ($45.00 storage COGS) + ($63.00 refunds) = $288.00 total overhead.",
+          "Step 5: Compute Final Monthly Take-Home on CGTrader: $2,205.00 - $288.00 = $1,917.00 net monthly profit (60.9% net operating margin).",
+          "Step 6: Calculate Monthly Income Penalty of TurboSquid Non-Exclusive: $2,205.00 (CGTrader) - $1,260.00 (TurboSquid) = $945.00 lost profit per month ($11,340.00 annualized deficit)."
+        ],
+        "finalTakeaway": "Selling 90 units on CGTrader yields $1,917.00 in monthly net profit at a 70% non-exclusive royalty. Choosing TurboSquid's 40% non-exclusive rate costs the artist $945.00 each month ($11,340.00 annually) on the identical asset volume."
+      },
+      "benchmarkTable": {
+        "title": "2026 3D Model Marketplace Royalty & Exclusivity Comparison Matrix",
+        "headers": [
+          "Platform & Program",
+          "Author Royalty Share",
+          "Exclusivity Requirement",
+          "Payout Methods & Frequency"
+        ],
+        "rows": [
+          [
+            "CGTrader Standard Marketplace",
+            "70.0% of Gross Sale",
+            "Non-Exclusive (Free distribution)",
+            "PayPal, Payoneer, Wire (Monthly on 15th)"
+          ],
+          [
+            "CGTrader Royalty Club (High Volume)",
+            "75.0% - 80.0% of Gross Sale",
+            "Non-Exclusive (Based on reputation)",
+            "PayPal, Payoneer, Wire (Monthly on 15th)"
+          ],
+          [
+            "TurboSquid Non-Exclusive",
+            "40.0% of Gross Sale",
+            "Non-Exclusive (Can sell anywhere)",
+            "PayPal, Payoneer, Check, Wire (Monthly on 1st)"
+          ],
+          [
+            "TurboSquid SquidGuild (Diamond)",
+            "60.0% of Gross Sale",
+            "100% Exclusive to TurboSquid",
+            "PayPal, Payoneer, Check, Wire (Monthly on 1st)"
+          ],
+          [
+            "Fab (Epic Games / Unreal / Sketchfab)",
+            "88.0% of Gross Sale",
+            "Non-Exclusive (Multi-store permitted)",
+            "PayPal, Hyperwallet (Monthly payouts)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Distribute Multi-Store Non-Exclusively Across CGTrader and Fab",
+          "actionableAdvice": "Locking assets into TurboSquid's SquidGuild for a 60% royalty limits your market exposure. Distributing non-exclusively across CGTrader (70% royalty) and Epic Games' Fab marketplace (88% royalty) yields far higher cumulative monthly revenue than TurboSquid exclusivity alone."
+        },
+        {
+          "title": "Include Native Format Files (.BLEND, .FBX, .MAX, .OBJ) to Cut Returns",
+          "actionableAdvice": "The leading cause of 3D asset refunds is missing texture paths or incompatible mesh rigs in secondary software. Provide clean, standardized .FBX exports with embedded textures alongside native Blender and 3ds Max files to compress return rates under 1%."
+        },
+        {
+          "title": "Submit W-8BEN Tax Forms to Prevent 30% US Withholding Penalties",
+          "actionableAdvice": "Non-US 3D artists selling on US-headquartered platforms face an automatic 30% statutory IRS tax withholding on royalties. Submit a completed W-8BEN form through the marketplace tax portal to access reduced bilateral tax treaty withholding rates (often 0% to 10%)."
+        },
+        {
+          "title": "Accumulate CGTrader Reputation Points to Unlock 80% Club Royalties",
+          "actionableAdvice": "CGTrader rewards active creators with tiered royalty escalations. By uploading complete model metadata, high-resolution wireframe turntable previews, and answering buyer inquiries within 24 hours, artists unlock the 80% Royalty Club tier, saving $10 per $100 in volume."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does TurboSquid offer only 40% royalty for non-exclusive artists?",
+          "answer": "TurboSquid maintains a dominant legacy presence in enterprise corporate, film, and defense procurement, which gives it substantial pricing leverage over artists. To incentivize platform loyalty, TurboSquid intentionally depresses non-exclusive royalties to 40%, reserving 50% to 60% rates exclusively for artists who join the SquidGuild and agree never to sell their models on competing sites."
+        },
+        {
+          "question": "What is Epic Games' Fab marketplace royalty structure in 2026?",
+          "answer": "Fab, which unified Sketchfab Store, Unreal Engine Marketplace, and ArtStation Marketplace under Epic Games, offers an industry-leading 88% author royalty rate on all non-exclusive digital asset sales. Epic Games retains just 12% to cover infrastructure and payment handling, making Fab the most financially lucrative open marketplace for 3D game asset creators and technical environment artists."
+        },
+        {
+          "question": "How do international wire fees affect monthly 3D marketplace payouts?",
+          "answer": "Marketplaces typically charge a fixed $15.00 to $35.00 administrative fee for international SWIFT bank wire transfers, in addition to intermediary bank foreign exchange spreads. For artists earning under $1,000 monthly, receiving payouts via Payoneer or PayPal significantly reduces banking friction compared to direct wire transfers, preserving take-home margins on low monthly earnings."
+        },
+        {
+          "question": "Are 3D models subject to copyright infringement claims on marketplaces?",
+          "answer": "Yes. Modeling real-world trademarked automobiles, branded consumer electronics, or copyrighted entertainment characters can trigger intellectual property takedown notices and account bans. Stock marketplaces require editorial-use disclaimers for trademarked assets, and creators cannot legally sell such models under commercial or royalty-free game development licenses without obtaining explicit trademark clearance and commercial indemnification from the rights holder."
+        },
+        {
+          "question": "What is the typical refund rate on 3D stock marketplaces?",
+          "answer": "Industry refund rates for 3D assets typically range between 1.5% and 3.5% across major marketplaces. Most refunds occur when amateur buyers lack compatible 3D software to open specific proprietary file extensions, or when complex procedural shader materials do not import seamlessly into secondary game engines like Unity or Unreal without manual retexturing and material assignment."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "gumroad-fee-calculator",
+      "lemon-squeezy-fee-calculator",
+      "etsy-digital-download-profit-calculator",
+      "whop-fee-calculator"
+    ]
+  },
+  {
+    "slug": "whop-fee-calculator",
+    "title": "Whop Fee, SaaS & Digital Community Subscription Profit Calculator (2026)",
+    "metaTitle": "Whop Fee Calculator 2026 | Community & Digital Product Profit Margins",
+    "metaDescription": "Calculate exact Whop marketplace seller fees: 3% platform commission, 2.7% + $0.30 credit card processing, dispute fees, affiliate splits, and net creator take-home.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Whop Official Pricing & Payment Processing Documentation (2026)",
+    "officialSourceUrl": "https://whop.com/pricing/",
+    "defaultInputs": {
+      "sellingPrice": 49,
+      "cogs": 1,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 180,
+      "planTier": "standard-whop",
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 5,
+      "returnsRate": 3.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "standardPercentage": 3,
+      "extraParameters": {
+        "whopCommissionPercent": 3,
+        "paymentProcessingPercent": 2.7,
+        "paymentProcessingFixed": 0.3,
+        "whopMarketplaceReferralPercent": 30,
+        "disputeFeeFixed": 15
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Whop has rapidly emerged as the premier monetization infrastructure for digital communities, private Discord servers, web applications, algorithmic trading bots, and subscription SaaS products. Unlike legacy platforms like Patreon that demand 8% to 12% of gross revenue, Whop charges a highly competitive 3% platform commission when creators sell directly through their own links, paired with native credit card merchant processing of 2.7% + $0.30. This ultra-lean 5.7% total fee structure delivers substantial financial savings for medium-to-large membership businesses. However, creators must carefully distinguish between organic direct-link checkout and organic Whop Marketplace discovery sales: transactions driven directly through Whop's algorithmic marketplace feed incur a higher 30% marketplace referral fee. Accurately modeling customer acquisition channels, monthly subscriber churn, and credit card dispute reserves is essential for community founders scaling recurring subscription models.",
+      "formulaBreakdown": {
+        "formulaString": "Net Take-Home = Gross Revenue - (Gross * 3% Whop Fee) - (Gross * 2.7% + Units * $0.30 Payment Fee) - Marketing - Server COGS - Refunds",
+        "variables": [
+          {
+            "symbol": "Gross Volume (V)",
+            "meaning": "Total recurring subscription billing calculated as active subscribers multiplied by monthly membership price."
+          },
+          {
+            "symbol": "Whop Direct Fee (3%)",
+            "meaning": "Platform service commission charged by Whop on transactions completed via creator direct URLs."
+          },
+          {
+            "symbol": "Whop Payments Processing (2.7% + $0.30)",
+            "meaning": "Domestic credit card processing rate charged via Whop Payments (Stripe-backed infrastructure)."
+          },
+          {
+            "symbol": "Marketplace Referral Fee (30%)",
+            "meaning": "Alternative commission assessed only when a buyer discovers and purchases the community through the Whop Marketplace directory."
+          },
+          {
+            "symbol": "Chargeback & Dispute Reserve (D)",
+            "meaning": "Financial allowance held to cover the statutory $15.00 merchant dispute fee and disputed funds."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Algorithmic Trading Community: Discord & Software Pass ($49.00/Mo, 180 Members)",
+        "narrative": "A developer operates a specialized software community providing automated stock alerts and private Discord discussion channels. The subscription is priced at $49.00 per month and maintains 180 active recurring members ($8,820.00 gross monthly volume). All subscribers join via the developer's direct promotional landing page (qualifying for the 3% direct tier). Whop assesses a 3% platform commission ($264.60) and credit card processing of 2.7% + $0.30 per subscriber ($292.14), resulting in $556.74 in total platform deductions (6.3% effective fee). The founder spends $5.00 per acquired order on community marketing ($900.00), allocates $1.00 per member for cloud server hosting ($180.00), and experiences a 3.5% monthly refund and churn rate ($308.70). Subtracting all overhead delivers $6,874.56 in net monthly recurring profit, achieving a stellar 77.9% net operating margin.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Subscription Revenue: 180 active members * $49.00 = $8,820.00 gross MRR.",
+          "Step 2: Calculate Whop Direct Platform Commission (3.0%): $8,820.00 * 3.0% = $264.60.",
+          "Step 3: Calculate Whop Payments Merchant Processing (2.7% + $0.30): ($8,820.00 * 2.7%) + (180 * $0.30) = $238.14 + $54.00 = $292.14.",
+          "Step 4: Compute Total Whop Platform Deductions: $264.60 + $292.14 = $556.74 (Effective platform cut: 6.31%).",
+          "Step 5: Deduct Marketing, Server Hosting & 3.5% Churn Allowance: ($900.00 ads) + ($180.00 AWS hosting) + ($308.70 churn/refunds) = $1,388.70.",
+          "Step 6: Compute Net Founder Monthly Profit: $8,820.00 - $556.74 - $1,388.70 = $6,874.56 net profit (77.94% net margin)."
+        ],
+        "finalTakeaway": "Whop's 3% direct platform fee plus 2.7% + $0.30 merchant processing takes just 6.31% of gross revenue, leaving the founder with $6,874.56 in net monthly recurring profit from 180 subscribers."
+      },
+      "benchmarkTable": {
+        "title": "2026 Whop Fee Schedule & Competitor Comparison Matrix",
+        "headers": [
+          "Platform / Channel",
+          "Platform Commission",
+          "Payment Processing Overhead",
+          "Total Effective Platform Cut on $50 Sub"
+        ],
+        "rows": [
+          [
+            "Whop (Direct Link Sales)",
+            "3.0% of Gross Volume",
+            "2.7% + $0.30 per transaction",
+            "6.30% ($3.15 per member)"
+          ],
+          [
+            "Whop Marketplace (Directory Sales)",
+            "30.0% of Gross Volume",
+            "Included in 30% commission",
+            "30.00% ($15.00 per member)"
+          ],
+          [
+            "Patreon Pro Plan",
+            "8.0% of Gross Volume",
+            "2.9% + $0.30 per transaction",
+            "11.50% ($5.75 per member)"
+          ],
+          [
+            "Patreon Premium Plan",
+            "12.0% of Gross Volume",
+            "2.9% + $0.30 per transaction",
+            "15.50% ($7.75 per member)"
+          ],
+          [
+            "Gumroad Membership",
+            "10.0% of Gross Volume",
+            "Included in 10% fee (plus $0.50)",
+            "11.00% ($5.50 per member)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Drive Traffic Exclusively Through Custom Direct Links to Avoid 30% Fees",
+          "actionableAdvice": "Sales originating from your personal social profiles, YouTube descriptions, or email newsletters qualify for Whop's low 3% rate. Only shoppers browsing the Whop Discovery Marketplace trigger the 30% directory commission. Ensure all promotional copy embeds your direct whop.com/checkout URL."
+        },
+        {
+          "title": "Integrate Native Discord and Telegram Role Provisioning",
+          "actionableAdvice": "Whop provides automated bots that instantly grant Discord roles or Telegram group access upon successful payment, and immediately revoke access if a subscription cancels or fails billing. Automating role management eliminates manual support overhead and prevents unauthorized access."
+        },
+        {
+          "title": "Implement Strict Card Verification to Lower $15 Dispute Fees",
+          "actionableAdvice": "Credit card chargebacks incur a non-refundable $15.00 fee on Whop. Enable 3D Secure (3DS) authentication, require customer email verification before accessing software license keys, and maintain a visible cancellation portal to ensure dissatisfied users cancel rather than filing fraud disputes."
+        },
+        {
+          "title": "Offer Quarterly and Annual Subscription Billing Discounts",
+          "actionableAdvice": "Monthly billing incurs fixed $0.30 transaction costs 12 times a year and exposes the business to monthly credit card expiration churn. Providing a 15% discount on an annual pass collects upfront capital while slashing fixed transaction fees from $3.60 per year to just $0.30."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the difference between Whop Direct and Whop Marketplace fees?",
+          "answer": "When a customer purchases access to your digital community using your direct link, Whop charges an ultra-low 3% platform commission plus standard payment processing (2.7% + $0.30). However, if an unfamiliar user discovers your product while browsing Whop's native marketplace explore tab and purchases, Whop deducts a 30% marketplace referral commission."
+        },
+        {
+          "question": "Does Whop support cryptocurrency payments for community memberships?",
+          "answer": "Yes, Whop natively supports cryptocurrency payments via Coinbase Commerce and direct Web3 wallet integrations (including Ethereum, Solana, and USDC). For crypto payments, standard credit card processing fees do not apply, though blockchain network gas fees and small crypto gateway handling percentages may be assessed depending on the specific token settlement network chosen by the buyer."
+        },
+        {
+          "question": "How does Whop handle customer chargebacks and fraud disputes?",
+          "answer": "When a cardholder disputes a payment through their issuing bank, Whop alerts the seller and automatically submits dispute evidence (such as login timestamps, Discord join logs, and download records). If the dispute is lost, the purchase amount is reversed and the merchant is assessed a statutory $15.00 dispute processing fee."
+        },
+        {
+          "question": "Can I sell software licenses and API access through Whop?",
+          "answer": "Yes. In addition to Discord and Telegram communities, Whop provides a robust Software Licensing API and SDK. You can generate unique hardware-locked license keys, set activation limits per seat, and programmatically validate active membership status in desktop software, Chrome extensions, or web applications with automated instant deactivation whenever a customer subscription cancels or fails recurring billing."
+        },
+        {
+          "question": "How often does Whop disburse seller earnings to bank accounts?",
+          "answer": "Whop allows sellers to withdraw available balances on a rolling basis. In eligible regions, funds clear into available balance within 3 to 7 business days following the customer transaction, after which creators can initiate payouts directly to connected bank accounts via Stripe Express or local bank transfers without mandatory monthly delays."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "gumroad-vs-lemon-squeezy-fee-calculator",
+      "lemon-squeezy-fee-calculator",
+      "patreon-fee-calculator",
+      "teachable-vs-kajabi-fee-calculator"
+    ]
+  },
+  {
+    "slug": "teachable-vs-kajabi-fee-calculator",
+    "title": "Teachable vs. Kajabi Course Platform Fee & All-in Profit Calculator (2026)",
+    "metaTitle": "Teachable vs Kajabi Fee Calculator 2026 | Course Creator Profit Margins",
+    "metaDescription": "Compare Teachable vs Kajabi total software and transaction costs: Teachable $59/mo + 5% fee vs Kajabi $149/mo 0% fee, Stripe processing, and break-even crossover points.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Teachable Pricing Plans & Kajabi 0% Transaction Fee Structure (2026)",
+    "officialSourceUrl": "https://teachable.com/pricing",
+    "defaultInputs": {
+      "productPrice": 149,
+      "monthlyUnits": 60,
+      "refundRate": 3,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "standardPercentage": 5,
+      "extraParameters": {
+        "platformAPercentage": 5,
+        "platformAFixedFee": 0,
+        "platformAPaymentPercent": 2.9,
+        "platformAPaymentFixed": 0.3,
+        "platformBPercentage": 0,
+        "platformBFixedFee": 0,
+        "platformBPaymentPercent": 2.9,
+        "platformBPaymentFixed": 0.3
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "For online course educators, academic coaches, and digital academy founders, evaluating Teachable versus Kajabi represents a classic trade-off between entry-level software subscription fees and programmatic transaction rake. Teachable offers a low upfront hurdle with its Basic plan at $59.00 per month, but penalizes educators by taking a 5% transaction commission on every single course sale in addition to standard Stripe processing fees (2.9% + $0.30). In contrast, Kajabi charges a substantially higher base SaaS subscription starting at $149.00 per month on its Basic tier, but enforces a strict 0% transaction fee across all plans. This architectural distinction creates a dramatic mathematical crossover point: once an online educator generates more than $1,800.00 in gross monthly course enrollments, Teachable's 5% transaction rake exceeds the entire $90.00 monthly subscription delta of Kajabi, making Kajabi the more profitable software host despite its higher sticker price.",
+      "formulaBreakdown": {
+        "formulaString": "Total Platform Cost = Flat SaaS Fee + (Gross Sales * Platform Fee%) + (Gross Sales * 2.9% + Units * $0.30 Gateway Fee)",
+        "variables": [
+          {
+            "symbol": "Gross Course Sales (V)",
+            "meaning": "Total monthly tuition enrollments calculated as course price multiplied by paying student units."
+          },
+          {
+            "symbol": "Teachable Basic Fee ($59 + 5%)",
+            "meaning": "Teachable's entry subscription fee plus mandatory 5% transaction rake on student checkout."
+          },
+          {
+            "symbol": "Kajabi Basic Fee ($149 + 0%)",
+            "meaning": "Kajabi's all-in software subscription featuring 0% platform transaction rake."
+          },
+          {
+            "symbol": "Credit Card Gateway Processing (2.9% + $0.30)",
+            "meaning": "Standard merchant payment gateway processing deducted on both platforms via Stripe or native payment systems."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Data Analytics Academy: 60 Monthly Course Enrollments at $149.00 ($8,940.00 Gross)",
+        "narrative": "An educator launches an online data analytics certification course priced at $149.00, enrolling 60 new students each month ($8,940.00 in gross monthly tuition). On Teachable Basic ($59.00/month flat), Teachable takes a 5% transaction fee ($447.00) plus standard credit card processing of 2.9% + $0.30 per student ($277.26), incurring $783.26 in total monthly software and platform costs. On Kajabi Basic ($149.00/month flat), Kajabi takes 0% transaction fee, meaning platform costs are just the $149.00 SaaS subscription plus the identical $277.26 in credit card processing, totaling $426.26. By choosing Kajabi, the course creator saves $357.00 every single month ($4,284.00 annually) on the exact same student volume, while simultaneously unlocking Kajabi's integrated email marketing and landing page builder.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Tuition Volume: 60 students * $149.00 = $8,940.00 monthly sales.",
+          "Step 2: Calculate Teachable Basic All-in Cost: $59.00 SaaS subscription + (5% platform fee * $8,940 = $447.00) + (2.9% + $0.30 gateway = $277.26) = $783.26 total monthly cost (8.76% effective cut).",
+          "Step 3: Calculate Kajabi Basic All-in Cost: $149.00 SaaS subscription + (0% platform fee = $0.00) + (2.9% + $0.30 gateway = $277.26) = $426.26 total monthly cost (4.77% effective cut).",
+          "Step 4: Determine Exact Mathematical Crossover Point: ($149 Kajabi - $59 Teachable) / 5% Teachable fee = $1,800.00 in gross monthly tuition.",
+          "Step 5: Compute Net Monthly and Annual Creator Savings with Kajabi: $783.26 (Teachable) - $426.26 (Kajabi) = $357.00 monthly cash savings ($4,284.00 annualized extra profit)."
+        ],
+        "finalTakeaway": "Beyond $1,800.00 in monthly sales, Kajabi's 0% transaction fee beats Teachable Basic. At 60 enrollments ($8,940 gross), Kajabi saves the creator $357.00 every single month ($4,284.00 per year) while including native email marketing."
+      },
+      "benchmarkTable": {
+        "title": "2026 Teachable vs. Kajabi Mathematical Crossover Analysis",
+        "headers": [
+          "Monthly Gross Course Volume",
+          "Teachable Basic Total Cost ($59 + 5%)",
+          "Kajabi Basic Total Cost ($149 + 0%)",
+          "Most Profitable Host Selection"
+        ],
+        "rows": [
+          [
+            "$1,000 / month (10 sales @ $100)",
+            "$138.00 total cost (13.8% cut)",
+            "$178.00 total cost (17.8% cut)",
+            "Teachable ($40/month savings)"
+          ],
+          [
+            "$1,800 / month (18 sales @ $100)",
+            "$201.20 total cost (11.2% cut)",
+            "$201.20 total cost (11.2% cut)",
+            "Exact Mathematical Break-Even Point"
+          ],
+          [
+            "$5,000 / month (50 sales @ $100)",
+            "$454.00 total cost (9.1% cut)",
+            "$294.00 total cost (5.9% cut)",
+            "Kajabi ($160/month savings)"
+          ],
+          [
+            "$10,000 / month (100 sales @ $100)",
+            "$849.00 total cost (8.5% cut)",
+            "$439.00 total cost (4.4% cut)",
+            "Kajabi ($410/month savings)"
+          ],
+          [
+            "$25,000 / month (250 sales @ $100)",
+            "$2,034.00 total cost (8.1% cut)",
+            "$874.00 total cost (3.5% cut)",
+            "Kajabi ($1,160/month savings)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Graduate from Teachable Basic to Pro Once Gross Volume Exceeds $2,000",
+          "actionableAdvice": "If you prefer Teachable's course player interface, never stay on the Basic plan past $2,000 in monthly sales. Upgrading to Teachable Pro ($159/mo) eliminates the 5% transaction fee entirely, saving $250+ per month on a $5,000 volume compared to remaining on Basic."
+        },
+        {
+          "title": "Consolidate External Marketing Tools into Kajabi's All-in-One Suite",
+          "actionableAdvice": "Teachable focuses primarily on course hosting and student quizzes, requiring educators to purchase external tools like ConvertKit ($79/mo) and Leadpages ($49/mo). Kajabi includes native email marketing funnels, landing page builders, and CRM pipelines, saving $1,500+ annually in external SaaS subscriptions."
+        },
+        {
+          "title": "Leverage Teachable's Merchant of Record Features for Global VAT",
+          "actionableAdvice": "Teachable offers a native 'BackOffice' service that acts as a Merchant of Record, automatically remitting EU VAT and distributing automated payouts to affiliate partners. Kajabi requires creators to connect personal Stripe accounts and manage localized tax compliance directly."
+        },
+        {
+          "title": "Offer Split-Payment Plans with Built-In Financing Premiums",
+          "actionableAdvice": "For flagship courses priced over $500, offer a 3-month payment plan with a 15% financing markup ($195/month x 3 = $585 vs $500 lump sum). Both Teachable and Kajabi handle automated installment billing, increasing student conversion while generating additional margin."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "At what exact sales volume does Kajabi become cheaper than Teachable?",
+          "answer": "Kajabi becomes mathematically cheaper than Teachable at exactly $1,800.00 in gross monthly course sales (comparing Teachable Basic at $59/month plus 5% transaction fee against Kajabi Basic at $149/month with 0% transaction fee). Beyond $1,800 monthly volume, Teachable's 5% cut exceeds Kajabi's $90 monthly price difference, producing substantial compounding creator savings as enrollment scales."
+        },
+        {
+          "question": "Does Teachable charge a transaction fee on all of its subscription tiers?",
+          "answer": "No. Teachable only assesses its 5% transaction commission on the entry-level Basic plan ($59/month). On the Pro plan ($159/month) and Pro+ plan ($279/month), Teachable eliminates the 5% transaction fee, charging 0% platform commission (subject only to standard credit card gateway processing fees of 2.9% + $0.30 across all student enrollments)."
+        },
+        {
+          "question": "Can I replace email marketing software like ConvertKit with Kajabi?",
+          "answer": "Yes. One of Kajabi's primary selling propositions is its comprehensive all-in-one architecture. Kajabi includes native email marketing automation, visual funnel pipelines, landing page builders, blog hosting, and CRM contact tagging, allowing creators to cancel standalone subscriptions to ConvertKit, Mailchimp, or ClickFunnels and save over ,000 to ,500 annually in external software costs."
+        },
+        {
+          "question": "How do Teachable and Kajabi handle student payment processing?",
+          "answer": "Teachable offers Teachable Payments (powered by Stripe Express), allowing students to pay via credit card, PayPal, Google Pay, and Apple Pay with automated global tax handling. Kajabi connects directly to your personal Stripe and PayPal accounts via Kajabi Payments, transferring student tuition into your business bank account on a daily rolling basis."
+        },
+        {
+          "question": "Which platform is better for building interactive student communities?",
+          "answer": "Kajabi features a completely redesigned, standalone Community 2.0 product (built on its acquisition of Vibely) offering mobile apps, live video meetups, challenge leaderboards, and chat channels. Teachable provides basic student discussion sidebars on lecture lessons, but lacks a full-featured community environment without integrating external platforms like Circle or Discord, increasing your monthly software stack expenses."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "whop-fee-calculator",
+      "patreon-vs-substack-calculator",
+      "gumroad-fee-calculator",
+      "youtube-education-rpm-calculator"
     ]
   }
 ]

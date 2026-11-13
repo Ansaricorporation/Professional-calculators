@@ -10,14 +10,14 @@
     "officialSourceName": "Shopify Official Merchant Agreement & Pricing Schedule (2026)",
     "officialSourceUrl": "https://www.shopify.com/pricing",
     "defaultInputs": {
-      "sellingPrice": 65.0,
+      "sellingPrice": 65,
       "cogs": 18.5,
-      "shippingCharged": 5.0,
+      "shippingCharged": 5,
       "shippingActualCost": 7.2,
       "monthlyUnits": 400,
       "planTier": "basic",
-      "appFeesMonthly": 79.0,
-      "marketingPerOrder": 12.0,
+      "appFeesMonthly": 79,
+      "marketingPerOrder": 12,
       "returnsRate": 3.5,
       "useThirdPartyGateway": false
     },
@@ -26,31 +26,31 @@
       "tiers": {
         "basic": {
           "name": "Shopify Basic",
-          "monthlyFee": 39.0,
+          "monthlyFee": 39,
           "percentageRate": 2.9,
           "fixedFee": 0.3,
           "additionalNotes": "Standard domestic online card rate. A 2.0% additional fee applies when processing via external gateways like Stripe or Authorize.net."
         },
         "shopify": {
           "name": "Shopify Plan (Grow)",
-          "monthlyFee": 105.0,
+          "monthlyFee": 105,
           "percentageRate": 2.7,
           "fixedFee": 0.3,
           "additionalNotes": "Reduced domestic online card rate. A 1.0% additional fee applies when processing transactions via external third-party payment gateways."
         },
         "advanced": {
           "name": "Shopify Advanced",
-          "monthlyFee": 399.0,
+          "monthlyFee": 399,
           "percentageRate": 2.5,
           "fixedFee": 0.3,
           "additionalNotes": "Lowest tier transaction card rate. A 0.6% additional fee applies when bypassing Shopify Payments for external merchant payment providers."
         }
       },
       "extraParameters": {
-        "thirdPartyPenaltyBasic": 2.0,
-        "thirdPartyPenaltyShopify": 1.0,
+        "thirdPartyPenaltyBasic": 2,
+        "thirdPartyPenaltyShopify": 1,
         "thirdPartyPenaltyAdvanced": 0.6,
-        "internationalCardSurcharge": 1.0,
+        "internationalCardSurcharge": 1,
         "currencyConversionFee": 1.5
       }
     },
@@ -198,15 +198,15 @@
     "officialSourceUrl": "https://pe.usps.com/text/dmm300/Notice123.htm",
     "defaultInputs": {
       "actualWeightLbs": 2.5,
-      "lengthInches": 12.0,
-      "widthInches": 10.0,
-      "heightInches": 6.0,
+      "lengthInches": 12,
+      "widthInches": 10,
+      "heightInches": 6,
       "dimDivisor": 166,
       "packagingCost": 1.25,
       "handlingCost": 1.5,
-      "shippingCharged": 0.0,
-      "productPrice": 75.0,
-      "targetMargin": 40.0,
+      "shippingCharged": 0,
+      "productPrice": 75,
+      "targetMargin": 40,
       "carrierPreset": "usps-ground"
     },
     "platformRates": {
@@ -361,15 +361,15 @@
     "officialSourceName": "Etsy Seller Handbook — Fees & Payments Policy (2026)",
     "officialSourceUrl": "https://www.etsy.com/legal/fees",
     "defaultInputs": {
-      "sellingPrice": 38.0,
+      "sellingPrice": 38,
       "cogs": 9.5,
       "shippingCharged": 4.5,
       "shippingActualCost": 5.2,
       "monthlyUnits": 150,
       "planTier": "standard",
-      "appFeesMonthly": 15.0,
-      "marketingPerOrder": 0.0,
-      "returnsRate": 2.0,
+      "appFeesMonthly": 15,
+      "marketingPerOrder": 0,
+      "returnsRate": 2,
       "useThirdPartyGateway": false
     },
     "platformRates": {
@@ -377,34 +377,34 @@
       "tiers": {
         "standard": {
           "name": "Standard Organic Sale",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 9.5,
           "fixedFee": 0.45,
           "additionalNotes": "Combines 6.5% transaction cut + 3.0% Etsy Payments fee, with $0.20 listing fee + $0.25 fixed card processing fee."
         },
         "offsite-optional": {
           "name": "Offsite Ads Sale (Under $10k GMV)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 24.5,
           "fixedFee": 0.45,
           "additionalNotes": "Adds optional 15.0% Offsite Ads commission to the standard 9.5% + $0.45 baseline."
         },
         "offsite-mandatory": {
           "name": "Offsite Ads Sale ($10k+ GMV Mandatory)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 21.5,
           "fixedFee": 0.45,
           "additionalNotes": "Adds mandatory 12.0% Offsite Ads fee (capped at $100 per attributed transaction) to standard baseline."
         }
       },
       "extraParameters": {
-        "listingFee": 0.20,
+        "listingFee": 0.2,
         "transactionFeePct": 6.5,
-        "processingFeePct": 3.0,
+        "processingFeePct": 3,
         "processingFixed": 0.25,
-        "offsiteAdsTier1Pct": 15.0,
-        "offsiteAdsTier2Pct": 12.0,
-        "offsiteAdsMaxFee": 100.0
+        "offsiteAdsTier1Pct": 15,
+        "offsiteAdsTier2Pct": 12,
+        "offsiteAdsMaxFee": 100
       }
     },
     "guideContent": {
@@ -543,21 +543,21 @@
     "officialSourceUrl": "https://www.etsy.com/legal/fees",
     "defaultInputs": {
       "actualWeightLbs": 1.2,
-      "lengthInches": 9.0,
-      "widthInches": 7.0,
-      "heightInches": 4.0,
+      "lengthInches": 9,
+      "widthInches": 7,
+      "heightInches": 4,
       "dimDivisor": 166,
       "packagingCost": 1.1,
       "handlingCost": 1.2,
-      "shippingCharged": 0.0,
-      "productPrice": 42.0,
-      "targetMargin": 45.0,
+      "shippingCharged": 0,
+      "productPrice": 42,
+      "targetMargin": 45,
       "carrierPreset": "usps-ground"
     },
     "platformRates": {
       "baseCurrency": "USD",
       "extraParameters": {
-        "etsyFreeShippingMin": 35.0,
+        "etsyFreeShippingMin": 35,
         "uspsGroundBase": 4.85,
         "uspsGroundPerLb": 0.85,
         "uspsPriorityBase": 8.25,
@@ -701,15 +701,15 @@
     "officialSourceName": "Shopify Enterprise Merchant Analytics & Unit Economics Guidelines",
     "officialSourceUrl": "https://www.shopify.com/pricing",
     "defaultInputs": {
-      "sellingPrice": 78.0,
-      "cogs": 22.0,
-      "shippingCharged": 0.0,
+      "sellingPrice": 78,
+      "cogs": 22,
+      "shippingCharged": 0,
       "shippingActualCost": 7.5,
       "monthlyUnits": 320,
       "planTier": "shopify",
-      "appFeesMonthly": 129.0,
-      "marketingPerOrder": 16.0,
-      "returnsRate": 3.0,
+      "appFeesMonthly": 129,
+      "marketingPerOrder": 16,
+      "returnsRate": 3,
       "useThirdPartyGateway": false
     },
     "platformRates": {
@@ -717,28 +717,28 @@
       "tiers": {
         "single-sku": {
           "name": "Single Item Purchase (Baseline $38 AOV)",
-          "monthlyFee": 105.0,
+          "monthlyFee": 105,
           "percentageRate": 2.7,
           "fixedFee": 0.3,
           "additionalNotes": "Standard $105/mo Shopify plan processing single low-ticket orders."
         },
         "bundle-tier": {
           "name": "Bundled 2-Pack / Cross-Sell ($78 AOV)",
-          "monthlyFee": 105.0,
+          "monthlyFee": 105,
           "percentageRate": 2.7,
           "fixedFee": 0.3,
           "additionalNotes": "Higher AOV bundle diluting fixed $0.30 fee and flat customer acquisition cost."
         },
         "vip-tier": {
           "name": "VIP Collection Bundle ($140 AOV)",
-          "monthlyFee": 105.0,
+          "monthlyFee": 105,
           "percentageRate": 2.7,
           "fixedFee": 0.3,
           "additionalNotes": "Maximum basket size optimizing pick-and-pack warehouse labor."
         }
       },
       "extraParameters": {
-        "fixedPerOrderProcessingFee": 0.30,
+        "fixedPerOrderProcessingFee": 0.3,
         "baseShopifyCardRate": 2.7
       }
     },
@@ -880,13 +880,13 @@
     "defaultInputs": {
       "sellingPrice": 29.99,
       "cogs": 7.5,
-      "shippingCharged": 0.0,
+      "shippingCharged": 0,
       "shippingActualCost": 4.25,
       "monthlyUnits": 600,
       "planTier": "standard-referral",
-      "appFeesMonthly": 39.0,
+      "appFeesMonthly": 39,
       "marketingPerOrder": 4.5,
-      "returnsRate": 5.0,
+      "returnsRate": 5,
       "useThirdPartyGateway": false
     },
     "platformRates": {
@@ -894,30 +894,30 @@
       "tiers": {
         "standard-referral": {
           "name": "Standard Referral Fee (6.0%)",
-          "monthlyFee": 0.0,
-          "percentageRate": 6.0,
+          "monthlyFee": 0,
+          "percentageRate": 6,
           "fixedFee": 0.3,
           "additionalNotes": "Standard 2026 marketplace referral commission across most apparel, beauty, and general merchandise categories."
         },
         "high-commission": {
           "name": "Electronics & Specialized Category (8.0%)",
-          "monthlyFee": 0.0,
-          "percentageRate": 8.0,
+          "monthlyFee": 0,
+          "percentageRate": 8,
           "fixedFee": 0.3,
           "additionalNotes": "Assessed on selected specialty categories including consumer electronics and digital media goods."
         },
         "promotional-intro": {
           "name": "Promotional Incentive Tier (2.0%)",
-          "monthlyFee": 0.0,
-          "percentageRate": 2.0,
+          "monthlyFee": 0,
+          "percentageRate": 2,
           "fixedFee": 0.3,
           "additionalNotes": "Subsidized promotional tier for newly verified shop onboarding campaigns."
         }
       },
       "extraParameters": {
-        "standardCommissionPct": 6.0,
-        "refundAdminFeePct": 20.0,
-        "averageAffiliateCutPct": 15.0
+        "standardCommissionPct": 6,
+        "refundAdminFeePct": 20,
+        "averageAffiliateCutPct": 15
       }
     },
     "guideContent": {
@@ -1056,7 +1056,7 @@
     "officialSourceName": "Etsy & Shopify Merchant Fee Agreements (2026 Rate Schedules)",
     "officialSourceUrl": "https://www.etsy.com/legal/fees",
     "defaultInputs": {
-      "productPrice": 45.0,
+      "productPrice": 45,
       "monthlyUnits": 80,
       "refundRate": 2.5,
       "internationalSales": false
@@ -1067,15 +1067,15 @@
         "platformAName": "Etsy Marketplace",
         "platformAFeePct": 9.5,
         "platformAFixed": 0.45,
-        "platformAGatewayPct": 0.0,
-        "platformAGatewayFixed": 0.0,
+        "platformAGatewayPct": 0,
+        "platformAGatewayFixed": 0,
         "platformBName": "Shopify Basic Store",
         "platformBFeePct": 2.9,
         "platformBFixed": 0.3,
-        "platformBGatewayPct": 0.0,
-        "platformBGatewayFixed": 0.0,
-        "shopifyMonthlyBase": 39.0,
-        "internationalFxSurcharge": 1.0
+        "platformBGatewayPct": 0,
+        "platformBGatewayFixed": 0,
+        "shopifyMonthlyBase": 39,
+        "internationalFxSurcharge": 1
       }
     },
     "guideContent": {
@@ -1209,14 +1209,14 @@
     "officialSourceName": "Printify Merchant Pricing Schedule & Product Catalog (2026)",
     "officialSourceUrl": "https://printify.com/pricing/",
     "defaultInputs": {
-      "sellingPrice": 26.0,
+      "sellingPrice": 26,
       "cogs": 9.15,
       "shippingCharged": 4.75,
       "shippingActualCost": 4.75,
       "monthlyUnits": 120,
       "planTier": "standard",
-      "appFeesMonthly": 0.0,
-      "marketingPerOrder": 5.0,
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 5,
       "returnsRate": 2.5,
       "useThirdPartyGateway": false
     },
@@ -1225,21 +1225,21 @@
       "tiers": {
         "standard": {
           "name": "Printify Standard (Free Plan)",
-          "monthlyFee": 0.0,
+          "monthlyFee": 0,
           "percentageRate": 2.9,
           "fixedFee": 0.3,
           "additionalNotes": "Free plan with standard base product catalog pricing (e.g., Bella+Canvas 3001 t-shirt at $9.15 base)."
         },
         "premium": {
           "name": "Printify Premium ($29/mo - Up to 20% Discount)",
-          "monthlyFee": 29.0,
+          "monthlyFee": 29,
           "percentageRate": 2.9,
           "fixedFee": 0.3,
           "additionalNotes": "Unlocks up to 20% discount on all blank merchandise (e.g., Bella+Canvas 3001 drops to $7.32 base)."
         }
       },
       "extraParameters": {
-        "premiumBlankDiscountPct": 20.0,
+        "premiumBlankDiscountPct": 20,
         "standardTShirtBase": 9.15,
         "premiumTShirtBase": 7.32,
         "standardShippingFee": 4.75
@@ -1367,6 +1367,658 @@
       "shopify-profit-margin-calculator",
       "etsy-fee-calculator",
       "shopify-shipping-calculator"
+    ]
+  },
+  {
+    "slug": "amazon-fba-vs-fbm-profit-calculator",
+    "title": "Amazon FBA vs. FBM Fee & Net Margin Calculator (2026 Fulfillment & Referral Rates)",
+    "metaTitle": "Amazon FBA vs FBM Fee Calculator 2026 | Pick & Pack vs Merchant Shipping",
+    "metaDescription": "Compare Amazon FBA pick-and-pack fulfillment and storage fees against FBM merchant shipping costs. Audit 8%–15% referral rates, Buy Box lift, and net seller margins.",
+    "category": "ecommerce",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Amazon Seller Central US FBA & Referral Fee Schedule (2026)",
+    "officialSourceUrl": "https://sell.amazon.com/pricing",
+    "defaultInputs": {
+      "productPrice": 32,
+      "monthlyUnits": 300,
+      "refundRate": 3.5,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Amazon FBA (Fulfillment by Amazon)",
+        "platformAFeePct": 15,
+        "platformAFixed": 4.75,
+        "platformAGatewayPct": 0,
+        "platformAGatewayFixed": 0,
+        "platformBName": "Amazon FBM (Merchant Fulfilled)",
+        "platformBFeePct": 15,
+        "platformBFixed": 6.95,
+        "platformBGatewayPct": 0,
+        "platformBGatewayFixed": 0,
+        "internationalFxSurcharge": 1.5
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Selling physical products on Amazon in 2026 requires navigating the critical fulfillment divide between Fulfillment by Amazon (FBA) and Fulfillment by Merchant (FBM). Under both models, Amazon assesses a standard category referral fee averaging 15% of gross sale price (or 8% for certain consumer electronics). However, logistics handling diverges completely: under FBA, sellers ship bulk inventory to Amazon fulfillment centers, paying predictable weight-tiered pick-and-pack fees ($3.50 to $6.00 for standard parcels) alongside monthly storage fees ($0.87 to $2.40 per cubic foot). In return, FBA merchandise automatically qualifies for Amazon Prime 1-2 day delivery, which historical seller data shows yields a 20% to 35% Buy Box winning advantage and higher sales velocity. In contrast, under FBM the seller stores inventory and purchases individual carrier shipping labels (USPS Ground Advantage or UPS Ground), avoiding FBA inbound placement fees and aged inventory surcharges. This calculator audits your exact unit weights, referral fees, and shipping costs to establish your net margin verdict between FBA and FBM.",
+      "formulaBreakdown": {
+        "formulaString": "FBA Total Deductions = (Price * Referral Fee%) + FBA Pick-and-Pack + Monthly Storage Allocation; FBM Total Deductions = (Price * Referral Fee%) + Carrier Postage Label + Packaging Box + Labor Handling; Net Margin Delta = FBA Net Margin - FBM Net Margin",
+        "variables": [
+          {
+            "symbol": "Gross Retail Price (P_retail)",
+            "meaning": "Customer checkout price on Amazon.com including standard shipping charges if applicable."
+          },
+          {
+            "symbol": "Amazon Referral Commission (F_ref)",
+            "meaning": "Mandatory category commission: standardly 15% for home, apparel, and toys, or 8% for personal computing."
+          },
+          {
+            "symbol": "FBA Fulfillment Fee (F_fba)",
+            "meaning": "Amazon pick, pack, and weight-based delivery fee per unit shipped to Prime buyers ($4.75 benchmark for 1–2 lb parcels)."
+          },
+          {
+            "symbol": "FBM Merchant Outbound Cost (C_fbm)",
+            "meaning": "Total merchant-fulfilled shipping cost: commercial postage rate + custom box packaging + warehouse labor handling."
+          },
+          {
+            "symbol": "Net Unit Payout (P_net)",
+            "meaning": "Actual cash disbursed by Amazon into the seller's checking account during bi-weekly payout cycles."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Kitchen Gadget Seller: $32.00 Retail Price (300 Monthly Units, 1.2 lbs Parcel)",
+        "narrative": "An Amazon private label brand retails a stainless steel kitchen tool for $32.00 weighing 1.2 lbs packaged. The product has a 15% Amazon referral fee. The seller compares FBA ($4.75 FBA fulfillment fee + $0.35 allocated monthly inventory storage) against FBM merchant fulfillment (paying $6.95 for USPS Ground Advantage postage label, custom mailer box, and warehouse pick/pack labor).",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Sales: 300 units * $32.00 = $9,600.00 monthly volume.",
+          "Step 2: Calculate Amazon 15% Referral Fee: $9,600.00 * 15% = $1,440.00 referral fee across both models.",
+          "Step 3: Calculate Total FBA Fulfillment Fees: (300 units * $4.75 pick-and-pack) + (300 units * $0.35 storage) = $1,425.00 + $105.00 = $1,530.00 total FBA logistics deduction.",
+          "Step 4: Compute Total FBA Seller Deductions: $1,440.00 (Referral) + $1,530.00 (FBA fees) = $2,970.00 total deductions (FBA Net Payout: $6,630.00, or $22.10/unit).",
+          "Step 5: Calculate FBM Merchant Fulfillment Costs: 300 units * $6.95 merchant shipping & labor = $2,085.00 outbound fulfillment expense.",
+          "Step 6: Compute Total FBM Seller Deductions: $1,440.00 (Referral) + $2,085.00 (FBM shipping) = $3,525.00 total deductions (FBM Net Payout: $6,075.00, or $20.25/unit).",
+          "Step 7: Compute FBA Financial Advantage: FBA Net ($6,630) - FBM Net ($6,075) = $555.00 monthly net savings on FBA ($6,660.00 annualized extra profit) plus Prime badge conversion boost."
+        ],
+        "finalTakeaway": "At $32.00 retail price and 1.2 lbs package weight, Amazon FBA delivers $555.00 more in monthly net profit than merchant fulfillment (FBM), saving $1.85 per unit while unlocking Prime badge delivery eligibility."
+      },
+      "benchmarkTable": {
+        "title": "2026 Amazon FBA vs. FBM Structural & Logistics Comparison",
+        "headers": [
+          "Operational Metric / Dimension",
+          "Amazon FBA (Prime Model)",
+          "Amazon FBM (Merchant Model)",
+          "Net Seller Strategic Impact"
+        ],
+        "rows": [
+          [
+            "Prime Badge & Buy Box Share",
+            "Automatic Prime badge; 80%+ Buy Box win rate",
+            "Non-Prime unless qualified for SFP",
+            "FBA captures significantly higher sales velocity"
+          ],
+          [
+            "Standard Parcel Fulfillment Cost",
+            "$3.85 to $5.40 (Subsidized Amazon rates)",
+            "$6.50 to $9.20 (Commercial base courier)",
+            "FBA is 20% to 40% cheaper on parcels under 3 lbs"
+          ],
+          [
+            "Oversized & Heavy SKUs (>20 lbs)",
+            "High dimensional weight & storage surcharges",
+            "Negotiated regional freight or LTL shipping",
+            "FBM is often cheaper on bulky, heavy merchandise"
+          ],
+          [
+            "Customer Service & Returns",
+            "Handled 100% by Amazon customer support",
+            "Merchant must manage customer inquiries & returns",
+            "FBA completely eliminates customer support labor"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Optimize Product Packaging to Stay Below Large Standard FBA Tiers",
+          "actionableAdvice": "Amazon FBA fees jump dramatically once packaging exceeds standard dimensional limits (18 x 14 x 8 inches or 20 lbs). Trimming half an inch from your custom retail box to stay within the 'Small Standard' (under 16 oz, 15 x 12 x 0.75 in) drops your fulfillment fee from $4.75 down to $3.22, saving $1.53 on every single unit sold."
+        },
+        {
+          "title": "Deploy FBM as Backup Inventory to Prevent Stockouts",
+          "actionableAdvice": "Stocking out on Amazon destroys organic keyword rankings. Maintain a dual FBA/FBM listing structure: when your FBA warehouse inventory dips to zero during holiday surges, your FBM merchant inventory automatically activates, preserving your Buy Box standing and organic sales momentum."
+        },
+        {
+          "title": "Audit Aged Inventory Quarterly to Avoid Surcharges",
+          "actionableAdvice": "Amazon assesses aggressive Aged Inventory Surcharges on units stored in fulfillment centers for more than 180 to 270 days. Utilize automated liquidation or flash-sale price reductions before Day 180 to purge slow-moving SKUs and protect working capital."
+        },
+        {
+          "title": "Leverage FBM for Hazmat, Fragile, or Customizable SKUs",
+          "actionableAdvice": "Products requiring custom engraving, personalized embroidery, or containing batteries/liquids with hazmat restrictions face complex FBA approval hurdles. FBM allows you to ship customized orders with bespoke unboxing experiences that Amazon FBA cannot support."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the difference between Amazon FBA and FBM in 2026?",
+          "answer": "Under Fulfillment by Amazon (FBA), sellers ship inventory in bulk to Amazon warehouses; Amazon stores the goods, picks, packs, and ships orders to customers with Prime 1-2 day delivery, and handles all customer support and returns. Under Fulfillment by Merchant (FBM), the seller stores inventory in their own facility or third-party logistics (3PL) warehouse, handles order packaging, and purchases their own commercial shipping labels directly."
+        },
+        {
+          "question": "What are Amazon's standard referral fees in 2026?",
+          "answer": "Amazon referral fees are category-specific commissions deducted from the total sales price (including product price and any shipping or gift wrap charges). For most standard consumer categories—including Home & Kitchen, Toys, Beauty, and Clothing—the referral fee is 15%. Certain categories have lower rates, such as Consumer Electronics (8%) and Grocery (8% on items under $15, 15% on items above $15)."
+        },
+        {
+          "question": "Does Amazon FBA always win the Buy Box over FBM?",
+          "answer": "While not guaranteed, FBA sellers win the Buy Box significantly more often than FBM sellers when prices are comparable. Amazon's Buy Box algorithm heavily weights Prime delivery speed, in-stock reliability, and low cancellation rates. An FBM seller typically must discount their price by 5% to 15% below the FBA price to overcome the Prime badge advantage and win the Buy Box."
+        },
+        {
+          "question": "How are FBA monthly storage fees calculated?",
+          "answer": "FBA monthly storage fees are calculated based on the daily average volume of inventory stored in Amazon fulfillment centers, measured in cubic feet. Standard-size products incur $0.87 per cubic foot per month from January through September, but this rate surges to $2.40 per cubic foot during peak holiday months (October through December). Storing slow-moving inventory during Q4 can severely erode margins."
+        },
+        {
+          "question": "Can a seller use both FBA and FBM simultaneously for the same product?",
+          "answer": "Yes. A seller can create two separate SKU listings for the exact same ASIN: one designated as FBA and one designated as FBM. The FBA listing takes precedence and captures Prime shoppers. If FBA inventory sells out before replenishment arrives, the FBM listing seamlessly takes over the Buy Box, preventing listing downtime."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "etsy-vs-shopify-fee-calculator",
+      "product-landed-cost-calculator"
+    ]
+  },
+  {
+    "slug": "ebay-fee-calculator",
+    "title": "eBay Final Value Fee, Promoted Listings & Net Profit Calculator (2026 Schedule)",
+    "metaTitle": "eBay Fee Calculator 2026 | Final Value Fee, Store Tiers & Ad Rates",
+    "metaDescription": "Calculate exact eBay seller fees: 13.25% standard Final Value Fee, $0.30–$0.40 per-order fee, Basic/Premium Store subscription discounts, and Promoted Listings ad spend.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "eBay Seller Center US Selling Fees Documentation (2026)",
+    "officialSourceUrl": "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees",
+    "defaultInputs": {
+      "sellingPrice": 58,
+      "cogs": 16,
+      "shippingCharged": 6,
+      "shippingActualCost": 7.5,
+      "monthlyUnits": 80,
+      "planTier": "basic-store",
+      "appFeesMonthly": 27.95,
+      "marketingPerOrder": 3.5,
+      "returnsRate": 3,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "no-store": {
+          "name": "Standard Individual Seller (13.25% FVF + $0.40 Per Order)",
+          "monthlyFee": 0,
+          "percentageRate": 13.25,
+          "fixedFee": 0.4,
+          "additionalNotes": "Standard Final Value Fee assessed on total amount of the sale (item price + shipping + sales tax), with a $0.40 fixed per-order charge."
+        },
+        "basic-store": {
+          "name": "eBay Basic Store Subscriber (12.35% FVF + $0.30 Per Order)",
+          "monthlyFee": 27.95,
+          "percentageRate": 12.35,
+          "fixedFee": 0.3,
+          "additionalNotes": "Reduced Final Value Fee rate for Basic Store subscribers ($27.95/mo), including 1,000 free monthly insertion listings."
+        },
+        "promoted-standard": {
+          "name": "Basic Store + Promoted Listings Standard (+3.5% Ad Rate)",
+          "monthlyFee": 27.95,
+          "percentageRate": 15.85,
+          "fixedFee": 0.3,
+          "additionalNotes": "Adds an optional 3.5% Promoted Listings ad fee assessed only when a buyer clicks your sponsored ad and purchases within 30 days."
+        }
+      },
+      "extraParameters": {
+        "standardFvfPct": 13.25,
+        "basicStoreFvfPct": 12.35,
+        "perOrderFixedStandard": 0.4,
+        "perOrderFixedStore": 0.3,
+        "promotedListingBenchmarkPct": 3.5,
+        "intlFeePct": 1.65
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Selling on eBay in 2026 operates on an integrated managed payments framework dominated by the Final Value Fee (FVF). Unlike legacy models where eBay and PayPal billed separate fees, eBay now assesses a unified Final Value Fee calculated as a percentage of the total transaction amount paid by the buyer—including the item price, shipping fees, and applicable state sales tax—plus a fixed per-order fee ($0.40 for non-store sellers or $0.30 for store subscribers). For most standard categories (such as Home, Collectibles, Sporting Goods, and Toys), the baseline Final Value Fee is 13.25% on the portion of the sale up to $7,500. Subscribing to an eBay Store (e.g., Basic Store at $27.95/month) lowers the category FVF to 12.35% while granting 1,000 free monthly listing insertions. Additionally, sellers competing in saturated categories increasingly utilize Promoted Listings Standard, which charges an extra merchant-set ad rate percentage (typically 2% to 6%) on attributed sales. Accurately modeling these layered fees is critical to protecting unit contribution margins on eBay.",
+      "formulaBreakdown": {
+        "formulaString": "Total Order Value = Selling Price + Shipping Charged + Sales Tax; Final Value Fee = (Total Order Value * Category FVF%) + Fixed Per-Order Fee; Total eBay Fees = Final Value Fee + Promoted Listings Ad Fee + Store Subscription Allocation; Net Profit = Total Revenue - COGS - Total eBay Fees - Shipping Deficit - Refunds",
+        "variables": [
+          {
+            "symbol": "Total Gross Transaction (V_order)",
+            "meaning": "Gross checkout dollar amount paid by the buyer including item price, buyer shipping, and state sales tax."
+          },
+          {
+            "symbol": "Final Value Fee Rate (R_fvf)",
+            "meaning": "Category-specific percentage fee: 13.25% for standard sellers, or 12.35% for Basic/Premium Store subscribers."
+          },
+          {
+            "symbol": "Fixed Per-Order Charge (F_order)",
+            "meaning": "Fixed transaction fee deducted from each order: $0.40 for standard individual sellers, or $0.30 for Store subscribers."
+          },
+          {
+            "symbol": "Promoted Listings Ad Rate (R_ad)",
+            "meaning": "Performance-based marketing fee chosen by the seller (typically 2% to 6%) paid only upon attributed sales."
+          },
+          {
+            "symbol": "Net Merchant Take-Home (P_net)",
+            "meaning": "Spendable bottom-line cash disbursed to the seller's checking account after all eBay commissions and fulfillment costs."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Vintage & Sporting Goods Merchant: $58.00 Item ($6.00 Shipping Charged, Basic Store)",
+        "narrative": "An eBay seller with a Basic Store ($27.95/mo) retails sports equipment for $58.00 and charges the buyer $6.00 for shipping ($64.00 total order value, assuming $4.50 state sales tax collected by eBay = $68.50 gross transaction base). The product COGS is $16.00. The seller pays $7.50 for the actual shipping label ($1.50 shipping deficit) and allocates a 3.5% Promoted Listings ad rate.",
+        "stepByStepMath": [
+          "Step 1: Calculate Total Gross Transaction Base (inc. tax): $58.00 item + $6.00 shipping + $4.50 sales tax = $68.50 transaction base.",
+          "Step 2: Calculate eBay Final Value Fee (12.35% Basic Store rate): ($68.50 * 12.35%) + $0.30 fixed fee = $8.46 + $0.30 = $8.76 FVF.",
+          "Step 3: Calculate Promoted Listings Ad Fee (3.5% on item price + shipping): $64.00 * 3.5% = $2.24 advertising deduction.",
+          "Step 4: Compute Total eBay Monthly Deductions (80 units): 80 * ($8.76 FVF + $2.24 ad fee) + $27.95 Store subscription = $880.00 + $27.95 = $907.95 total fees.",
+          "Step 5: Account for Product COGS and Shipping Deficits: 80 units * $16.00 COGS = $1,280.00. Shipping deficit: 80 * ($7.50 actual - $6.00 charged) = $120.00. Refund reserve (3%): $153.60.",
+          "Step 6: Compute Final Monthly Net Profit: $5,120.00 net sales - $907.95 fees - $1,280.00 COGS - $120.00 shipping loss - $153.60 refunds = $2,658.45 net cash ($33.23 per unit, net margin 51.92%)."
+        ],
+        "finalTakeaway": "On an order retailing for $58.00 with $6.00 shipping, eBay fees total $11.00 per unit (including Promoted Listings). The merchant retains $33.23 in clean net profit per item, proving that Basic Store fee discounts comfortably recoup the $27.95 monthly subscription across 80 sales."
+      },
+      "benchmarkTable": {
+        "title": "2026 eBay Final Value Fee Benchmarks by Category & Store Subscription",
+        "headers": [
+          "Merchandise Category",
+          "Standard Seller FVF (No Store)",
+          "Basic/Premium Store FVF",
+          "Fixed Fee Per Order",
+          "Break-Even Store Volume"
+        ],
+        "rows": [
+          [
+            "Home, Collectibles, Toys & Sporting Goods",
+            "13.25% up to $7,500",
+            "12.35% up to $2,500",
+            "$0.30 to $0.40",
+            "$3,100 monthly sales (Store saves money)"
+          ],
+          [
+            "Computers, Tablets & Camera Hardware",
+            "9.00% up to $7,500",
+            "7.00% up to $2,500",
+            "$0.30 to $0.40",
+            "$1,400 monthly sales (Store saves money)"
+          ],
+          [
+            "Musical Instruments & Gear",
+            "6.35% up to $7,500",
+            "6.35% flat",
+            "$0.30 to $0.40",
+            "Store primarily valuable for free listings"
+          ],
+          [
+            "Sneakers & Athletic Footwear (Over $150)",
+            "8.00% (Over $150)",
+            "7.00% (Store rate)",
+            "$0.30 to $0.40",
+            "Authentication included; reduced take-rate"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Subscribe to eBay Basic Store Once Monthly Sales Exceed $3,000",
+          "actionableAdvice": "In standard categories, the Basic Store subscription ($27.95/month) lowers your Final Value Fee from 13.25% down to 12.35% (a 0.90% savings) and cuts the per-order fee from $0.40 to $0.30. At $3,100 in gross monthly sales, the fee savings equal exactly $27.90, making the store completely free while providing 1,000 free insertion listings."
+        },
+        {
+          "title": "Set Dynamic Promoted Listings Ad Rates 1% Below Category Suggested",
+          "actionableAdvice": "eBay's automated algorithm recommends aggressive Promoted Listings ad rates (often 7% to 12%). Bidding 1% to 2% below the suggested rate (or setting a flat 3.0% to 4.0% ad cap) captures 85% of sponsored search visibility without sacrificing double-digit profit margins."
+        },
+        {
+          "title": "Factor Sales Tax into Fee Calculations to Avoid Surprises",
+          "actionableAdvice": "Remember that eBay assesses the Final Value Fee on the total transaction amount including buyer sales tax remitted under marketplace facilitator laws. If a buyer pays $100 for an item with $8.00 state sales tax, eBay assesses its 13.25% fee on $108.00 ($14.31 fee), which increases your effective fee rate on product price."
+        },
+        {
+          "title": "Use eBay Commercial Postage Labels to Save Up to 40% on Shipping",
+          "actionableAdvice": "Always purchase and print shipping labels directly through eBay Labels rather than paying retail counter rates at the post office. eBay passes commercial base discounts of up to 40% on USPS Ground Advantage and Priority Mail, and up to 50% on UPS Ground, directly to sellers."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the standard eBay Final Value Fee in 2026?",
+          "answer": "In 2026, the standard eBay Final Value Fee for most consumer categories is 13.25% of the total amount of the sale up to $7,500 per item (and 2.35% on the portion over $7,500), plus a fixed fee of $0.40 per order ($0.30 for sellers with an eBay Store subscription). The total sale amount includes the item price, shipping fees charged to the buyer, and applicable state sales tax."
+        },
+        {
+          "question": "Why does eBay charge fees on sales tax and shipping?",
+          "answer": "eBay calculates the Final Value Fee on the gross checkout total (including buyer-paid shipping and state sales tax) to cover the third-party credit card processing costs incurred across the entire charge, and to prevent sellers from evading fees by listing items for $0.01 with $50.00 shipping fees. This policy has been in place since eBay transitioned to managed payments."
+        },
+        {
+          "question": "How does Promoted Listings Standard work on eBay?",
+          "answer": "Promoted Listings Standard is a performance-based advertising tool where sellers choose an ad rate percentage (from 2% to 100%) to boost their item's placement in search results. You only pay the advertising fee if a buyer clicks on your sponsored listing and purchases the item within 30 days. If the buyer buys through organic search without clicking an ad, no ad fee is assessed."
+        },
+        {
+          "question": "How much does an eBay Store subscription cost in 2026?",
+          "answer": "eBay offers several Store tiers: Starter Store ($4.95/mo billed annually) includes 250 free listings; Basic Store ($21.95/mo annual or $27.95/mo monthly) includes 1,000 free listings and reduced Final Value Fees; Premium Store ($59.95/mo annual) includes 10,000 free listings; and Anchor Store ($299.95/mo annual) includes 25,000 free listings and dedicated customer support."
+        },
+        {
+          "question": "How often does eBay disburse payouts to sellers?",
+          "answer": "eBay Managed Payments sends funds directly to the seller's connected checking account. Sellers can select daily, weekly, bi-weekly, or monthly payout schedules. While daily payouts dispatch funds within 24 to 48 hours of order clearance, traditional commercial banking settlement holidays and weekend clearing windows may add 1 to 2 business days before funds reflect in your account balance."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "amazon-fba-vs-fbm-profit-calculator",
+      "etsy-fee-calculator",
+      "shopify-profit-margin-calculator"
+    ]
+  },
+  {
+    "slug": "shopify-vs-woocommerce-cost-calculator",
+    "title": "Shopify vs. WooCommerce Total Cost of Ownership & Fee Calculator (2026 Comparison)",
+    "metaTitle": "Shopify vs WooCommerce Cost Calculator 2026 | SaaS vs Open Source TCO",
+    "metaDescription": "Compare Shopify Basic/Grow SaaS subscription and transaction costs against WooCommerce managed WordPress hosting, premium extension licensing, and Stripe card processing.",
+    "category": "ecommerce",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Shopify Pricing & WooCommerce Merchant Cost Documentation (2026)",
+    "officialSourceUrl": "https://woocommerce.com/pricing/",
+    "defaultInputs": {
+      "productPrice": 68,
+      "monthlyUnits": 220,
+      "refundRate": 2,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Shopify (Basic $39/mo + Payments)",
+        "platformAFeePct": 2.9,
+        "platformAFixed": 0.3,
+        "platformAGatewayPct": 0,
+        "platformAGatewayFixed": 0,
+        "platformBName": "WooCommerce (Managed Cloud Hosting + Stripe)",
+        "platformBFeePct": 2.9,
+        "platformBFixed": 0.3,
+        "internationalFxSurcharge": 1.5
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Choosing between Shopify and WooCommerce in 2026 represents the fundamental strategic decision between an all-inclusive hosted SaaS e-commerce platform and an open-source self-hosted content management system. While early-stage merchants often believe WooCommerce is 'free' because the core WordPress plugin carries no licensing fee, running a production WooCommerce store at scale incurs substantial real-world software costs: high-performance managed cloud hosting ($30 to $100/mo), transactional email delivery, security firewall licenses, premium theme updates, and annual plugin extensions (such as Subscriptions at $199/yr, Product Add-Ons at $79/yr, and advanced shipping rules). In contrast, Shopify charges a predictable monthly SaaS fee ($39/mo for Basic, $105/mo for Grow, $399/mo for Advanced) that bundles enterprise cloud hosting, 99.99% uptime, automated PCI-DSS compliance, and zero server maintenance, but assesses a 2.0% third-party gateway penalty if merchants bypass Shopify Payments. This calculator models true Total Cost of Ownership (TCO) across transaction processing, monthly subscriptions, and annual extension overhead.",
+      "formulaBreakdown": {
+        "formulaString": "Shopify Total TCO = Monthly Shopify Plan + App Subscriptions + (Gross Sales * 2.9% + $0.30 * Orders); WooCommerce Total TCO = Managed Hosting + Amortized Plugin Stack + Developer Maintenance + (Gross Sales * 2.9% + $0.30 * Orders); Annual Cost Delta = Shopify Annual TCO - WooCommerce Annual TCO",
+        "variables": [
+          {
+            "symbol": "Gross Monthly Volume (V_gross)",
+            "meaning": "Total dollar checkout receipts generated across the online storefront (Average Order Value * Monthly Order Count)."
+          },
+          {
+            "symbol": "Shopify Core Platform Cost (C_shopify)",
+            "meaning": "Fixed monthly SaaS subscription: $39/mo Basic, $105/mo Grow, or $399/mo Advanced, plus Shopify App store subscriptions."
+          },
+          {
+            "symbol": "WooCommerce Hosting & Plugins (C_woo)",
+            "meaning": "All-in monthly self-hosted stack cost: managed WordPress hosting (WP Engine/Kinsta) + amortized annual plugin renewals."
+          },
+          {
+            "symbol": "Payment Gateway Processing (F_proc)",
+            "meaning": "Credit card processing costs: standardly 2.9% + $0.30 via Shopify Payments or Stripe for domestic credit cards."
+          },
+          {
+            "symbol": "Annual Platform Savings (S_ann)",
+            "meaning": "Net annual cash retained by choosing the more cost-effective platform architecture for your operational scale."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Direct-to-Consumer Apparel Brand: $68.00 AOV (220 Monthly Orders, $14,960 Gross)",
+        "narrative": "A growing boutique apparel store processes 220 orders per month at an average order value of $68.00 ($14,960.00 gross monthly volume). The merchant compares Shopify Basic ($39.00/mo SaaS + $50.00/mo in Shopify apps) using Shopify Payments against WooCommerce (managed cloud hosting at $45.00/mo, $600/year in annual plugin renewals = $50.00/mo, and $50.00/mo for maintenance retainers) using Stripe.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Volume: 220 orders * $68.00 = $14,960.00 monthly revenue.",
+          "Step 2: Calculate Payment Processing Fees (Identical 2.9% + $0.30 on both): ($14,960 * 2.9%) + (220 * $0.30) = $433.84 + $66.00 = $499.84 gateway fee.",
+          "Step 3: Calculate Total Shopify Monthly Costs: $39.00 (Basic plan) + $50.00 (Apps) + $499.84 (Processing) = $588.84 total monthly cost.",
+          "Step 4: Calculate Total WooCommerce Monthly Costs: $45.00 (Hosting) + $50.00 (Plugins) + $50.00 (Maintenance) + $499.84 (Processing) = $644.84 total monthly cost.",
+          "Step 5: Compute Monthly & Annual Cost Differential: WooCommerce ($644.84) - Shopify ($588.84) = $56.00 monthly savings on Shopify ($672.00/year).",
+          "Step 6: High-Volume Scaling Reality Check: If monthly volume expands to $50,000, upgrading to Shopify Advanced ($399/mo + 2.5% card rate) saves $200/mo in card processing, comfortably offsetting the higher monthly SaaS cost."
+        ],
+        "finalTakeaway": "At $15,000 in monthly sales, Shopify Basic costs $588.84 per month compared to $644.84 for a properly secured WooCommerce installation. Shopify saves $672.00 annually while eliminating server patching and maintenance downtime."
+      },
+      "benchmarkTable": {
+        "title": "Shopify vs. WooCommerce: 2026 Technical & Financial Total Cost of Ownership",
+        "headers": [
+          "Platform Feature / Cost Category",
+          "Shopify (Hosted SaaS)",
+          "WooCommerce (Self-Hosted)",
+          "Strategic Merchant Impact"
+        ],
+        "rows": [
+          [
+            "Base Platform / Hosting Fee",
+            "$39.00/mo (Basic) to $399.00/mo",
+            "$15.00 to $80.00/mo (Cloud hosting)",
+            "Shopify bundles unlimited bandwidth & autoscaling"
+          ],
+          [
+            "Payment Processing Rates",
+            "2.9% + $0.30 down to 2.5% + $0.30",
+            "2.9% + $0.30 (Stripe standard)",
+            "Shopify Advanced offers lower 2.5% card rates"
+          ],
+          [
+            "Security, SSL & PCI-DSS",
+            "Level 1 PCI-DSS compliant included",
+            "Merchant responsibility to secure server",
+            "WooCommerce requires active security oversight"
+          ],
+          [
+            "Plugin & Extension Ecosystem",
+            "Monthly recurring app fees ($5–$50/mo)",
+            "Annual plugin licenses ($49–$199/yr)",
+            "Shopify apps have higher recurring subscription drag"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Audit Monthly Shopify App Subscriptions to Prevent SaaS Bloat",
+          "actionableAdvice": "The primary hidden cost of Shopify is app store subscriptions. Merchants frequently accumulate 10 to 15 apps costing $150 to $300 monthly for basic reviews, currency converters, and pop-ups. Audit apps quarterly and replace single-purpose plugins with modern lightweight custom Liquid theme code."
+        },
+        {
+          "title": "Use WooCommerce When Requiring Custom Checkout Business Logic",
+          "actionableAdvice": "If your business requires complex custom checkout rules, non-standard wholesale B2B pricing matrices, or sells products restricted by Shopify's Acceptable Use Policy (such as CBD or firearms), WooCommerce provides 100% open-source code control with zero platform de-platforming risk."
+        },
+        {
+          "title": "Upgrade to Shopify Grow or Advanced at Scale for Interchange Savings",
+          "actionableAdvice": "The $105/mo Shopify plan lowers card processing from 2.9% to 2.7%, and the $399/mo plan drops it to 2.5%. Once your store surpasses $35,000 monthly, the 0.2% rate cut on Grow saves $70/mo, and at $80,000 monthly, Advanced saves $320/mo in credit card fees, paying for the plan upgrade entirely."
+        },
+        {
+          "title": "Implement Redis Object Caching on WooCommerce to Prevent Slowness",
+          "actionableAdvice": "A major operational cost of WooCommerce is slow database performance during traffic surges. Deploy server-side Redis object caching and Cloudflare Enterprise CDN caching on your WordPress host to handle flash-sale checkout spikes without upgrading to expensive enterprise server tiers."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is WooCommerce really free compared to Shopify?",
+          "answer": "No. While the core WooCommerce open-source WordPress plugin is free to download, running a functional commercial store is not free. You must pay for reliable managed WordPress hosting ($20 to $60/month), a custom domain ($15/year), and essential commercial plugins for subscriptions, advanced shipping rules, and payment gateways that typically cost $300 to $1,000 annually in software renewals."
+        },
+        {
+          "question": "What is Shopify's third-party payment gateway penalty fee?",
+          "answer": "If you use an external third-party payment gateway (such as standalone Stripe, Authorize.net, or PayPal) instead of Shopify Payments, Shopify charges an additional fee of 2.0% on the Basic plan, 1.0% on the Shopify plan, and 0.6% on the Advanced plan. To avoid this penalty, merchants should activate Shopify Payments, which has zero additional transaction fees."
+        },
+        {
+          "question": "Which platform handles high-traffic flash sales better?",
+          "answer": "Shopify handles high-traffic flash sales significantly better out of the box because it is built on a globally distributed, autoscaling cloud infrastructure that routinely processes millions of checkouts per minute during Black Friday without server crashes. Handling similar high-concurrency traffic on WooCommerce requires specialized dedicated cloud server clusters and advanced database caching."
+        },
+        {
+          "question": "Can I migrate a store from WooCommerce to Shopify or vice versa?",
+          "answer": "Yes, catalog products, customer database records, and historical order receipts can be migrated between platforms using automated CSV export tools or dedicated migration plugins like Cart2Cart and LitExtension. However, custom frontend design themes, proprietary third-party app configurations, and checkout customization scripts must be manually rebuilt from scratch on the target platform architecture, often requiring dedicated developer hours."
+        },
+        {
+          "question": "Who should choose WooCommerce over Shopify in 2026?",
+          "answer": "WooCommerce is best suited for experienced technical developers, established high-volume merchants with complex custom database requirements, brands selling legally restricted goods that violate Shopify's Acceptable Use Policy, and international enterprises requiring total sovereign data ownership without platform vendor lock-in or recurring monthly SaaS percentage fees. It gives you complete architectural freedom over your checkout code and server stack."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "shopify-aov-calculator",
+      "amazon-fba-vs-fbm-profit-calculator"
+    ]
+  },
+  {
+    "slug": "product-landed-cost-calculator",
+    "title": "Import Landed Cost, Harmonized Tariff Duty & Freight Margin Calculator (2026)",
+    "metaTitle": "Product Landed Cost Calculator 2026 | Customs Tariffs & Sea Freight COGS",
+    "metaDescription": "Calculate true unit landed COGS: FOB factory invoice cost, ocean and air cargo freight allocation, Section 301 and HTS customs tariffs, port drayage, and marine insurance.",
+    "category": "ecommerce",
+    "engineType": "shipping-cost",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "US International Trade Commission (HTS) & CBP Import Guidelines (2026)",
+    "officialSourceUrl": "https://hts.usitc.gov/",
+    "defaultInputs": {
+      "actualWeightLbs": 1.8,
+      "lengthInches": 10,
+      "widthInches": 8,
+      "heightInches": 4,
+      "dimDivisor": 166,
+      "packagingCost": 0.85,
+      "handlingCost": 1.1,
+      "shippingCharged": 0,
+      "productPrice": 48,
+      "targetMargin": 45,
+      "carrierPreset": "usps-ground"
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "fobFactoryCost": 14.5,
+        "oceanFreightPerUnit": 2.2,
+        "customsDutyTariffPct": 7.5,
+        "portDrayagePerUnit": 0.65,
+        "marineInsurancePerUnit": 0.25,
+        "uspsGroundBase": 6.85,
+        "uspsGroundPerLb": 0.95
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Manufacturing and importing physical consumer products in 2026 requires understanding true Landed Cost of Goods Sold (Landed COGS). Early-stage e-commerce founders frequently make the fatal mistake of budgeting unit economics based solely on the supplier's Free On Board (FOB) factory invoice price (e.g., $14.50 per unit quoted by an overseas manufacturing partner). In reality, that product cannot be sold until it clears international transit and arrives at your domestic warehouse. Between ocean or air freight container allocations ($1.50 to $4.00 per unit), Harmonized Tariff Schedule (HTS) customs duties, Section 301 China trade tariffs (often adding 7.5% to 25%), marine cargo insurance, harbor maintenance fees, port drayage trucking, and custom retail packaging, the true landed cost of that $14.50 product routinely exceeds $20.00. Failing to accurately account for these import logistics variables results in severely miscalculated retail prices, unprofitable marketing campaigns, and sudden cash-flow deficits.",
+      "formulaBreakdown": {
+        "formulaString": "Total Landed Unit Cost = FOB Factory Price + Ocean/Air Freight Allocation + Customs Import Duty + Marine Insurance + Port Drayage & Clearance; Customs Duty = FOB Price * HTS Tariff Duty %; True Gross Margin % = (Retail Selling Price - Total Landed Unit Cost) / Retail Selling Price",
+        "variables": [
+          {
+            "symbol": "FOB Factory Price (P_fob)",
+            "meaning": "Contractual unit manufacturing price agreed with the supplier under Free On Board incoterms, covering production and export port delivery."
+          },
+          {
+            "symbol": "Freight Allocation Per Unit (C_freight)",
+            "meaning": "Total shipping container or air freight booking cost divided by the total number of product units packed in the shipment."
+          },
+          {
+            "symbol": "Customs Tariff Duty (T_customs)",
+            "meaning": "Statutory import duty assessed by customs border authorities based on the product's Harmonized Tariff Schedule (HTS) classification code and country of origin."
+          },
+          {
+            "symbol": "Port Drayage & Customs Clearance (C_dray)",
+            "meaning": "Container trucking fees from port terminal to warehouse, customs broker clearance retainers, and Merchandise Processing Fees (MPF)."
+          },
+          {
+            "symbol": "Total Landed Unit COGS (C_landed)",
+            "meaning": "The all-inclusive baseline cost required to get one finished unit into your domestic fulfillment center ready for retail shipment."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Direct-to-Consumer Home Goods Brand: Importing 3,000 Ceramic Pour-Over Sets ($48.00 MSRP)",
+        "narrative": "An e-commerce brand manufactures 3,000 ceramic coffee pour-over sets overseas. The supplier quotes an FOB price of $14.50 per unit ($43,500.00 factory invoice). Ocean freight for a consolidated container costs $6,600.00 ($2.20/unit). The product falls under HTS Code 6912.00 with a 7.5% standard customs duty. Marine cargo insurance is $750.00 ($0.25/unit), port drayage and customs broker fees total $1,950.00 ($0.65/unit), and custom retail packaging costs $0.85 per unit. The product retails for $48.00 with a target 45% gross margin.",
+        "stepByStepMath": [
+          "Step 1: Identify Base FOB Factory Price: $14.50 per unit.",
+          "Step 2: Calculate Customs Import Duty (7.5% on FOB): $14.50 * 7.5% = $1.09 per unit customs duty.",
+          "Step 3: Allocate Ocean Freight: $6,600.00 / 3,000 units = $2.20 per unit freight.",
+          "Step 4: Allocate Drayage, Brokerage & Insurance: Drayage ($0.65) + Marine Insurance ($0.25) + Custom Box Packaging ($0.85) = $1.75 per unit.",
+          "Step 5: Compute Total Landed Unit COGS: $14.50 (FOB) + $1.09 (Duty) + $2.20 (Freight) + $1.75 (Logistics/Box) = $19.54 true landed unit cost (+$5.04 or +34.8% above the FOB quote!).",
+          "Step 6: Compute Realized Gross Profit & Margin at $48.00 Retail: Gross Profit = $48.00 - $19.54 = $28.46 per unit. Realized Gross Margin = ($28.46 / $48.00) * 100 = 59.29%."
+        ],
+        "finalTakeaway": "While the factory quoted $14.50, the true landed unit COGS is $19.54 once freight, duties, and port logistics are allocated. Pricing off the $14.50 number would have hidden a $5.04 per-unit deficit, destroying contribution margins after outbound shipping."
+      },
+      "benchmarkTable": {
+        "title": "2026 Import Landed Cost Breakdown Across Common E-Commerce Categories",
+        "headers": [
+          "Merchandise Category / Material",
+          "Typical FOB Unit Price",
+          "Customs Duty / Tariff Range",
+          "Freight & Drayage Allocation",
+          "True Landed Cost Multiplier"
+        ],
+        "rows": [
+          [
+            "Apparel & Cotton Textiles",
+            "$8.00 to $16.00 FOB",
+            "12.0% to 16.5% HTS Duty",
+            "$1.20 to $2.50 / unit",
+            "1.35x to 1.50x of FOB price"
+          ],
+          [
+            "Ceramics & Glass Kitchenware",
+            "$10.00 to $22.00 FOB",
+            "6.0% to 10.0% HTS Duty",
+            "$2.00 to $4.50 / unit (Bulky)",
+            "1.30x to 1.45x of FOB price"
+          ],
+          [
+            "Consumer Electronics & Plastics",
+            "$15.00 to $45.00 FOB",
+            "0.0% to 5.0% (Some Sec 301)",
+            "$1.50 to $3.50 / unit",
+            "1.15x to 1.25x of FOB price"
+          ],
+          [
+            "Stainless Steel & Hardware Tools",
+            "$12.00 to $28.00 FOB",
+            "4.5% to 8.5% HTS Duty",
+            "$2.50 to $5.00 / unit (Dense)",
+            "1.25x to 1.40x of FOB price"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Audit HTS Tariff Code Classifications with a Licensed Customs Broker",
+          "actionableAdvice": "Products frequently qualify for multiple Harmonized Tariff Schedule (HTS) codes depending on material composition and intended use. Classifying a product under a specific sub-heading can drop duty rates from 12% to 3.5%, saving thousands of dollars per shipping container without altering manufacturing specifications."
+        },
+        {
+          "title": "Maximize 40-Foot High Cube Container CBM Volumetric Utilization",
+          "actionableAdvice": "Ocean freight is billed primarily by container volume (Cubic Meters or CBM) rather than weight. A 40ft High Cube container holds approximately 68 to 70 CBM. Redesigning master carton dimensions to eliminate dead space allows you to fit 15% more units per container, reducing per-unit freight costs by $0.40 to $0.80."
+        },
+        {
+          "title": "Negotiate DDP vs. FOB Incoterms Based on Volume",
+          "actionableAdvice": "Under Delivered Duty Paid (DDP), the supplier handles shipping and customs clearance, providing a predictable all-inclusive price. However, as shipping volume expands past 5,000 units, booking freight through your own freight forwarder under FOB terms is typically 15% to 25% cheaper than supplier-marked-up DDP rates."
+        },
+        {
+          "title": "Secure Marine Cargo Insurance for Every Ocean Shipment",
+          "actionableAdvice": "Ocean freight carriers operate under strict maritime liability caps (often limited to just $500 per container under the Carriage of Goods by Sea Act). Marine cargo insurance costs a fraction of a percent (typically 0.2% to 0.4% of cargo value) and protects your entire inventory investment against maritime damage or General Average claims."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the difference between FOB and Landed Cost?",
+          "answer": "Free On Board (FOB) is the invoice price charged by an overseas supplier to manufacture a product and deliver it to the outbound seaport in their home country. Landed Cost is the total all-inclusive cost required to transport that product to your warehouse: it includes the FOB price, international ocean/air freight shipping, customs import duties, port drayage trucking, marine insurance, and customs broker clearance fees."
+        },
+        {
+          "question": "How are customs import duties calculated in the United States?",
+          "answer": "In the United States, customs duties are calculated by U.S. Customs and Border Protection (CBP) based on the product's Harmonized Tariff Schedule (HTS) code and its commercial FOB value. The duty rate is applied as a percentage to the FOB invoice value (excluding international freight and insurance). If Section 301 trade tariffs apply to products imported from China, an additional 7.5% to 25% tariff is added."
+        },
+        {
+          "question": "What is Port Drayage and why is it factored into Landed Cost?",
+          "answer": "Port drayage is the specialized logistics service of transporting shipping containers via truck over short distances from ocean port terminals or rail yards to local warehouses, distribution centers, or transloading facilities. Drayage typically costs between $400 and $1,500 per container, plus potential port chassis fees and demurrage surcharges if containers sit at the terminal past free time limits."
+        },
+        {
+          "question": "What is a Customs Broker and do I need one for e-commerce imports?",
+          "answer": "A Customs Broker is a licensed professional authorized by CBP to prepare and submit necessary import documentation, classify goods under appropriate HTS codes, calculate duties and taxes, and facilitate customs clearance. For commercial shipments valued over $2,500 (formal entries), using a licensed customs broker is standard practice and prevents expensive shipment impoundments."
+        },
+        {
+          "question": "How does packaging size affect ocean shipping and landed costs?",
+          "answer": "Ocean container shipping costs are dictated by volume (CBM - cubic meters) rather than scale weight. Oversized retail packaging or loose master carton packing consumes excessive container volume, meaning fewer units fit inside a 20ft or 40ft container. Engineering compact, snug-fitting retail packaging allows you to pack significantly more units per container, directly reducing the freight cost allocated to every single unit."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-shipping-calculator",
+      "etsy-shipping-calculator",
+      "wholesale-to-retail-markup-calculator"
     ]
   }
 ]

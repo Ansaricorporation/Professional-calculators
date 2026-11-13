@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { SITE_CONFIG } from '../../config/site';
+import { getCalculatorsByCategory } from '../../data/calculators';
+import type { CalculatorCategory } from '../../data/schema';
+
+export function getStaticPaths() {
+  const categories: CalculatorCategory[] = [
+    'ecommerce',
+    'creator-economy',
+    'digital-marketplaces',
+    'b2b-pricing'
+  ];
+
+  return categories.map(category => ({
+    params: { category },
+    props: {
+      categoryInfo: SITE_CONFIG.categories[category],
+      calculators: getCalculatorsByCategory(category)
+    }
+  }));
+}
+
+const { categoryInfo, calculators } = Astro.props;
+const otherCategories = Object.values(SITE_CONFIG.categories).filter(c => c.id !== categoryInfo.id);
+
+const breadcrumbItems = [
+  { name: 'Categories', url: '/' },
+  { name: categoryInfo.name, url: `/category/${categoryInfo.id}/` }
+];
+---
+
+<BaseLayout
+  title={categoryInfo.name}
+  metaTitle={`${categoryInfo.name} Calculators (2026 Schedule)`}
+  description={categoryInfo.longDescription}
+  canonicalPath={`/category/${categoryInfo.id}/`}
+>
+  <!-- Category Header -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <Breadcrumbs items={breadcrumbItems} />
+      <div class="mt-4 max-w-3xl">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+          {categoryInfo.badge}
+        </span>
+        <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          {categoryInfo.name}
+        </h1>
+        <p class="mt-3 text-base text-slate-600 leading-relaxed">
+          {categoryInfo.longDescription}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculators Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mb-8 flex items-center justify-between">
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">Available Financial Calculators</h2>
+        <p class="text-xs text-slate-500 mt-1">Calibrated for 2026 platform take-rates & payment processors</p>
+      </div>
+      <span class="text-xs font-mono font-semibold bg-slate-100 px-3 py-1.5 rounded-lg text-slate-700">
+        {calculators.length} {calculators.length === 1 ? 'Model Available' : 'Models Available'}
+      </span>
+    </div>
+
+    {calculators.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {calculators.map(calc => (
+          <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between hover:border-emerald-500 hover:shadow-md transition-all">
+            <div>
+              <div class="flex items-center justify-between text-xs mb-3">
+                <span class="font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded font-semibold uppercase border border-emerald-200">
+                  {calc.engineType}
+                </span>
+                <span class="text-slate-400">{calc.lastUpdated}</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">
+                <a href={`/calculator/${calc.slug}/`} class="hover:text-emerald-700 transition-colors">
+                  {calc.title}
+                </a>
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                {calc.metaDescription}
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-medium">7-Block Guide Included</span>
+              <a
+                href={`/calculator/${calc.slug}/`}
+                class="inline-flex items-center text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3.5 py-2 rounded-lg transition-colors"
+              >
+                Open Calculator &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="bg-white rounded-2xl border border-dashed border-slate-300 p-10 text-center max-w-xl mx-auto">
+        <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+        </div>
+        <h3 class="font-bold text-slate-800 text-base">New Models In Peer Audit</h3>
+        <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+          Calculators for this sector are currently completing our 5-step financial verification cycle. You can submit custom rate cards or request specific models below.
+        </p>
+        <div class="mt-4">
+          <a href="/contact/" class="text-xs font-semibold text-emerald-700 hover:underline">
+            Request a Platform Model &rarr;
+          </a>
+        </div>
+      </div>
+    )}
+
+    <!-- Other Category Clusters -->
+    <div class="mt-16 pt-10 border-t border-slate-200">
+      <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4">Other Business Sectors</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {otherCategories.map(cat => (
+          <a
+            href={`/category/${cat.id}/`}
+            class="bg-white p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:shadow-xs transition-all group"
+          >
+            <div class="text-xs font-bold text-slate-900 group-hover:text-emerald-700">{cat.name}</div>
+            <div class="text-[11px] text-slate-500 line-clamp-1 mt-1">{cat.description}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

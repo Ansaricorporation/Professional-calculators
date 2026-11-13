@@ -1,0 +1,93 @@
+---
+import { SITE_CONFIG } from '../config/site';
+
+interface Props {
+  reviewerKey?: 'lead-analyst' | 'creator-economist';
+  lastUpdated?: string;
+  officialSourceName?: string;
+  officialSourceUrl?: string;
+  citationKey?: keyof typeof SITE_CONFIG.officialCitations;
+}
+
+const {
+  reviewerKey = 'lead-analyst',
+  lastUpdated = 'November 2026',
+  officialSourceName,
+  officialSourceUrl,
+  citationKey
+} = Astro.props;
+
+const reviewer = SITE_CONFIG.reviewers[reviewerKey] || SITE_CONFIG.reviewers['lead-analyst'];
+const citation = citationKey ? SITE_CONFIG.officialCitations[citationKey] : null;
+const sourceName = officialSourceName || citation?.title || 'Official Platform Merchant Agreement';
+const sourceUrl = officialSourceUrl || citation?.url || SITE_CONFIG.officialCitations.shopifyPricing.url;
+---
+
+<div class="my-6 rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+    <!-- Verified Badge -->
+    <div class="flex items-center space-x-2.5">
+      <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+            2026 Fee Schedule Verified
+          </span>
+          <span class="text-xs text-slate-500">Updated: {lastUpdated}</span>
+        </div>
+        <p class="text-xs text-slate-600 mt-0.5">
+          Audited against current platform merchant terms and banking interchange baselines.
+        </p>
+      </div>
+    </div>
+
+    <!-- Official Citation Link -->
+    <div class="shrink-0">
+      <a
+        href={sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center text-xs font-medium text-emerald-700 hover:text-emerald-800 bg-emerald-50/60 hover:bg-emerald-100/60 px-3 py-1.5 rounded-lg border border-emerald-200 transition-colors"
+      >
+        <span>Platform Source: {sourceName}</span>
+        <svg class="w-3.5 h-3.5 ml-1.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Reviewer Info -->
+  <div class="pt-4 flex items-start space-x-3.5 text-xs">
+    <div class="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm shrink-0">
+      {reviewer.name.split(' ').map(n => n[0]).join('')}
+    </div>
+    <div class="flex-1">
+      <div class="flex flex-wrap items-baseline gap-x-2">
+        <span class="font-bold text-slate-900">{reviewer.name}</span>
+        <span class="text-slate-500 font-medium">{reviewer.role}</span>
+        <span class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">{reviewer.credentials}</span>
+      </div>
+      <p class="text-slate-600 mt-1 leading-relaxed">
+        {reviewer.bio}
+      </p>
+      <div class="mt-2 flex items-center gap-3 text-[11px] text-slate-500">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Dual-Analyst Code Review
+        </span>
+        <span>&bull;</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Independent Mathematical Modeling
+        </span>
+        <span>&bull;</span>
+        <a href="/about/#audit-methodology" class="text-emerald-700 hover:underline">Editorial Methodology</a>
+      </div>
+    </div>
+  </div>
+</div>

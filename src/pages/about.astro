@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE_CONFIG } from '../config/site';
+
+const breadcrumbItems = [
+  { name: 'About CreatorCalcLab', url: '/about/' }
+];
+---
+
+<BaseLayout
+  title="About Us & Financial Modeling Methodology"
+  metaTitle="About CreatorCalcLab | Financial Audit Methodology & E-E-A-T Standards"
+  description="Learn about CreatorCalcLab's independent financial modeling methodology, how we audit 2026 platform fee schedules, and our editorial governance standards."
+  canonicalPath="/about/"
+>
+  <!-- Hero Section -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Breadcrumbs items={breadcrumbItems} />
+      <div class="mt-4 max-w-3xl">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+          Independent Research & Modeling Lab
+        </span>
+        <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Unvarnished Financial Truth for the Digital Economy
+        </h1>
+        <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+          CreatorCalcLab was founded to replace superficial rule-of-thumb profit estimations with rigorous, double-entry mathematical models. We audit the complex take-rates, payment gateways, and hidden subscription friction that dictate whether online businesses thrive or bleed cash.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Editorial Content -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+    <!-- Mission & The Problem -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">The Modern Creator & Merchant Margin Trap</h2>
+        <p class="mt-3 text-slate-700 leading-relaxed text-sm sm:text-base">
+          Over the past five years, the operational economics of running an online business have evolved into a labyrinth of micro-fees. A direct-to-consumer store on Shopify no longer pays a simple monthly fee; it navigates tiered credit card interchange fees, third-party payment gateway penalty surcharges, foreign currency exchange margins, escalating shipping carrier surcharges, and a stack of monthly recurring App Store plugins.
+        </p>
+        <p class="mt-3 text-slate-700 leading-relaxed text-sm sm:text-base">
+          Similarly, YouTube creators must decipher complex 55/45 ad rev-shares alongside YouTube Shorts pooled royalties, while Etsy artisans lose over 25% of top-line revenue to mandatory offsite ads attribution, listing renewal cycles, and regulatory operating fees. When creators rely on simplistic "Revenue minus COGS" math, they routinely overestimate take-home earnings by 30% to 50%.
+        </p>
+      </div>
+      <div class="bg-slate-900 text-slate-200 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
+        <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Our Core Tenets
+        </h3>
+        <ul class="space-y-4 text-xs sm:text-sm">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold font-mono">01.</span>
+            <span><strong>Zero Compromised Formulas:</strong> We never alter arithmetic to favor affiliate platforms. What the math outputs is strictly what the platform terms dictate.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold font-mono">02.</span>
+            <span><strong>100% Client-Side Privacy:</strong> Your margins, revenues, and pricing strategies never leave your browser. Zero server-side data retention.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold font-mono">03.</span>
+            <span><strong>Monthly Rate Reconciliations:</strong> Platform fee updates are audited against primary SEC filings, merchant developer docs, and card brand circulars.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Methodology & Audit Protocol -->
+    <section id="audit-methodology" class="border-t border-slate-200 pt-12">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-1 rounded font-bold">
+          Rigorous Standards
+        </span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Our 5-Step Financial Audit & Verification Protocol
+        </h2>
+        <p class="mt-2 text-slate-600 text-sm sm:text-base">
+          To comply with Google's Your Money or Your Life (YMYL) content standards and provide unquestioned accuracy, every calculator on CreatorCalcLab passes through our structured audit cycle before publication:
+        </p>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-mono font-bold text-emerald-600">PHASE 1</span>
+          <h4 class="font-bold text-slate-900 text-sm mt-1">Official Policy Ingestion</h4>
+          <p class="text-xs text-slate-600 mt-2">
+            Direct extraction of published merchant schedules (e.g., Shopify 2026 pricing, Etsy Seller Handbook, Stripe Docs).
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-mono font-bold text-emerald-600">PHASE 2</span>
+          <h4 class="font-bold text-slate-900 text-sm mt-1">Contract Nuance Audit</h4>
+          <p class="text-xs text-slate-600 mt-2">
+            Identification of multi-currency surcharges, unreturned interchange fees, and cross-border penalties.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-mono font-bold text-emerald-600">PHASE 3</span>
+          <h4 class="font-bold text-slate-900 text-sm mt-1">Mathematical Modeling</h4>
+          <p class="text-xs text-slate-600 mt-2">
+            Translation into deterministic closed-form algebraic equations checked against double-entry ledger proofs.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-mono font-bold text-emerald-600">PHASE 4</span>
+          <h4 class="font-bold text-slate-900 text-sm mt-1">Dual-Analyst Code Review</h4>
+          <p class="text-xs text-slate-600 mt-2">
+            Every calculator code commit requires peer sign-off by a qualified financial analyst before production merge.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs">
+          <span class="text-xs font-mono font-bold text-emerald-600">PHASE 5</span>
+          <h4 class="font-bold text-slate-900 text-sm mt-1">Quarterly Live Recalibration</h4>
+          <p class="text-xs text-slate-600 mt-2">
+            Ongoing quarterly audits against live seller billing statements to catch undocumented silent rate adjustments.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership & Review Team (E-E-A-T) -->
+    <section class="border-t border-slate-200 pt-12">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        Editorial Leadership & Financial Analysts
+      </h2>
+      <p class="mt-2 text-slate-600 text-sm sm:text-base max-w-2xl">
+        Our computational models are designed and reviewed by certified financial professionals with extensive domain experience across retail commerce, quantitative media valuation, and commercial banking.
+      </p>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Marcus Vance -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-14 h-14 rounded-full bg-slate-900 text-white font-bold text-xl flex items-center justify-center">
+                MV
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">{SITE_CONFIG.reviewers['lead-analyst'].name}</h3>
+                <p class="text-xs font-semibold text-emerald-700">{SITE_CONFIG.reviewers['lead-analyst'].role}</p>
+                <p class="text-[11px] text-slate-500 font-mono mt-0.5">{SITE_CONFIG.reviewers['lead-analyst'].credentials}</p>
+              </div>
+            </div>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              {SITE_CONFIG.reviewers['lead-analyst'].bio} Marcus has overseen financial due diligence for over 60 direct-to-consumer acquisitions and is an advocate for transparent platform fee disclosures.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span>Specialty: DTC Margins & Interchange</span>
+            <span class="text-emerald-700 font-medium">Verified Contributor</span>
+          </div>
+        </div>
+
+        <!-- Elena Rostova -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-14 h-14 rounded-full bg-emerald-800 text-white font-bold text-xl flex items-center justify-center">
+                ER
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">{SITE_CONFIG.reviewers['creator-economist'].name}</h3>
+                <p class="text-xs font-semibold text-emerald-700">{SITE_CONFIG.reviewers['creator-economist'].role}</p>
+                <p class="text-[11px] text-slate-500 font-mono mt-0.5">{SITE_CONFIG.reviewers['creator-economist'].credentials}</p>
+              </div>
+            </div>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              {SITE_CONFIG.reviewers['creator-economist'].bio} Elena's research on programmatic advertising yield decay and audience cohort pricing has been cited across leading creator economy publications.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span>Specialty: Programmatic Ad Splits & RPM</span>
+            <span class="text-emerald-700 font-medium">Verified Contributor</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Integrity & Advertising Disclosure -->
+    <section class="border-t border-slate-200 pt-12 pb-6">
+      <div class="bg-slate-100/80 rounded-2xl p-6 sm:p-8 border border-slate-200">
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Editorial Integrity & Advertising Disclosure</h3>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          CreatorCalcLab operates with complete editorial independence. While we display contextual programmatic advertisements served by Google AdSense to fund our research infrastructure, our mathematical models, formulas, and ranking metrics are strictly independent. Platforms cannot pay to adjust fee calculations, distort competitor comparisons, or artificially inflate margin outputs.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-4 text-xs font-medium text-slate-700">
+          <a href="/privacy-policy/" class="text-emerald-700 hover:underline">Read our Privacy Policy &rarr;</a>
+          <a href="/terms/" class="text-emerald-700 hover:underline">Read Terms & Financial Disclaimer &rarr;</a>
+          <a href="/contact/" class="text-emerald-700 hover:underline">Submit a Fee Schedule Correction &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE_CONFIG } from '../config/site';
+
+const breadcrumbItems = [
+  { name: 'Legal & Privacy', url: '/privacy-policy/' },
+  { name: 'Privacy Policy', url: '/privacy-policy/' }
+];
+---
+
+<BaseLayout
+  title="Privacy Policy & Data Security Standards"
+  metaTitle="Privacy Policy | Google AdSense, GDPR & Client-Side Privacy Standards"
+  description="Comprehensive privacy disclosures for CreatorCalcLab, including Google AdSense DoubleClick cookies, client-side financial computation privacy, GDPR, and CCPA rights."
+  canonicalPath="/privacy-policy/"
+>
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <Breadcrumbs items={breadcrumbItems} />
+      <div class="mt-4">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+          Last Revised: November 13, 2026
+        </span>
+        <h1 class="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Privacy Policy & Data Security Architecture
+        </h1>
+        <p class="mt-2 text-base text-slate-600 leading-relaxed">
+          How CreatorCalcLab safeguards your personal privacy, operates 100% client-side financial models, and complies with Google AdSense, GDPR, and CCPA standards.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <article class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700 text-sm sm:text-base">
+      
+      <!-- Key Architectural Guarantee Callout -->
+      <div class="my-6 p-5 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-lg">
+        <h3 class="text-emerald-950 font-bold text-base mt-0 mb-1 flex items-center gap-2">
+          <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Our Core Privacy Architecture: Zero Server-Side Calculation Storage
+        </h3>
+        <p class="text-emerald-900 text-sm mb-0">
+          Unlike traditional web applications, CreatorCalcLab executes financial algorithms entirely inside your browser's local JavaScript virtual machine. When you input sensitive business metrics—such as unit sales, profit margins, cost of goods sold, advertising customer acquisition costs (CAC), or freelancer billing rates—that data is <strong>never transmitted, stored, inspected, or logged</strong> by our web servers or any external third party. Refreshing or closing your browser tab permanently purges your local input session.
+        </p>
+      </div>
+
+      <h2>1. Introduction & Scope</h2>
+      <p>
+        CreatorCalcLab ("we," "our," or "us") operates the website located at <a href="https://creatorcalclab.com" class="text-emerald-700 underline font-medium">https://creatorcalclab.com</a>. This Privacy Policy outlines the types of information we collect, how we use that information, the third-party advertising frameworks we utilize to fund our educational tools, and the legal rights available to you under United States state privacy laws (including the California Consumer Privacy Act / CCPA as amended by the CPRA) and the European Union General Data Protection Regulation (GDPR).
+      </p>
+      <p>
+        By accessing or using CreatorCalcLab, you signify your assent to the data practices described herein. If you disagree with any portion of this policy, your sole remedy is to cease using the website.
+      </p>
+
+      <h2>2. Financial Calculation Data (Client-Side Sandboxing)</h2>
+      <p>
+        We recognize that online merchants, independent content creators, and corporate consultants operate in highly competitive environments where unit cost economics and profit margins are trade secrets. To protect your commercial confidentiality, CreatorCalcLab was intentionally engineered as a static pre-rendered site:
+      </p>
+      <ul>
+        <li><strong>No Form Post Submissions:</strong> Interactive sliders, text input fields, and calculation buttons do not post data back to an Application Programming Interface (API) or database.</li>
+        <li><strong>No Server-Side Session State:</strong> We do not associate calculations with user accounts, browser fingerprints, or IP addresses.</li>
+        <li><strong>Local Volatility:</strong> Calculation states exist solely in temporary volatile Random Access Memory (RAM) within your web browser. When you navigate away, the calculation state is immediately cleared unless you choose to save it locally via your own device's bookmarking mechanisms.</li>
+      </ul>
+
+      <h2>3. Google AdSense & DoubleClick DART Advertising Disclosures</h2>
+      <p>
+        CreatorCalcLab is an independent educational publisher funded through programmatic digital advertising. We display advertisements served by Google LLC through the Google AdSense and Google Ad Manager networks. To comply with Google's publisher policies and transparent advertising standards, please review the following mandatory disclosures:
+      </p>
+      <ul>
+        <li><strong>Third-Party Vendor Cookies:</strong> Google, as a third-party advertising vendor, uses HTTP cookies to serve contextual and personalized advertisements on CreatorCalcLab based on a user's prior visits to this website and other websites across the Internet.</li>
+        <li><strong>DoubleClick DART Cookie:</strong> Google's use of advertising cookies (including the DoubleClick DART cookie) enables it and its certified partner ad exchanges to serve advertisements to our visitors based on their browsing history across the web.</li>
+        <li><strong>Opt-Out of Personalized Advertising:</strong> Visitors may opt out of personalized Google advertising by visiting the official Google Ads Settings control panel: <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-emerald-700 underline font-medium">https://adssettings.google.com</a>.</li>
+        <li><strong>Industry-Wide Opt-Out Tools:</strong> Alternatively, you may opt out of third-party vendor tracking for interest-based advertising by visiting the Network Advertising Initiative (NAI) opt-out page at <a href="https://optout.networkadvertising.org" target="_blank" rel="noopener noreferrer" class="text-emerald-700 underline font-medium">https://optout.networkadvertising.org</a> or the Digital Advertising Alliance (DAA) WebChoices tool at <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" class="text-emerald-700 underline font-medium">https://optout.aboutads.info</a>.</li>
+      </ul>
+
+      <h2>4. Non-Personal Log Data & Analytics</h2>
+      <p>
+        Like virtually all modern web servers, our hosting infrastructure automatically records non-personally identifiable log information when your web browser requests a page. This standard technical logging includes:
+      </p>
+      <ul>
+        <li>Internet Protocol (IP) addresses (anonymized/truncated for geographical analytics).</li>
+        <li>Browser user-agent string and operating system version.</li>
+        <li>Referring webpage URLs, exit pages, and timestamp stamps.</li>
+        <li>HTTP status codes (e.g., 200 OK, 404 Not Found) used to detect broken links and verify server reliability.</li>
+      </ul>
+      <p>
+        This technical diagnostic data is analyzed in aggregate to prevent Distributed Denial of Service (DDoS) attacks, ensure server uptime, and evaluate which financial calculators require maintenance or expansion. This information is never correlated with individual identities.
+      </p>
+
+      <h2>5. Web Beacons, Web Storage & Local Cookies</h2>
+      <p>
+        CreatorCalcLab may use minimal first-party cookies and modern browser storage technologies (such as <code>localStorage</code>) strictly to remember your interface preferences, such as:
+      </p>
+      <ul>
+        <li>Dark/light UI display preferences.</li>
+        <li>Dismissal timestamps for informational compliance alerts and announcement banners.</li>
+        <li>Currency display preference toggles (e.g., USD, EUR, GBP).</li>
+      </ul>
+      <p>
+        These first-party storage tokens do not track you across other domains and can be deleted at any time through your browser's security settings.
+      </p>
+
+      <h2>6. European GDPR Compliance & Legal Bases for Processing</h2>
+      <p>
+        For residents of the European Economic Area (EEA), the United Kingdom (UK), and Switzerland, CreatorCalcLab processes technical data in accordance with the General Data Protection Regulation (Regulation (EU) 2016/679). Our legal basis for processing diagnostic server logs is our legitimate interest (Article 6(1)(f) GDPR) in operating a secure, accessible web property. Where advertising cookies are used for personalized targeting, processing is based on your affirmative consent (Article 6(1)(a) GDPR) gathered through an interactive consent management platform (CMP).
+      </p>
+      <p>Under the GDPR, European data subjects possess the following statutory rights:</p>
+      <ol>
+        <li><strong>Right of Access (Article 15):</strong> Request confirmation as to whether personal data concerning you is processed.</li>
+        <li><strong>Right to Rectification (Article 16):</strong> Request correction of inaccurate personal data.</li>
+        <li><strong>Right to Erasure / "To Be Forgotten" (Article 17):</strong> Request deletion of personal records where statutory grounds apply.</li>
+        <li><strong>Right to Restriction of Processing (Article 18):</strong> Restrict processing under contested circumstances.</li>
+        <li><strong>Right to Data Portability (Article 20):</strong> Receive your personal data in a structured, commonly used machine-readable format.</li>
+        <li><strong>Right to Object (Article 21):</strong> Object at any time to processing based on legitimate interests or direct marketing.</li>
+        <li><strong>Right to Lodge a Complaint:</strong> File a grievance with your local supervisory data protection authority in your EU member state of residence.</li>
+      </ol>
+
+      <h2>7. California Consumer Privacy Disclosures (CCPA & CPRA)</h2>
+      <p>
+        The California Consumer Privacy Act of 2018 (CCPA), as enhanced by the California Privacy Rights Act (CPRA), affords California residents specific rights regarding their personal data:
+      </p>
+      <ul>
+        <li><strong>Right to Know & Access:</strong> California consumers have the right to request disclosure of the specific categories and pieces of personal information collected over the preceding 12 months.</li>
+        <li><strong>Right to Delete:</strong> Request deletion of personal information collected directly from you, subject to legal recordkeeping exemptions.</li>
+        <li><strong>Right to Opt-Out of the "Sale" or "Sharing" of Personal Information:</strong> We do not sell user data in the traditional sense of exchanging consumer names or phone numbers for monetary compensation. However, under California's broad definition of "sharing" for cross-context behavioral advertising, the use of third-party cookies by advertising partners may qualify. You may exercise your opt-out rights via our cookie consent interface or by enabling the Global Privacy Control (GPC) signal in your browser.</li>
+        <li><strong>Non-Discrimination:</strong> We will never deny you service, charge differing prices, or diminish the quality of our computational tools if you exercise any CCPA statutory right.</li>
+      </ul>
+
+      <h2>8. Voluntary Inquiries & Communications</h2>
+      <p>
+        If you elect to contact our editorial or compliance desk via our contact form or direct email (<a href="mailto:compliance@creatorcalclab.com" class="text-emerald-700 underline font-medium">compliance@creatorcalclab.com</a>), you may provide your name, email address, and message details. We utilize this information exclusively to respond to your specific inquiry, fee update notice, or technical error report. We never add contact inquiries to promotional marketing newsletters or sell email lists to third-party lead brokers.
+      </p>
+
+      <h2>9. Children's Online Privacy Protection Act (COPPA)</h2>
+      <p>
+        CreatorCalcLab provides commercial financial calculators designed for adult business owners, online entrepreneurs, and corporate contractors. We do not knowingly solicit or collect personally identifiable information from children under the age of 13 (or under 16 within the European Union). If we become aware that an individual under the age of 13 has submitted personal contact data, we will promptly delete that data from our records.
+      </p>
+
+      <h2>10. Third-Party Hyperlinks & External Platform Terms</h2>
+      <p>
+        Throughout our financial guides and benchmark comparison matrices, we link directly to official third-party platform documentation, such as the Shopify Merchant Agreement, Etsy Seller Handbook, Stripe Pricing, and the Internal Revenue Service (IRS). CreatorCalcLab does not control and is not liable for the privacy practices, content, or cookie policies of third-party platforms. We encourage you to inspect the privacy terms of any third-party domain you visit.
+      </p>
+
+      <h2>11. Revisions to this Policy</h2>
+      <p>
+        We reserve the right to amend this Privacy Policy periodically to reflect changes in our operational practices, new statutory requirements, or adjustments to our programmatic advertising partners. Revisions will be published on this page with an updated "Last Revised" timestamp. Your continued use of CreatorCalcLab following posted modifications constitutes your ongoing acknowledgment of the revised terms.
+      </p>
+
+      <h2>12. Contact the Compliance & Data Protection Officer</h2>
+      <p>
+        For inquiries regarding our data handling architecture, CCPA/GDPR requests, or advertising compliance standards, please reach our privacy team at:
+      </p>
+      <div class="bg-slate-100 p-4 rounded-lg text-sm text-slate-800 font-mono mt-4">
+        <p class="font-bold text-slate-900 mb-1 font-sans">CreatorCalcLab Compliance & Legal Desk</p>
+        <p>Attention: Data Protection Officer</p>
+        <p>Email: <a href="mailto:compliance@creatorcalclab.com" class="text-emerald-700 underline">compliance@creatorcalclab.com</a></p>
+        <p>Inquiries: <a href="/contact/" class="text-emerald-700 underline">https://creatorcalclab.com/contact/</a></p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

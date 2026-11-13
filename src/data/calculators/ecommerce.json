@@ -1,0 +1,189 @@
+[
+  {
+    "slug": "shopify-profit-margin-calculator",
+    "title": "Shopify Profit Margin & Platform Fee Calculator (2026 Schedule)",
+    "metaTitle": "Shopify Profit Margin Calculator 2026 | Net Yield & Fee Audit",
+    "metaDescription": "Audit true net profit margins, Shopify credit card interchange processing rates, subscription app overhead, and unit economics across Basic, Grow, and Advanced tiers.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Shopify Official Merchant Agreement & Pricing Schedule (2026)",
+    "officialSourceUrl": "https://www.shopify.com/pricing",
+    "defaultInputs": {
+      "sellingPrice": 65.0,
+      "cogs": 18.5,
+      "shippingCharged": 5.0,
+      "shippingActualCost": 7.2,
+      "monthlyUnits": 400,
+      "planTier": "basic",
+      "appFeesMonthly": 79.0,
+      "marketingPerOrder": 12.0,
+      "returnsRate": 3.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "basic": {
+          "name": "Shopify Basic",
+          "monthlyFee": 39.0,
+          "percentageRate": 2.9,
+          "fixedFee": 0.3,
+          "additionalNotes": "Standard domestic online card rate. A 2.0% additional fee applies when processing via external gateways like Stripe or Authorize.net."
+        },
+        "shopify": {
+          "name": "Shopify Plan (Grow)",
+          "monthlyFee": 105.0,
+          "percentageRate": 2.7,
+          "fixedFee": 0.3,
+          "additionalNotes": "Reduced domestic online card rate. A 1.0% additional fee applies when processing transactions via external third-party payment gateways."
+        },
+        "advanced": {
+          "name": "Shopify Advanced",
+          "monthlyFee": 399.0,
+          "percentageRate": 2.5,
+          "fixedFee": 0.3,
+          "additionalNotes": "Lowest tier transaction card rate. A 0.6% additional fee applies when bypassing Shopify Payments for external merchant payment providers."
+        }
+      },
+      "extraParameters": {
+        "thirdPartyPenaltyBasic": 2.0,
+        "thirdPartyPenaltyShopify": 1.0,
+        "thirdPartyPenaltyAdvanced": 0.6,
+        "internationalCardSurcharge": 1.0,
+        "currencyConversionFee": 1.5
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Achieving sustainable commercial profitability on Shopify in 2026 requires looking beyond superficial gross margins to scrutinize multi-tier transaction friction, recurring SaaS subscriptions, and post-purchase fulfillment leakage. While novice merchants commonly estimate their profit by simply subtracting Cost of Goods Sold (COGS) from list price, true net margin is relentlessly compressed by compound payment processing fees (2.9% + $0.30 on Basic), carrier rate adjustments, shipping subsidies, third-party app overhead, and customer returns. For an e-commerce enterprise shipping hundreds of monthly orders, a variance of just 40 basis points in credit card interchange fees—or an unmonitored $79 recurring app bundle—can erase thousands of dollars in annual free cash flow. This calculator models full unit economics under the audited 2026 Shopify rate schedule, enabling direct-to-consumer (DTC) operators to identify exact tier upgrade crossover thresholds, isolate negative contribution margin SKUs, and stress-test paid acquisition budgets before capital allocation.",
+      "formulaBreakdown": {
+        "formulaString": "Net Profit = Total Order Revenue - COGS - Merchant Gateway Fees - Net Shipping Loss - CAC - (Monthly Fixed Overhead / Units) - (Order Revenue * Return Rate * Unrecoverable Loss%)",
+        "variables": [
+          {
+            "symbol": "Total Order Revenue (R_tot)",
+            "meaning": "Gross checkout transaction value collected from the customer, equal to Product Retail Selling Price plus any customer-paid Shipping Fee (R_tot = P_retail + S_customer)."
+          },
+          {
+            "symbol": "COGS",
+            "meaning": "Direct landed unit manufacturing, inbound freight, customs tariff, and primary packaging cost per unit shipped."
+          },
+          {
+            "symbol": "Merchant Gateway Fees (F_gw)",
+            "meaning": "Shopify Payments card processing charge calculated as (R_tot * CardRate%) + $0.30 fixed fee, plus optional third-party gateway penalty (0.6% to 2.0%) if Shopify Payments is bypassed."
+          },
+          {
+            "symbol": "Net Shipping Deficit (D_ship)",
+            "meaning": "Out-of-pocket carrier delivery loss when actual fulfillment expense exceeds the shipping charge billed to the buyer (max(0, Actual Carrier Expense - Customer Paid Shipping))."
+          },
+          {
+            "symbol": "Allocated Fixed Overhead (OH_fixed)",
+            "meaning": "Amortized monthly fixed expenditures per unit, computed as (Shopify Plan Subscription + Total Monthly App Subscriptions) divided by Total Monthly Unit Sales Volume."
+          },
+          {
+            "symbol": "Return Allowance Provision (P_ret)",
+            "meaning": "Expected value loss per order accounting for return logistics, restocking markdown, and non-refundable card interchange fees on returned merchandise."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Mid-Volume DTC Lifestyle Apparel Merchant on Shopify Basic ($65.00 AOV, 400 Units/Month)",
+        "narrative": "A growing direct-to-consumer brand retails premium canvas bags at $65.00 per unit, charging $5.00 flat-rate standard delivery. The merchant purchases inventory at a landed cost of $18.50 per unit. Outbound commercial shipping via USPS Ground Advantage averages $7.20. The store operates on the $39/mo Shopify Basic plan with $79/mo in recurring apps (email marketing, reviews, upsell engine), spends an average of $12.00 in blended Meta/Google ad spend per converted order, and maintains an industry-standard 3.5% refund rate.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Checkout Revenue: $65.00 product retail + $5.00 customer shipping = $70.00 total order value collected.",
+          "Step 2: Calculate Merchant Payment Processing Fee: $70.00 * 2.9% + $0.30 fixed fee = $2.03 + $0.30 = $2.33 gateway transaction deduction.",
+          "Step 3: Calculate Fulfillment Deficit: $7.20 actual carrier label - $5.00 customer paid shipping = $2.20 merchant-absorbed shipping subsidy.",
+          "Step 4: Calculate Amortized Monthly SaaS Overhead: ($39.00 Shopify Basic + $79.00 app subscriptions) / 400 monthly orders = $118.00 / 400 = $0.295 per order.",
+          "Step 5: Calculate Return Allowance Provision: 3.5% return rate * ($70.00 order * 60% unrecoverable inventory/logistics loss) = $1.47 risk reserve per unit.",
+          "Step 6: Synthesize Net Contribution Profit: $70.00 Gross Revenue - $18.50 COGS - $2.33 Payment Gateway - $2.20 Shipping Deficit - $12.00 Blended CAC - $0.30 SaaS Overhead - $1.47 Return Provision = $33.20 Net Take-Home Profit per Order.",
+          "Step 7: Evaluate Percentage Net Margin: ($33.20 Net Profit / $70.00 Gross Checkout) * 100 = 47.43% Net Realized Margin."
+        ],
+        "finalTakeaway": "At 400 monthly orders, this merchant generates $13,280 in net operating profit monthly. However, if sales scale to 1,200 orders ($84,000 GMV), upgrading from Shopify Basic (2.9% + $0.30) to Shopify Advanced (2.5% + $0.30) would save 0.40% on card processing across $84,000 ($336/mo savings) against a $360 subscription delta, placing the store within $24 of the break-even threshold where Advanced unlocks third-party carrier rates and custom report building for negligible net cost."
+      },
+      "benchmarkTable": {
+        "title": "2026 Shopify Plan Comparison: Transaction Fee Rates, Break-Even GMV & Gateway Surcharges",
+        "headers": [
+          "Plan Tier",
+          "Monthly Base Fee (Billed Monthly)",
+          "Online Domestic Card Rate",
+          "External Gateway Penalty",
+          "Optimal Monthly GMV Range"
+        ],
+        "rows": [
+          [
+            "Shopify Basic",
+            "$39.00 / month",
+            "2.9% + $0.30 per transaction",
+            "+2.0% surcharge (4.9% + $0.30 total)",
+            "$0 to $33,000 GMV / month"
+          ],
+          [
+            "Shopify (Grow)",
+            "$105.00 / month",
+            "2.7% + $0.30 per transaction",
+            "+1.0% surcharge (3.7% + $0.30 total)",
+            "$33,000 to $147,000 GMV / month"
+          ],
+          [
+            "Shopify Advanced",
+            "$399.00 / month",
+            "2.5% + $0.30 per transaction",
+            "+0.6% surcharge (3.1% + $0.30 total)",
+            "$147,000 to $800,000 GMV / month"
+          ],
+          [
+            "Shopify Plus (Enterprise)",
+            "Starting at $2,300.00 / month",
+            "Variable (approx 2.15% + $0.30)",
+            "+0.20% surcharge",
+            "$800,000+ GMV / month"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Automate Plan Tier Upgrades at the Exact GMV Inflection Threshold",
+          "actionableAdvice": "Moving from Shopify Basic to the regular Shopify plan saves 0.20% in processing fees while increasing fixed overhead by $66.00/month. The exact break-even occurs at $33,000 in monthly credit card sales ($66 / 0.002 = $33,000). If your store consistently processes above $33,000/mo, remaining on Basic literally burns margin. Similarly, migrating from Shopify ($105) to Advanced ($399) reduces processing by another 0.20% ($294 fee differential / 0.002 = $147,000 monthly GMV break-even)."
+        },
+        {
+          "title": "Eliminate the Third-Party Payment Gateway Penalty via Shopify Payments",
+          "actionableAdvice": "Bypassing Shopify Payments in favor of external Stripe, PayPal, or merchant accounts triggers an aggressive punitive surcharge of 2.0% on Basic, 1.0% on Shopify, and 0.6% on Advanced. Unless you negotiate custom interchange-plus corporate rates below 1.5% with an enterprise acquirer, keeping Shopify Payments as your primary checkout processor is critical to avoiding a severe 100 to 200 basis point margin forfeiture."
+        },
+        {
+          "title": "Engineer Free Shipping Minimums Above Carrier Break-Even Bounds",
+          "actionableAdvice": "Absorbing carrier shipping losses is the single fastest contributor to silent margin erosion. If your average package costs $7.50 to deliver, establishing a $75.00 free shipping qualification bar ensures that orders qualifying for complimentary shipping possess sufficient absolute gross dollar contribution to swallow carrier bills while maintaining a healthy 40%+ contribution margin."
+        },
+        {
+          "title": "Audit Monthly Shopify App Store Subscriptions Quarterly",
+          "actionableAdvice": "Third-party Shopify applications frequently charge recurring tier fees based on tracked user counts, order volumes, or page impressions. A suite of 5 apps ($29 upsell, $49 review aggregator, $39 pop-up builder, $19 loyalty club, $49 SMS tool) totals $185 monthly. For a store doing 200 orders, that represents an onerous $0.925 per-order drag. Audit app usage quarterly and eliminate redundant or overlapping tools."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What are the official Shopify transaction fees and plan rates in 2026?",
+          "answer": "In 2026, Shopify maintains three core self-serve subscription plans. Shopify Basic is priced at $39.00 per month (when billed monthly) with domestic online credit card processing fees of 2.9% plus $0.30 per transaction. The mid-tier Shopify plan (often referred to as Grow) is priced at $105.00 per month with reduced domestic card processing fees of 2.7% plus $0.30 per transaction. Shopify Advanced costs $399.00 per month and lowers domestic credit card processing charges to 2.5% plus $0.30 per transaction. If merchants elect to process checkout transactions through third-party payment gateways rather than Shopify Payments, additional penalty surcharges apply: 2.0% on Basic, 1.0% on the Shopify plan, and 0.6% on Advanced."
+        },
+        {
+          "question": "At what monthly sales revenue does upgrading to Shopify Advanced become mathematically profitable?",
+          "answer": "Upgrading from the mid-tier Shopify plan ($105/month) to Shopify Advanced ($399/month) introduces a net fixed cost increase of $294.00 per month ($399 minus $105). In exchange for this higher recurring overhead, Shopify Advanced reduces online domestic credit card processing fees from 2.7% down to 2.5%, generating a savings of exactly 0.20% (or 0.002 in decimal form) on all card transactions. By dividing the $294.00 subscription differential by the 0.002 percentage savings, the mathematical break-even point is found to be exactly $147,000 in monthly credit card sales volume. When your store consistently clears more than $147,000 GMV monthly, the transaction savings exceed the plan cost increase, yielding immediate net profit expansion alongside advanced custom reporting tools."
+        },
+        {
+          "question": "Does Shopify refund payment processing transaction fees when a customer returns an item?",
+          "answer": "No. Under Shopify Payments terms of service and global card brand standards (Visa, Mastercard, American Express), the percentage-based processing fee and fixed per-transaction fee (e.g., 2.9% + $0.30 on Basic) are non-refundable when an order is cancelled or refunded. While Shopify does not assess an extra penalty surcharge for issuing standard refunds, your business permanently forfeits the initial merchant transaction fees. For example, if a customer purchases a $100.00 item and subsequently returns it, the merchant absorbs the original $3.20 processing fee out-of-pocket, plus return shipping and restocking costs. Consequently, businesses with high return rates must factor a return allowance reserve directly into their unit margin modeling."
+        },
+        {
+          "question": "How do international transaction fees and multi-currency conversions impact Shopify net margins?",
+          "answer": "When a customer completes a purchase using a credit card issued outside your store's primary billing country, Shopify Payments assesses an international payment processing surcharge, typically 1.0% for international cards. Furthermore, if the customer pays in a foreign currency requiring automatic multi-currency conversion, Shopify applies a currency conversion fee of 1.5% in the United States (up to 2.0% in other jurisdictions). Together, an international cross-border sale can elevate effective payment processing costs from the standard 2.9% + $0.30 up to 5.4% + $0.30 on Basic. DTC brands marketing internationally must incorporate currency conversion buffers into regional localized price listings to defend unit profitability."
+        },
+        {
+          "question": "What is the difference between gross margin, contribution margin, and net margin on Shopify?",
+          "answer": "Gross margin reflects only product-level unit economics, calculated as Retail Selling Price minus direct Cost of Goods Sold (COGS), divided by Retail Price. Contribution margin provides a far more actionable e-commerce metric by deducting variable transaction-level costs from gross revenue—specifically merchant payment processing fees, unrecovered carrier shipping deficits, pick-and-pack fulfillment labor, and direct customer acquisition costs (CAC). Net margin represents bottom-line commercial profit, taking contribution margin and subtracting amortized monthly fixed costs, including Shopify store subscriptions, third-party App Store plugins, software licenses, domain fees, and return allowances. Tracking contribution margin ensures each incremental sale generates positive operational cash flow."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "etsy-fee-profit-calculator",
+      "woocommerce-vs-shopify-calculator",
+      "ecommerce-shipping-margin-calculator"
+    ]
+  }
+]

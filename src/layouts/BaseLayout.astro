@@ -109,10 +109,28 @@ const siteSchema = {
     <!-- Header -->
     <Header currentPath={Astro.url.pathname} />
 
+    <!-- AdSense Top Banner Slot (Zero-CLS Graceful Collapse) -->
+    <aside
+      id="adsense-top-banner"
+      class="adsense-container w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 empty:hidden min-h-0 transition-all overflow-hidden"
+      aria-label="Advertisement"
+    >
+      <!-- AdSense Top Banner Slot -->
+    </aside>
+
     <!-- Main Content Slot -->
     <main class="flex-1 w-full">
       <slot />
     </main>
+
+    <!-- AdSense In-Content / Bottom Slot (Zero-CLS Graceful Collapse) -->
+    <aside
+      id="adsense-incontent-slot"
+      class="adsense-container w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 empty:hidden min-h-0 transition-all overflow-hidden my-4"
+      aria-label="Advertisement"
+    >
+      <!-- AdSense In-Content Slot -->
+    </aside>
 
     <!-- Footer -->
     <Footer />

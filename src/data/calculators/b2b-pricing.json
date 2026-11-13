@@ -1450,5 +1450,315 @@
       "consulting-day-rate-calculator",
       "self-employment-tax-calculator"
     ]
+  },
+  {
+    "slug": "contractor-late-fee-calculator",
+    "title": "Commercial Invoice Late Fee & Statutory Interest Calculator (Net-30 & Usury Limits)",
+    "metaTitle": "Commercial Invoice Late Fee Calculator 2026 | Net-30 Interest & Penalties",
+    "metaDescription": "Calculate overdue B2B invoice interest, 1.5% monthly late fees (18% APR), flat administrative penalties, days past due, and state statutory usury limits.",
+    "category": "b2b-pricing",
+    "engineType": "markup-margin",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "US Prompt Payment Act & Commercial Invoicing Standards (2026)",
+    "officialSourceUrl": "https://www.fiscal.treasury.gov/prompt-payment/",
+    "defaultInputs": {
+      "baseCost": 5000.0,
+      "targetMarkup": 18.0,
+      "targetMargin": 15.25,
+      "overheadTaxRate": 1.5,
+      "gatewayPlatformCut": 2.9,
+      "discountPromoRate": 30.0
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "standardMonthlyInterestPct": 1.5,
+        "annualPercentageRate": 18.0,
+        "statutoryPromptPaymentRate": 5.25,
+        "flatAdminRecoveryFee": 50.0,
+        "gracePeriodDays": 10
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Managing accounts receivable and overdue commercial invoices in 2026 requires understanding the legal and mathematical mechanics of invoice late fees, finance charges, and statutory usury limits. When B2B clients fail to honor Net-30 or Net-60 contractual payment terms, the contractor or agency effectively acts as an involuntary zero-interest lender to the client's business. To incentivize timely remittance and recover working capital financing costs, professional commercial agreements standardly assess late payment interest—conventionally benchmarked at 1.5% per month (18% Annual Percentage Rate, or APR)—alongside flat administrative late charges ($25 to $100 per overdue cycle). However, independent contractors must ensure their late fee schedule complies with state-level statutory usury limits, which establish maximum allowable interest rates for commercial debt (typically capping non-exempt commercial agreements between 18% and 24% annually). Calculating interest accurately on a per-diem basis and citing explicit contractual terms is essential to successfully recovering past-due receivables.",
+      "formulaBreakdown": {
+        "formulaString": "Daily Interest Rate = Annual Percentage Rate (APR%) / 365 Days; Accrued Late Interest = Invoice Principal * Daily Interest Rate * Days Past Due; Total Delinquent Balance = Original Invoice Principal + Accrued Late Interest + Flat Administrative Recovery Fee",
+        "variables": [
+          {
+            "symbol": "Original Invoice Principal (P_inv)",
+            "meaning": "Gross face value of the original undisputed invoice billed to the commercial client."
+          },
+          {
+            "symbol": "Annual Percentage Rate (APR)",
+            "meaning": "Contractual annual finance charge rate (conventionally 18.0% APR, equivalent to 1.5% monthly simple interest)."
+          },
+          {
+            "symbol": "Days Past Due (D_overdue)",
+            "meaning": "Elapsed calendar days between the contractual payment due date (e.g., Day 31 on Net-30 terms) and the actual payment remittance date."
+          },
+          {
+            "symbol": "Flat Administrative Fee (F_admin)",
+            "meaning": "Reasonable fixed administrative fee ($25 to $100) assessing the internal overhead costs of issuing formal dunning notices and collection calls."
+          },
+          {
+            "symbol": "Total Delinquent Demand (B_total)",
+            "meaning": "Total updated amount legally owed by the client, combining principal, accrued per-diem interest, and administrative fees."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "B2B Software Development Agency: $5,000.00 Invoice Overdue by 45 Days",
+        "narrative": "A software consultancy completes a project milestone and issues a $5,000.00 invoice on Net-30 payment terms. The client fails to pay within 30 days and the invoice sits delinquent for an additional 45 days past due. The signed master services agreement stipulates a 1.5% monthly finance charge (18% APR) on overdue balances plus a standard $50.00 administrative late processing fee.",
+        "stepByStepMath": [
+          "Step 1: Identify Original Invoice Principal: $5,000.00 original undisputed billing amount.",
+          "Step 2: Calculate Daily Per-Diem Interest Rate: 18.0% APR / 365 days = 0.049315% daily interest rate (0.00049315 in decimal).",
+          "Step 3: Calculate Accrued Interest for 45 Days Past Due: $5,000.00 * 0.00049315 * 45 days = $110.96 accrued finance charge.",
+          "Step 4: Factor Flat Administrative Late Fee: $50.00 contractually stipulated administrative recovery fee.",
+          "Step 5: Compute Total Late Charges: $110.96 interest + $50.00 admin fee = $160.96 total delinquent penalty.",
+          "Step 6: Compute Updated Total Outstanding Collection Balance: $5,000.00 principal + $160.96 late charges = $5,160.96 updated invoice balance."
+        ],
+        "finalTakeaway": "At 45 days past due, the client owes $5,160.96. The $160.96 in late charges compensates the agency for capital cost and administrative follow-up, while providing strong legal leverage to prompt immediate wire remittance."
+      },
+      "benchmarkTable": {
+        "title": "2026 Commercial Invoice Late Fee & Statutory Usury Rate Benchmarks by Jurisdiction",
+        "headers": [
+          "Jurisdiction / Context",
+          "Standard Allowable Commercial APR",
+          "Maximum Monthly Rate Equivalent",
+          "Contract Clause Requirement",
+          "Governing Statutory Baseline"
+        ],
+        "rows": [
+          [
+            "General US Commercial B2B Standard",
+            "18.0% APR (Typical market)",
+            "1.50% per month",
+            "Must be written into signed contract",
+            "UCC Article 2 Commercial Guidelines"
+          ],
+          [
+            "California (Commercial Transactions)",
+            "Up to 10.0% statutory (Higher by contract)",
+            "0.83% default / 1.5% contractual",
+            "Express written mutual agreement required",
+            "Cal. Const. Art. XV & Civ. Code § 1916"
+          ],
+          [
+            "New York (Commercial Debts > $2,500)",
+            "Up to 16.0% civil / 25% criminal cap",
+            "1.33% to 2.08% per month",
+            "Exempt from 16% cap on debts over $250k",
+            "N.Y. Gen. Oblig. Law § 5-501"
+          ],
+          [
+            "US Federal Government Contracts",
+            "Statutory Prompt Payment Rate (Variable)",
+            "Published semi-annually by Treasury",
+            "Mandatory automatic interest penalty",
+            "Prompt Payment Act (31 U.S.C. Chapter 39)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Include Express Late Fee Language in All Master Services Agreements",
+          "actionableAdvice": "You cannot retroactively assess late fees on an invoice if the client never signed an agreement agreeing to them. Embed clear, enforceable language in every proposal and contract: 'Invoices unpaid after 30 days shall bear interest at 1.5% per month (18% per annum) or the maximum rate permitted by law, plus reasonable collection costs.'"
+        },
+        {
+          "title": "Incentivize Early Payment with a 2/10 Net-30 Cash Discount",
+          "actionableAdvice": "Carrot strategies often work faster than stick penalties. Offer a '2/10 Net-30' term: the client receives a 2% discount if they remit payment within 10 days; otherwise, the full invoice is due in 30 days. For corporate finance departments, taking that 2% discount yields a 36% annualized return, accelerating your cash flow."
+        },
+        {
+          "title": "Implement an Automated 3-Stage Dunning Email Sequence",
+          "actionableAdvice": "Never wait until an invoice is 30 days past due to communicate. Schedule an automated friendly reminder 3 days before the due date, a firm notification on Day 1 past due noting incoming late fees, and a formal revised invoice on Day 15 past due with accrued interest and the $50 administrative charge added."
+        },
+        {
+          "title": "Halt Work and Revoke License Permissions on Day 15 Past Due",
+          "actionableAdvice": "Include an explicit clause stating that all intellectual property licenses and active engineering/design services are suspended immediately if an invoice reaches 15 days overdue. For clients with critical production dependencies, knowing staging servers will be paused resolves delinquency within hours."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is it legally enforceable to charge late fees on commercial B2B invoices?",
+          "answer": "Yes, late fees and finance charges on B2B invoices are legally enforceable across the United States, provided that the terms were clearly agreed to in writing by the client prior to commencing work (such as in a signed Master Services Agreement, Statement of Work, or purchase order). Simply typing '1.5% late fee applies' at the bottom of an invoice without prior contractual agreement is generally unenforceable in court."
+        },
+        {
+          "question": "What is the standard commercial invoice late fee percentage in 2026?",
+          "answer": "The most widely accepted commercial standard for B2B invoice late fees in 2026 is 1.5% per month (which equals 18% Annual Percentage Rate, or APR) on the outstanding principal balance. This rate is standard across professional service industries, management consultancies, and commercial trade agreements, providing adequate compensation for working capital delays without violating state usury laws."
+        },
+        {
+          "question": "What are state usury limits and how do they affect late payment interest?",
+          "answer": "Usury laws set maximum legal limits on the amount of interest that can be charged on loans and deferred debts to prevent predatory rates. While consumer loans have strict interest caps, most states have higher thresholds or specific exemptions for commercial B2B contracts between corporations or LLCs. However, charging more than 18% to 24% annual interest can trigger usury violations in certain jurisdictions, which can invalidate the accrued interest."
+        },
+        {
+          "question": "How does the 2/10 Net-30 prompt payment discount work?",
+          "answer": "A '2/10 Net-30' payment term means that the invoice is fully due within 30 days of the invoice date, but if the client remits payment within 10 days, they receive an immediate 2% discount on the total balance. For example, on a $10,000 invoice, the client can pay $9,800 within 10 days. This provides a strong financial incentive for corporate accounting departments to process payment immediately."
+        },
+        {
+          "question": "What contract clause should freelancers use to enforce late fees?",
+          "answer": "A standard, legally tested contract clause for commercial invoices is: 'Payment is due within thirty (30) days of the invoice date. Undisputed amounts unpaid after the due date shall accrue interest at the rate of one and one-half percent (1.5%) per month (18% per annum), or the maximum rate permitted by law, whichever is less, calculated daily from the due date until paid in full, plus any reasonable legal and collection expenses incurred.'"
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "client-retainer-pricing-calculator",
+      "freelance-hourly-rate-calculator",
+      "stripe-fee-calculator"
+    ]
+  },
+  {
+    "slug": "break-even-roas-calculator",
+    "title": "Break-Even ROAS, Target CPA & Ad Margin Calculator (2026 Marketing Benchmarks)",
+    "metaTitle": "Break-Even ROAS Calculator 2026 | Target ROAS, Max CPA & Ad Margins",
+    "metaDescription": "Calculate Break-Even Return on Ad Spend (ROAS = 1 / Net Margin), target ROAS for 20% net profit, maximum allowable CPA, and paid acquisition thresholds.",
+    "category": "b2b-pricing",
+    "engineType": "markup-margin",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Interactive Advertising Bureau (IAB) Performance Marketing Standards (2026)",
+    "officialSourceUrl": "https://www.iab.com",
+    "defaultInputs": {
+      "baseCost": 35.0,
+      "targetMarkup": 150.0,
+      "targetMargin": 60.0,
+      "overheadTaxRate": 15.3,
+      "gatewayPlatformCut": 2.9,
+      "discountPromoRate": 10.0
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "targetNetProfitMargin": 20.0,
+        "cardGatewayFixed": 0.30,
+        "returnsAndAllowancesPct": 5.0,
+        "blendedRoasBenchmark": 2.85
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Scaling paid digital customer acquisition across Meta Ads, Google Shopping, TikTok Ads, and YouTube in 2026 demands absolute mathematical mastery of Break-Even Return on Ad Spend (ROAS) and Maximum Allowable Cost Per Acquisition (CPA). Many e-commerce founders and digital marketers make the fatal mistake of calculating break-even ROAS using top-line gross margin alone (e.g., claiming a product with 50% gross margin has a 2.0x break-even ROAS). This flawed calculation completely ignores non-product operational deductions: merchant credit card processing fees (2.9% + $0.30), unrecovered pick-and-pack fulfillment labor, return allowances (typically 4% to 8% in e-commerce), and administrative software overhead. When these real-world commercial deductions are factored into unit economics, a product with a 50% gross margin frequently possesses a true Net Contribution Margin of only 25% to 30%, pushing the actual Break-Even ROAS from 2.0x up to 3.3x to 4.0x. This calculator computes your true contribution margin, exact break-even ROAS threshold, and maximum allowable customer acquisition cost.",
+      "formulaBreakdown": {
+        "formulaString": "Net Contribution Margin $ = Realized Selling Price - Landed COGS - Shipping Deficit - Gateway Fee - Return Allowance; Contribution Margin % = Net Contribution Margin $ / Realized Selling Price; Break-Even ROAS = 1 / Contribution Margin %; Maximum Allowable CPA = Net Contribution Margin $; Target ROAS (for Target Net Margin %) = 1 / (Contribution Margin % - Target Net Margin %)",
+        "variables": [
+          {
+            "symbol": "Realized Selling Price (P_real)",
+            "meaning": "Actual revenue collected from the customer at checkout after deducting coupon codes and promotional markdowns."
+          },
+          {
+            "symbol": "Landed Unit COGS (C_cogs)",
+            "meaning": "Total manufacturing cost, inbound freight, customs duties, and direct unit packaging consumables."
+          },
+          {
+            "symbol": "Net Contribution Margin (CM_net)",
+            "meaning": "Dollar amount remaining from each unit sold to cover marketing ad spend and generate profit (CM_net = Price - COGS - Fees - Shipping Deficit - Refunds)."
+          },
+          {
+            "symbol": "Break-Even ROAS (ROAS_be)",
+            "meaning": "The exact Return on Ad Spend where advertising spend equals contribution margin, resulting in $0 net profit and $0 net loss (ROAS_be = 1 / CM%)."
+          },
+          {
+            "symbol": "Maximum Allowable CPA (CPA_max)",
+            "meaning": "The maximum dollar amount you can pay ad platforms to acquire a customer without losing money on the first transaction (CPA_max = CM_net $)."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Direct-to-Consumer Brand: $87.50 Retail Price ($35.00 Base Landed Cost)",
+        "narrative": "A DTC home goods brand sells a premium ergonomic pillow for $87.50. The landed unit COGS is $35.00. The store provides free shipping (costing the merchant $6.50 to fulfill), pays 2.9% + $0.30 in merchant card processing, reserves 5.0% for returns/chargebacks, and targets a clean 20% net profit margin after ad spend.",
+        "stepByStepMath": [
+          "Step 1: Determine Realized Selling Price: $87.50 retail checkout price.",
+          "Step 2: Calculate Payment Gateway Deductions: ($87.50 * 2.9%) + $0.30 = $2.54 + $0.30 = $2.84 gateway fee.",
+          "Step 3: Account for Shipping Deficit and Returns: Outbound shipping cost = $6.50. Return allowance (5% of $87.50) = $4.38.",
+          "Step 4: Compute Net Contribution Margin Dollar: $87.50 price - $35.00 COGS - $6.50 shipping - $2.84 gateway - $4.38 returns = $38.78 net contribution.",
+          "Step 5: Compute Net Contribution Margin Percentage: ($38.78 / $87.50) * 100 = 44.32% contribution margin.",
+          "Step 6: Compute Break-Even ROAS and Max Allowable CPA: Break-Even ROAS = 1 / 0.4432 = 2.26x ROAS. Maximum Allowable CPA = $38.78.",
+          "Step 7: Compute Target ROAS for 20% Net Profit Margin: Target ROAS = 1 / (0.4432 - 0.20) = 1 / 0.2432 = 4.11x ROAS (Target CPA = $21.28)."
+        ],
+        "finalTakeaway": "On an $87.50 order with $35.00 COGS, the merchant breaks even at a 2.26x ROAS (or $38.78 CPA). To secure the target 20% net profit margin, paid campaigns must achieve a 4.11x ROAS with customer acquisition costs capped at $21.28."
+      },
+      "benchmarkTable": {
+        "title": "2026 E-Commerce Break-Even ROAS & Acquisition Benchmarks Across Sectors",
+        "headers": [
+          "E-Commerce Retail Sector",
+          "Typical Average Order Value (AOV)",
+          "Average Net Contribution Margin",
+          "Break-Even ROAS Threshold",
+          "Target ROAS (for 15% Net Profit)"
+        ],
+        "rows": [
+          [
+            "Beauty, Skincare & Cosmetics",
+            "$55.00 to $85.00 AOV",
+            "60.0% to 75.0%",
+            "1.33x to 1.67x ROAS",
+            "1.82x to 2.22x ROAS"
+          ],
+          [
+            "Apparel & Boutique Fashion",
+            "$75.00 to $130.00 AOV",
+            "45.0% to 55.0%",
+            "1.82x to 2.22x ROAS",
+            "2.50x to 3.33x ROAS"
+          ],
+          [
+            "Consumer Electronics & Gadgets",
+            "$120.00 to $250.00 AOV",
+            "25.0% to 35.0%",
+            "2.86x to 4.00x ROAS",
+            "5.00x to 10.00x ROAS"
+          ],
+          [
+            "Supplements & Functional Health",
+            "$65.00 to $110.00 AOV",
+            "55.0% to 70.0%",
+            "1.43x to 1.82x ROAS",
+            "2.00x to 2.50x ROAS"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Increase Average Order Value (AOV) to Lower Break-Even ROAS",
+          "actionableAdvice": "Because pick-and-pack labor and fixed transaction fees ($0.30) remain flat regardless of order size, increasing your AOV from $50 to $90 through pre-purchase bundles and post-purchase one-click upsells dramatically expands contribution margin %, reducing your break-even ROAS from 3.2x down to 2.1x."
+        },
+        {
+          "title": "Evaluate Blended MER (Marketing Efficiency Ratio) Over In-Platform ROAS",
+          "actionableAdvice": "In-platform ROAS reported by Meta Ads Manager or TikTok Ads Manager frequently suffers from 20% to 40% attribution over-counting due to modeled view-through conversions. Track your overall Blended MER (Total Store Revenue / Total Ad Spend Across All Channels) to ensure your business is actually cash-flow positive."
+        },
+        {
+          "title": "Set Bid Caps at Maximum Allowable CPA to Prevent Algorithmic Overbidding",
+          "actionableAdvice": "When scaling Meta or Google Advantage+ campaigns, algorithm bids can aggressively pursue expensive conversions that exceed your contribution margin. Implement cost caps or bid caps pegged exactly to your Maximum Allowable CPA to prevent unprofitable impressions."
+        },
+        {
+          "title": "Factor Repeat Customer Lifetime Value (LTV) into Acquisition Budgets",
+          "actionableAdvice": "If your e-commerce store has a strong 60-day repeat purchase rate (such as consumables, skincare, or coffee where 30%+ of buyers reorder), you can strategically acquire first-time customers at break-even ROAS (e.g., 1.8x to 2.2x), knowing that 100% of second-order gross margins convert directly into bottom-line profit."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the exact mathematical formula for Break-Even ROAS?",
+          "answer": "The formula for Break-Even ROAS is: `Break-Even ROAS = 1 / Net Contribution Margin %`. To find your Net Contribution Margin %, take your selling price, subtract landed COGS, merchant payment processing fees, shipping costs, and return reserves, and divide that dollar contribution by the selling price. For example, if your net contribution margin is 40% (0.40), your break-even ROAS is `1 / 0.40 = 2.50x`. At a 2.50x ROAS, every dollar spent on ads returns exactly enough contribution margin to cover costs."
+        },
+        {
+          "question": "What is the difference between ROAS and MER (Marketing Efficiency Ratio)?",
+          "answer": "ROAS (Return on Ad Spend) measures the performance of a specific advertising channel or campaign by dividing attributed platform revenue by that specific campaign's ad spend (`Attributed Revenue / Ad Spend`). MER (Marketing Efficiency Ratio, or Blended ROAS) measures holistic business efficiency by dividing total store revenue across all sales channels by total ad spend across all platforms combined (`Total Store Revenue / Total Ad Spend`). MER provides a clean macro picture free of cross-platform attribution disputes."
+        },
+        {
+          "question": "What is Maximum Allowable CPA and how do you calculate it?",
+          "answer": "Maximum Allowable Cost Per Acquisition (CPA) is the absolute highest dollar amount you can afford to pay to acquire a single paying customer without losing money on that transaction. It is calculated by subtracting all direct non-advertising costs (landed product COGS, payment gateway fees, packaging, shipping, and refund allowances) from the customer's checkout price. If your product sells for $100 and non-ad costs total $60, your Maximum Allowable CPA is exactly $40.00."
+        },
+        {
+          "question": "Why is a 2.0x ROAS profitable for some stores but unprofitable for others?",
+          "answer": "A 2.0x ROAS is profitable for stores with high contribution margins and disastrous for stores with low margins. A digital software or cosmetics brand with an 80% gross contribution margin only requires a 1.25x ROAS to break even (`1 / 0.80 = 1.25x`), so a 2.0x ROAS generates massive profit. Conversely, a consumer electronics retailer with a 25% contribution margin requires a 4.0x ROAS to break even (`1 / 0.25 = 4.0x`), meaning a 2.0x ROAS results in heavy net financial losses."
+        },
+        {
+          "question": "What is considered a good ROAS on Meta and Google Ads in 2026?",
+          "answer": "A 'good' ROAS depends entirely on your unit economics and contribution margins. Across modern direct-to-consumer e-commerce in 2026, an in-platform ROAS of 2.5x to 3.5x on Meta Ads and 3.5x to 5.0x on Google Shopping is considered healthy for brands with 50% to 65% gross margins. For high-ticket items ($200+ AOV), a lower 2.0x to 2.5x ROAS can still generate substantial gross profit dollars due to large basket sizes."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "wholesale-to-retail-markup-calculator",
+      "shopify-profit-margin-calculator",
+      "shopify-aov-calculator"
+    ]
   }
 ]

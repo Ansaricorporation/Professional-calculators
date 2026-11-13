@@ -1204,5 +1204,187 @@
       "substack-revenue-calculator",
       "gumroad-fee-calculator"
     ]
+  },
+  {
+    "slug": "lemon-squeezy-fee-calculator",
+    "title": "Lemon Squeezy Fee & Merchant of Record Payout Calculator (2026 Schedule)",
+    "metaTitle": "Lemon Squeezy Fee Calculator 2026 | 5% + 50¢ MoR Rate & Payout Audit",
+    "metaDescription": "Calculate exact Lemon Squeezy Merchant of Record fees: base 5% + $0.50 rate, +1.5% international cross-border FX, +0.5% subscription billing, and global VAT compliance.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Lemon Squeezy Pricing & Merchant of Record Merchant Agreement (2026)",
+    "officialSourceUrl": "https://www.lemonsqueezy.com/pricing",
+    "defaultInputs": {
+      "sellingPrice": 49.0,
+      "cogs": 0.0,
+      "shippingCharged": 0.0,
+      "shippingActualCost": 0.0,
+      "monthlyUnits": 200,
+      "planTier": "standard-mor",
+      "appFeesMonthly": 0.0,
+      "marketingPerOrder": 6.0,
+      "returnsRate": 2.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "standard-mor": {
+          "name": "Standard Domestic Sale (5% + $0.50 All-Inclusive MoR)",
+          "monthlyFee": 0.0,
+          "percentageRate": 5.0,
+          "fixedFee": 0.50,
+          "additionalNotes": "Includes merchant card processing, automated VAT/sales tax calculation and remittance, fraud protection, and chargeback handling."
+        },
+        "intl-mor": {
+          "name": "International Cross-Border Sale (6.5% + $0.50 inc. 1.5% FX)",
+          "monthlyFee": 0.0,
+          "percentageRate": 6.5,
+          "fixedFee": 0.50,
+          "additionalNotes": "Applies 1.5% international card payment surcharge for foreign transactions processed outside merchant domestic territory."
+        },
+        "subscription-mor": {
+          "name": "Recurring SaaS Subscription (5.5% + $0.50 inc. Billing Engine)",
+          "monthlyFee": 0.0,
+          "percentageRate": 5.5,
+          "fixedFee": 0.50,
+          "additionalNotes": "Adds 0.5% subscription management fee for automated recurring dunning, prorated upgrades, and pause/resume logic."
+        }
+      },
+      "extraParameters": {
+        "baseMorPct": 5.0,
+        "baseMorFixed": 0.50,
+        "intlCardSurcharge": 1.5,
+        "subBillingFee": 0.5,
+        "payoutMinimum": 50.0
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Selling digital goods, software licenses, or recurring SaaS subscriptions through Lemon Squeezy in 2026 operates on a Merchant of Record (MoR) model that fundamentally eliminates cross-border indirect tax liability for creators. Unlike traditional payment gateway tools like standard Stripe where the merchant bears statutory legal responsibility for registering, collecting, and remitting sales tax and VAT in dozens of jurisdictions, Lemon Squeezy acts as the legal reseller of record. Its pricing structure is straightforward: a flat 5% plus $0.50 per successful transaction for domestic sales, which includes all underlying credit card processing fees. International card purchases incur a modest 1.5% cross-border currency conversion surcharge, while recurring subscription products assess an extra 0.5% billing engine fee. For digital entrepreneurs, comparing Lemon Squeezy against competitors like Gumroad (10% + 2.9% + $0.30) reveals thousands of dollars in transaction fee savings alongside substantial reductions in international tax accounting overhead.",
+      "formulaBreakdown": {
+        "formulaString": "Lemon Squeezy Fee = (Gross Order Value * Base MoR%) + $0.50 Fixed + (International Volume * 1.5% FX) + (Subscription Volume * 0.5% Billing); Net Creator Payout = Gross Sales - Total MoR Fees - Customer Refund Allowance",
+        "variables": [
+          {
+            "symbol": "Gross Digital Volume (V_gross)",
+            "meaning": "Total dollar value collected from digital software, templates, or course buyers before platform deductions."
+          },
+          {
+            "symbol": "Base MoR Fee (F_mor)",
+            "meaning": "Contractual 5.0% platform fee plus $0.50 fixed charge per transaction, which covers merchant card processing and global VAT remittance."
+          },
+          {
+            "symbol": "Cross-Border FX Surcharge (F_intl)",
+            "meaning": "1.5% surcharge assessed on transactions processed via cards issued outside the seller's primary domestic banking jurisdiction."
+          },
+          {
+            "symbol": "Subscription Engine Fee (F_sub)",
+            "meaning": "0.5% add-on fee for managing recurring customer subscription lifecycles, failed payment retries, and prorated plan changes."
+          },
+          {
+            "symbol": "Net Disbursed Take-Home (P_net)",
+            "meaning": "Actual cash transferred to the seller's bank account via Stripe Connect or PayPal at the scheduled payout cycle."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Desktop Software Developer: $49.00 Utility App (200 Monthly Sales)",
+        "narrative": "A software engineer sells a productivity developer tool for macOS and Windows priced at $49.00. The store generates 200 orders per month ($9,800.00 gross revenue). Approximately 40% of sales are international credit card transactions (triggering the 1.5% FX surcharge). The developer budgets $6.00 per unit in marketing ad spend and sustains a 2.5% refund rate.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Volume: 200 units * $49.00 = $9,800.00 gross monthly revenue.",
+          "Step 2: Calculate Base Lemon Squeezy MoR Fee (5% + $0.50): ($9,800.00 * 5%) + (200 orders * $0.50) = $490.00 + $100.00 = $590.00 base fee.",
+          "Step 3: Calculate Cross-Border International Surcharge: 40% of $9,800 ($3,920.00) * 1.5% FX surcharge = $58.80 international fee.",
+          "Step 4: Compute Total Lemon Squeezy Monthly Deductions: $590.00 base + $58.80 intl = $648.80 total fee (Effective Fee Rate: 6.62%).",
+          "Step 5: Deduct Refunds and Advertising Costs: Refund reserve (2.5% of $9,800) = $245.00. Paid ad marketing (200 units * $6.00) = $1,200.00.",
+          "Step 6: Compute Final Creator Net Payout: $9,800.00 gross - $648.80 fees - $245.00 refunds - $1,200.00 ads = $7,706.20 net profit ($38.53 per unit, net margin 78.63%)."
+        ],
+        "finalTakeaway": "At $9,800.00 in monthly sales, Lemon Squeezy deducts only $648.80 (6.62% effective rate). On Gumroad, identical volume would incur $1,382.80 in fees, proving that Lemon Squeezy saves this developer $734.00 every single month—or $8,808.00 annually."
+      },
+      "benchmarkTable": {
+        "title": "2026 Lemon Squeezy Fee Breakdown: Domestic vs International & Subscription Rates",
+        "headers": [
+          "Transaction Type / SKU Model",
+          "Platform & Processing Fee",
+          "International Surcharge",
+          "Effective Fee on $50 SKU",
+          "Compliance & Tax Handling"
+        ],
+        "rows": [
+          [
+            "Domestic One-Time Product",
+            "5.0% + $0.50 flat fee",
+            "None ($0.00)",
+            "6.00% ($3.00 fee)",
+            "Full MoR liability; 0 tax filing needed"
+          ],
+          [
+            "International One-Time Product",
+            "5.0% + $0.50 flat fee",
+            "+1.5% cross-border FX",
+            "7.50% ($3.75 fee)",
+            "EU VAT / UK GST automatically remitted"
+          ],
+          [
+            "Domestic Recurring Subscription",
+            "5.5% + $0.50 flat fee",
+            "None ($0.00)",
+            "6.50% ($3.25 fee)",
+            "Automated dunning & tax handling included"
+          ],
+          [
+            "International SaaS Subscription",
+            "5.5% + $0.50 flat fee",
+            "+1.5% cross-border FX",
+            "8.00% ($4.00 fee)",
+            "Global indirect tax compliance covered"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Consolidate Low-Priced Micro-SKUs into Higher-Value Bundles",
+          "actionableAdvice": "The $0.50 fixed transaction fee represents 10% of revenue on a $5.00 product, pushing your effective fee rate to 15%. Package mini-templates or icon packs into comprehensive starter kits priced at $25 to $49, which compresses the fixed $0.50 fee to under 1% to 2% of total order value."
+        },
+        {
+          "title": "Incentivize Annual SaaS Subscriptions with a 2-Month Discount",
+          "actionableAdvice": "On monthly $10 subscriptions, the $0.50 fixed fee is assessed 12 times a year ($6.00 total). Pricing an annual subscription at $100 collects a single lump sum that incurs only one $0.50 fee, immediately recovering $5.50 in transaction friction per subscriber."
+        },
+        {
+          "title": "Leverage Lemon Squeezy License Key Management to Prevent Piracy",
+          "actionableAdvice": "Lemon Squeezy includes built-in software license generation and activation tracking APIs. Integrating activation limits directly into your desktop or web software prevents unauthorized key sharing, driving higher per-seat conversion without external licensing tool subscriptions."
+        },
+        {
+          "title": "Take Advantage of Built-In Global VAT Remittance Savings",
+          "actionableAdvice": "Operating as a standalone merchant selling digital files into Europe requires registering with the EU One-Stop Shop (OSS) and filing quarterly foreign returns. Because Lemon Squeezy handles this automatically as Merchant of Record, creators save $2,000 to $5,000 annually in international CPA advisory fees."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is a Merchant of Record (MoR) and why does Lemon Squeezy use it?",
+          "answer": "A Merchant of Record (MoR) is the legal entity that is authorized to sell goods and services to an end consumer on behalf of a creator. When a customer purchases a product through Lemon Squeezy, Lemon Squeezy is legally listed on the credit card statement as the seller. Lemon Squeezy assumes full legal liability for calculating, collecting, and remitting global sales tax, VAT, and GST in over 100 countries, protecting digital creators from complex cross-border tax compliance audits."
+        },
+        {
+          "question": "What are Lemon Squeezy's official fees in 2026?",
+          "answer": "In 2026, Lemon Squeezy charges a standard fee of 5% plus $0.50 per successful transaction for one-time digital product sales. Unlike conventional checkout tools, this rate includes credit card payment processing within the core fee. Transactions involving international cards or foreign currency conversion incur an additional 1.5% fee. Recurring subscription products incur an extra 0.5% subscription management fee, bringing recurring rates to 5.5% plus $0.50."
+        },
+        {
+          "question": "Does Lemon Squeezy charge a monthly software subscription fee?",
+          "answer": "No. Lemon Squeezy does not charge any monthly recurring SaaS software fees or maintenance charges. There are zero upfront costs to set up an account, create an online storefront, upload digital files, generate software license keys, or launch subscription tiers. Lemon Squeezy monetizes exclusively by deducting its percentage and fixed fee on successful completed transactions."
+        },
+        {
+          "question": "How and when does Lemon Squeezy distribute creator payouts?",
+          "answer": "Lemon Squeezy processes payouts on a weekly basis every Monday for funds that have successfully cleared the standard processing holding window (typically 14 days to account for refund risk). Payouts are delivered directly to the creator's connected bank account via Stripe Connect in supported countries, or through PayPal for international sellers, subject to a minimum withdrawal threshold of $50.00."
+        },
+        {
+          "question": "What happens when a customer requests a refund on Lemon Squeezy?",
+          "answer": "When a refund is issued to a customer, Lemon Squeezy reverses the purchase amount back to the customer's payment method. However, the third-party credit card processing costs incurred during the original transaction are non-refundable and are absorbed by the merchant balance. Lemon Squeezy does not charge punitive administrative refund fees, but creators should maintain a 2% to 4% refund reserve."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "gumroad-vs-lemon-squeezy-fee-calculator",
+      "gumroad-fee-calculator",
+      "payhip-fee-calculator"
+    ]
   }
 ]

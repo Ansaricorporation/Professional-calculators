@@ -50,6 +50,54 @@ export function auditAllCalculators(calculators: CalculatorDefinition[]): AuditR
   const results: AuditResult[] = [];
   const globalErrors: string[] = [];
 
+  // Step 1: Global Anti-Cannibalization & Uniqueness Checks
+  const seenSlugs = new Map<string, string>();
+  const seenTitles = new Map<string, string>();
+  const seenMetaTitles = new Map<string, string>();
+  const seenComparisonPairs = new Map<string, string>();
+
+  for (const calc of calculators) {
+    // 1. Slug uniqueness
+    if (seenSlugs.has(calc.slug)) {
+      globalErrors.push(`Duplicate slug detected: "${calc.slug}" is defined more than once.`);
+    } else {
+      seenSlugs.set(calc.slug, calc.slug);
+    }
+
+    // 2. Title uniqueness
+    const titleKey = calc.title.trim().toLowerCase();
+    if (seenTitles.has(titleKey)) {
+      globalErrors.push(`Duplicate title detected in "${calc.slug}": matches "${seenTitles.get(titleKey)}".`);
+    } else {
+      seenTitles.set(titleKey, calc.slug);
+    }
+
+    // 3. MetaTitle uniqueness
+    const metaTitleKey = calc.metaTitle.trim().toLowerCase();
+    if (seenMetaTitles.has(metaTitleKey)) {
+      globalErrors.push(`Duplicate metaTitle detected in "${calc.slug}": matches "${seenMetaTitles.get(metaTitleKey)}".`);
+    } else {
+      seenMetaTitles.set(metaTitleKey, calc.slug);
+    }
+
+    // 4. Comparison Pair Normalization (Anti-Mirror-Image Cannibalization)
+    if (calc.slug.includes('-vs-')) {
+      // Extract comparison tokens: remove common suffixes like '-calculator', '-fee-calculator'
+      const basePair = calc.slug.replace(/-(fee-)?calculator$/, '');
+      const parts = basePair.split('-vs-');
+      if (parts.length === 2) {
+        const normalizedKey = parts.map(p => p.trim().toLowerCase()).sort().join('-vs-');
+        if (seenComparisonPairs.has(normalizedKey)) {
+          globalErrors.push(
+            `Cannibalization Warning: Comparison pair "${normalizedKey}" in "${calc.slug}" conflicts with existing "${seenComparisonPairs.get(normalizedKey)}". Mirror-image comparisons are prohibited.`
+          );
+        } else {
+          seenComparisonPairs.set(normalizedKey, calc.slug);
+        }
+      }
+    }
+  }
+
   for (const calc of calculators) {
     const errors: string[] = [];
     const wordCount = calculateGuideWords(calc);
@@ -67,14 +115,14 @@ export function auditAllCalculators(calculators: CalculatorDefinition[]): AuditR
       errors.push(`Executive summary has ${execWords} words (minimum required: 120)`);
     }
 
-    // Rule 3: Minimum 5 FAQs, each answer >= 40 words
+    // Rule 3: Minimum 5 FAQs, each answer >= 50 words
     if (faqCount < 5) {
       errors.push(`FAQ count is ${faqCount} (minimum required: 5)`);
     } else {
       calc.guideContent.faqs.forEach((faq, idx) => {
         const aWords = countWords(faq.answer || '');
-        if (aWords < 40) {
-          errors.push(`FAQ #${idx + 1} ("${faq.question.slice(0, 25)}...") answer has only ${aWords} words (minimum required: 40)`);
+        if (aWords < 50) {
+          errors.push(`FAQ #${idx + 1} ("${faq.question.slice(0, 25)}...") answer has only ${aWords} words (minimum required: 50)`);
         }
       });
     }

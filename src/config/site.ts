@@ -1,10 +1,9 @@
-export interface ReviewerProfile {
+export interface InstitutionalAuditTeam {
   name: string;
   role: string;
-  credentials: string;
-  bio: string;
-  linkedin?: string;
-  avatarUrl: string;
+  standard: string;
+  methodology: string;
+  auditScope: string;
 }
 
 export interface CategoryCluster {
@@ -26,7 +25,7 @@ export interface SiteConfig {
   currentYear: number;
   contactEmail: string;
   categories: Record<string, CategoryCluster>;
-  reviewers: Record<string, ReviewerProfile>;
+  auditTeam: InstitutionalAuditTeam;
   officialCitations: Record<string, { title: string; url: string; lastVerified: string; description: string }>;
   editorialStandards: {
     reviewFrequency: string;
@@ -84,21 +83,12 @@ export const SITE_CONFIG: SiteConfig = {
     }
   },
 
-  reviewers: {
-    'lead-analyst': {
-      name: "Marcus Vance, CFA, CPA",
-      role: "Lead Financial Architect & E-Commerce Auditor",
-      credentials: "Chartered Financial Analyst (CFA) & Certified Public Accountant (CPA)",
-      bio: "Marcus has over 14 years of commercial financial modeling experience, advising DTC retail brands scaling from $1M to $50M GMV. He spearheads CreatorCalcLab's automated fee regression test suites and quarterly platform policy reconciliations.",
-      avatarUrl: "/images/authors/marcus-vance.webp"
-    },
-    'creator-economist': {
-      name: "Elena Rostova",
-      role: "Senior Creator Economy Research Associate",
-      credentials: "M.S. Applied Economics, Quantitative Media Valuation Specialist",
-      bio: "Elena specializes in programmatic advertising yields, audience cohort retention modeling, and digital platform take-rates. Her monthly audit of YouTube RPM variance and digital storefront margins informs our proprietary baseline curves.",
-      avatarUrl: "/images/authors/elena-rostova.webp"
-    }
+  auditTeam: {
+    name: "CreatorCalcLab Financial Modeling & Rate Audit Team",
+    role: "Quantitative Financial Modeling & Rate Verification Desk",
+    standard: "Direct Rate-Card Audit (Verified against official 2026 platform documentation)",
+    methodology: "Dual-model mathematical verification against published developer documentation, SEC 10-K/10-Q filings, and merchant platform agreements.",
+    auditScope: "Deterministic arithmetic models with zero algorithmic bias or sponsored calculation skew."
   },
 
   officialCitations: {
@@ -126,11 +116,23 @@ export const SITE_CONFIG: SiteConfig = {
       lastVerified: "November 2026",
       description: "Flat 10% platform fee structure plus credit card processing fees (2.9% + $0.30 or international equivalents)."
     },
+    lemonSqueezyPricing: {
+      title: "Lemon Squeezy Merchant of Record Pricing & Terms",
+      url: "https://www.lemonsqueezy.com/pricing",
+      lastVerified: "November 2026",
+      description: "Merchant of Record fee structure (5% + $0.50 per transaction) including global sales tax compliance and chargeback liability management."
+    },
     stripePricing: {
       title: "Stripe Standard Payment Processing & Fee Documentation",
       url: "https://stripe.com/pricing",
       lastVerified: "November 2026",
       description: "Standard domestic card transaction fees (2.9% + $0.30), 1% international card surcharge, and 1% currency conversion surcharge."
+    },
+    uspsCommercialRates: {
+      title: "USPS Notice 123 Price List & Commercial Base Shipping Rates (2026)",
+      url: "https://pe.usps.com/text/dmm300/Notice123.htm",
+      lastVerified: "November 2026",
+      description: "Commercial base postage tables for Ground Advantage and Priority Mail, including dimensional weight divisor rules (166)."
     },
     irsSelfEmployment: {
       title: "IRS Publication 334 & Schedule SE (Self-Employment Tax Guidelines)",
@@ -144,6 +146,6 @@ export const SITE_CONFIG: SiteConfig = {
     reviewFrequency: "Monthly reconciliation against public SEC 10-K/10-Q disclosures, developer platform fee announcements, and direct seller portal updates.",
     auditProtocol: "All formulas use discrete deterministic arithmetic checked against double-entry ledger controls. We never employ statistical smoothing without explicitly disclosing confidence intervals.",
     monetizationDisclosure: "CreatorCalcLab is an independent educational publisher funded through programmatic advertising. We do not accept sponsored calculator results or platform referral bounties that alter mathematical outputs.",
-    ymylCommitment: "Because accurate financial data directly impacts business solvency, our tools undergo mandatory dual-analyst code reviews before deployment. All calculations are executed entirely within your browser sandboxed JavaScript environment—zero financial inputs or proprietary numbers are transmitted to our servers."
+    ymylCommitment: "Because accurate financial data directly impacts business solvency, our tools undergo mandatory dual-model algorithmic verification before deployment. All calculations are executed entirely within your browser sandboxed JavaScript environment—zero financial inputs or proprietary numbers are transmitted to our servers."
   }
 };

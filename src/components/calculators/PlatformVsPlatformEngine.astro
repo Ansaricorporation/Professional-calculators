@@ -1,0 +1,440 @@
+---
+import type { CalculatorDefinition } from '../../data/schema';
+
+interface Props {
+  calc: CalculatorDefinition;
+}
+
+const { calc } = Astro.props;
+const d = calc.defaultInputs as {
+  productPrice?: number;
+  monthlyUnits?: number;
+  refundRate?: number;
+  internationalSales?: boolean;
+};
+
+const ep = calc.platformRates.extraParameters as {
+  platformAName?: string;
+  platformAFeePct?: number;
+  platformAFixed?: number;
+  platformAGatewayPct?: number;
+  platformAGatewayFixed?: number;
+  platformBName?: string;
+  platformBFeePct?: number;
+  platformBFixed?: number;
+  platformBGatewayPct?: number;
+  platformBGatewayFixed?: number;
+  internationalFxSurcharge?: number;
+} || {};
+
+const nameA = ep.platformAName || "Platform A (Marketplace)";
+const feePctA = ep.platformAFeePct || 10.0;
+const gwPctA = ep.platformAGatewayPct || 2.9;
+const gwFixedA = ep.platformAGatewayFixed || 0.30;
+
+const nameB = ep.platformBName || "Platform B (Merchant of Record)";
+const feePctB = ep.platformBFeePct || 5.0;
+const fixedB = ep.platformBFixed || 0.50;
+const fxSurcharge = ep.internationalFxSurcharge || 1.5;
+
+// Static pre-rendered calculations
+const prePrice = Number(d.productPrice) || 49.0;
+const preUnits = Number(d.monthlyUnits) || 250;
+const preRefund = Number(d.refundRate) || 3.0;
+const preIsIntl = d.internationalSales ?? true;
+
+const preGross = prePrice * preUnits;
+const intlModifier = preIsIntl ? (fxSurcharge / 100) * 0.40 : 0; // assuming 40% intl volume
+
+// Platform A
+const prePlatFeeA = preGross * (feePctA / 100);
+const preGwFeeA = (preGross * (gwPctA / 100)) + (preUnits * gwFixedA) + (preGross * intlModifier);
+const preTotalFeeA = prePlatFeeA + preGwFeeA;
+const preNetPayoutA = preGross - preTotalFeeA - (preGross * (preRefund / 100));
+const preEffectiveRateA = (preTotalFeeA / preGross) * 100;
+
+// Platform B
+const prePlatFeeB = (preGross * (feePctB / 100)) + (preUnits * fixedB) + (preGross * intlModifier);
+const preTotalFeeB = prePlatFeeB;
+const preNetPayoutB = preGross - preTotalFeeB - (preGross * (preRefund / 100));
+const preEffectiveRateB = (preTotalFeeB / preGross) * 100;
+
+const preMonthlySavings = Math.abs(preNetPayoutB - preNetPayoutA);
+const preAnnualSavings = preMonthlySavings * 12;
+const betterPlatform = preNetPayoutB >= preNetPayoutA ? nameB : nameA;
+const costlierPlatform = preNetPayoutB >= preNetPayoutA ? nameA : nameB;
+---
+
+<div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden" id="engine-platform-vs-platform">
+  <!-- Top Engine Header -->
+  <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center space-x-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+      <h2 class="text-base font-bold tracking-wide">Head-to-Head Platform Fee Comparison Engine</h2>
+    </div>
+    <div class="flex items-center space-x-3 text-xs">
+      <button
+        type="button"
+        id="pvp-share-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+        <span id="pvp-share-text">Share Link</span>
+      </button>
+
+      <button
+        type="button"
+        id="pvp-export-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        <span id="pvp-export-text">Copy Comparison</span>
+      </button>
+
+      <button
+        type="button"
+        id="pvp-reset-btn"
+        class="text-xs text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 ml-1"
+      >
+        Reset Defaults
+      </button>
+    </div>
+  </div>
+
+  <!-- Dynamic Savings Verdict Banner -->
+  <div class="bg-emerald-950 text-emerald-100 px-6 py-4 border-b border-emerald-900 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0">
+        &check;
+      </div>
+      <div>
+        <div class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold">Annual Financial Verdict</div>
+        <div class="text-sm font-semibold text-white" id="pvp-verdict-banner">
+          Switching from {costlierPlatform} to {betterPlatform} saves <span class="text-emerald-400 font-bold">${preAnnualSavings.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/year</span> at this volume.
+        </div>
+      </div>
+    </div>
+    <div class="text-xs font-mono text-emerald-300 bg-emerald-900/60 px-3 py-1 rounded border border-emerald-800">
+      Delta: <span id="pvp-monthly-delta">${preMonthlySavings.toFixed(2)}/mo</span>
+    </div>
+  </div>
+
+  <div class="p-6 sm:p-8 space-y-8">
+    <!-- Controls Row -->
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 p-5 bg-slate-50 rounded-xl border border-slate-200 text-sm">
+      <div>
+        <label for="pvp-price" class="block font-semibold text-slate-800 mb-1">Product Price ($)</label>
+        <div class="relative">
+          <span class="absolute left-3 top-2 text-slate-400 font-bold">$</span>
+          <input
+            type="number"
+            id="pvp-price"
+            step="0.01"
+            min="0"
+            value={prePrice.toFixed(2)}
+            class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="pvp-units" class="block font-semibold text-slate-800 mb-1">Monthly Sales (Units)</label>
+        <input
+          type="number"
+          id="pvp-units"
+          step="1"
+          min="1"
+          value={preUnits}
+          class="w-full px-3.5 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+        />
+      </div>
+
+      <div>
+        <label for="pvp-refund" class="block font-semibold text-slate-800 mb-1">Refund Rate (%)</label>
+        <div class="relative">
+          <input
+            type="number"
+            id="pvp-refund"
+            step="0.1"
+            min="0"
+            max="100"
+            value={preRefund.toFixed(1)}
+            class="w-full pr-8 pl-3.5 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+          />
+          <span class="absolute right-3 top-2 text-slate-400 font-bold">%</span>
+        </div>
+      </div>
+
+      <div class="flex items-center pt-5">
+        <label class="flex items-center space-x-2 cursor-pointer text-xs font-semibold text-slate-700">
+          <input
+            type="checkbox"
+            id="pvp-intl"
+            checked={preIsIntl}
+            class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-4 h-4"
+          />
+          <span>Include Cross-Border FX (+1.5% fee)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Side-by-Side Comparison Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Platform A Card -->
+      <div class="bg-white rounded-xl border-2 border-slate-300 p-6 shadow-xs flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-lg">{nameA}</h3>
+              <p class="text-xs text-slate-500">10% Platform Cut + 2.9% + $0.30 Card Processing</p>
+            </div>
+            <span class="text-xs font-mono uppercase bg-slate-100 text-slate-700 px-2.5 py-1 rounded font-bold">Marketplace</span>
+          </div>
+
+          <div class="mt-4 p-4 rounded-lg bg-slate-50 border border-slate-200">
+            <div class="text-xs text-slate-500 font-semibold">Net Monthly Payout</div>
+            <div id="pvp-out-payout-a" class="text-3xl font-extrabold text-slate-900 font-mono mt-1">
+              ${preNetPayoutA.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </div>
+            <div class="text-xs text-slate-500 mt-1">
+              Effective Fee: <span id="pvp-out-rate-a" class="font-bold text-rose-600">{preEffectiveRateA.toFixed(2)}%</span>
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-2 text-xs font-mono">
+            <div class="flex justify-between py-1 border-b border-slate-100">
+              <span class="text-slate-600">Gross Sales:</span>
+              <span id="pvp-out-gross-a" class="font-bold text-slate-900">${preGross.toFixed(2)}</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-100">
+              <span class="text-slate-600">Platform Cut (10%):</span>
+              <span id="pvp-out-plat-a" class="text-rose-600 font-semibold">-${prePlatFeeA.toFixed(2)}</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-100">
+              <span class="text-slate-600">Payment Gateway (2.9% + 30¢):</span>
+              <span id="pvp-out-gw-a" class="text-rose-600 font-semibold">-${preGwFeeA.toFixed(2)}</span>
+            </div>
+            <div class="flex justify-between py-1">
+              <span class="text-slate-600">Total Monthly Deductions:</span>
+              <span id="pvp-out-total-fee-a" class="font-bold text-rose-700">-${preTotalFeeA.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+          Seller maintains legal liability for cross-border indirect taxes.
+        </div>
+      </div>
+
+      <!-- Platform B Card -->
+      <div class="bg-white rounded-xl border-2 border-emerald-600 p-6 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl uppercase tracking-wider">
+          Lowest Fee Structure
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-lg">{nameB}</h3>
+              <p class="text-xs text-slate-500">5.0% + $0.50 (Merchant of Record All-In)</p>
+            </div>
+            <span class="text-xs font-mono uppercase bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded font-bold">MoR Protected</span>
+          </div>
+
+          <div class="mt-4 p-4 rounded-lg bg-emerald-50 border border-emerald-200">
+            <div class="text-xs text-emerald-800 font-semibold">Net Monthly Payout</div>
+            <div id="pvp-out-payout-b" class="text-3xl font-extrabold text-emerald-700 font-mono mt-1">
+              ${preNetPayoutB.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </div>
+            <div class="text-xs text-emerald-800 mt-1">
+              Effective Fee: <span id="pvp-out-rate-b" class="font-bold text-emerald-700">{preEffectiveRateB.toFixed(2)}%</span>
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-2 text-xs font-mono">
+            <div class="flex justify-between py-1 border-b border-slate-100">
+              <span class="text-slate-600">Gross Sales:</span>
+              <span id="pvp-out-gross-b" class="font-bold text-slate-900">${preGross.toFixed(2)}</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-100">
+              <span class="text-slate-600">MoR Fee (5% + 50¢):</span>
+              <span id="pvp-out-plat-b" class="text-emerald-700 font-semibold">-${preTotalFeeB.toFixed(2)}</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-100">
+              <span class="text-slate-600">Card Processing:</span>
+              <span class="text-slate-400">Included in MoR</span>
+            </div>
+            <div class="flex justify-between py-1">
+              <span class="text-slate-600">Total Monthly Deductions:</span>
+              <span id="pvp-out-total-fee-b" class="font-bold text-emerald-700">-${preTotalFeeB.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-3 border-t border-slate-100 text-[11px] text-emerald-800 font-medium">
+          Includes automated EU/UK VAT compliance & chargeback liability.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Disclaimer Footer -->
+  <div class="bg-slate-100 border-t border-slate-200 px-6 py-4 text-xs text-slate-600 flex items-start gap-3">
+    <svg class="w-5 h-5 text-slate-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <p class="leading-relaxed">
+      <strong>Platform Comparison Notice:</strong> Rates reflect 2026 published standard schedules for Gumroad and Lemon Squeezy. Does not factor custom high-volume merchant negotiated tier rates.
+    </p>
+  </div>
+</div>
+
+<script define:vars={{ nameA, feePctA, gwPctA, gwFixedA, nameB, feePctB, fixedB, fxSurcharge, defaultInputs: d }}>
+  const elPrice = document.getElementById('pvp-price');
+  const elUnits = document.getElementById('pvp-units');
+  const elRefund = document.getElementById('pvp-refund');
+  const elIntl = document.getElementById('pvp-intl');
+
+  // Outputs
+  const outPayoutA = document.getElementById('pvp-out-payout-a');
+  const outRateA = document.getElementById('pvp-out-rate-a');
+  const outGrossA = document.getElementById('pvp-out-gross-a');
+  const outPlatA = document.getElementById('pvp-out-plat-a');
+  const outGwA = document.getElementById('pvp-out-gw-a');
+  const outTotalFeeA = document.getElementById('pvp-out-total-fee-a');
+
+  const outPayoutB = document.getElementById('pvp-out-payout-b');
+  const outRateB = document.getElementById('pvp-out-rate-b');
+  const outGrossB = document.getElementById('pvp-out-gross-b');
+  const outPlatB = document.getElementById('pvp-out-plat-b');
+  const outTotalFeeB = document.getElementById('pvp-out-total-fee-b');
+
+  const verdictBanner = document.getElementById('pvp-verdict-banner');
+  const monthlyDelta = document.getElementById('pvp-monthly-delta');
+
+  const shareBtn = document.getElementById('pvp-share-btn');
+  const shareText = document.getElementById('pvp-share-text');
+  const exportBtn = document.getElementById('pvp-export-btn');
+  const exportText = document.getElementById('pvp-export-text');
+  const resetBtn = document.getElementById('pvp-reset-btn');
+
+  let debounceTimer = null;
+
+  function calculate() {
+    if (!elPrice || !elUnits || !elRefund) return;
+
+    const price = Math.max(0, parseFloat(elPrice.value) || 0);
+    const units = Math.max(1, parseFloat(elUnits.value) || 1);
+    const refund = Math.max(0, Math.min(100, parseFloat(elRefund.value) || 0));
+    const isIntl = elIntl ? elIntl.checked : true;
+
+    const gross = price * units;
+    const intlModifier = isIntl ? (fxSurcharge / 100) * 0.40 : 0;
+
+    // Platform A (Gumroad)
+    const platFeeA = gross * (feePctA / 100);
+    const gwFeeA = (gross * (gwPctA / 100)) + (units * gwFixedA) + (gross * intlModifier);
+    const totalFeeA = platFeeA + gwFeeA;
+    const netPayoutA = gross - totalFeeA - (gross * (refund / 100));
+    const rateA = gross > 0 ? (totalFeeA / gross) * 100 : 0;
+
+    // Platform B (Lemon Squeezy)
+    const totalFeeB = (gross * (feePctB / 100)) + (units * fixedB) + (gross * intlModifier);
+    const netPayoutB = gross - totalFeeB - (gross * (refund / 100));
+    const rateB = gross > 0 ? (totalFeeB / gross) * 100 : 0;
+
+    const savingsMo = Math.abs(netPayoutB - netPayoutA);
+    const savingsYr = savingsMo * 12;
+    const better = netPayoutB >= netPayoutA ? nameB : nameA;
+    const costlier = netPayoutB >= netPayoutA ? nameA : nameB;
+
+    // Update Platform A
+    if (outPayoutA) outPayoutA.textContent = `$${netPayoutA.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (outRateA) outRateA.textContent = `${rateA.toFixed(2)}%`;
+    if (outGrossA) outGrossA.textContent = `$${gross.toFixed(2)}`;
+    if (outPlatA) outPlatA.textContent = `-$${platFeeA.toFixed(2)}`;
+    if (outGwA) outGwA.textContent = `-$${gwFeeA.toFixed(2)}`;
+    if (outTotalFeeA) outTotalFeeA.textContent = `-$${totalFeeA.toFixed(2)}`;
+
+    // Update Platform B
+    if (outPayoutB) outPayoutB.textContent = `$${netPayoutB.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (outRateB) outRateB.textContent = `${rateB.toFixed(2)}%`;
+    if (outGrossB) outGrossB.textContent = `$${gross.toFixed(2)}`;
+    if (outPlatB) outPlatB.textContent = `-$${totalFeeB.toFixed(2)}`;
+    if (outTotalFeeB) outTotalFeeB.textContent = `-$${totalFeeB.toFixed(2)}`;
+
+    // Update Verdict
+    if (verdictBanner) {
+      verdictBanner.innerHTML = `Switching from ${costlier} to ${better} saves <span class="text-emerald-400 font-bold">$${savingsYr.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/year</span> at this volume.`;
+    }
+    if (monthlyDelta) monthlyDelta.textContent = `$${savingsMo.toFixed(2)}/mo`;
+
+    // URL Sync
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const p = new URLSearchParams();
+      p.set('price', price.toString());
+      p.set('units', units.toString());
+      p.set('refund', refund.toString());
+      if (isIntl) p.set('intl', '1');
+      window.history.replaceState({}, '', `${window.location.pathname}?${p.toString()}`);
+    }, 200);
+  }
+
+  [elPrice, elUnits, elRefund, elIntl].forEach(el => {
+    el?.addEventListener('input', calculate);
+    el?.addEventListener('change', calculate);
+  });
+
+  // Share
+  shareBtn?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      if (shareText) shareText.textContent = 'Copied!';
+      setTimeout(() => { if (shareText) shareText.textContent = 'Share Link'; }, 2000);
+    });
+  });
+
+  // Export
+  exportBtn?.addEventListener('click', () => {
+    const text = [
+      `--- PLATFORM COMPARISON RECEIPT (CreatorCalcLab) ---`,
+      `Product Price: $${elPrice?.value || 0}`,
+      `Monthly Units: ${elUnits?.value || 0}`,
+      `${nameA} Net Payout: ${outPayoutA?.textContent || ''} (${outRateA?.textContent || ''})`,
+      `${nameB} Net Payout: ${outPayoutB?.textContent || ''} (${outRateB?.textContent || ''})`,
+      `Annual Savings: ${verdictBanner?.textContent || ''}`,
+      `Comparison Link: ${window.location.href}`,
+      `----------------------------------------------------`
+    ].join('\n');
+
+    navigator.clipboard.writeText(text).then(() => {
+      if (exportText) exportText.textContent = 'Copied Receipt!';
+      setTimeout(() => { if (exportText) exportText.textContent = 'Copy Comparison'; }, 2000);
+    });
+  });
+
+  // Reset
+  resetBtn?.addEventListener('click', () => {
+    if (elPrice) elPrice.value = (defaultInputs.productPrice || 49.0).toFixed(2);
+    if (elUnits) elUnits.value = (defaultInputs.monthlyUnits || 250).toString();
+    if (elRefund) elRefund.value = (defaultInputs.refundRate || 3.0).toFixed(1);
+    if (elIntl) elIntl.checked = defaultInputs.internationalSales ?? true;
+    window.history.replaceState({}, '', window.location.pathname);
+    calculate();
+  });
+
+  // Hydrate
+  function hydrate() {
+    const p = new URLSearchParams(window.location.search);
+    if (!p.has('price') && !p.has('units')) return;
+    if (p.has('price') && elPrice) elPrice.value = p.get('price');
+    if (p.has('units') && elUnits) elUnits.value = p.get('units');
+    if (p.has('refund') && elRefund) elRefund.value = p.get('refund');
+    if (p.has('intl') && elIntl) elIntl.checked = p.get('intl') === '1';
+    calculate();
+  }
+
+  hydrate();
+</script>

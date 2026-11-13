@@ -2,7 +2,6 @@
 import { SITE_CONFIG } from '../config/site';
 
 interface Props {
-  reviewerKey?: 'lead-analyst' | 'creator-economist';
   lastUpdated?: string;
   officialSourceName?: string;
   officialSourceUrl?: string;
@@ -10,17 +9,16 @@ interface Props {
 }
 
 const {
-  reviewerKey = 'lead-analyst',
   lastUpdated = 'November 2026',
   officialSourceName,
   officialSourceUrl,
   citationKey
 } = Astro.props;
 
-const reviewer = SITE_CONFIG.reviewers[reviewerKey] || SITE_CONFIG.reviewers['lead-analyst'];
 const citation = citationKey ? SITE_CONFIG.officialCitations[citationKey] : null;
 const sourceName = officialSourceName || citation?.title || 'Official Platform Merchant Agreement';
 const sourceUrl = officialSourceUrl || citation?.url || SITE_CONFIG.officialCitations.shopifyPricing.url;
+const auditTeam = SITE_CONFIG.auditTeam;
 ---
 
 <div class="my-6 rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
@@ -40,7 +38,7 @@ const sourceUrl = officialSourceUrl || citation?.url || SITE_CONFIG.officialCita
           <span class="text-xs text-slate-500">Updated: {lastUpdated}</span>
         </div>
         <p class="text-xs text-slate-600 mt-0.5">
-          Audited against current platform merchant terms and banking interchange baselines.
+          {auditTeam.standard}
         </p>
       </div>
     </div>
@@ -61,32 +59,34 @@ const sourceUrl = officialSourceUrl || citation?.url || SITE_CONFIG.officialCita
     </div>
   </div>
 
-  <!-- Reviewer Info -->
+  <!-- Institutional Audit Team Info -->
   <div class="pt-4 flex items-start space-x-3.5 text-xs">
-    <div class="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm shrink-0">
-      {reviewer.name.split(' ').map(n => n[0]).join('')}
+    <div class="w-10 h-10 rounded-full bg-slate-900 text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0 border border-slate-700">
+      CCL
     </div>
     <div class="flex-1">
       <div class="flex flex-wrap items-baseline gap-x-2">
-        <span class="font-bold text-slate-900">{reviewer.name}</span>
-        <span class="text-slate-500 font-medium">{reviewer.role}</span>
-        <span class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">{reviewer.credentials}</span>
+        <span class="font-bold text-slate-900">{auditTeam.name}</span>
+        <span class="text-slate-500 font-medium">{auditTeam.role}</span>
+        <span class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+          Open Formula Verification
+        </span>
       </div>
       <p class="text-slate-600 mt-1 leading-relaxed">
-        {reviewer.bio}
+        {auditTeam.methodology} Our algorithms are open-source and deterministic, ensuring zero sponsored skew or affiliate distortion in calculation outputs.
       </p>
       <div class="mt-2 flex items-center gap-3 text-[11px] text-slate-500">
         <span class="flex items-center gap-1">
           <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Dual-Analyst Code Review
+          Direct Documentation Reconciled
         </span>
         <span>&bull;</span>
         <span class="flex items-center gap-1">
           <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Independent Mathematical Modeling
+          Deterministic Closed-Form Math
         </span>
         <span>&bull;</span>
-        <a href="/about/#audit-methodology" class="text-emerald-700 hover:underline">Editorial Methodology</a>
+        <a href="/about/#audit-methodology" class="text-emerald-700 hover:underline font-medium">Editorial Methodology</a>
       </div>
     </div>
   </div>

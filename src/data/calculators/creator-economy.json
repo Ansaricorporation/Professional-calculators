@@ -1,0 +1,169 @@
+[
+  {
+    "slug": "youtube-shorts-vs-long-form-calculator",
+    "title": "YouTube Shorts vs. Long-Form Ad Revenue & RPM Calculator (2026)",
+    "metaTitle": "YouTube Shorts vs Long-Form Revenue Calculator 2026 | RPM Split",
+    "metaDescription": "Calculate YouTube ad revenue splits, Long-Form 55% Partner rev-share vs. Shorts pooled royalties, effective RPM by niche, and music licensing deductions under 2026 YPP terms.",
+    "category": "creator-economy",
+    "engineType": "youtube-rpm",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "YouTube Partner Program (YPP) Monetization & Revenue Share Terms",
+    "officialSourceUrl": "https://support.google.com/youtube/answer/72857",
+    "defaultInputs": {
+      "videoFormat": "long-form",
+      "views": 100000,
+      "duration": "over-8-min",
+      "musicTracks": "0",
+      "niche": "finance",
+      "geoTier": "tier-1",
+      "monthlyUploads": 8
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "standardPercentage": 55.0,
+      "extraParameters": {
+        "longFormCreatorShare": 55.0,
+        "longFormPlatformShare": 45.0,
+        "shortsCreatorPoolShare": 45.0,
+        "midrollMultiplier": 1.65,
+        "musicDeduction1Track": 50.0,
+        "musicDeduction2Tracks": 67.0,
+        "nicheRpmFinance": 18.0,
+        "nicheRpmTech": 12.0,
+        "nicheRpmEducation": 9.5,
+        "nicheRpmLifestyle": 4.5,
+        "nicheRpmGaming": 2.8,
+        "shortsBaseRpm": 0.12,
+        "geoTier1Multiplier": 1.0,
+        "geoMixedMultiplier": 0.55,
+        "geoDevelopingMultiplier": 0.2
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Monetizing video content through the YouTube Partner Program (YPP) in 2026 requires navigating two fundamentally distinct algorithmic revenue systems: traditional auction-driven Long-Form video monetization and aggregated Shorts Creator Pool mechanics. While Long-Form video awards creators an audited 55% contractual share of net auction ad revenue served directly across their content, YouTube Shorts pools all global advertisement receipts between short-form clips, deducting commercial music licensing royalties before distributing a 45% pool share proportional to total platform view counts. This architectural divide creates an extreme variance in effective Revenue Per Mille (RPM): while an 8-minute long-form finance video targeting United States audiences frequently commands an RPM between $14.00 and $22.00, high-performing YouTube Shorts typically yield an RPM between $0.06 and $0.18 per thousand views. Understanding the exact view volume required to break even across production costs is critical for digital media studios balancing short-form audience acquisition with long-form financial solvency.",
+      "formulaBreakdown": {
+        "formulaString": "Long-Form Revenue = (Views / 1,000) * Base Niche RPM * Geo Multiplier * Duration Multiplier; Shorts Revenue = (Views / 1,000) * Base Shorts RPM * Geo Multiplier * (1 - Music Deduction%)",
+        "variables": [
+          {
+            "symbol": "Base Niche RPM (RPM_base)",
+            "meaning": "Advertiser net revenue yield per 1,000 monetized views determined by commercial commercial intent, industry category bidding density, and seasonal ad spend."
+          },
+          {
+            "symbol": "Duration Multiplier (M_dur)",
+            "meaning": "Mid-roll ad insertion multiplier for videos exceeding 8 minutes (1.65x baseline multiplier accounting for multiple mid-roll auction opportunities versus 1.0x for sub-8-minute videos)."
+          },
+          {
+            "symbol": "Geographic Audience Tier (M_geo)",
+            "meaning": "Weighted CPM coefficient reflecting audience buying power: Tier 1 (US, UK, CA, AU) = 1.0x; Mixed Global = 0.55x; Emerging/Developing Markets = 0.20x."
+          },
+          {
+            "symbol": "Shorts Music Deduction (D_music)",
+            "meaning": "Mandatory contractual deduction from the Shorts Creator Pool when commercially licensed audio is added: 0% for original audio, 50% for 1 licensed track, and 67% for 2 licensed tracks."
+          },
+          {
+            "symbol": "Monthly Channel Ad Revenue (R_mo)",
+            "meaning": "Estimated total monthly creator net payout computed as Estimated Revenue Per Video multiplied by Monthly Video Upload Frequency."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Personal Finance Creator: 1 Long-Form Video (100,000 Views) vs. Equivalent YouTube Shorts Views",
+        "narrative": "A personal finance channel produces comprehensive 10-minute tutorials alongside short-form personal finance tips. The creator evaluates the revenue output of a single long-form video generating 100,000 views against a short-form video achieving identical view velocity among a Tier-1 United States audience.",
+        "stepByStepMath": [
+          "Step 1: Calculate Long-Form Net RPM: $18.00 base finance RPM * 1.0 (Tier-1 US) * 1.65 (8+ min mid-roll boost) = $29.70 Effective RPM.",
+          "Step 2: Calculate Long-Form Creator Take-Home Payout: (100,000 views / 1,000) * $29.70 = $2,970.00 net ad payout to creator.",
+          "Step 3: Calculate Total Advertiser Gross Auction Spend (55/45 Split): $2,970.00 / 0.55 = $5,400.00 gross advertiser spend ($2,430.00 platform cut to YouTube).",
+          "Step 4: Calculate YouTube Shorts Creator Pool RPM: $0.12 base Shorts RPM * 1.0 (Tier-1 US) * 1.0 (original creator audio) = $0.12 Effective Shorts RPM.",
+          "Step 5: Calculate YouTube Shorts Net Payout (100,000 Views): (100,000 views / 1,000) * $0.12 = $12.00 net payout to creator.",
+          "Step 6: Compute Shorts View Multiplier to Match Long-Form Revenue: $2,970.00 / $0.12 RPM = 24,750,000 views required on Shorts to equal the ad revenue of a single 100,000-view long-form video."
+        ],
+        "finalTakeaway": "Generating $2,970.00 on YouTube Shorts requires approximately 24.75 million views—nearly 250 times the view volume of an 8-minute long-form video. While Shorts excels as an audience discovery engine, long-form content remains the decisive pillar for direct programmatic monetization."
+      },
+      "benchmarkTable": {
+        "title": "2026 YouTube Monetization Benchmarks: RPM Ranges Across Top Niches & Formats",
+        "headers": [
+          "Content Category / Niche",
+          "Average Long-Form CPM (Advertiser Spend)",
+          "Long-Form Creator RPM (55% Net)",
+          "Shorts Creator Pool RPM (45% Net)",
+          "Shorts View Equivalency (Per 100k Long-Form)"
+        ],
+        "rows": [
+          [
+            "Personal Finance & Investing",
+            "$32.00 to $55.00 CPM",
+            "$14.00 to $28.00 RPM",
+            "$0.10 to $0.20 RPM",
+            "14,000,000 to 28,000,000 views"
+          ],
+          [
+            "B2B SaaS, Tech & Software",
+            "$20.00 to $36.00 CPM",
+            "$10.00 to $18.00 RPM",
+            "$0.08 to $0.15 RPM",
+            "12,000,000 to 22,000,000 views"
+          ],
+          [
+            "Career, Education & Productivity",
+            "$16.00 to $28.00 CPM",
+            "$7.50 to $14.00 RPM",
+            "$0.06 to $0.12 RPM",
+            "12,500,000 to 23,000,000 views"
+          ],
+          [
+            "Lifestyle, Fitness & Vlogging",
+            "$8.00 to $15.00 CPM",
+            "$3.50 to $7.50 RPM",
+            "$0.04 to $0.09 RPM",
+            "8,000,000 to 16,000,000 views"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Structure Long-Form Content Beyond the 8-Minute Mid-Roll Threshold",
+          "actionableAdvice": "YouTube unlocks automated and manual mid-roll advertising slots exclusively on videos reaching or exceeding 8 minutes (480 seconds). Placing 2 to 3 natural mid-roll break points in a well-paced 10-minute video increases ad inventory opportunities by 60% to 85% compared to pre-roll-only configurations, elevating effective RPM without deteriorating viewer retention curves."
+        },
+        {
+          "title": "Eliminate Commercial Audio from YouTube Shorts to Protect Pool Allocations",
+          "actionableAdvice": "Using popular trending songs from YouTube's Audio Library triggers an immediate music licensing deduction from your video's allocated Creator Pool share—halving your payout (50% cut) for 1 track and reducing it by 67% for 2 tracks. Creating original voiceover audio or using copyright-cleared royalty-free beds ensures 100% of your generated pool share flows directly to your account."
+        },
+        {
+          "title": "Engineer Shorts as High-Funnel Gateways to Long-Form Back-Catalogs",
+          "actionableAdvice": "Because Shorts RPMs are structurally limited by pooled ad mechanics, top creator channels treat short-form clips as unpaid customer acquisition vehicles. Use YouTube's native 'Related Video' link feature on every Short to funnel viewers into high-RPM 8+ minute long-form videos where lifetime ad inventory yields 100x to 250x higher monetary value."
+        },
+        {
+          "title": "Audit Audience Demographic Geographic Concentration in YouTube Analytics",
+          "actionableAdvice": "A creator generating 1,000,000 views from Tier-1 jurisdictions (US, Canada, UK, Australia) can generate $15,000 in long-form revenue, whereas the exact same view count from emerging markets may yield under $2,500. Tailoring topics, thumbnails, and language to attract high-purchasing-power audiences directly defends your channel's macroeconomic floor."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does YouTube's revenue split differ between Shorts and Long-Form video in 2026?",
+          "answer": "Under the official YouTube Partner Program guidelines for 2026, Long-Form video and YouTube Shorts utilize distinct revenue allocation models. For Long-Form video, creators receive exactly 55% of net advertisement revenues generated from ads displayed or streamed directly on their watch pages, with YouTube retaining 45%. For YouTube Shorts, all ad revenue generated across the Shorts Feed is aggregated into a global Creator Pool. After YouTube deducts third-party music licensing fees (which depend on track counts used), creators are allocated a share of the pool based on their proportion of total platform Shorts views, receiving 45% of their allocated pool portion while YouTube retains 55%."
+        },
+        {
+          "question": "What is the difference between CPM and RPM in YouTube Creator Studio?",
+          "answer": "Cost Per Mille (CPM) represents the gross dollar amount that advertisers pay to purchase 1,000 ad impressions on your video content before YouTube's platform split is deducted. Revenue Per Mille (RPM) is the creator-facing metric that measures the actual net earnings you pocket per 1,000 total video views. Unlike CPM, RPM accounts for views that were not monetized (such as viewers using ad blockers or YouTube Premium subscribers), video duration mid-roll ad density, and YouTube's 45% platform rev-share cut. RPM provides a realistic operational picture of cash flow per view."
+        },
+        {
+          "question": "Why do YouTube Shorts have such a dramatically lower RPM compared to Long-Form videos?",
+          "answer": "Shorts RPMs are substantially lower ($0.04 to $0.20 compared to $4.00 to $25.00+ on long-form) because short-form viewers swipe rapidly through feeds without dedicated pre-roll auctions. In Shorts, ads are served only intermittently between videos rather than anchored to specific individual creators. Furthermore, the total ad inventory per minute of user attention is lower on Shorts, and commercial music licensing fees are subtracted from the gross pool before creators are paid. Consequently, monetizing Shorts relies on massive multi-million view scale rather than high per-viewer value."
+        },
+        {
+          "question": "How does video duration affect YouTube ad revenue and mid-roll placement?",
+          "answer": "Videos that are at least 8 minutes long qualify for mid-roll advertisements, meaning YouTube's automated system—or the creator manually—can insert multiple ad breaks throughout the video playback. In contrast, videos under 8 minutes are restricted to pre-roll and post-roll advertisements only. By strategically placing 2 to 3 mid-roll ads across an engaging 10-to-15 minute video, creators routinely see their effective RPM increase by 50% to 80% compared to shorter videos, as multiple monetizable ad impressions are generated from a single satisfied viewer."
+        },
+        {
+          "question": "Does using commercial music in YouTube Shorts reduce creator earnings?",
+          "answer": "Yes. YouTube's Shorts Creator Pool mechanics explicitly deduct licensing costs when creators incorporate commercial tracks from the YouTube Shorts audio library. If you publish a Short with original audio or copyright-free voiceover, 100% of your view-weighted pool allocation is factored into your 45% creator payout. If you add 1 licensed commercial track, your pool allocation is reduced by 50% to compensate music publishers. If you incorporate 2 commercial tracks, your allocation is reduced by 67%. To maximize ad revenue on Shorts, creators should prioritize original audio."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "gumroad-vs-lemon-squeezy-fee-calculator",
+      "wholesale-to-retail-markup-calculator"
+    ]
+  }
+]

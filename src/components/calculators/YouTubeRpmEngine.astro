@@ -1,0 +1,557 @@
+---
+import type { CalculatorDefinition } from '../../data/schema';
+
+interface Props {
+  calc: CalculatorDefinition;
+}
+
+const { calc } = Astro.props;
+const d = calc.defaultInputs as {
+  videoFormat?: string;
+  views?: number;
+  duration?: string;
+  musicTracks?: string;
+  niche?: string;
+  geoTier?: string;
+  monthlyUploads?: number;
+};
+
+// Default calculations for pre-rendered static HTML
+const preFormat = d.videoFormat || 'long-form';
+const preViews = Number(d.views) || 100000;
+const preDuration = d.duration || 'over-8-min';
+const preMusicTracks = d.musicTracks || '0';
+const preNiche = d.niche || 'finance';
+const preGeo = d.geoTier || 'tier-1';
+const preUploads = Number(d.monthlyUploads) || 8;
+
+// Calculation formulas
+const nicheRpmMap: Record<string, number> = {
+  finance: 18.0,
+  tech: 12.0,
+  education: 9.5,
+  lifestyle: 4.5,
+  gaming: 2.8
+};
+
+const geoMultiplierMap: Record<string, number> = {
+  'tier-1': 1.0,
+  mixed: 0.55,
+  developing: 0.20
+};
+
+const baseRpm = nicheRpmMap[preNiche] || 18.0;
+const geoMult = geoMultiplierMap[preGeo] || 1.0;
+const durationMult = preDuration === 'over-8-min' ? 1.65 : 1.0;
+const musicCut = preMusicTracks === '1' ? 0.50 : preMusicTracks === '2' ? 0.67 : 0.0;
+
+let preEffectiveRpm = 0;
+let preCreatorRev = 0;
+let preGrossCpm = 0;
+let prePlatformCut = 0;
+
+if (preFormat === 'long-form') {
+  preEffectiveRpm = baseRpm * geoMult * durationMult;
+  preCreatorRev = (preViews / 1000) * preEffectiveRpm;
+  preGrossCpm = (preEffectiveRpm / 0.55);
+  prePlatformCut = (preViews / 1000) * (preGrossCpm * 0.45);
+} else {
+  // Shorts
+  const shortsBase = 0.12;
+  preEffectiveRpm = shortsBase * geoMult * (1 - musicCut);
+  preCreatorRev = (preViews / 1000) * preEffectiveRpm;
+  preGrossCpm = (preEffectiveRpm / 0.45);
+  prePlatformCut = (preViews / 1000) * (preGrossCpm * 0.55);
+}
+
+const preMonthlyRev = preCreatorRev * preUploads;
+const preAnnualRev = preMonthlyRev * 12;
+
+// Stacked bar percentages
+const totalGrossVal = preCreatorRev + prePlatformCut;
+const preCreatorPct = totalGrossVal > 0 ? (preCreatorRev / totalGrossVal) * 100 : 55;
+const prePlatformPct = totalGrossVal > 0 ? (prePlatformCut / totalGrossVal) * 100 : 45;
+const preMusicPct = (preFormat === 'shorts' && musicCut > 0) ? (musicCut * 100) : 0;
+---
+
+<div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden" id="engine-youtube-rpm">
+  <!-- Top Engine Header -->
+  <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center space-x-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+      <h2 class="text-base font-bold tracking-wide">YouTube Partner Program (YPP) Monetization Engine</h2>
+    </div>
+    <div class="flex items-center space-x-3 text-xs">
+      <button
+        type="button"
+        id="yt-share-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+        <span id="yt-share-text">Share Link</span>
+      </button>
+
+      <button
+        type="button"
+        id="yt-export-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        <span id="yt-export-text">Copy Receipt</span>
+      </button>
+
+      <button
+        type="button"
+        id="yt-reset-btn"
+        class="text-xs text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 ml-1"
+      >
+        Reset Defaults
+      </button>
+    </div>
+  </div>
+
+  <!-- Visual Stacked Revenue Breakdown Bar -->
+  <div class="bg-slate-950 px-6 py-4 border-b border-slate-800">
+    <div class="flex items-center justify-between text-xs text-slate-300 mb-2 font-mono">
+      <span>YPP Revenue Distribution Split:</span>
+      <span class="text-emerald-400 font-bold" id="yt-bar-creator-label">{preCreatorPct.toFixed(1)}% Creator Net Share</span>
+    </div>
+    <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden flex shadow-inner">
+      <div id="yt-bar-creator" style={`width: ${preCreatorPct}%;`} class="bg-emerald-500 transition-all duration-150" title="Creator Net Revenue"></div>
+      <div id="yt-bar-platform" style={`width: ${prePlatformPct}%;`} class="bg-indigo-500 transition-all duration-150" title="YouTube Platform Share"></div>
+      <div id="yt-bar-music" style={`width: ${preMusicPct}%;`} class="bg-amber-500 transition-all duration-150" title="Music Royalty Deductions"></div>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 mt-2.5 text-[11px] text-slate-400">
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Creator Net (<span id="yt-leg-creator">{preCreatorPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>YouTube Share (<span id="yt-leg-platform">{prePlatformPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>Music Pool Deduction (<span id="yt-leg-music">{preMusicPct.toFixed(1)}%</span>)</div>
+    </div>
+  </div>
+
+  <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- Input Controls (7 Cols) -->
+    <div class="lg:col-span-7 space-y-5 text-sm">
+      
+      <!-- Video Format Toggle -->
+      <div>
+        <label class="block font-bold text-slate-800 mb-2">Content Format</label>
+        <div class="grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            id="yt-format-long"
+            class="yt-format-btn active-fmt border-2 border-emerald-600 bg-emerald-50 text-emerald-950 font-bold py-3 px-4 rounded-xl text-xs text-left transition-all"
+            data-format="long-form"
+          >
+            <div class="font-bold text-sm">Long-Form Video</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">55% Creator Share (Watch Page Ads)</div>
+          </button>
+          <button
+            type="button"
+            id="yt-format-shorts"
+            class="yt-format-btn border border-slate-300 bg-white text-slate-700 font-medium py-3 px-4 rounded-xl text-xs text-left hover:bg-slate-50 transition-all"
+            data-format="shorts"
+          >
+            <div class="font-bold text-sm">YouTube Shorts</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">45% Creator Pool (Shorts Feed)</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Long-Form Duration Toggle -->
+      <div id="yt-duration-wrapper">
+        <label class="block font-semibold text-slate-800 mb-1">Video Duration (Mid-Roll Eligibility)</label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="flex items-center p-3 rounded-lg border border-slate-300 hover:bg-slate-50 cursor-pointer">
+            <input type="radio" name="yt-duration" value="under-8-min" class="text-emerald-600 focus:ring-emerald-500 mr-2.5" />
+            <div>
+              <div class="font-bold text-xs text-slate-900">Under 8 Minutes</div>
+              <div class="text-[11px] text-slate-500">Pre/Post-Roll Only (1.0x RPM)</div>
+            </div>
+          </label>
+          <label class="flex items-center p-3 rounded-lg border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer">
+            <input type="radio" name="yt-duration" value="over-8-min" checked class="text-emerald-600 focus:ring-emerald-500 mr-2.5" />
+            <div>
+              <div class="font-bold text-xs text-emerald-950">8+ Minutes (Mid-Rolls)</div>
+              <div class="text-[11px] text-emerald-800">1.65x Multiplier Active</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Shorts Music Licensing Toggle (Hidden for long-form) -->
+      <div id="yt-music-wrapper" class="hidden">
+        <label class="block font-semibold text-slate-800 mb-1">Shorts Commercial Audio Track</label>
+        <select id="yt-music-tracks" class="w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-slate-900 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500">
+          <option value="0">Original Audio / Voiceover (100% Creator Pool Share)</option>
+          <option value="1">1 Commercial Audio Track (50% Royalty Pool Cut)</option>
+          <option value="2">2 Commercial Audio Tracks (67% Royalty Pool Cut)</option>
+        </select>
+      </div>
+
+      <!-- Views Slider & Direct Number Input -->
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <label for="yt-views-input" class="font-semibold text-slate-800">
+            Estimated Views per Video
+          </label>
+          <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200" id="yt-views-display">
+            {preViews.toLocaleString()} Views
+          </span>
+        </div>
+        <input
+          type="range"
+          id="yt-views-slider"
+          min="1000"
+          max="5000000"
+          step="5000"
+          value={preViews}
+          class="w-full accent-emerald-600 cursor-pointer"
+        />
+        <div class="mt-2">
+          <input
+            type="number"
+            id="yt-views-input"
+            min="100"
+            max="100000000"
+            value={preViews}
+            class="w-full px-3.5 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+          />
+        </div>
+      </div>
+
+      <!-- Content Niche & Audience Geography -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="yt-niche-select" class="block font-semibold text-slate-800 mb-1">Content Niche</label>
+          <select id="yt-niche-select" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500">
+            <option value="finance" selected>Personal Finance ($18.00 RPM)</option>
+            <option value="tech">B2B SaaS & Tech ($12.00 RPM)</option>
+            <option value="education">Education & Career ($9.50 RPM)</option>
+            <option value="lifestyle">Lifestyle & Vlogs ($4.50 RPM)</option>
+            <option value="gaming">Gaming & Entertainment ($2.80 RPM)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="yt-geo-select" class="block font-semibold text-slate-800 mb-1">Audience Geography</label>
+          <select id="yt-geo-select" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500">
+            <option value="tier-1" selected>Tier 1 (US, UK, CA, AU) - 1.0x</option>
+            <option value="mixed">Mixed Global Audience - 0.55x</option>
+            <option value="developing">Developing Markets - 0.20x</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Videos Uploaded Per Month -->
+      <div>
+        <label for="yt-uploads-input" class="block font-semibold text-slate-800 mb-1">
+          Videos Published Per Month
+        </label>
+        <input
+          type="number"
+          id="yt-uploads-input"
+          min="1"
+          max="120"
+          value={preUploads}
+          class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+        />
+      </div>
+
+    </div>
+
+    <!-- Output Dashboard (5 Cols) -->
+    <div class="lg:col-span-5 bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+      <div>
+        <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold mb-3">
+          Channel Monetization Forecast
+        </h3>
+
+        <!-- Hero Card -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-xs mb-4">
+          <div class="text-xs font-semibold text-slate-500">Est. Revenue Per Video</div>
+          <div id="yt-out-video-rev" class="text-3xl sm:text-4xl font-extrabold text-emerald-700 font-mono mt-1">
+            ${preCreatorRev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </div>
+          <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 text-xs">
+            <span class="text-slate-500">Effective Creator RPM:</span>
+            <span id="yt-out-rpm" class="font-bold text-emerald-800 font-mono text-sm">${preEffectiveRpm.toFixed(2)}</span>
+          </div>
+        </div>
+
+        <!-- Metrics Table -->
+        <div class="space-y-2 text-xs font-mono">
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Monthly Channel Ad Revenue:</span>
+            <span id="yt-out-monthly" class="font-bold text-slate-900">${preMonthlyRev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Annualized Channel Revenue:</span>
+            <span id="yt-out-annual" class="font-semibold text-emerald-700">${preAnnualRev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Gross Advertiser CPM:</span>
+            <span id="yt-out-cpm" class="text-slate-700">${preGrossCpm.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">YouTube Platform Cut (45%/55%):</span>
+            <span id="yt-out-platform-cut" class="text-rose-600 font-semibold">${prePlatformCut.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equivalency Comparison Box -->
+      <div class="mt-5 pt-4 border-t border-slate-200 bg-white p-4 rounded-lg border border-slate-200 text-xs">
+        <div class="font-bold text-slate-900 mb-1" id="yt-out-eq-title">View Volume Equivalency</div>
+        <p class="text-slate-600 text-[11px] leading-relaxed" id="yt-out-eq-text">
+          At ${preEffectiveRpm.toFixed(2)} RPM, a single 100k view video earns ${preCreatorRev.toFixed(2)}. Generating equivalent revenue on Shorts requires {(preCreatorRev / 0.12 * 1000).toLocaleString()} views.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer Footer -->
+  <div class="bg-slate-100 border-t border-slate-200 px-6 py-4 text-xs text-slate-600 flex items-start gap-3">
+    <svg class="w-5 h-5 text-slate-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <p class="leading-relaxed">
+      <strong>AdSense & YPP Disclaimer:</strong> Programmatic YouTube ad payouts vary based on seasonal auction density, audience retention curves, and ad blockers. Figures are estimates based on 2026 YPP revenue-sharing terms.
+    </p>
+  </div>
+</div>
+
+<script>
+  let activeFormat = 'long-form';
+
+  const nicheMap: Record<string, number> = { finance: 18.0, tech: 12.0, education: 9.5, lifestyle: 4.5, gaming: 2.8 };
+  const geoMap: Record<string, number> = { 'tier-1': 1.0, mixed: 0.55, developing: 0.20 };
+
+  const btnLong = document.getElementById('yt-format-long');
+  const btnShorts = document.getElementById('yt-format-shorts');
+  const durWrapper = document.getElementById('yt-duration-wrapper');
+  const musicWrapper = document.getElementById('yt-music-wrapper');
+
+  const sliderViews = document.getElementById('yt-views-slider') as HTMLInputElement | null;
+  const inputViews = document.getElementById('yt-views-input') as HTMLInputElement | null;
+  const displayViews = document.getElementById('yt-views-display');
+  const selNiche = document.getElementById('yt-niche-select') as HTMLSelectElement | null;
+  const selGeo = document.getElementById('yt-geo-select') as HTMLSelectElement | null;
+  const selMusic = document.getElementById('yt-music-tracks') as HTMLSelectElement | null;
+  const inputUploads = document.getElementById('yt-uploads-input') as HTMLInputElement | null;
+
+  // Outputs
+  const outVideoRev = document.getElementById('yt-out-video-rev');
+  const outRpm = document.getElementById('yt-out-rpm');
+  const outMonthly = document.getElementById('yt-out-monthly');
+  const outAnnual = document.getElementById('yt-out-annual');
+  const outCpm = document.getElementById('yt-out-cpm');
+  const outPlatformCut = document.getElementById('yt-out-platform-cut');
+  const outEqText = document.getElementById('yt-out-eq-text');
+
+  // Bars
+  const barCreator = document.getElementById('yt-bar-creator');
+  const barPlatform = document.getElementById('yt-bar-platform');
+  const barMusic = document.getElementById('yt-bar-music');
+  const barLabel = document.getElementById('yt-bar-creator-label');
+  const legCreator = document.getElementById('yt-leg-creator');
+  const legPlatform = document.getElementById('yt-leg-platform');
+  const legMusic = document.getElementById('yt-leg-music');
+
+  const shareBtn = document.getElementById('yt-share-btn');
+  const shareText = document.getElementById('yt-share-text');
+  const exportBtn = document.getElementById('yt-export-btn');
+  const exportText = document.getElementById('yt-export-text');
+  const resetBtn = document.getElementById('yt-reset-btn');
+
+  let debounceTimer: any = null;
+
+  function calculate() {
+    if (!inputViews || !selNiche || !selGeo || !inputUploads) return;
+
+    const views = Math.max(100, parseFloat(inputViews.value) || 100);
+    const niche = selNiche.value || 'finance';
+    const geo = selGeo.value || 'tier-1';
+    const uploads = Math.max(1, parseFloat(inputUploads.value) || 1);
+
+    const durInput = document.querySelector('input[name="yt-duration"]:checked') as HTMLInputElement | null;
+    const duration = durInput ? durInput.value : 'over-8-min';
+    const musicTracks = selMusic ? selMusic.value : '0';
+
+    const baseNicheRpm = nicheMap[niche] || 18.0;
+    const geoMult = geoMap[geo] || 1.0;
+    const durationMult = duration === 'over-8-min' ? 1.65 : 1.0;
+    const musicCut = musicTracks === '1' ? 0.50 : musicTracks === '2' ? 0.67 : 0.0;
+
+    let effectiveRpm = 0;
+    let creatorRev = 0;
+    let grossCpm = 0;
+    let platformCut = 0;
+
+    if (activeFormat === 'long-form') {
+      effectiveRpm = baseNicheRpm * geoMult * durationMult;
+      creatorRev = (views / 1000) * effectiveRpm;
+      grossCpm = effectiveRpm / 0.55;
+      platformCut = (views / 1000) * (grossCpm * 0.45);
+    } else {
+      const shortsBase = 0.12;
+      effectiveRpm = shortsBase * geoMult * (1 - musicCut);
+      creatorRev = (views / 1000) * effectiveRpm;
+      grossCpm = effectiveRpm / 0.45;
+      platformCut = (views / 1000) * (grossCpm * 0.55);
+    }
+
+    const monthlyRev = creatorRev * uploads;
+    const annualRev = monthlyRev * 12;
+
+    // Update Output Elements
+    if (outVideoRev) outVideoRev.textContent = `$${creatorRev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (outRpm) outRpm.textContent = `$${effectiveRpm.toFixed(2)}`;
+    if (outMonthly) outMonthly.textContent = `$${monthlyRev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (outAnnual) outAnnual.textContent = `$${annualRev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (outCpm) outCpm.textContent = `$${grossCpm.toFixed(2)}`;
+    if (outPlatformCut) outPlatformCut.textContent = `$${platformCut.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (displayViews) displayViews.textContent = `${views.toLocaleString()} Views`;
+
+    if (outEqText) {
+      if (activeFormat === 'long-form') {
+        const eqShortsViews = Math.round(creatorRev / (0.12 * geoMult) * 1000);
+        outEqText.textContent = `At $${effectiveRpm.toFixed(2)} RPM, this long-form video earns $${creatorRev.toFixed(2)}. Achieving that same revenue on YouTube Shorts would require approximately ${eqShortsViews.toLocaleString()} views.`;
+      } else {
+        const eqLongViews = Math.round(creatorRev / (baseNicheRpm * geoMult * 1.65) * 1000);
+        outEqText.textContent = `At $${effectiveRpm.toFixed(2)} Shorts RPM, ${views.toLocaleString()} views earns $${creatorRev.toFixed(2)}. An 8+ min long-form video in ${niche} needs only ${eqLongViews.toLocaleString()} views to match this.`;
+      }
+    }
+
+    // Bar Split
+    const totalGross = creatorRev + platformCut;
+    const creatorPct = totalGross > 0 ? (creatorRev / totalGross) * 100 : 55;
+    const platformPct = totalGross > 0 ? (platformCut / totalGross) * 100 : 45;
+    const musicPct = (activeFormat === 'shorts' && musicCut > 0) ? (musicCut * 100) : 0;
+
+    if (barCreator) barCreator.style.width = `${creatorPct}%`;
+    if (barPlatform) barPlatform.style.width = `${platformPct}%`;
+    if (barMusic) barMusic.style.width = `${musicPct}%`;
+    if (barLabel) barLabel.textContent = `${creatorPct.toFixed(1)}% Creator Net Share`;
+
+    if (legCreator) legCreator.textContent = `${creatorPct.toFixed(1)}%`;
+    if (legPlatform) legPlatform.textContent = `${platformPct.toFixed(1)}%`;
+    if (legMusic) legMusic.textContent = `${musicPct.toFixed(1)}%`;
+
+    // URL sync
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const p = new URLSearchParams();
+      p.set('fmt', activeFormat);
+      p.set('views', views.toString());
+      p.set('niche', niche);
+      p.set('geo', geo);
+      p.set('uploads', uploads.toString());
+      if (activeFormat === 'long-form') p.set('dur', duration);
+      if (activeFormat === 'shorts') p.set('music', musicTracks);
+      window.history.replaceState({}, '', `${window.location.pathname}?${p.toString()}`);
+    }, 200);
+  }
+
+  // Format Switchers
+  btnLong?.addEventListener('click', () => {
+    activeFormat = 'long-form';
+    btnLong.classList.add('active-fmt', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+    btnLong.classList.remove('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+    btnShorts?.classList.remove('active-fmt', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+    btnShorts?.classList.add('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+    durWrapper?.classList.remove('hidden');
+    musicWrapper?.classList.add('hidden');
+    calculate();
+  });
+
+  btnShorts?.addEventListener('click', () => {
+    activeFormat = 'shorts';
+    btnShorts.classList.add('active-fmt', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+    btnShorts.classList.remove('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+    btnLong?.classList.remove('active-fmt', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+    btnLong?.classList.add('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+    durWrapper?.classList.add('hidden');
+    musicWrapper?.classList.remove('hidden');
+    calculate();
+  });
+
+  // Views sync
+  sliderViews?.addEventListener('input', () => {
+    if (inputViews && sliderViews) inputViews.value = sliderViews.value;
+    calculate();
+  });
+
+  inputViews?.addEventListener('input', () => {
+    if (sliderViews && inputViews) sliderViews.value = inputViews.value;
+    calculate();
+  });
+
+  [selNiche, selGeo, selMusic, inputUploads].forEach(el => {
+    el?.addEventListener('change', calculate);
+    el?.addEventListener('input', calculate);
+  });
+
+  document.querySelectorAll('input[name="yt-duration"]').forEach(radio => {
+    radio.addEventListener('change', calculate);
+  });
+
+  // Share
+  shareBtn?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      if (shareText) shareText.textContent = 'Copied!';
+      setTimeout(() => { if (shareText) shareText.textContent = 'Share Link'; }, 2000);
+    });
+  });
+
+  // Export
+  exportBtn?.addEventListener('click', () => {
+    const text = [
+      `--- YOUTUBE MONETIZATION ESTIMATE (CreatorCalcLab) ---`,
+      `Format: ${activeFormat.toUpperCase()}`,
+      `Views: ${inputViews?.value || 0}`,
+      `Niche: ${selNiche?.value || ''}`,
+      `Effective RPM: ${outRpm?.textContent || ''}`,
+      `Revenue Per Video: ${outVideoRev?.textContent || ''}`,
+      `Monthly Channel Revenue: ${outMonthly?.textContent || ''}`,
+      `Annual Projection: ${outAnnual?.textContent || ''}`,
+      `Link: ${window.location.href}`,
+      `-------------------------------------------------------`
+    ].join('\n');
+
+    navigator.clipboard.writeText(text).then(() => {
+      if (exportText) exportText.textContent = 'Copied Receipt!';
+      setTimeout(() => { if (exportText) exportText.textContent = 'Copy Receipt'; }, 2000);
+    });
+  });
+
+  // Reset
+  resetBtn?.addEventListener('click', () => {
+    if (inputViews) inputViews.value = '100000';
+    if (sliderViews) sliderViews.value = '100000';
+    if (selNiche) selNiche.value = 'finance';
+    if (selGeo) selGeo.value = 'tier-1';
+    if (selMusic) selMusic.value = '0';
+    if (inputUploads) inputUploads.value = '8';
+    btnLong?.click();
+    window.history.replaceState({}, '', window.location.pathname);
+    calculate();
+  });
+
+  // Hydrate from URL query
+  function hydrate() {
+    const p = new URLSearchParams(window.location.search);
+    if (!p.has('fmt') && !p.has('views')) return;
+
+    if (p.has('fmt') && p.get('fmt') === 'shorts') btnShorts?.click();
+    if (p.has('views') && inputViews) {
+      inputViews.value = p.get('views') || '100000';
+      if (sliderViews) sliderViews.value = inputViews.value;
+    }
+    if (p.has('niche') && selNiche) selNiche.value = p.get('niche') || 'finance';
+    if (p.has('geo') && selGeo) selGeo.value = p.get('geo') || 'tier-1';
+    if (p.has('uploads') && inputUploads) inputUploads.value = p.get('uploads') || '8';
+    calculate();
+  }
+
+  hydrate();
+</script>

@@ -1,12 +1,18 @@
 import type { CalculatorDefinition, CalculatorCategory } from './schema';
 import { validateCalculatorDefinition } from './schema';
 import ecommerceCalculators from './calculators/ecommerce.json';
+import creatorEconomyCalculators from './calculators/creator-economy.json';
+import digitalMarketplacesCalculators from './calculators/digital-marketplaces.json';
+import b2bPricingCalculators from './calculators/b2b-pricing.json';
 
 const allRawCalculators: CalculatorDefinition[] = [
   ...(ecommerceCalculators as unknown as CalculatorDefinition[]),
+  ...(creatorEconomyCalculators as unknown as CalculatorDefinition[]),
+  ...(digitalMarketplacesCalculators as unknown as CalculatorDefinition[]),
+  ...(b2bPricingCalculators as unknown as CalculatorDefinition[])
 ];
 
-// Perform strict compile-time/initialization validation
+// Perform strict compile-time/initialization validation across every calculator
 allRawCalculators.forEach(calc => {
   validateCalculatorDefinition(calc);
 });

@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "gumroad-vs-lemon-squeezy-fee-calculator",
+    "title": "Gumroad vs. Lemon Squeezy Fee & Net Payout Calculator (2026)",
+    "metaTitle": "Gumroad vs Lemon Squeezy Fee Calculator 2026 | Platform vs MoR",
+    "metaDescription": "Compare Gumroad flat 10% platform fees plus card processing against Lemon Squeezy 5% + $0.50 Merchant of Record rates, global sales tax liabilities, and net creator payouts.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Gumroad & Lemon Squeezy Official Merchant Pricing Schedules",
+    "officialSourceUrl": "https://gumroad.com/pricing",
+    "defaultInputs": {
+      "productPrice": 49.0,
+      "monthlyUnits": 250,
+      "refundRate": 3.0,
+      "internationalSales": true
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Gumroad",
+        "platformAFeePct": 10.0,
+        "platformAFixed": 0.0,
+        "platformAGatewayPct": 2.9,
+        "platformAGatewayFixed": 0.3,
+        "platformBName": "Lemon Squeezy",
+        "platformBFeePct": 5.0,
+        "platformBFixed": 0.5,
+        "platformBGatewayPct": 0.0,
+        "platformBGatewayFixed": 0.0,
+        "internationalFxSurcharge": 1.5
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Choosing between Gumroad and Lemon Squeezy for digital software, templates, or e-book sales in 2026 requires comparing two fundamentally divergent financial architecture models: traditional marketplace checkout software versus a full Merchant of Record (MoR). Following Gumroad's transition to a flat 10% platform fee plus standard Stripe payment processing (2.9% + $0.30), creators face an effective take-rate exceeding 13.5% on typical $25 to $50 digital orders. In contrast, Lemon Squeezy operates as a Merchant of Record with an all-inclusive 5% + $0.50 per-transaction fee structure, assuming statutory legal responsibility for global sales tax calculation, EU VAT remittance, cross-border currency conversion, and chargeback dispute management. For digital creators generating more than $5,000 monthly, the fee differential between these platforms routinely amounts to thousands of dollars in annual profit retention, in addition to significant accounting overhead savings associated with international indirect tax compliance.",
+      "formulaBreakdown": {
+        "formulaString": "Gumroad Total Fee = (Gross Order Value * 10%) + (Gross Order Value * 2.9% + $0.30) + International FX; Lemon Squeezy Total Fee = (Gross Order Value * 5%) + $0.50 + International FX",
+        "variables": [
+          {
+            "symbol": "Gross Order Value (V_gross)",
+            "meaning": "Total checkout value collected from the digital purchaser per transaction (Price * Units)."
+          },
+          {
+            "symbol": "Gumroad Platform Cut (F_gum_plat)",
+            "meaning": "Contractual 10% platform fee assessed by Gumroad on all non-Discover marketplace gross checkout transactions."
+          },
+          {
+            "symbol": "Gumroad Gateway Fee (F_gum_gw)",
+            "meaning": "Standard credit card processing deduction passing through to Stripe (2.9% + $0.30 domestic, plus 1% to 1.5% for international cards)."
+          },
+          {
+            "symbol": "Lemon Squeezy MoR Fee (F_ls_mor)",
+            "meaning": "All-inclusive Merchant of Record take-rate: 5% of gross checkout value plus $0.50 fixed charge per transaction, which covers payment processing and VAT remittance."
+          },
+          {
+            "symbol": "Annual Platform Savings Verdict (S_annual)",
+            "meaning": "Difference between total annual fees charged by Gumroad versus Lemon Squeezy across identical monthly sales volume ((Annual Gumroad Fees - Annual Lemon Squeezy Fees))."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Digital SaaS / Notion Creator: $49.00 Template (250 Monthly Sales)",
+        "narrative": "An independent software developer and template creator sells a developer productivity toolkit priced at $49.00. The store processes 250 units monthly ($12,250.00 gross monthly volume) with a 3.0% refund rate and 40% international transaction volume.",
+        "stepByStepMath": [
+          "Step 1: Calculate Gross Monthly Volume: 250 units * $49.00 = $12,250.00 monthly gross sales.",
+          "Step 2: Calculate Gumroad 10% Platform Cut: $12,250.00 * 10% = $1,225.00 monthly platform fee.",
+          "Step 3: Calculate Gumroad Payment Gateway Fees: ($12,250.00 * 2.9%) + (250 orders * $0.30) + ($12,250 * 40% intl * 1.5% FX) = $355.25 + $75.00 + $73.50 = $503.75 gateway deduction.",
+          "Step 4: Compute Total Gumroad Monthly Fees: $1,225.00 + $503.75 = $1,728.75 (Effective Fee Rate: 14.11%).",
+          "Step 5: Calculate Lemon Squeezy 5% + $0.50 MoR Fee: ($12,250.00 * 5%) + (250 orders * $0.50) + ($12,250 * 40% intl * 1.5% FX) = $612.50 + $125.00 + $73.50 = $811.00 total fee (Effective Fee Rate: 6.62%).",
+          "Step 6: Compute Monthly & Annual Net Take-Home Delta: Gumroad Net = $10,521.25/mo vs. Lemon Squeezy Net = $11,439.00/mo. Monthly Savings = $917.75. Annualized Savings = $11,013.00."
+        ],
+        "finalTakeaway": "At $12,250.00 in monthly sales, hosting on Lemon Squeezy saves this creator exactly $917.75 per month—or $11,013.00 every year—in direct transaction fee savings, while Lemon Squeezy assumes full legal liability for international sales tax and VAT filing."
+      },
+      "benchmarkTable": {
+        "title": "Gumroad vs. Lemon Squeezy: Structural Fee Breakdown & Feature Comparison (2026)",
+        "headers": [
+          "Operational Metric",
+          "Gumroad (Marketplace Model)",
+          "Lemon Squeezy (Merchant of Record)",
+          "Net Creator Impact"
+        ],
+        "rows": [
+          [
+            "Base Platform Fee",
+            "10.0% flat platform cut",
+            "5.0% flat platform cut",
+            "Lemon Squeezy saves 5.0% on gross volume"
+          ],
+          [
+            "Payment Processing Cost",
+            "+2.9% + $0.30 (Stripe pass-through)",
+            "Included in 5% + $0.50 flat fee",
+            "Gumroad assesses dual-layer fee deduction"
+          ],
+          [
+            "Global Sales Tax & VAT",
+            "Collects tax; seller may have filing burden",
+            "Full MoR legal liability (Zero filing needed)",
+            "Lemon Squeezy eliminates CPA tax overhead"
+          ],
+          [
+            "Effective Fee on $50 Item",
+            "13.50% ($6.75 per sale)",
+            "6.00% ($3.00 per sale)",
+            "Save $3.75 per transaction on Lemon Squeezy"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Migrate High-AOV Digital SKUs to Merchant of Record Platforms",
+          "actionableAdvice": "On products priced over $30, Gumroad's 10% fee combined with credit card interchange fees creates extreme margin drag. A $100 product on Gumroad costs approximately $13.20 in fees, compared to $5.50 on Lemon Squeezy. Transitioning software products, courses, or annual SaaS subscriptions to a 5% MoR immediately recovers 7.7% of gross revenue."
+        },
+        {
+          "title": "Evaluate Discover Marketplace Network Effects Before Switching",
+          "actionableAdvice": "Gumroad assesses a punitive 30% commission when a customer discovers your product via the Gumroad Discover marketplace directory. If more than 20% of your sales originate from organic Gumroad directory search, model whether that discovery volume outweighs lower standalone checkout fees on alternative platforms."
+        },
+        {
+          "title": "Factor Cross-Border VAT and Indirect Tax Liabilities",
+          "actionableAdvice": "Selling digital goods into the European Union, United Kingdom, or Australia triggers mandatory localized VAT/GST registration thresholds once volume scales. Operating through a Merchant of Record like Lemon Squeezy legally transfers compliance to the platform, avoiding thousands of dollars in foreign tax advisory and filing retainers."
+        },
+        {
+          "title": "Pass Payment Processing Surcharges on Micro-Transactions",
+          "actionableAdvice": "For products priced under $10, fixed per-transaction fees ($0.30 on Gumroad, $0.50 on Lemon Squeezy) disproportionately compress margins. A $5 sale on Lemon Squeezy incurs a $0.75 fee (15.0% effective take-rate). Bundle low-cost items into multi-product packages with minimum price points above $20 to dilute fixed per-order costs."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the difference between a Marketplace and a Merchant of Record (MoR)?",
+          "answer": "A traditional digital marketplace or checkout tool (such as Gumroad) acts as an intermediary facilitating payments, but the creator remains the legal seller of record responsible for business registration, consumer rights disputes, and potentially localized indirect tax nexus filings. In contrast, a Merchant of Record (such as Lemon Squeezy) becomes the legal entity selling the product to the end consumer. The MoR assumes full legal responsibility for calculating, collecting, and remitting global sales tax, VAT, and GST in over 100 countries, protecting creators from international tax compliance liabilities."
+        },
+        {
+          "question": "What are Gumroad's official fees in 2026?",
+          "answer": "In 2026, Gumroad charges a flat platform fee of 10% on every transaction. In addition to this 10% platform cut, creators must pay standard credit card processing fees, which are 2.9% plus $0.30 per transaction for domestic cards, or higher for international cards and PayPal payouts. Furthermore, if a sale is generated through the Gumroad Discover recommendation directory, Gumroad assesses a 30% affiliate discovery fee instead of the standard 10% platform fee, bringing total deductions on Discover sales above 33%."
+        },
+        {
+          "question": "What are Lemon Squeezy's official pricing rates in 2026?",
+          "answer": "Lemon Squeezy charges a standard all-inclusive rate of 5% plus $0.50 per transaction for digital products and software subscriptions. Unlike Gumroad, this rate includes payment processing within the core fee for standard domestic transactions, meaning creators do not pay an extra 2.9% Stripe card fee on top of the 5%. International payment methods, foreign currency exchange, and localized payment rails may incur an additional 1.5% fee. High-volume enterprise merchants processing over $100,000 monthly can negotiate volume discounts."
+        },
+        {
+          "question": "At what price point is Lemon Squeezy cheaper than Gumroad?",
+          "answer": "Lemon Squeezy is mathematically cheaper than Gumroad on almost all digital sales priced above $4.00. Because Gumroad charges 10% plus 2.9% plus $0.30 (totaling 12.9% + $0.30), while Lemon Squeezy charges 5% plus $0.50, the break-even price occurs where the 7.9% percentage savings of Lemon Squeezy equals the $0.20 fixed fee difference ($0.20 / 0.079 = $2.53). For any product priced above $2.53, Lemon Squeezy delivers lower total transaction fees, with the dollar savings expanding rapidly as product price increases."
+        },
+        {
+          "question": "Do Gumroad and Lemon Squeezy refund platform fees when an order is refunded?",
+          "answer": "Both Gumroad and Lemon Squeezy do not refund payment processing fees when a refund is issued to a customer. While Gumroad may reverse its 10% platform cut on standard refunded purchases, the credit card interchange fees incurred during original transaction processing are permanently lost. Lemon Squeezy similarly absorbs the refund without adding punitive dispute surcharges, but original processing costs remain unrecoverable. Creators should budget a 2% to 5% refund allowance reserve into their financial models."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "youtube-shorts-vs-long-form-calculator",
+      "wholesale-to-retail-markup-calculator"
+    ]
+  }
+]

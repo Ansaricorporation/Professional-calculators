@@ -1,0 +1,159 @@
+[
+  {
+    "slug": "wholesale-to-retail-markup-calculator",
+    "title": "Wholesale to Retail Markup & Margin Calculator (2026)",
+    "metaTitle": "Wholesale to Retail Markup Calculator 2026 | Margin vs Markup & Break-Even ROAS",
+    "metaDescription": "Convert between markup percentage and gross profit margin, model keystone retail pricing, deduct payment gateway and self-employment taxes, and calculate break-even ROAS.",
+    "category": "b2b-pricing",
+    "engineType": "markup-margin",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "IRS Publication 334 & Small Business Retail Pricing Standards",
+    "officialSourceUrl": "https://www.irs.gov/forms-pubs/about-schedule-se-form-1040",
+    "defaultInputs": {
+      "baseCost": 25.0,
+      "targetMarkup": 100.0,
+      "targetMargin": 50.0,
+      "overheadTaxRate": 15.3,
+      "gatewayPlatformCut": 2.9,
+      "discountPromoRate": 10.0
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "standardKeystoneMarkup": 100.0,
+        "keystoneMargin": 50.0,
+        "selfEmploymentTaxRate": 15.3,
+        "standardGatewayFee": 2.9,
+        "gatewayFixed": 0.3
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Pricing commercial products and professional freelance deliverables in 2026 requires understanding the critical mathematical distinction between Markup and Margin. While the terms are frequently conflated by early-stage entrepreneurs, they represent two opposite reference points in unit economics: Markup is the percentage added directly on top of your Base Cost to reach a Selling Price, whereas Margin is the percentage of the final Selling Price that is retained as gross profit. Confusing a 50% markup with a 50% margin creates an immediate 16.7% accounting deficit: a $100 item marked up by 50% sells for $150, but delivers only a 33.3% gross margin ($50 / $150). When operators fail to factor merchant card processing (2.9% + $0.30), promotional discounts, overhead, and self-employment taxes (15.3% FICA), that seemingly healthy 33% gross margin rapidly collapses into net operational loss. This calculator establishes bidirectional mathematical parity between markup and margin, while computing the exact Break-Even Return on Ad Spend (ROAS) required for paid commercial customer acquisition.",
+      "formulaBreakdown": {
+        "formulaString": "Selling Price = Base Cost * (1 + Markup%) = Base Cost / (1 - Margin%); Gross Profit = Selling Price - Base Cost; Net Profit = Selling Price - Base Cost - Gateway Fee - Promo Discount - Overhead/Tax; Break-Even ROAS = 1 / Net Margin%",
+        "variables": [
+          {
+            "symbol": "Base Landed Cost (C_base)",
+            "meaning": "Direct manufacturing cost, wholesale purchase price, or baseline hourly billable rate requirement per unit."
+          },
+          {
+            "symbol": "Markup Percentage (%_markup)",
+            "meaning": "Percentage added to cost to generate selling price (%_markup = (Selling Price - Cost) / Cost * 100)."
+          },
+          {
+            "symbol": "Gross Margin Percentage (%_margin)",
+            "meaning": "Percentage of total selling price retained as gross profit (%_margin = (Selling Price - Cost) / Selling Price * 100)."
+          },
+          {
+            "symbol": "Break-Even ROAS (ROAS_be)",
+            "meaning": "Minimum Return on Ad Spend required on paid advertising to generate zero net loss (ROAS_be = 1 / Net Margin in decimal form). A 25% net margin requires a 4.0x ROAS."
+          },
+          {
+            "symbol": "Net Realized Profit (P_net)",
+            "meaning": "Final take-home cash flow after deducting merchant card fees, self-employment taxes, overhead, and promotional price concessions."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "B2B Hardware / Consumer Goods Manufacturer Pricing a $25.00 Wholesale Unit for Retail",
+        "narrative": "A consumer goods brand manufactures an ergonomic desk accessory at a landed cost of $25.00 per unit. The founder wants to apply a classic 'Keystone' 100% markup (delivering a 50% gross margin), budget a 10% promotional holiday discount, account for 2.9% + $0.30 payment gateway processing, and set aside 15.3% for small business / self-employment tax burden.",
+        "stepByStepMath": [
+          "Step 1: Calculate Keystone Retail Selling Price: $25.00 cost * (1 + 100% markup) = $50.00 standard retail price (or $25.00 / (1 - 0.50 margin) = $50.00).",
+          "Step 2: Calculate Gross Profit: $50.00 retail price - $25.00 base cost = $25.00 gross profit (50.0% Gross Margin).",
+          "Step 3: Factor Promotional Discount Concession: 10% promotional coupon on $50.00 = -$5.00 concession (Net Realized Price = $45.00).",
+          "Step 4: Factor Merchant Card Processing: ($45.00 * 2.9%) + $0.30 = $1.31 + $0.30 = -$1.61 gateway deduction.",
+          "Step 5: Allocate Overhead & Self-Employment Tax Burden: 15.3% tax provision on realized price ($45.00 * 15.3%) = -$6.89 tax provision.",
+          "Step 6: Compute Final Net Cash Profit: $45.00 realized price - $25.00 base cost - $1.61 gateway fee - $6.89 tax provision = $11.50 Net Take-Home Profit.",
+          "Step 7: Compute Net Realized Margin: ($11.50 Net Profit / $45.00 Realized Price) * 100 = 25.56% Net Margin.",
+          "Step 8: Compute Break-Even ROAS for Paid Advertising: 1 / 0.2556 = 3.91x Break-Even ROAS."
+        ],
+        "finalTakeaway": "Even with an initial 100% keystone markup, standard e-commerce discounts, payment processing, and taxes compress the original 50% gross margin down to a 25.56% net margin. If running Meta or Google ads, the merchant must maintain a ROAS above 3.91x ($3.91 in revenue per $1.00 spent) to avoid operating at a net advertising deficit."
+      },
+      "benchmarkTable": {
+        "title": "Markup vs. Margin Conversion & Keystone Industry Benchmarks (2026)",
+        "headers": [
+          "Target Markup %",
+          "Resulting Gross Margin %",
+          "Retail Multiplier (Price / Cost)",
+          "Break-Even ROAS Threshold",
+          "Standard Retail Application"
+        ],
+        "rows": [
+          [
+            "25.0% Markup",
+            "20.0% Margin",
+            "1.25x Cost",
+            "5.00x ROAS",
+            "Grocery, commodities, wholesale bulk"
+          ],
+          [
+            "50.0% Markup",
+            "33.3% Margin",
+            "1.50x Cost",
+            "3.00x ROAS",
+            "Consumer electronics, competitive retail"
+          ],
+          [
+            "100.0% Markup (Keystone)",
+            "50.0% Margin",
+            "2.00x Cost",
+            "2.00x ROAS",
+            "Apparel, jewelry, traditional retail"
+          ],
+          [
+            "300.0% Markup",
+            "75.0% Margin",
+            "4.00x Cost",
+            "1.33x ROAS",
+            "Luxury cosmetics, digital software, SaaS"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Use Keystone Plus Pricing for Multi-Tier Wholesale Distribution",
+          "actionableAdvice": "Traditional keystone pricing doubles cost (100% markup / 50% margin). However, if you plan to distribute through third-party retail stockists who demand their own 50% wholesale margin, your original manufacturing cost must be marked up by 300% to 400% (4x to 5x cost) at the retail MSRP level so both you and the stockist generate sustainable margins."
+        },
+        {
+          "title": "Monitor the Break-Even ROAS Ceiling Before Scaling Ad Spend",
+          "actionableAdvice": "Your break-even ROAS is mathematically linked to your net margin: `1 / Net Margin %`. If your product delivers a 30% net margin after COGS, merchant fees, and shipping, your break-even ROAS is 3.33x. Never scale ad campaigns below this multiplier without analyzing lifetime customer value (LTV) and repeat repurchase rates."
+        },
+        {
+          "title": "Build Promotional Concessions Directly into Base Retail MSRP",
+          "actionableAdvice": "E-commerce shoppers expect 10% to 20% discount codes during promotional holidays. Instead of allowing seasonal coupons to erode your bottom line, add a 15% discount buffer into your initial target markup equation so that offering a promo code simply brings the item back to your planned target net margin."
+        },
+        {
+          "title": "Incorporate Self-Employment Tax into Freelance Hourly Pricing",
+          "actionableAdvice": "Corporate employees have half of their 15.3% FICA payroll taxes covered by their employer. Independent contractors and single-member LLC owners must remit the full 15.3% self-employment tax directly to the IRS. When transitioning from W-2 employment to 1099 consulting, your baseline hourly rate must be marked up by at least 35% to 50% to maintain equivalent after-tax take-home pay."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the difference between Markup and Margin?",
+          "answer": "Markup and margin are two ways of measuring the relationship between cost and selling price, but they use different denominators. Markup is the percentage added directly to your cost to arrive at your selling price: `(Price - Cost) / Cost * 100`. Margin (specifically gross profit margin) is the percentage of the selling price that you retain as profit: `(Price - Cost) / Price * 100`. For example, if an item costs $50 and sells for $100, the markup is 100% ($50 / $50), while the gross margin is 50% ($50 / $100). Margin will always be a lower percentage than markup for the same dollar profit."
+        },
+        {
+          "question": "What is Keystone Pricing in retail?",
+          "answer": "Keystone pricing is a classic retail pricing rule of thumb where merchandise is priced at exactly double the wholesale cost, representing a 100% markup and a 50% gross profit margin. For example, if a boutique purchases a jacket from a wholesale distributor for $40.00, the keystone retail price is set at $80.00. While keystone pricing provides a simple operational baseline, modern e-commerce brands often require higher markups (150% to 250%) to account for digital customer acquisition costs (CAC) and shipping carrier subsidies."
+        },
+        {
+          "question": "How do you calculate Break-Even ROAS from profit margin?",
+          "answer": "Break-Even Return on Ad Spend (ROAS) is calculated by taking the reciprocal of your net profit margin percentage (before advertising expenses): `Break-Even ROAS = 1 / Net Margin %`. For example, if your product has a 25% net profit margin (0.25) after deducting cost of goods sold, payment processing fees, and fulfillment expenses, your break-even ROAS is `1 / 0.25 = 4.00x`. This means that for every $1.00 you spend on paid advertising, your campaigns must generate at least $4.00 in gross revenue to break even. Any ROAS above 4.0x generates profit, while a ROAS below 4.0x results in net cash loss."
+        },
+        {
+          "question": "How do self-employment taxes affect freelance and B2B pricing?",
+          "answer": "In the United States, self-employed individuals and independent contractors are subject to the Federal Self-Employment Tax (SE tax) under IRS Schedule SE, which is 15.3% (consisting of 12.4% for Social Security up to statutory wage ceilings and 2.9% for Medicare). Unlike traditional W-2 employees where the employer pays half of this payroll tax, self-employed professionals must pay both the employer and employee portions. To achieve target net income, freelancers and B2B consultants must incorporate this 15.3% tax burden, plus unbillable administrative hours and health insurance costs, directly into their billable hourly and project rates."
+        },
+        {
+          "question": "How do you convert a target margin into a required markup?",
+          "answer": "To convert a desired gross margin percentage into the corresponding markup percentage, use the formula: `Markup % = Margin % / (1 - Margin %)`. For example, if your retail target is a 40% gross profit margin (0.40), the required markup is `0.40 / (1 - 0.40) = 0.40 / 0.60 = 0.6667`, or a 66.67% markup on your base cost. If an item costs $60.00 to manufacture, multiplying by 1.6667 yields a required selling price of $100.00, which preserves exactly $40.00 (40%) in gross margin."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "shopify-profit-margin-calculator",
+      "youtube-shorts-vs-long-form-calculator",
+      "gumroad-vs-lemon-squeezy-fee-calculator"
+    ]
+  }
+]

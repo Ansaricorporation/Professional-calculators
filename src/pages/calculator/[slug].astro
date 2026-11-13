@@ -2,6 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import EEATAttribution from '../../components/EEATAttribution.astro';
+import PlatformProfitEngine from '../../components/calculators/PlatformProfitEngine.astro';
+import YouTubeRpmEngine from '../../components/calculators/YouTubeRpmEngine.astro';
+import PlatformVsPlatformEngine from '../../components/calculators/PlatformVsPlatformEngine.astro';
+import ShippingCostEngine from '../../components/calculators/ShippingCostEngine.astro';
+import MarkupMarginEngine from '../../components/calculators/MarkupMarginEngine.astro';
 import { SITE_CONFIG } from '../../config/site';
 import { getAllCalculators, getRelatedCalculators } from '../../data/calculators';
 import type { CalculatorDefinition } from '../../data/schema';
@@ -93,9 +98,8 @@ const faqSchema = {
         {calc.metaDescription}
       </p>
 
-      <!-- E-E-A-T Reviewer Box -->
+      <!-- Institutional E-E-A-T Attribution Box -->
       <EEATAttribution
-        reviewerKey="lead-analyst"
         lastUpdated={calc.lastUpdated}
         officialSourceName={calc.officialSourceName}
         officialSourceUrl={calc.officialSourceUrl}
@@ -106,296 +110,13 @@ const faqSchema = {
   <!-- Main Calculator Body & 7-Block Content Architecture -->
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
-    <!-- BLOCK 1: Interactive Tool UI (Pre-rendered default values for crawlers) -->
-    <section id="interactive-tool" class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
-      <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center space-x-2">
-          <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-          <h2 class="text-base font-bold tracking-wide">Live Interactive Financial Engine</h2>
-        </div>
-        <div class="text-xs text-slate-400 font-mono flex items-center gap-3">
-          <span>Client-Side Sandboxed</span>
-          <button
-            type="button"
-            id="reset-calc-btn"
-            class="text-xs text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 cursor-pointer"
-          >
-            Reset to Audited Defaults
-          </button>
-        </div>
-      </div>
-
-      <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <!-- Input Controls (7 Cols) -->
-        <div class="lg:col-span-7 space-y-5 text-sm">
-          
-          <!-- Plan Selector -->
-          <div>
-            <label class="block font-bold text-slate-800 mb-2">Shopify Plan Tier (2026 Pricing)</label>
-            <div class="grid grid-cols-3 gap-2">
-              <button
-                type="button"
-                data-tier="basic"
-                class="plan-tier-btn active-tier border-2 border-emerald-600 bg-emerald-50 text-emerald-950 font-bold py-2.5 px-3 rounded-lg text-xs text-center transition-all"
-              >
-                <div>Basic</div>
-                <div class="text-[11px] font-normal text-slate-600 mt-0.5">$39/mo (2.9% + $0.30)</div>
-              </button>
-              <button
-                type="button"
-                data-tier="shopify"
-                class="plan-tier-btn border border-slate-300 bg-white text-slate-700 font-medium py-2.5 px-3 rounded-lg text-xs text-center hover:bg-slate-50 transition-all"
-              >
-                <div>Shopify</div>
-                <div class="text-[11px] font-normal text-slate-500 mt-0.5">$105/mo (2.7% + $0.30)</div>
-              </button>
-              <button
-                type="button"
-                data-tier="advanced"
-                class="plan-tier-btn border border-slate-300 bg-white text-slate-700 font-medium py-2.5 px-3 rounded-lg text-xs text-center hover:bg-slate-50 transition-all"
-              >
-                <div>Advanced</div>
-                <div class="text-[11px] font-normal text-slate-500 mt-0.5">$399/mo (2.5% + $0.30)</div>
-              </button>
-            </div>
-          </div>
-
-          <!-- Product Selling Price & COGS -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="input-selling-price" class="block font-semibold text-slate-800 mb-1">
-                Item Selling Price ($)
-              </label>
-              <div class="relative">
-                <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
-                <input
-                  type="number"
-                  id="input-selling-price"
-                  step="0.01"
-                  min="0"
-                  value="65.00"
-                  class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="input-cogs" class="block font-semibold text-slate-800 mb-1">
-                Item Landed COGS ($)
-              </label>
-              <div class="relative">
-                <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
-                <input
-                  type="number"
-                  id="input-cogs"
-                  step="0.01"
-                  min="0"
-                  value="18.50"
-                  class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- Shipping Charged vs Actual Carrier Cost -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="input-shipping-charged" class="block font-semibold text-slate-800 mb-1">
-                Customer Shipping Paid ($)
-              </label>
-              <div class="relative">
-                <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
-                <input
-                  type="number"
-                  id="input-shipping-charged"
-                  step="0.01"
-                  min="0"
-                  value="5.00"
-                  class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-                />
-              </div>
-              <span class="text-[11px] text-slate-500">Set to 0 if offering Free Shipping</span>
-            </div>
-
-            <div>
-              <label for="input-shipping-actual" class="block font-semibold text-slate-800 mb-1">
-                Actual Carrier Cost ($)
-              </label>
-              <div class="relative">
-                <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
-                <input
-                  type="number"
-                  id="input-shipping-actual"
-                  step="0.01"
-                  min="0"
-                  value="7.20"
-                  class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-                />
-              </div>
-              <span class="text-[11px] text-slate-500">Postage + label + packaging</span>
-            </div>
-          </div>
-
-          <!-- Monthly Orders & CAC -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="input-monthly-units" class="block font-semibold text-slate-800 mb-1">
-                Monthly Orders Volume
-              </label>
-              <input
-                type="number"
-                id="input-monthly-units"
-                step="1"
-                min="1"
-                value="400"
-                class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-              />
-            </div>
-
-            <div>
-              <label for="input-cac" class="block font-semibold text-slate-800 mb-1">
-                Blended CAC / Ad Spend ($)
-              </label>
-              <div class="relative">
-                <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
-                <input
-                  type="number"
-                  id="input-cac"
-                  step="0.01"
-                  min="0"
-                  value="12.00"
-                  class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- Monthly Apps & Return Rate -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="input-app-fees" class="block font-semibold text-slate-800 mb-1">
-                Monthly Shopify Apps ($)
-              </label>
-              <div class="relative">
-                <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
-                <input
-                  type="number"
-                  id="input-app-fees"
-                  step="1"
-                  min="0"
-                  value="79.00"
-                  class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="input-returns-rate" class="block font-semibold text-slate-800 mb-1">
-                Return / Refund Rate (%)
-              </label>
-              <div class="relative">
-                <input
-                  type="number"
-                  id="input-returns-rate"
-                  step="0.1"
-                  min="0"
-                  max="100"
-                  value="3.5"
-                  class="w-full pr-8 pl-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
-                />
-                <span class="absolute right-3 top-2.5 text-slate-400 font-bold">%</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Gateway Toggle -->
-          <div class="pt-2">
-            <label class="flex items-center space-x-2.5 cursor-pointer text-xs font-medium text-slate-700">
-              <input
-                type="checkbox"
-                id="input-third-party-gw"
-                class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-4 h-4"
-              />
-              <span>Use Third-Party Payment Gateway (+2% to +0.6% penalty fee)</span>
-            </label>
-          </div>
-
-        </div>
-
-        <!-- Output KPI Dashboard (5 Cols) -->
-        <div class="lg:col-span-5 bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
-          <div>
-            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold mb-4">
-              Order Unit Economics Summary
-            </h3>
-
-            <!-- Hero Output Number -->
-            <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-xs mb-5">
-              <div class="text-xs font-semibold text-slate-500">Net Profit Per Order</div>
-              <div id="output-net-profit" class="text-3xl sm:text-4xl font-extrabold text-emerald-700 font-mono mt-1">
-                $33.20
-              </div>
-              <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 text-xs">
-                <span class="text-slate-500">Net Margin:</span>
-                <span id="output-net-margin" class="font-bold text-emerald-800 font-mono text-sm">47.43%</span>
-              </div>
-            </div>
-
-            <!-- Granular Breakdown Rows -->
-            <div class="space-y-2.5 text-xs font-mono">
-              <div class="flex justify-between py-1 border-b border-slate-200">
-                <span class="text-slate-600">Gross Checkout Revenue:</span>
-                <span id="output-gross-revenue" class="font-semibold text-slate-900">$70.00</span>
-              </div>
-              <div class="flex justify-between py-1 border-b border-slate-200">
-                <span class="text-slate-600">Product COGS:</span>
-                <span id="output-cogs" class="text-slate-700">-$18.50</span>
-              </div>
-              <div class="flex justify-between py-1 border-b border-slate-200">
-                <span class="text-slate-600">Shopify Gateway Fee:</span>
-                <span id="output-gateway-fee" class="text-rose-600 font-semibold">-$2.33</span>
-              </div>
-              <div class="flex justify-between py-1 border-b border-slate-200">
-                <span class="text-slate-600">Net Shipping Subsidy:</span>
-                <span id="output-shipping-loss" class="text-rose-600 font-semibold">-$2.20</span>
-              </div>
-              <div class="flex justify-between py-1 border-b border-slate-200">
-                <span class="text-slate-600">Blended Ad CAC:</span>
-                <span id="output-cac" class="text-slate-700">-$12.00</span>
-              </div>
-              <div class="flex justify-between py-1 border-b border-slate-200">
-                <span class="text-slate-600">Allocated Fixed SaaS:</span>
-                <span id="output-fixed-saas" class="text-slate-700">-$0.30</span>
-              </div>
-              <div class="flex justify-between py-1">
-                <span class="text-slate-600">Return Risk Allowance:</span>
-                <span id="output-return-loss" class="text-slate-700">-$1.47</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Monthly Projection Bottom Card -->
-          <div class="mt-6 pt-4 border-t border-slate-200 bg-white p-4 rounded-lg border border-slate-200">
-            <div class="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Monthly Estimated Net Income</div>
-            <div id="output-monthly-net" class="text-2xl font-bold text-slate-900 font-mono mt-0.5">
-              $13,280.00
-            </div>
-            <div class="text-[11px] text-slate-500 mt-1">
-              Based on <span id="output-monthly-volume-label" class="font-bold text-slate-800">400</span> orders/mo ($28,000 GMV)
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Financial & Tax Disclaimer Box Directly Below Calculator -->
-      <div class="bg-slate-100 border-t border-slate-200 px-6 py-4 text-xs text-slate-600 flex items-start gap-3">
-        <svg class="w-5 h-5 text-slate-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <p class="leading-relaxed">
-          <strong>Financial & Tax Disclaimer:</strong> All figures and calculations are estimates based on user-supplied variables and published platform schedules (verified November 2026). CreatorCalcLab does not provide certified public accounting (CPA), legal, tax, or investment advisory services. Actual platform charges, gateway interchange rates, and tax liabilities may vary. Verify figures with your merchant statements and licensed tax advisors.
-        </p>
-      </div>
+    <!-- BLOCK 1: Dynamic Interactive Calculator Engine Matching engineType -->
+    <section id="interactive-tool">
+      {calc.engineType === 'platform-profit' && <PlatformProfitEngine calc={calc} />}
+      {calc.engineType === 'youtube-rpm' && <YouTubeRpmEngine calc={calc} />}
+      {calc.engineType === 'platform-vs-platform' && <PlatformVsPlatformEngine calc={calc} />}
+      {calc.engineType === 'shipping-cost' && <ShippingCostEngine calc={calc} />}
+      {calc.engineType === 'markup-margin' && <MarkupMarginEngine calc={calc} />}
     </section>
 
     <!-- BLOCK 2: Executive Summary (Minimum 120 words) -->
@@ -405,7 +126,7 @@ const faqSchema = {
           Executive Financial Summary
         </span>
         <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-2">
-          Deconstructing Shopify Margin Realities in 2026
+          Deconstructing Financial Realities in 2026
         </h2>
         <p class="mt-4 text-slate-700 leading-relaxed text-sm sm:text-base">
           {calc.guideContent.executiveSummary}
@@ -420,7 +141,7 @@ const faqSchema = {
           Deterministic Mathematical Specification
         </span>
         <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-2">
-          Exact Net Margin & Take-Rate Formula
+          Exact Mathematical Formula & Logic
         </h2>
         <p class="mt-2 text-slate-600 text-xs sm:text-sm">
           Unlike simplistic estimates, our algorithmic engine calculates net profit by computing discrete operational friction variables:
@@ -489,7 +210,7 @@ const faqSchema = {
           {calc.guideContent.benchmarkTable.title}
         </h2>
         <p class="text-xs text-slate-500 mt-1">
-          Directly audited against published 2026 Shopify Merchant Agreements
+          Directly audited against published 2026 Merchant Agreements & Terms
         </p>
       </div>
 
@@ -524,10 +245,10 @@ const faqSchema = {
           Strategic Playbook
         </span>
         <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-2">
-          4 Capital Allocation Levers to Expand Net Margins
+          Actionable Levers to Expand Net Margins
         </h2>
         <p class="text-xs text-slate-500 mt-1">
-          Tactical interventions designed by our CFA/CPA team to defend unit cash flows.
+          Tactical interventions designed by our financial modeling desk to defend cash flows.
         </p>
       </div>
 
@@ -552,10 +273,10 @@ const faqSchema = {
     <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
       <div class="max-w-3xl mb-6">
         <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-          Merchant Inquiries & Answers
+          Industry Inquiries & Answers
         </span>
         <h2 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-2">
-          Frequently Asked Questions (Shopify Fee & Margin Economics)
+          Frequently Asked Questions
         </h2>
         <p class="text-xs text-slate-500 mt-1">
           Detailed technical answers addressing 2026 fee policy adjustments.
@@ -597,134 +318,3 @@ const faqSchema = {
 
   </div>
 </BaseLayout>
-
-<script>
-  // 100% Client-Side Interactive Calculation Engine
-  const planTiers = {
-    basic: { monthlyFee: 39.0, percentageRate: 0.029, fixedFee: 0.30, penalty: 0.020 },
-    shopify: { monthlyFee: 105.0, percentageRate: 0.027, fixedFee: 0.30, penalty: 0.010 },
-    advanced: { monthlyFee: 399.0, percentageRate: 0.025, fixedFee: 0.30, penalty: 0.006 }
-  };
-
-  let activeTier = 'basic';
-
-  const tierButtons = document.querySelectorAll('.plan-tier-btn');
-  const inputSellingPrice = document.getElementById('input-selling-price') as HTMLInputElement | null;
-  const inputCogs = document.getElementById('input-cogs') as HTMLInputElement | null;
-  const inputShippingCharged = document.getElementById('input-shipping-charged') as HTMLInputElement | null;
-  const inputShippingActual = document.getElementById('input-shipping-actual') as HTMLInputElement | null;
-  const inputMonthlyUnits = document.getElementById('input-monthly-units') as HTMLInputElement | null;
-  const inputCac = document.getElementById('input-cac') as HTMLInputElement | null;
-  const inputAppFees = document.getElementById('input-app-fees') as HTMLInputElement | null;
-  const inputReturnsRate = document.getElementById('input-returns-rate') as HTMLInputElement | null;
-  const inputThirdPartyGw = document.getElementById('input-third-party-gw') as HTMLInputElement | null;
-  const resetBtn = document.getElementById('reset-calc-btn');
-
-  // Outputs
-  const outNetProfit = document.getElementById('output-net-profit');
-  const outNetMargin = document.getElementById('output-net-margin');
-  const outGrossRevenue = document.getElementById('output-gross-revenue');
-  const outCogs = document.getElementById('output-cogs');
-  const outGatewayFee = document.getElementById('output-gateway-fee');
-  const outShippingLoss = document.getElementById('output-shipping-loss');
-  const outCac = document.getElementById('output-cac');
-  const outFixedSaas = document.getElementById('output-fixed-saas');
-  const outReturnLoss = document.getElementById('output-return-loss');
-  const outMonthlyNet = document.getElementById('output-monthly-net');
-  const outMonthlyVolumeLabel = document.getElementById('output-monthly-volume-label');
-
-  function calculate() {
-    if (!inputSellingPrice || !inputCogs || !inputShippingCharged || !inputShippingActual || !inputMonthlyUnits || !inputCac || !inputAppFees || !inputReturnsRate) {
-      return;
-    }
-
-    const price = Math.max(0, parseFloat(inputSellingPrice.value) || 0);
-    const cogs = Math.max(0, parseFloat(inputCogs.value) || 0);
-    const shipCharged = Math.max(0, parseFloat(inputShippingCharged.value) || 0);
-    const shipActual = Math.max(0, parseFloat(inputShippingActual.value) || 0);
-    const units = Math.max(1, parseFloat(inputMonthlyUnits.value) || 1);
-    const cac = Math.max(0, parseFloat(inputCac.value) || 0);
-    const appFees = Math.max(0, parseFloat(inputAppFees.value) || 0);
-    const returnRatePct = Math.max(0, Math.min(100, parseFloat(inputReturnsRate.value) || 0));
-    const useThirdParty = inputThirdPartyGw?.checked || false;
-
-    const currentPlan = planTiers[activeTier as keyof typeof planTiers] || planTiers.basic;
-
-    // 1. Gross Revenue Collected at Checkout
-    const grossRevenue = price + shipCharged;
-
-    // 2. Gateway Fee (Shopify Payments rate + fixed fee + potential 3rd party penalty)
-    const effectiveRate = currentPlan.percentageRate + (useThirdParty ? currentPlan.penalty : 0);
-    const gatewayFee = (grossRevenue * effectiveRate) + currentPlan.fixedFee;
-
-    // 3. Net Shipping Loss / Subsidy
-    const shippingDeficit = Math.max(0, shipActual - shipCharged);
-
-    // 4. Fixed Monthly Overhead per Unit
-    const fixedMonthlyOverhead = (currentPlan.monthlyFee + appFees) / units;
-
-    // 5. Return Loss Provision (assuming 60% salvage/logistics loss on returned merchandise)
-    const returnLoss = (returnRatePct / 100) * (grossRevenue * 0.60);
-
-    // 6. Net Profit per Order
-    const netProfit = grossRevenue - cogs - gatewayFee - shippingDeficit - cac - fixedMonthlyOverhead - returnLoss;
-    const netMargin = grossRevenue > 0 ? (netProfit / grossRevenue) * 100 : 0;
-    const monthlyNetIncome = netProfit * units;
-
-    // Update DOM
-    if (outNetProfit) outNetProfit.textContent = `$${netProfit.toFixed(2)}`;
-    if (outNetMargin) outNetMargin.textContent = `${netMargin.toFixed(2)}%`;
-    if (outGrossRevenue) outGrossRevenue.textContent = `$${grossRevenue.toFixed(2)}`;
-    if (outCogs) outCogs.textContent = `-$${cogs.toFixed(2)}`;
-    if (outGatewayFee) outGatewayFee.textContent = `-$${gatewayFee.toFixed(2)}`;
-    if (outShippingLoss) outShippingLoss.textContent = `-$${shippingDeficit.toFixed(2)}`;
-    if (outCac) outCac.textContent = `-$${cac.toFixed(2)}`;
-    if (outFixedSaas) outFixedSaas.textContent = `-$${fixedMonthlyOverhead.toFixed(2)}`;
-    if (outReturnLoss) outReturnLoss.textContent = `-$${returnLoss.toFixed(2)}`;
-    if (outMonthlyNet) outMonthlyNet.textContent = `$${monthlyNetIncome.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    if (outMonthlyVolumeLabel) outMonthlyVolumeLabel.textContent = units.toString();
-  }
-
-  // Tier selection handlers
-  tierButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tierButtons.forEach(b => {
-        b.classList.remove('active-tier', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
-        b.classList.add('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
-      });
-      btn.classList.add('active-tier', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
-      btn.classList.remove('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
-      
-      const selected = btn.getAttribute('data-tier') || 'basic';
-      activeTier = selected;
-      calculate();
-    });
-  });
-
-  // Input listeners
-  const allInputs = [
-    inputSellingPrice, inputCogs, inputShippingCharged, inputShippingActual,
-    inputMonthlyUnits, inputCac, inputAppFees, inputReturnsRate, inputThirdPartyGw
-  ];
-
-  allInputs.forEach(input => {
-    input?.addEventListener('input', calculate);
-    input?.addEventListener('change', calculate);
-  });
-
-  resetBtn?.addEventListener('click', () => {
-    if (inputSellingPrice) inputSellingPrice.value = '65.00';
-    if (inputCogs) inputCogs.value = '18.50';
-    if (inputShippingCharged) inputShippingCharged.value = '5.00';
-    if (inputShippingActual) inputShippingActual.value = '7.20';
-    if (inputMonthlyUnits) inputMonthlyUnits.value = '400';
-    if (inputCac) inputCac.value = '12.00';
-    if (inputAppFees) inputAppFees.value = '79.00';
-    if (inputReturnsRate) inputReturnsRate.value = '3.5';
-    if (inputThirdPartyGw) inputThirdPartyGw.checked = false;
-    
-    // Select Basic
-    const basicBtn = document.querySelector('[data-tier="basic"]');
-    if (basicBtn) (basicBtn as HTMLButtonElement).click();
-  });
-</script>

@@ -1,0 +1,621 @@
+---
+import type { CalculatorDefinition } from '../../data/schema';
+
+interface Props {
+  calc: CalculatorDefinition;
+}
+
+const { calc } = Astro.props;
+const d = calc.defaultInputs as {
+  sellingPrice: number;
+  cogs: number;
+  shippingCharged: number;
+  shippingActualCost: number;
+  monthlyUnits: number;
+  planTier?: string;
+  appFeesMonthly?: number;
+  marketingPerOrder?: number;
+  returnsRate?: number;
+  useThirdPartyGateway?: boolean;
+};
+
+const tiers = calc.platformRates.tiers || {
+  standard: {
+    name: "Standard Merchant Tier",
+    monthlyFee: 0,
+    percentageRate: calc.platformRates.standardPercentage || 5.0,
+    fixedFee: calc.platformRates.standardFixed || 0.30
+  }
+};
+
+const defaultTierKey = (d.planTier && tiers[d.planTier]) ? d.planTier : Object.keys(tiers)[0];
+const defaultTier = tiers[defaultTierKey];
+
+// Pre-render static calculations for crawlers (Googlebot)
+const prePrice = Number(d.sellingPrice) || 0;
+const preCogs = Number(d.cogs) || 0;
+const preShipCharged = Number(d.shippingCharged) || 0;
+const preShipActual = Number(d.shippingActualCost) || 0;
+const preUnits = Number(d.monthlyUnits) || 1;
+const preApps = Number(d.appFeesMonthly) || 0;
+const preCac = Number(d.marketingPerOrder) || 0;
+const preReturnRate = Number(d.returnsRate) || 0;
+
+const preGross = prePrice + preShipCharged;
+const preEffectiveRate = (defaultTier.percentageRate / 100);
+const preGatewayFee = (preGross * preEffectiveRate) + defaultTier.fixedFee;
+const preShipDeficit = Math.max(0, preShipActual - preShipCharged);
+const preFixedSaas = (defaultTier.monthlyFee + preApps) / preUnits;
+const preReturnLoss = (preReturnRate / 100) * (preGross * 0.60);
+const preNetProfit = preGross - preCogs - preGatewayFee - preShipDeficit - preCac - preFixedSaas - preReturnLoss;
+const preNetMargin = preGross > 0 ? (preNetProfit / preGross) * 100 : 0;
+const preMonthlyNet = preNetProfit * preUnits;
+const preEffectiveFeeRate = preGross > 0 ? ((preGatewayFee + preFixedSaas) / preGross) * 100 : 0;
+const preBreakEvenPrice = (preCogs + preShipDeficit + preCac + preFixedSaas + defaultTier.fixedFee) / (1 - preEffectiveRate);
+
+// Stacked bar percentages
+const preNetPct = Math.max(0, Math.min(100, preNetMargin));
+const prePlatPct = Math.max(0, Math.min(100, (preFixedSaas / preGross) * 100));
+const preGwPct = Math.max(0, Math.min(100, (preGatewayFee / preGross) * 100));
+const preCostPct = Math.max(0, Math.min(100, 100 - preNetPct - prePlatPct - preGwPct));
+---
+
+<div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden" id="engine-platform-profit">
+  <!-- Top Engine Header -->
+  <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center space-x-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+      <h2 class="text-base font-bold tracking-wide">Interactive Platform Profit & Margin Engine</h2>
+    </div>
+    <div class="flex items-center space-x-3 text-xs">
+      <button
+        type="button"
+        id="pp-share-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+        <span id="pp-share-text">Share Link</span>
+      </button>
+
+      <button
+        type="button"
+        id="pp-export-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        <span id="pp-export-text">Copy Receipt</span>
+      </button>
+
+      <button
+        type="button"
+        id="pp-reset-btn"
+        class="text-xs text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 ml-1"
+      >
+        Reset Defaults
+      </button>
+    </div>
+  </div>
+
+  <!-- Visual Stacked Revenue Breakdown Bar -->
+  <div class="bg-slate-950 px-6 py-4 border-b border-slate-800">
+    <div class="flex items-center justify-between text-xs text-slate-300 mb-2 font-mono">
+      <span>Revenue Allocation Split:</span>
+      <span class="text-emerald-400 font-bold" id="pp-bar-profit-label">{preNetMargin.toFixed(1)}% Take-Home Margin</span>
+    </div>
+    <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden flex shadow-inner">
+      <div id="pp-bar-profit" style={`width: ${preNetPct}%;`} class="bg-emerald-500 transition-all duration-150" title="Net Profit"></div>
+      <div id="pp-bar-plat" style={`width: ${prePlatPct}%;`} class="bg-indigo-500 transition-all duration-150" title="Platform SaaS / Take-Rate"></div>
+      <div id="pp-bar-gw" style={`width: ${preGwPct}%;`} class="bg-amber-500 transition-all duration-150" title="Payment Gateway"></div>
+      <div id="pp-bar-cost" style={`width: ${preCostPct}%;`} class="bg-rose-500 transition-all duration-150" title="COGS & Logistics"></div>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 mt-2.5 text-[11px] text-slate-400">
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Net Profit (<span id="pp-leg-profit">{preNetPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>Platform Fee (<span id="pp-leg-plat">{prePlatPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>Payment Gateway (<span id="pp-leg-gw">{preGwPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>COGS & Marketing (<span id="pp-leg-cost">{preCostPct.toFixed(1)}%</span>)</div>
+    </div>
+  </div>
+
+  <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- Input Controls (7 Cols) -->
+    <div class="lg:col-span-7 space-y-5 text-sm">
+      
+      <!-- Tier Selector if multiple tiers -->
+      {Object.keys(tiers).length > 1 && (
+        <div>
+          <label class="block font-bold text-slate-800 mb-2">Platform Plan / Tier (2026 Rates)</label>
+          <div class="grid grid-cols-3 gap-2">
+            {Object.entries(tiers).map(([key, tier]) => (
+              <button
+                type="button"
+                data-tier={key}
+                class={`pp-tier-btn py-2.5 px-3 rounded-lg text-xs text-center transition-all ${
+                  key === defaultTierKey
+                    ? 'active-tier border-2 border-emerald-600 bg-emerald-50 text-emerald-950 font-bold'
+                    : 'border border-slate-300 bg-white text-slate-700 font-medium hover:bg-slate-50'
+                }`}
+              >
+                <div>{tier.name.replace('Shopify ', '')}</div>
+                <div class="text-[11px] font-normal text-slate-500 mt-0.5">${tier.monthlyFee}/mo ({tier.percentageRate}% + ${tier.fixedFee.toFixed(2)})</div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Selling Price & COGS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="pp-selling-price" class="block font-semibold text-slate-800 mb-1">
+            Product Selling Price ($)
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
+            <input
+              type="number"
+              id="pp-selling-price"
+              step="0.01"
+              min="0"
+              value={prePrice.toFixed(2)}
+              class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="pp-cogs" class="block font-semibold text-slate-800 mb-1">
+            Landed Product COGS ($)
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
+            <input
+              type="number"
+              id="pp-cogs"
+              step="0.01"
+              min="0"
+              value={preCogs.toFixed(2)}
+              class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping Charged vs Actual Carrier -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="pp-ship-charged" class="block font-semibold text-slate-800 mb-1">
+            Customer Shipping Paid ($)
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
+            <input
+              type="number"
+              id="pp-ship-charged"
+              step="0.01"
+              min="0"
+              value={preShipCharged.toFixed(2)}
+              class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="pp-ship-actual" class="block font-semibold text-slate-800 mb-1">
+            Actual Carrier Cost ($)
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
+            <input
+              type="number"
+              id="pp-ship-actual"
+              step="0.01"
+              min="0"
+              value={preShipActual.toFixed(2)}
+              class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Volume & CAC -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="pp-monthly-units" class="block font-semibold text-slate-800 mb-1">
+            Monthly Order Volume
+          </label>
+          <input
+            type="number"
+            id="pp-monthly-units"
+            step="1"
+            min="1"
+            value={preUnits}
+            class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+          />
+        </div>
+
+        <div>
+          <label for="pp-cac" class="block font-semibold text-slate-800 mb-1">
+            Ad Spend / CAC Per Order ($)
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
+            <input
+              type="number"
+              id="pp-cac"
+              step="0.01"
+              min="0"
+              value={preCac.toFixed(2)}
+              class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- App Subscriptions & Returns Rate -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="pp-app-fees" class="block font-semibold text-slate-800 mb-1">
+            Monthly App SaaS Fees ($)
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-slate-400 font-bold">$</span>
+            <input
+              type="number"
+              id="pp-app-fees"
+              step="1"
+              min="0"
+              value={preApps.toFixed(2)}
+              class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="pp-returns-rate" class="block font-semibold text-slate-800 mb-1">
+            Return / Refund Rate (%)
+          </label>
+          <div class="relative">
+            <input
+              type="number"
+              id="pp-returns-rate"
+              step="0.1"
+              min="0"
+              max="100"
+              value={preReturnRate.toFixed(1)}
+              class="w-full pr-8 pl-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold"
+            />
+            <span class="absolute right-3 top-2.5 text-slate-400 font-bold">%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- External Gateway Toggle -->
+      <div class="pt-1">
+        <label class="flex items-center space-x-2.5 cursor-pointer text-xs font-medium text-slate-700">
+          <input
+            type="checkbox"
+            id="pp-third-party-gw"
+            class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-4 h-4"
+          />
+          <span>Use 3rd-Party Payment Gateway (+2% to +0.6% penalty fee)</span>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- Output Dashboard (5 Cols) -->
+    <div class="lg:col-span-5 bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+      <div>
+        <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold mb-3">
+          Unit Economics & Take-Home Yield
+        </h3>
+
+        <!-- Hero Card -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-xs mb-4">
+          <div class="text-xs font-semibold text-slate-500">Net Profit Per Unit</div>
+          <div id="pp-out-net-profit" class="text-3xl sm:text-4xl font-extrabold text-emerald-700 font-mono mt-1">
+            ${preNetProfit.toFixed(2)}
+          </div>
+          <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 text-xs">
+            <span class="text-slate-500">Net Margin:</span>
+            <span id="pp-out-net-margin" class="font-bold text-emerald-800 font-mono text-sm">{preNetMargin.toFixed(2)}%</span>
+          </div>
+        </div>
+
+        <!-- KPI Breakdown Matrix -->
+        <div class="space-y-2 text-xs font-mono">
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Gross Checkout Revenue:</span>
+            <span id="pp-out-gross" class="font-semibold text-slate-900">${preGross.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Landed Product COGS:</span>
+            <span id="pp-out-cogs" class="text-slate-700">-${preCogs.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Payment Gateway Fee:</span>
+            <span id="pp-out-gw" class="text-rose-600 font-semibold">-${preGatewayFee.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Shipping Deficit / Subsidy:</span>
+            <span id="pp-out-ship-loss" class="text-rose-600 font-semibold">-${preShipDeficit.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Amortized Fixed SaaS:</span>
+            <span id="pp-out-saas" class="text-slate-700">-${preFixedSaas.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Effective Total Fee Rate:</span>
+            <span id="pp-out-fee-rate" class="font-bold text-slate-900">{preEffectiveFeeRate.toFixed(2)}%</span>
+          </div>
+          <div class="flex justify-between py-1">
+            <span class="text-slate-600">Break-Even Sale Price:</span>
+            <span id="pp-out-breakeven" class="font-bold text-indigo-700">${preBreakEvenPrice.toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monthly Projected Profit Card -->
+      <div class="mt-5 pt-4 border-t border-slate-200 bg-white p-4 rounded-lg border border-slate-200">
+        <div class="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Monthly Projected Take-Home</div>
+        <div id="pp-out-monthly-net" class="text-2xl font-bold text-slate-900 font-mono mt-0.5">
+          ${preMonthlyNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        </div>
+        <div class="text-[11px] text-slate-500 mt-1">
+          Based on <span id="pp-out-units-label" class="font-bold text-slate-800">{preUnits}</span> orders/mo (${(preGross * preUnits).toLocaleString()} GMV)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer Footer -->
+  <div class="bg-slate-100 border-t border-slate-200 px-6 py-4 text-xs text-slate-600 flex items-start gap-3">
+    <svg class="w-5 h-5 text-slate-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <p class="leading-relaxed">
+      <strong>Financial & Tax Disclaimer:</strong> Figures are estimates based on user inputs and published 2026 platform schedules. CreatorCalcLab does not provide CPA or legal tax advice. Verify specific account charges with your merchant statements.
+    </p>
+  </div>
+</div>
+
+<script define:vars={{ tiers, defaultTierKey, defaultInputs: d }}>
+  // Reactive Client-Side Engine for Platform Profit
+  const currentTiers = tiers;
+  let activeTier = defaultTierKey;
+
+  // DOM Elements
+  const elPrice = document.getElementById('pp-selling-price');
+  const elCogs = document.getElementById('pp-cogs');
+  const elShipCharged = document.getElementById('pp-ship-charged');
+  const elShipActual = document.getElementById('pp-ship-actual');
+  const elUnits = document.getElementById('pp-monthly-units');
+  const elCac = document.getElementById('pp-cac');
+  const elAppFees = document.getElementById('pp-app-fees');
+  const elReturnsRate = document.getElementById('pp-returns-rate');
+  const elThirdParty = document.getElementById('pp-third-party-gw');
+
+  // Outputs
+  const outNetProfit = document.getElementById('pp-out-net-profit');
+  const outNetMargin = document.getElementById('pp-out-net-margin');
+  const outGross = document.getElementById('pp-out-gross');
+  const outCogs = document.getElementById('pp-out-cogs');
+  const outGw = document.getElementById('pp-out-gw');
+  const outShipLoss = document.getElementById('pp-out-ship-loss');
+  const outSaas = document.getElementById('pp-out-saas');
+  const outFeeRate = document.getElementById('pp-out-fee-rate');
+  const outBreakeven = document.getElementById('pp-out-breakeven');
+  const outMonthlyNet = document.getElementById('pp-out-monthly-net');
+  const outUnitsLabel = document.getElementById('pp-out-units-label');
+
+  // Bar Elements
+  const barProfit = document.getElementById('pp-bar-profit');
+  const barPlat = document.getElementById('pp-bar-plat');
+  const barGw = document.getElementById('pp-bar-gw');
+  const barCost = document.getElementById('pp-bar-cost');
+  const barLabel = document.getElementById('pp-bar-profit-label');
+  const legProfit = document.getElementById('pp-leg-profit');
+  const legPlat = document.getElementById('pp-leg-plat');
+  const legGw = document.getElementById('pp-leg-gw');
+  const legCost = document.getElementById('pp-leg-cost');
+
+  const tierButtons = document.querySelectorAll('.pp-tier-btn');
+  const shareBtn = document.getElementById('pp-share-btn');
+  const shareText = document.getElementById('pp-share-text');
+  const exportBtn = document.getElementById('pp-export-btn');
+  const exportText = document.getElementById('pp-export-text');
+  const resetBtn = document.getElementById('pp-reset-btn');
+
+  let debounceTimer = null;
+
+  function recalculate() {
+    if (!elPrice || !elCogs || !elShipCharged || !elShipActual || !elUnits || !elCac || !elAppFees || !elReturnsRate) return;
+
+    const price = Math.max(0, parseFloat(elPrice.value) || 0);
+    const cogs = Math.max(0, parseFloat(elCogs.value) || 0);
+    const shipCharged = Math.max(0, parseFloat(elShipCharged.value) || 0);
+    const shipActual = Math.max(0, parseFloat(elShipActual.value) || 0);
+    const units = Math.max(1, parseFloat(elUnits.value) || 1);
+    const cac = Math.max(0, parseFloat(elCac.value) || 0);
+    const appFees = Math.max(0, parseFloat(elAppFees.value) || 0);
+    const returnRatePct = Math.max(0, Math.min(100, parseFloat(elReturnsRate.value) || 0));
+    const isThirdParty = elThirdParty ? elThirdParty.checked : false;
+
+    const tier = currentTiers[activeTier] || Object.values(currentTiers)[0];
+    const penalty = isThirdParty ? (activeTier === 'advanced' ? 0.006 : activeTier === 'shopify' ? 0.010 : 0.020) : 0;
+    const effectiveRate = (tier.percentageRate / 100) + penalty;
+
+    const grossRevenue = price + shipCharged;
+    const gatewayFee = (grossRevenue * effectiveRate) + tier.fixedFee;
+    const shippingDeficit = Math.max(0, shipActual - shipCharged);
+    const fixedOverheadPerUnit = (tier.monthlyFee + appFees) / units;
+    const returnLoss = (returnRatePct / 100) * (grossRevenue * 0.60);
+
+    const netProfit = grossRevenue - cogs - gatewayFee - shippingDeficit - cac - fixedOverheadPerUnit - returnLoss;
+    const netMargin = grossRevenue > 0 ? (netProfit / grossRevenue) * 100 : 0;
+    const monthlyNet = netProfit * units;
+    const totalFeesPerUnit = gatewayFee + fixedOverheadPerUnit;
+    const effectiveFeeRate = grossRevenue > 0 ? (totalFeesPerUnit / grossRevenue) * 100 : 0;
+    const breakevenPrice = (cogs + shippingDeficit + cac + fixedOverheadPerUnit + tier.fixedFee) / Math.max(0.01, (1 - effectiveRate));
+
+    // Update DOM Text
+    if (outNetProfit) outNetProfit.textContent = `$${netProfit.toFixed(2)}`;
+    if (outNetMargin) outNetMargin.textContent = `${netMargin.toFixed(2)}%`;
+    if (outGross) outGross.textContent = `$${grossRevenue.toFixed(2)}`;
+    if (outCogs) outCogs.textContent = `-$${cogs.toFixed(2)}`;
+    if (outGw) outGw.textContent = `-$${gatewayFee.toFixed(2)}`;
+    if (outShipLoss) outShipLoss.textContent = `-$${shippingDeficit.toFixed(2)}`;
+    if (outSaas) outSaas.textContent = `-$${fixedOverheadPerUnit.toFixed(2)}`;
+    if (outFeeRate) outFeeRate.textContent = `${effectiveFeeRate.toFixed(2)}%`;
+    if (outBreakeven) outBreakeven.textContent = `$${breakevenPrice.toFixed(2)}`;
+    if (outMonthlyNet) outMonthlyNet.textContent = `$${monthlyNet.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (outUnitsLabel) outUnitsLabel.textContent = units.toString();
+
+    // Update Stacked Bar
+    const netPct = Math.max(0, Math.min(100, netMargin));
+    const platPct = grossRevenue > 0 ? Math.max(0, Math.min(100, (fixedOverheadPerUnit / grossRevenue) * 100)) : 0;
+    const gwPct = grossRevenue > 0 ? Math.max(0, Math.min(100, (gatewayFee / grossRevenue) * 100)) : 0;
+    const costPct = Math.max(0, Math.min(100, 100 - netPct - platPct - gwPct));
+
+    if (barProfit) barProfit.style.width = `${netPct}%`;
+    if (barPlat) barPlat.style.width = `${platPct}%`;
+    if (barGw) barGw.style.width = `${gwPct}%`;
+    if (barCost) barCost.style.width = `${costPct}%`;
+    if (barLabel) barLabel.textContent = `${netMargin.toFixed(1)}% Take-Home Margin`;
+
+    if (legProfit) legProfit.textContent = `${netPct.toFixed(1)}%`;
+    if (legPlat) legPlat.textContent = `${platPct.toFixed(1)}%`;
+    if (legGw) legGw.textContent = `${gwPct.toFixed(1)}%`;
+    if (legCost) legCost.textContent = `${costPct.toFixed(1)}%`;
+
+    // Debounced URL state sync
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const params = new URLSearchParams();
+      params.set('price', price.toString());
+      params.set('cogs', cogs.toString());
+      params.set('ship_in', shipCharged.toString());
+      params.set('ship_out', shipActual.toString());
+      params.set('units', units.toString());
+      params.set('cac', cac.toString());
+      params.set('apps', appFees.toString());
+      params.set('returns', returnRatePct.toString());
+      if (activeTier) params.set('tier', activeTier);
+      if (isThirdParty) params.set('ext_gw', '1');
+      window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+    }, 200);
+  }
+
+  // Hydrate from URL query parameters on load
+  function hydrateFromUrl() {
+    const p = new URLSearchParams(window.location.search);
+    if (!p.has('price') && !p.has('tier')) return;
+
+    if (p.has('price') && elPrice) elPrice.value = p.get('price');
+    if (p.has('cogs') && elCogs) elCogs.value = p.get('cogs');
+    if (p.has('ship_in') && elShipCharged) elShipCharged.value = p.get('ship_in');
+    if (p.has('ship_out') && elShipActual) elShipActual.value = p.get('ship_out');
+    if (p.has('units') && elUnits) elUnits.value = p.get('units');
+    if (p.has('cac') && elCac) elCac.value = p.get('cac');
+    if (p.has('apps') && elAppFees) elAppFees.value = p.get('apps');
+    if (p.has('returns') && elReturnsRate) elReturnsRate.value = p.get('returns');
+    if (p.has('ext_gw') && elThirdParty) elThirdParty.checked = p.get('ext_gw') === '1';
+
+    if (p.has('tier')) {
+      const queryTier = p.get('tier');
+      if (currentTiers[queryTier]) {
+        activeTier = queryTier;
+        tierButtons.forEach(btn => {
+          if (btn.getAttribute('data-tier') === queryTier) {
+            btn.classList.add('active-tier', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+            btn.classList.remove('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+          } else {
+            btn.classList.remove('active-tier', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+            btn.classList.add('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+          }
+        });
+      }
+    }
+    recalculate();
+  }
+
+  // Event Listeners
+  [elPrice, elCogs, elShipCharged, elShipActual, elUnits, elCac, elAppFees, elReturnsRate, elThirdParty].forEach(input => {
+    input?.addEventListener('input', recalculate);
+    input?.addEventListener('change', recalculate);
+  });
+
+  tierButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tierButtons.forEach(b => {
+        b.classList.remove('active-tier', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+        b.classList.add('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+      });
+      btn.classList.add('active-tier', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+      btn.classList.remove('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+      activeTier = btn.getAttribute('data-tier') || defaultTierKey;
+      recalculate();
+    });
+  });
+
+  // Share Link
+  shareBtn?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      if (shareText) shareText.textContent = 'Copied!';
+      setTimeout(() => { if (shareText) shareText.textContent = 'Share Link'; }, 2000);
+    });
+  });
+
+  // Export Financial Receipt
+  exportBtn?.addEventListener('click', () => {
+    const summary = [
+      `--- FINANCIAL BREAKDOWN RECEIPT (CreatorCalcLab) ---`,
+      `Selling Price: ${elPrice?.value || 0}`,
+      `COGS: ${elCogs?.value || 0}`,
+      `Gross Order Value: ${outGross?.textContent || ''}`,
+      `Net Profit Per Unit: ${outNetProfit?.textContent || ''}`,
+      `Net Margin: ${outNetMargin?.textContent || ''}`,
+      `Monthly Net Income: ${outMonthlyNet?.textContent || ''}`,
+      `Break-Even Price: ${outBreakeven?.textContent || ''}`,
+      `Tier: ${activeTier}`,
+      `Generated at: ${window.location.href}`,
+      `----------------------------------------------------`
+    ].join('\n');
+
+    navigator.clipboard.writeText(summary).then(() => {
+      if (exportText) exportText.textContent = 'Copied Receipt!';
+      setTimeout(() => { if (exportText) exportText.textContent = 'Copy Receipt'; }, 2000);
+    });
+  });
+
+  // Reset Button
+  resetBtn?.addEventListener('click', () => {
+    if (elPrice) elPrice.value = (defaultInputs.sellingPrice || 65.0).toFixed(2);
+    if (elCogs) elCogs.value = (defaultInputs.cogs || 18.5).toFixed(2);
+    if (elShipCharged) elShipCharged.value = (defaultInputs.shippingCharged || 5.0).toFixed(2);
+    if (elShipActual) elShipActual.value = (defaultInputs.shippingActualCost || 7.2).toFixed(2);
+    if (elUnits) elUnits.value = (defaultInputs.monthlyUnits || 400).toString();
+    if (elCac) elCac.value = (defaultInputs.marketingPerOrder || 12.0).toFixed(2);
+    if (elAppFees) elAppFees.value = (defaultInputs.appFeesMonthly || 79.0).toFixed(2);
+    if (elReturnsRate) elReturnsRate.value = (defaultInputs.returnsRate || 3.5).toFixed(1);
+    if (elThirdParty) elThirdParty.checked = false;
+
+    // Reset tier
+    activeTier = defaultTierKey;
+    tierButtons.forEach(btn => {
+      if (btn.getAttribute('data-tier') === defaultTierKey) {
+        btn.classList.add('active-tier', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+        btn.classList.remove('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+      } else {
+        btn.classList.remove('active-tier', 'border-2', 'border-emerald-600', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+        btn.classList.add('border-slate-300', 'bg-white', 'text-slate-700', 'font-medium');
+      }
+    });
+
+    window.history.replaceState({}, '', window.location.pathname);
+    recalculate();
+  });
+
+  // Run on page load
+  hydrateFromUrl();
+</script>

@@ -1,0 +1,471 @@
+---
+import type { CalculatorDefinition } from '../../data/schema';
+
+interface Props {
+  calc: CalculatorDefinition;
+}
+
+const { calc } = Astro.props;
+const d = calc.defaultInputs as {
+  baseCost?: number;
+  targetMarkup?: number;
+  targetMargin?: number;
+  overheadTaxRate?: number;
+  gatewayPlatformCut?: number;
+  discountPromoRate?: number;
+};
+
+// Static pre-rendered calculations
+const preBaseCost = Number(d.baseCost) || 25.0;
+const preMarkup = Number(d.targetMarkup) || 100.0;
+const preOverheadTax = Number(d.overheadTaxRate) || 15.3;
+const preGatewayCut = Number(d.gatewayPlatformCut) || 2.9;
+const preDiscount = Number(d.discountPromoRate) || 10.0;
+
+// Bidirectional math: Price = Cost * (1 + Markup/100)
+const prePrice = preBaseCost * (1 + (preMarkup / 100));
+const preGrossProfit = prePrice - preBaseCost;
+const preGrossMargin = prePrice > 0 ? (preGrossProfit / prePrice) * 100 : 0;
+
+// Net calculation factoring discounts, gateway, and tax/overhead
+const preDiscountAmount = prePrice * (preDiscount / 100);
+const preRealizedPrice = prePrice - preDiscountAmount;
+const preGatewayFee = (preRealizedPrice * (preGatewayCut / 100)) + 0.30;
+const preTaxBurden = preRealizedPrice * (preOverheadTax / 100);
+const preNetProfit = preRealizedPrice - preBaseCost - preGatewayFee - preTaxBurden;
+const preNetMargin = preRealizedPrice > 0 ? (preNetProfit / preRealizedPrice) * 100 : 0;
+const preBreakEvenRoas = preNetMargin > 0 ? (1 / (preNetMargin / 100)) : 99.9;
+
+// Stacked Bar
+const preNetPct = Math.max(0, Math.min(100, preNetMargin));
+const preTaxPct = preRealizedPrice > 0 ? (preTaxBurden / preRealizedPrice) * 100 : 15;
+const preGwPct = preRealizedPrice > 0 ? (preGatewayFee / preRealizedPrice) * 100 : 3;
+const preBasePct = Math.max(0, 100 - preNetPct - preTaxPct - preGwPct);
+---
+
+<div class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden" id="engine-markup-margin">
+  <!-- Top Engine Header -->
+  <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center space-x-2">
+      <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+      <h2 class="text-base font-bold tracking-wide">B2B Markup, Margin & Break-Even ROAS Engine</h2>
+    </div>
+    <div class="flex items-center space-x-3 text-xs">
+      <button
+        type="button"
+        id="mm-share-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+        <span id="mm-share-text">Share Link</span>
+      </button>
+
+      <button
+        type="button"
+        id="mm-export-btn"
+        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+      >
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        <span id="mm-export-text">Copy Receipt</span>
+      </button>
+
+      <button
+        type="button"
+        id="mm-reset-btn"
+        class="text-xs text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 ml-1"
+      >
+        Reset Defaults
+      </button>
+    </div>
+  </div>
+
+  <!-- Visual Stacked Bar -->
+  <div class="bg-slate-950 px-6 py-4 border-b border-slate-800">
+    <div class="flex items-center justify-between text-xs text-slate-300 mb-2 font-mono">
+      <span>Unit Price Composition Split:</span>
+      <span class="text-emerald-400 font-bold" id="mm-bar-margin-label">{preNetMargin.toFixed(1)}% Realized Net Margin</span>
+    </div>
+    <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden flex shadow-inner">
+      <div id="mm-bar-net" style={`width: ${preNetPct}%;`} class="bg-emerald-500 transition-all duration-150" title="Net Cash Profit"></div>
+      <div id="mm-bar-tax" style={`width: ${preTaxPct}%;`} class="bg-indigo-500 transition-all duration-150" title="Taxes & Overhead"></div>
+      <div id="mm-bar-gw" style={`width: ${preGwPct}%;`} class="bg-amber-500 transition-all duration-150" title="Payment Processing"></div>
+      <div id="mm-bar-base" style={`width: ${preBasePct}%;`} class="bg-slate-600 transition-all duration-150" title="Base Manufacturing Cost"></div>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 mt-2.5 text-[11px] text-slate-400">
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>Net Profit (<span id="mm-leg-net">{preNetPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>Tax / Overhead (<span id="mm-leg-tax">{preTaxPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>Gateway Fee (<span id="mm-leg-gw">{preGwPct.toFixed(1)}%</span>)</div>
+      <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-600"></span>Base Cost (<span id="mm-leg-base">{preBasePct.toFixed(1)}%</span>)</div>
+    </div>
+  </div>
+
+  <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- Controls (7 Cols) -->
+    <div class="lg:col-span-7 space-y-5 text-sm">
+      
+      <!-- Base Cost -->
+      <div>
+        <label for="mm-base-cost" class="block font-semibold text-slate-800 mb-1">
+          Base Landed Cost / Hourly Target ($)
+        </label>
+        <div class="relative">
+          <span class="absolute left-3 top-2 text-slate-400 font-bold">$</span>
+          <input
+            type="number"
+            id="mm-base-cost"
+            step="0.5"
+            min="0.1"
+            value={preBaseCost.toFixed(2)}
+            class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold text-base"
+          />
+        </div>
+      </div>
+
+      <!-- Bidirectional Markup vs Margin Controls -->
+      <div class="p-4 bg-emerald-50/60 rounded-xl border border-emerald-200 space-y-3">
+        <div class="text-xs font-bold uppercase tracking-wider text-emerald-950 flex items-center justify-between">
+          <span>Bidirectional Pricing Targets</span>
+          <span class="font-normal text-emerald-700">Instant Sync</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="mm-markup-input" class="block font-semibold text-slate-800 text-xs mb-1">
+              Target Markup (%)
+            </label>
+            <div class="relative">
+              <input
+                type="number"
+                id="mm-markup-input"
+                step="1"
+                min="0"
+                value={preMarkup.toFixed(1)}
+                class="w-full pr-8 pl-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-bold text-sm bg-white"
+              />
+              <span class="absolute right-3 top-2 text-slate-400 font-bold">%</span>
+            </div>
+            <span class="text-[11px] text-slate-500 mt-0.5 block">Markup added to Cost</span>
+          </div>
+
+          <div>
+            <label for="mm-margin-input" class="block font-semibold text-slate-800 text-xs mb-1">
+              Target Gross Margin (%)
+            </label>
+            <div class="relative">
+              <input
+                type="number"
+                id="mm-margin-input"
+                step="0.5"
+                min="0"
+                max="99.9"
+                value={preGrossMargin.toFixed(1)}
+                class="w-full pr-8 pl-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-bold text-sm bg-white"
+              />
+              <span class="absolute right-3 top-2 text-slate-400 font-bold">%</span>
+            </div>
+            <span class="text-[11px] text-slate-500 mt-0.5 block">Margin of Selling Price</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deductions: Tax, Gateway, Promo -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div>
+          <label for="mm-tax-rate" class="block font-semibold text-slate-800 text-xs mb-1">
+            Overhead / Tax (%)
+          </label>
+          <div class="relative">
+            <input
+              type="number"
+              id="mm-tax-rate"
+              step="0.1"
+              min="0"
+              value={preOverheadTax.toFixed(1)}
+              class="w-full pr-7 pl-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold text-xs"
+            />
+            <span class="absolute right-2.5 top-2 text-slate-400 font-bold">%</span>
+          </div>
+          <span class="text-[10px] text-slate-500">15.3% IRS SE Tax</span>
+        </div>
+
+        <div>
+          <label for="mm-gateway-rate" class="block font-semibold text-slate-800 text-xs mb-1">
+            Gateway Cut (%)
+          </label>
+          <div class="relative">
+            <input
+              type="number"
+              id="mm-gateway-rate"
+              step="0.1"
+              min="0"
+              value={preGatewayCut.toFixed(1)}
+              class="w-full pr-7 pl-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold text-xs"
+            />
+            <span class="absolute right-2.5 top-2 text-slate-400 font-bold">%</span>
+          </div>
+          <span class="text-[10px] text-slate-500">Stripe/Platform %</span>
+        </div>
+
+        <div>
+          <label for="mm-discount-rate" class="block font-semibold text-slate-800 text-xs mb-1">
+            Promo Discount (%)
+          </label>
+          <div class="relative">
+            <input
+              type="number"
+              id="mm-discount-rate"
+              step="1"
+              min="0"
+              value={preDiscount.toFixed(1)}
+              class="w-full pr-7 pl-3 py-2 rounded-lg border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 text-slate-900 font-semibold text-xs"
+            />
+            <span class="absolute right-2.5 top-2 text-slate-400 font-bold">%</span>
+          </div>
+          <span class="text-[10px] text-slate-500">Seasonal buffer</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Output Dashboard (5 Cols) -->
+    <div class="lg:col-span-5 bg-slate-50 rounded-xl p-6 border border-slate-200 flex flex-col justify-between">
+      <div>
+        <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold mb-3">
+          Required Retail Price & Profitability
+        </h3>
+
+        <!-- Hero Price Card -->
+        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-xs mb-4">
+          <div class="text-xs font-semibold text-slate-500">Required Retail Selling Price</div>
+          <div id="mm-out-price" class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-mono mt-1">
+            ${prePrice.toFixed(2)}
+          </div>
+          <div class="flex items-center justify-between mt-2 pt-2 border-t border-slate-100 text-xs">
+            <span class="text-slate-500">Gross Profit:</span>
+            <span id="mm-out-gross-profit" class="font-bold text-emerald-800 font-mono text-sm">${preGrossProfit.toFixed(2)} ({preGrossMargin.toFixed(1)}%)</span>
+          </div>
+        </div>
+
+        <!-- Metrics Table -->
+        <div class="space-y-2 text-xs font-mono">
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Net Realized Cash Profit:</span>
+            <span id="mm-out-net-profit" class="font-bold text-emerald-700">${preNetProfit.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Net Realized Margin:</span>
+            <span id="mm-out-net-margin" class="font-bold text-emerald-800">{preNetMargin.toFixed(2)}%</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Overhead & Tax Provision:</span>
+            <span id="mm-out-tax" class="text-rose-600 font-semibold">-${preTaxBurden.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between py-1 border-b border-slate-200">
+            <span class="text-slate-600">Break-Even ROAS Target:</span>
+            <span id="mm-out-roas" class="font-bold text-indigo-700">{preBreakEvenRoas.toFixed(2)}x ROAS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROAS Strategy Note -->
+      <div class="mt-5 pt-4 border-t border-slate-200 bg-white p-4 rounded-lg border border-slate-200 text-xs">
+        <div class="font-bold text-slate-900 mb-1">Ad Acquisition Ceiling</div>
+        <p class="text-slate-600 text-[11px] leading-relaxed" id="mm-out-roas-note">
+          At a {preNetMargin.toFixed(1)}% net realized margin, paid ad campaigns must maintain a minimum return of <strong class="text-slate-900 font-bold">{preBreakEvenRoas.toFixed(2)}x ROAS</strong> to prevent capital loss.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer Footer -->
+  <div class="bg-slate-100 border-t border-slate-200 px-6 py-4 text-xs text-slate-600 flex items-start gap-3">
+    <svg class="w-5 h-5 text-slate-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <p class="leading-relaxed">
+      <strong>Commercial Pricing Disclaimer:</strong> Figures are mathematical models based on user-supplied variables and standard 15.3% IRS FICA self-employment guidelines. Does not constitute formal CPA or corporate tax counsel.
+    </p>
+  </div>
+</div>
+
+<script define:vars={{ defaultInputs: d }}>
+  const elBase = document.getElementById('mm-base-cost');
+  const elMarkup = document.getElementById('mm-markup-input');
+  const elMargin = document.getElementById('mm-margin-input');
+  const elTax = document.getElementById('mm-tax-rate');
+  const elGw = document.getElementById('mm-gateway-rate');
+  const elDiscount = document.getElementById('mm-discount-rate');
+
+  // Outputs
+  const outPrice = document.getElementById('mm-out-price');
+  const outGrossProfit = document.getElementById('mm-out-gross-profit');
+  const outNetProfit = document.getElementById('mm-out-net-profit');
+  const outNetMargin = document.getElementById('mm-out-net-margin');
+  const outTax = document.getElementById('mm-out-tax');
+  const outRoas = document.getElementById('mm-out-roas');
+  const outRoasNote = document.getElementById('mm-out-roas-note');
+
+  // Bars
+  const barNet = document.getElementById('mm-bar-net');
+  const barTax = document.getElementById('mm-bar-tax');
+  const barGw = document.getElementById('mm-bar-gw');
+  const barBase = document.getElementById('mm-bar-base');
+  const barLabel = document.getElementById('mm-bar-margin-label');
+  const legNet = document.getElementById('mm-leg-net');
+  const legTax = document.getElementById('mm-leg-tax');
+  const legGw = document.getElementById('mm-leg-gw');
+  const legBase = document.getElementById('mm-leg-base');
+
+  const shareBtn = document.getElementById('mm-share-btn');
+  const shareText = document.getElementById('mm-share-text');
+  const exportBtn = document.getElementById('mm-export-btn');
+  const exportText = document.getElementById('mm-export-text');
+  const resetBtn = document.getElementById('mm-reset-btn');
+
+  let debounceTimer = null;
+  let activeSyncSource = 'markup';
+
+  function calculate() {
+    if (!elBase || !elMarkup || !elMargin || !elTax || !elGw || !elDiscount) return;
+
+    const baseCost = Math.max(0.01, parseFloat(elBase.value) || 0.01);
+    const taxRate = Math.max(0, parseFloat(elTax.value) || 0);
+    const gwRate = Math.max(0, parseFloat(elGw.value) || 0);
+    const discountRate = Math.max(0, parseFloat(elDiscount.value) || 0);
+
+    let markup = parseFloat(elMarkup.value) || 0;
+    let margin = parseFloat(elMargin.value) || 0;
+
+    // Bidirectional sync
+    if (activeSyncSource === 'markup') {
+      markup = Math.max(0, markup);
+      margin = (markup / (100 + markup)) * 100;
+      elMargin.value = margin.toFixed(1);
+    } else {
+      margin = Math.max(0, Math.min(99.9, margin));
+      markup = (margin / (100 - margin)) * 100;
+      elMarkup.value = markup.toFixed(1);
+    }
+
+    const sellingPrice = baseCost * (1 + (markup / 100));
+    const grossProfit = sellingPrice - baseCost;
+
+    const discountAmount = sellingPrice * (discountRate / 100);
+    const realizedPrice = sellingPrice - discountAmount;
+    const gatewayFee = (realizedPrice * (gwRate / 100)) + 0.30;
+    const taxBurden = realizedPrice * (taxRate / 100);
+
+    const netProfit = realizedPrice - baseCost - gatewayFee - taxBurden;
+    const netMargin = realizedPrice > 0 ? (netProfit / realizedPrice) * 100 : 0;
+    const breakEvenRoas = netMargin > 0 ? (1 / (netMargin / 100)) : 99.9;
+
+    // Update Outputs
+    if (outPrice) outPrice.textContent = `$${sellingPrice.toFixed(2)}`;
+    if (outGrossProfit) outGrossProfit.textContent = `$${grossProfit.toFixed(2)} (${margin.toFixed(1)}%)`;
+    if (outNetProfit) outNetProfit.textContent = `$${netProfit.toFixed(2)}`;
+    if (outNetMargin) outNetMargin.textContent = `${netMargin.toFixed(2)}%`;
+    if (outTax) outTax.textContent = `-$${taxBurden.toFixed(2)}`;
+    if (outRoas) outRoas.textContent = `${breakEvenRoas.toFixed(2)}x ROAS`;
+    if (outRoasNote) {
+      outRoasNote.innerHTML = `At a ${netMargin.toFixed(1)}% net realized margin, paid ad campaigns must maintain a minimum return of <strong class="text-slate-900 font-bold">${breakEvenRoas.toFixed(2)}x ROAS</strong> to prevent capital loss.`;
+    }
+
+    // Update Bars
+    const netPct = Math.max(0, Math.min(100, netMargin));
+    const taxPct = realizedPrice > 0 ? (taxBurden / realizedPrice) * 100 : 15;
+    const gwPct = realizedPrice > 0 ? (gatewayFee / realizedPrice) * 100 : 3;
+    const basePct = Math.max(0, 100 - netPct - taxPct - gwPct);
+
+    if (barNet) barNet.style.width = `${netPct}%`;
+    if (barTax) barTax.style.width = `${taxPct}%`;
+    if (barGw) barGw.style.width = `${gwPct}%`;
+    if (barBase) barBase.style.width = `${basePct}%`;
+    if (barLabel) barLabel.textContent = `${netMargin.toFixed(1)}% Realized Net Margin`;
+
+    if (legNet) legNet.textContent = `${netPct.toFixed(1)}%`;
+    if (legTax) legTax.textContent = `${taxPct.toFixed(1)}%`;
+    if (legGw) legGw.textContent = `${gwPct.toFixed(1)}%`;
+    if (legBase) legBase.textContent = `${basePct.toFixed(1)}%`;
+
+    // URL Sync
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const p = new URLSearchParams();
+      p.set('cost', baseCost.toString());
+      p.set('markup', markup.toFixed(1));
+      p.set('tax', taxRate.toString());
+      p.set('gw', gwRate.toString());
+      p.set('disc', discountRate.toString());
+      window.history.replaceState({}, '', `${window.location.pathname}?${p.toString()}`);
+    }, 200);
+  }
+
+  elBase?.addEventListener('input', () => { activeSyncSource = 'markup'; calculate(); });
+  elMarkup?.addEventListener('input', () => { activeSyncSource = 'markup'; calculate(); });
+  elMargin?.addEventListener('input', () => { activeSyncSource = 'margin'; calculate(); });
+  [elTax, elGw, elDiscount].forEach(el => {
+    el?.addEventListener('input', calculate);
+    el?.addEventListener('change', calculate);
+  });
+
+  // Share
+  shareBtn?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      if (shareText) shareText.textContent = 'Copied!';
+      setTimeout(() => { if (shareText) shareText.textContent = 'Share Link'; }, 2000);
+    });
+  });
+
+  // Export
+  exportBtn?.addEventListener('click', () => {
+    const text = [
+      `--- MARKUP & MARGIN RECEIPT (CreatorCalcLab) ---`,
+      `Base Cost: $${elBase?.value || 0}`,
+      `Markup: ${elMarkup?.value}%`,
+      `Gross Margin: ${elMargin?.value}%`,
+      `Required Price: ${outPrice?.textContent || ''}`,
+      `Net Realized Profit: ${outNetProfit?.textContent || ''}`,
+      `Net Realized Margin: ${outNetMargin?.textContent || ''}`,
+      `Break-Even ROAS: ${outRoas?.textContent || ''}`,
+      `Link: ${window.location.href}`,
+      `-------------------------------------------------`
+    ].join('\n');
+
+    navigator.clipboard.writeText(text).then(() => {
+      if (exportText) exportText.textContent = 'Copied Receipt!';
+      setTimeout(() => { if (exportText) exportText.textContent = 'Copy Receipt'; }, 2000);
+    });
+  });
+
+  // Reset
+  resetBtn?.addEventListener('click', () => {
+    if (elBase) elBase.value = (defaultInputs.baseCost || 25.0).toFixed(2);
+    if (elMarkup) elMarkup.value = (defaultInputs.targetMarkup || 100.0).toFixed(1);
+    if (elTax) elTax.value = (defaultInputs.overheadTaxRate || 15.3).toFixed(1);
+    if (elGw) elGw.value = (defaultInputs.gatewayPlatformCut || 2.9).toFixed(1);
+    if (elDiscount) elDiscount.value = (defaultInputs.discountPromoRate || 10.0).toFixed(1);
+    activeSyncSource = 'markup';
+    window.history.replaceState({}, '', window.location.pathname);
+    calculate();
+  });
+
+  // Hydrate
+  function hydrate() {
+    const p = new URLSearchParams(window.location.search);
+    if (!p.has('cost') && !p.has('markup') && !p.has('margin')) return;
+    if (p.has('cost') && elBase) elBase.value = p.get('cost');
+    if (p.has('markup') && elMarkup) {
+      elMarkup.value = p.get('markup');
+      activeSyncSource = 'markup';
+    } else if (p.has('margin') && elMargin) {
+      elMargin.value = p.get('margin');
+      activeSyncSource = 'margin';
+    }
+    if (p.has('tax') && elTax) elTax.value = p.get('tax');
+    if (p.has('gw') && elGw) elGw.value = p.get('gw');
+    if (p.has('disc') && elDiscount) elDiscount.value = p.get('disc');
+    calculate();
+  }
+
+  hydrate();
+</script>

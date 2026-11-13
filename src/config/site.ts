@@ -35,9 +35,14 @@ export interface SiteConfig {
   };
 }
 
+const isGithubActions = typeof process !== 'undefined' && process.env.GITHUB_ACTIONS === 'true';
+const repoOwner = typeof process !== 'undefined' && process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[0] : '';
+const defaultSiteUrl = isGithubActions && repoOwner ? `https://${repoOwner}.github.io` : 'https://creatorcalclab.com';
+const resolvedSiteUrl = (typeof process !== 'undefined' && process.env.SITE_URL) || defaultSiteUrl;
+
 export const SITE_CONFIG: SiteConfig = {
   siteName: "CreatorCalcLab",
-  siteUrl: "https://creatorcalclab.com",
+  siteUrl: resolvedSiteUrl,
   tagline: "High-Precision Financial Modeling for Modern Online Businesses",
   description: "Transparent, 100% client-side profit margin, fee audit, and unit economic calculators for digital creators, e-commerce sellers, and independent contractors.",
   establishedYear: 2024,

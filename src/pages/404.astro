@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCalculatorBySlug } from '../data/calculators';
+import { getPath } from '../utils/paths';
 
 const topSlugList = [
   'shopify-profit-margin-calculator',
@@ -16,6 +17,8 @@ const topSlugList = [
 const popularCalculators = topSlugList
   .map(slug => getCalculatorBySlug(slug))
   .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+const expectedBase = import.meta.env.BASE_URL || '/';
 ---
 
 <BaseLayout
@@ -24,6 +27,31 @@ const popularCalculators = topSlugList
   description="The requested financial calculator or page could not be located. Explore our 47 audited financial calculators or search our rate library."
   canonicalPath="/404"
 >
+  <!-- Smart 404 GitHub Pages Recovery Script: auto-resolves valid routes missing base_path or trailing slashes -->
+  <script is:inline define:vars={{ expectedBase }}>
+    (function() {
+      var rawPath = window.location.pathname;
+      var base = (expectedBase || '/').replace(/\/$/, '');
+
+      // 1. If base path is active and URL is missing the base prefix, redirect to base path
+      if (base && !rawPath.startsWith(base)) {
+        var clean = rawPath.startsWith('/') ? rawPath : '/' + rawPath;
+        var target = base + clean;
+        if (!target.endsWith('/') && !target.split('/').pop().includes('.')) {
+          target += '/';
+        }
+        window.location.replace(target + window.location.search + window.location.hash);
+        return;
+      }
+
+      // 2. If path is missing trailing slash on directory routes, redirect to trailing slash
+      if (!rawPath.endsWith('/') && !rawPath.split('/').pop().includes('.')) {
+        window.location.replace(rawPath + '/' + window.location.search + window.location.hash);
+        return;
+      }
+    })();
+  </script>
+
   <div class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-100 text-rose-800 border border-rose-200 mb-4">
@@ -55,7 +83,7 @@ const popularCalculators = topSlugList
         </button>
 
         <a
-          href="/all-calculators/"
+          href={getPath('/all-calculators/')}
           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm border border-slate-300 transition-colors"
         >
           <span>Browse Complete Directory</span>
@@ -77,7 +105,7 @@ const popularCalculators = topSlugList
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {popularCalculators.map(calc => (
           <a
-            href={`/calculator/${calc.slug}/`}
+            href={getPath(`/calculator/${calc.slug}/`)}
             class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all flex flex-col justify-between group"
           >
             <div>

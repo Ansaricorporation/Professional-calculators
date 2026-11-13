@@ -2,9 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE_CONFIG } from '../config/site';
+import { getPath } from '../utils/paths';
 
 const breadcrumbItems = [
-  { name: 'Contact & Support', url: '/contact/' }
+  { name: 'Contact & Support', url: getPath('/contact/') }
 ];
 ---
 
@@ -157,7 +158,7 @@ const breadcrumbItems = [
               class="mt-0.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
             />
             <label for="privacy-consent">
-              I agree that CreatorCalcLab may process this inquiry in accordance with its <a href="/privacy-policy/" class="text-emerald-700 underline">Privacy Policy</a>. No marketing emails will be sent.
+              I agree that CreatorCalcLab may process this inquiry in accordance with its <a href={getPath('/privacy-policy/')} class="text-emerald-700 underline">Privacy Policy</a>. No marketing emails will be sent.
             </label>
           </div>
 

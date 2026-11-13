@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { SITE_CONFIG } from '../../config/site';
 import { getCalculatorsByCategory } from '../../data/calculators';
 import type { CalculatorCategory } from '../../data/schema';
+import { getPath } from '../../utils/paths';
 
 export function getStaticPaths() {
   const categories: CalculatorCategory[] = [
@@ -26,8 +27,8 @@ const { categoryInfo, calculators } = Astro.props;
 const otherCategories = Object.values(SITE_CONFIG.categories).filter(c => c.id !== categoryInfo.id);
 
 const breadcrumbItems = [
-  { name: 'Categories', url: '/' },
-  { name: categoryInfo.name, url: `/category/${categoryInfo.id}/` }
+  { name: 'Categories', url: getPath('/') },
+  { name: categoryInfo.name, url: getPath(`/category/${categoryInfo.id}/`) }
 ];
 ---
 
@@ -79,7 +80,7 @@ const breadcrumbItems = [
                 <span class="text-slate-400">{calc.lastUpdated}</span>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">
-                <a href={`/calculator/${calc.slug}/`} class="hover:text-emerald-700 transition-colors">
+                <a href={getPath(`/calculator/${calc.slug}/`)} class="hover:text-emerald-700 transition-colors">
                   {calc.title}
                 </a>
               </h3>
@@ -91,7 +92,7 @@ const breadcrumbItems = [
             <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
               <span class="text-xs text-slate-500 font-medium">7-Block Guide Included</span>
               <a
-                href={`/calculator/${calc.slug}/`}
+                href={getPath(`/calculator/${calc.slug}/`)}
                 class="inline-flex items-center text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3.5 py-2 rounded-lg transition-colors"
               >
                 Open Calculator &rarr;
@@ -110,7 +111,7 @@ const breadcrumbItems = [
           Calculators for this sector are currently completing our 5-step financial verification cycle. You can submit custom rate cards or request specific models below.
         </p>
         <div class="mt-4">
-          <a href="/contact/" class="text-xs font-semibold text-emerald-700 hover:underline">
+          <a href={getPath('/contact/')} class="text-xs font-semibold text-emerald-700 hover:underline">
             Request a Platform Model &rarr;
           </a>
         </div>
@@ -123,7 +124,7 @@ const breadcrumbItems = [
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {otherCategories.map(cat => (
           <a
-            href={`/category/${cat.id}/`}
+            href={getPath(`/category/${cat.id}/`)}
             class="bg-white p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:shadow-xs transition-all group"
           >
             <div class="text-xs font-bold text-slate-900 group-hover:text-emerald-700">{cat.name}</div>

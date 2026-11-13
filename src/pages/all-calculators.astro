@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllCalculators } from '../data/calculators';
 import { SITE_CONFIG } from '../config/site';
+import { getPath } from '../utils/paths';
 
 const allCalculators = getAllCalculators();
 
@@ -54,7 +55,7 @@ const totalCalculators = allCalculators.length;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Breadcrumb -->
       <nav class="flex items-center space-x-2 text-xs font-mono text-slate-400 mb-6">
-        <a href="/" class="hover:text-emerald-400 transition-colors">Home</a>
+        <a href={getPath('/')} class="hover:text-emerald-400 transition-colors">Home</a>
         <span>/</span>
         <span class="text-emerald-400 font-semibold">All Calculators</span>
       </nav>
@@ -103,7 +104,7 @@ const totalCalculators = allCalculators.length;
               <span class={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold border ${cat.badgeColor}`}>
                 {cat.calculators.length} Calculators
               </span>
-              <a href={`/category/${cat.id}/`} class="text-xs font-mono text-emerald-600 hover:text-emerald-700 font-semibold underline underline-offset-2">
+              <a href={getPath(`/category/${cat.id}/`)} class="text-xs font-mono text-emerald-600 hover:text-emerald-700 font-semibold underline underline-offset-2">
                 View Category Hub &rarr;
               </a>
             </div>
@@ -134,7 +135,7 @@ const totalCalculators = allCalculators.length;
 
                 <!-- Calculator Title -->
                 <h3 class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors line-clamp-2 mb-2">
-                  <a href={`/calculator/${calc.slug}/`}>
+                  <a href={getPath(`/calculator/${calc.slug}/`)}>
                     {calc.title}
                   </a>
                 </h3>
@@ -151,7 +152,7 @@ const totalCalculators = allCalculators.length;
                   {calc.guideContent.faqs.length} FAQs | 700+ Words
                 </span>
                 <a
-                  href={`/calculator/${calc.slug}/`}
+                  href={getPath(`/calculator/${calc.slug}/`)}
                   class="font-semibold text-emerald-700 group-hover:text-emerald-800 flex items-center gap-1 transition-colors"
                 >
                   <span>Launch Tool</span>
@@ -175,7 +176,7 @@ const totalCalculators = allCalculators.length;
         Our rate audit desk continuously analyzes merchant fee schedule changes and tax law adjustments. Submit platform requests or rate discrepancies directly to our compliance review team.
       </p>
       <a
-        href="/contact/"
+        href={getPath('/contact/')}
         class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors shadow-xs"
       >
         <span>Contact Rate Audit Team</span>

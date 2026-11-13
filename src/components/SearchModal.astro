@@ -1,12 +1,13 @@
 ---
 import { getAllCalculators } from '../data/calculators';
+import { getPath } from '../utils/paths';
 
 const calculators = getAllCalculators().map(c => ({
   slug: c.slug,
   title: c.title,
   category: c.category,
   description: c.metaDescription,
-  url: `/calculator/${c.slug}/`
+  url: getPath(`/calculator/${c.slug}/`)
 }));
 ---
 

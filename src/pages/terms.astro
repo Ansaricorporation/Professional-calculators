@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE_CONFIG } from '../config/site';
+import { getPath } from '../utils/paths';
 
 const breadcrumbItems = [
-  { name: 'Legal & Terms', url: '/terms/' },
-  { name: 'Terms of Service', url: '/terms/' }
+  { name: 'Legal & Terms', url: getPath('/terms/') },
+  { name: 'Terms of Service', url: getPath('/terms/') }
 ];
 ---
 

@@ -1,27 +1,27 @@
 import type { APIRoute } from 'astro';
 import { getAllCalculators } from '../data/calculators';
 import { SITE_CONFIG } from '../config/site';
+import { getCanonicalUrl } from '../utils/paths';
 
 export const GET: APIRoute = () => {
   const calculators = getAllCalculators();
-  const baseUrl = SITE_CONFIG.siteUrl.replace(/\/$/, '');
   const today = new Date().toISOString().split('T')[0];
 
   const staticPages = [
-    { url: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
-    { url: `${baseUrl}/all-calculators/`, priority: '0.9', changefreq: 'daily' },
-    { url: `${baseUrl}/category/ecommerce/`, priority: '0.8', changefreq: 'weekly' },
-    { url: `${baseUrl}/category/creator-economy/`, priority: '0.8', changefreq: 'weekly' },
-    { url: `${baseUrl}/category/digital-marketplaces/`, priority: '0.8', changefreq: 'weekly' },
-    { url: `${baseUrl}/category/b2b-pricing/`, priority: '0.8', changefreq: 'weekly' },
-    { url: `${baseUrl}/about/`, priority: '0.6', changefreq: 'monthly' },
-    { url: `${baseUrl}/contact/`, priority: '0.5', changefreq: 'monthly' },
-    { url: `${baseUrl}/privacy-policy/`, priority: '0.4', changefreq: 'monthly' },
-    { url: `${baseUrl}/terms/`, priority: '0.4', changefreq: 'monthly' },
+    { url: getCanonicalUrl('/', SITE_CONFIG.siteUrl), priority: '1.0', changefreq: 'daily' },
+    { url: getCanonicalUrl('/all-calculators/', SITE_CONFIG.siteUrl), priority: '0.9', changefreq: 'daily' },
+    { url: getCanonicalUrl('/category/ecommerce/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
+    { url: getCanonicalUrl('/category/creator-economy/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
+    { url: getCanonicalUrl('/category/digital-marketplaces/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
+    { url: getCanonicalUrl('/category/b2b-pricing/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
+    { url: getCanonicalUrl('/about/', SITE_CONFIG.siteUrl), priority: '0.6', changefreq: 'monthly' },
+    { url: getCanonicalUrl('/contact/', SITE_CONFIG.siteUrl), priority: '0.5', changefreq: 'monthly' },
+    { url: getCanonicalUrl('/privacy-policy/', SITE_CONFIG.siteUrl), priority: '0.4', changefreq: 'monthly' },
+    { url: getCanonicalUrl('/terms/', SITE_CONFIG.siteUrl), priority: '0.4', changefreq: 'monthly' },
   ];
 
   const calculatorPages = calculators.map(calc => ({
-    url: `${baseUrl}/calculator/${calc.slug}/`,
+    url: getCanonicalUrl(`/calculator/${calc.slug}/`, SITE_CONFIG.siteUrl),
     priority: '0.9',
     changefreq: 'weekly'
   }));

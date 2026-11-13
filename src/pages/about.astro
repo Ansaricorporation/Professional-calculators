@@ -2,9 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE_CONFIG } from '../config/site';
+import { getPath } from '../utils/paths';
 
 const breadcrumbItems = [
-  { name: 'About CreatorCalcLab', url: '/about/' }
+  { name: 'About CreatorCalcLab', url: getPath('/about/') }
 ];
 ---
 
@@ -191,9 +192,9 @@ const breadcrumbItems = [
           CreatorCalcLab operates with complete editorial independence. While we display contextual programmatic advertisements served by Google AdSense to fund our research infrastructure, our mathematical models, formulas, and ranking metrics are strictly independent. Platforms cannot pay to adjust fee calculations, distort competitor comparisons, or artificially inflate margin outputs.
         </p>
         <div class="mt-4 flex flex-wrap gap-4 text-xs font-medium text-slate-700">
-          <a href="/privacy-policy/" class="text-emerald-700 hover:underline">Read our Privacy Policy &rarr;</a>
-          <a href="/terms/" class="text-emerald-700 hover:underline">Read Terms & Financial Disclaimer &rarr;</a>
-          <a href="/contact/" class="text-emerald-700 hover:underline">Submit a Fee Schedule Correction &rarr;</a>
+          <a href={getPath('/privacy-policy/')} class="text-emerald-700 hover:underline">Read our Privacy Policy &rarr;</a>
+          <a href={getPath('/terms/')} class="text-emerald-700 hover:underline">Read Terms & Financial Disclaimer &rarr;</a>
+          <a href={getPath('/contact/')} class="text-emerald-700 hover:underline">Submit a Fee Schedule Correction &rarr;</a>
         </div>
       </div>
     </section>

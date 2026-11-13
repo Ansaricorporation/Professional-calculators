@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SearchModal from '../components/SearchModal.astro';
 import { SITE_CONFIG } from '../config/site';
+import { getPath, getCanonicalUrl } from '../utils/paths';
 
 interface Props {
   title: string;
@@ -27,7 +28,8 @@ const {
 } = Astro.props;
 
 const pageTitle = metaTitle ? `${metaTitle} | ${SITE_CONFIG.siteName}` : `${title} | ${SITE_CONFIG.siteName}`;
-const fullCanonicalUrl = new URL(canonicalPath || Astro.url.pathname, SITE_CONFIG.siteUrl).toString();
+const fullCanonicalUrl = getCanonicalUrl(canonicalPath || Astro.url.pathname, SITE_CONFIG.siteUrl);
+const fullSiteUrl = getCanonicalUrl('/', SITE_CONFIG.siteUrl);
 
 // Base Organization & WebSite JSON-LD
 const siteSchema = {
@@ -35,10 +37,10 @@ const siteSchema = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": `${SITE_CONFIG.siteUrl}/#organization`,
+      "@id": `${fullSiteUrl}#organization`,
       "name": SITE_CONFIG.siteName,
-      "url": SITE_CONFIG.siteUrl,
-      "logo": `${SITE_CONFIG.siteUrl}/favicon.svg`,
+      "url": fullSiteUrl,
+      "logo": getCanonicalUrl('/favicon.svg', SITE_CONFIG.siteUrl),
       "description": SITE_CONFIG.description,
       "email": SITE_CONFIG.contactEmail,
       "sameAs": [
@@ -48,11 +50,11 @@ const siteSchema = {
     },
     {
       "@type": "WebSite",
-      "@id": `${SITE_CONFIG.siteUrl}/#website`,
-      "url": SITE_CONFIG.siteUrl,
+      "@id": `${fullSiteUrl}#website`,
+      "url": fullSiteUrl,
       "name": SITE_CONFIG.siteName,
       "description": SITE_CONFIG.description,
-      "publisher": { "@id": `${SITE_CONFIG.siteUrl}/#organization` },
+      "publisher": { "@id": `${fullSiteUrl}#organization` },
       "inLanguage": "en-US"
     }
   ]
@@ -64,7 +66,7 @@ const siteSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={getPath('/favicon.svg')} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Primary Meta Tags -->

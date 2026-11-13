@@ -1,5 +1,6 @@
 ---
 import { SITE_CONFIG } from '../config/site';
+import { getPath } from '../utils/paths';
 
 interface Props {
   lastUpdated?: string;
@@ -86,7 +87,7 @@ const auditTeam = SITE_CONFIG.auditTeam;
           Deterministic Closed-Form Math
         </span>
         <span>&bull;</span>
-        <a href="/about/#audit-methodology" class="text-emerald-700 hover:underline font-medium">Editorial Methodology</a>
+        <a href={getPath('/about/#audit-methodology')} class="text-emerald-700 hover:underline font-medium">Editorial Methodology</a>
       </div>
     </div>
   </div>

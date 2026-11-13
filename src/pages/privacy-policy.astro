@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE_CONFIG } from '../config/site';
+import { getPath } from '../utils/paths';
 
 const breadcrumbItems = [
-  { name: 'Legal & Privacy', url: '/privacy-policy/' },
-  { name: 'Privacy Policy', url: '/privacy-policy/' }
+  { name: 'Legal & Privacy', url: getPath('/privacy-policy/') },
+  { name: 'Privacy Policy', url: getPath('/privacy-policy/') }
 ];
 ---
 
@@ -156,7 +157,7 @@ const breadcrumbItems = [
         <p class="font-bold text-slate-900 mb-1 font-sans">CreatorCalcLab Compliance & Legal Desk</p>
         <p>Attention: Data Protection Officer</p>
         <p>Email: <a href="mailto:compliance@creatorcalclab.com" class="text-emerald-700 underline">compliance@creatorcalclab.com</a></p>
-        <p>Inquiries: <a href="/contact/" class="text-emerald-700 underline">https://creatorcalclab.com/contact/</a></p>
+        <p>Inquiries: <a href={getPath('/contact/')} class="text-emerald-700 underline">Compliance Contact Desk</a></p>
       </div>
     </article>
   </div>

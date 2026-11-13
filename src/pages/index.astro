@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config/site';
 import { getAllCalculators } from '../data/calculators';
+import { getPath } from '../utils/paths';
 
 const calculators = getAllCalculators();
 const categories = Object.values(SITE_CONFIG.categories);
@@ -88,7 +89,7 @@ const categories = Object.values(SITE_CONFIG.categories);
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {categories.map(cat => (
         <a
-          href={`/category/${cat.id}/`}
+          href={getPath(`/category/${cat.id}/`)}
           class="bg-white rounded-xl border border-slate-200 p-6 hover:border-emerald-500 hover:shadow-lg transition-all group flex flex-col justify-between"
         >
           <div>
@@ -141,7 +142,7 @@ const categories = Object.values(SITE_CONFIG.categories);
                 <span class="text-slate-400">{calc.lastUpdated}</span>
               </div>
               <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">
-                <a href={`/calculator/${calc.slug}/`} class="hover:text-emerald-700 transition-colors">
+                <a href={getPath(`/calculator/${calc.slug}/`)} class="hover:text-emerald-700 transition-colors">
                   {calc.title}
                 </a>
               </h3>
@@ -169,7 +170,7 @@ const categories = Object.values(SITE_CONFIG.categories);
             <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
               <span class="text-xs text-slate-500 font-medium">7-Block Guide + Live Engine</span>
               <a
-                href={`/calculator/${calc.slug}/`}
+                href={getPath(`/calculator/${calc.slug}/`)}
                 class="inline-flex items-center text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-lg transition-colors"
               >
                 Launch Model &rarr;
@@ -227,13 +228,13 @@ const categories = Object.values(SITE_CONFIG.categories);
 
           <div class="mt-8 flex flex-wrap gap-4">
             <a
-              href="/about/"
+              href={getPath('/about/')}
               class="inline-flex items-center px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors"
             >
               Read Full Methodology &rarr;
             </a>
             <a
-              href="/contact/"
+              href={getPath('/contact/')}
               class="inline-flex items-center px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition-colors"
             >
               Submit Rate Card Update

@@ -2027,5 +2027,731 @@
       "gumroad-fee-calculator",
       "youtube-education-rpm-calculator"
     ]
+  },
+  {
+    "slug": "udemy-instructor-revenue-share-calculator",
+    "title": "Udemy Instructor Revenue Share Calculator (97% Instructor Coupon vs. 37% Organic Marketplace Cut)",
+    "metaTitle": "Udemy Instructor Revenue Share Calculator (2026 Model)",
+    "metaDescription": "Calculate Udemy online course earnings, 97% instructor coupon referral links vs. 37% organic platform sales, mobile in-app purchase cuts (30%), and Udemy Business pool royalties.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-16",
+    "officialSourceName": "Udemy Instructor Revenue Share & Promotional Agreements (2026)",
+    "officialSourceUrl": "https://support.udemy.com/hc/en-us/articles/229605008-Instructor-Revenue-Share",
+    "defaultInputs": {
+      "sellingPrice": 84.99,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 110,
+      "planTier": "coupon-referral",
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 4.5,
+      "returnsRate": 7.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "coupon-referral": {
+          "name": "Instructor Referral Link / Coupon (97% Creator Share)",
+          "monthlyFee": 0,
+          "percentageRate": 3,
+          "fixedFee": 0,
+          "additionalNotes": "Instructor receives 97% of net sale price when student enrolls using the instructor's direct referral link or custom coupon code (Udemy retains 3% admin fee)."
+        },
+        "organic-marketplace": {
+          "name": "Organic Marketplace Search & Browse (37% Creator Share)",
+          "monthlyFee": 0,
+          "percentageRate": 63,
+          "fixedFee": 0,
+          "additionalNotes": "Udemy retains 63% and pays the instructor 37% of net revenue when a student discovers and purchases the course organically without an instructor link."
+        },
+        "affiliate-partner": {
+          "name": "Udemy Paid Advertising & Affiliate Program (37% Creator Share)",
+          "monthlyFee": 0,
+          "percentageRate": 63,
+          "fixedFee": 0,
+          "additionalNotes": "Udemy partners with third-party coupon sites and runs external paid ad campaigns; creator receives 37% net revenue after marketing spend deduction."
+        }
+      },
+      "extraParameters": {
+        "appleGoogleIapFeePct": 30,
+        "udemyBusinessMinutePoolCents": 3.8,
+        "averageCourseDiscountPrice": 16.99,
+        "instructorCouponSharePct": 97,
+        "organicPlatformSharePct": 37,
+        "standardReturnRatePct": 7.5
+      }
+    },
+    "relatedSlugs": [
+      "teachable-vs-kajabi-fee-calculator",
+      "gumroad-fee-calculator",
+      "payhip-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Publishing premium courses on Udemy involves navigating one of the most divergent revenue-split structures in the modern e-learning economy. Udemy does not charge course instructors any upfront hosting fees, video storage costs, or monthly software subscriptions. Instead, compensation is determined entirely by acquisition source attribution. When a student purchases your course via your personal instructor referral link or custom coupon code, you retain a massive 97% of net revenue (Udemy deducts a minimal 3% administrative and payment processing fee). However, when a student finds and enrolls in your course organically through Udemy search, homepage recommendations, or Udemy affiliate ads, the platform keeps 63% of the sale, remitting only 37% to the creator. Compounding this dynamic, Udemy's aggressive site-wide promotion engine routinely slashes listed course prices (e.g., from $84.99 down to $14.99 or $19.99), and mobile purchases made via iOS or Android trigger an initial 30% Apple/Google App Store in-app purchase deduction before revenue is split. This calculator models coupon channel blends, organic discount pricing, mobile app store cuts, and student refund reserves to reveal true net take-home earnings.",
+      "formulaBreakdown": {
+        "formulaString": "Net Instructor Revenue = (Coupon Units × Net Sale × 0.97) + (Organic Units × Net Sale × 0.37) - (Mobile IAP Fee Deductions) - (Refund Reserves)",
+        "variables": [
+          {
+            "symbol": "Coupon Units",
+            "meaning": "Number of students enrolling through instructor's direct referral link or coupon code"
+          },
+          {
+            "symbol": "Organic Units",
+            "meaning": "Students enrolling via Udemy organic marketplace discovery, category search, or sitewide sales"
+          },
+          {
+            "symbol": "Net Sale",
+            "meaning": "Actual dollar amount paid by student after Udemy sitewide discount promotions and regional taxes"
+          },
+          {
+            "symbol": "Mobile IAP Fee",
+            "meaning": "30% deduction retained by Apple App Store or Google Play on transactions originating in native mobile apps"
+          },
+          {
+            "symbol": "Refund Reserves",
+            "meaning": "Mandatory 30-day money-back guarantee deductions for student course returns (typically 6% to 10%)"
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Full-Stack Web Development Course Selling 110 Units Monthly",
+        "narrative": "A software engineer publishes a comprehensive TypeScript and React course listed at $84.99 on Udemy. During Udemy's frequent promotional discount sales, the average transaction checkout price drops to $18.99. In a typical month, the course generates 110 total student enrollments. Through personal YouTube tutorials and an email newsletter, the instructor drives 40 students via direct instructor referral links (97% creator share = $18.42 per unit). The remaining 70 students discover the course organically through Udemy search and recommendation tiles (37% creator share = $7.03 per unit). Furthermore, 25% of organic sales (18 students) purchase through the Udemy iOS mobile app, incurring Apple's 30% in-app purchase deduction prior to the revenue split ($18.99 - $5.70 = $13.29 net, yielding $4.92 to the instructor). A baseline refund rate of 7.5% is applied across all sales under Udemy's 30-day student satisfaction guarantee. This model computes the instructor's true monthly net take-home pay.",
+        "stepByStepMath": [
+          "Discounted Student Purchase Price: $18.99 average checkout price",
+          "Direct Instructor Coupon Sales (40 students): 40 × ($18.99 × 97.0%) = $736.81",
+          "Organic Desktop & Web Sales (52 students): 52 × ($18.99 × 37.0%) = $365.37",
+          "Organic Mobile App Sales (18 students after 30% Apple cut): 18 × (($18.99 × 0.70) × 37.0%) = $88.51",
+          "Gross Monthly Instructor Earnings Before Refunds: $736.81 + $365.37 + $88.51 = $1,190.69",
+          "Udemy 30-Day Student Refund Deduction (7.5% rate): $1,190.69 × 0.075 = $89.30",
+          "Net Monthly Instructor Cash Payout: $1,190.69 - $89.30 = $1,101.39",
+          "Blended Effective Revenue Share per Student: $1,101.39 / 110 enrollments = $10.01 per student",
+          "Effective Instructor Take-Rate on Gross Student Spend ($2,088.90): 52.7% blended payout"
+        ],
+        "finalTakeaway": "Although Udemy organic sales yield only $4.92 to $7.03 per student, driving 40 direct coupon sales ($18.42 each) lifts the instructor's blended take-home rate to $10.01 per student ($1,101.39 monthly net). Channel attribution strategy is paramount on Udemy."
+      },
+      "benchmarkTable": {
+        "title": "Udemy Revenue Split Breakdown by Enrollment Channel (2026)",
+        "headers": [
+          "Enrollment Channel",
+          "Nominal Course Price",
+          "Typical Sale Price",
+          "Creator Rev-Share %",
+          "Net Payout / Student"
+        ],
+        "rows": [
+          [
+            "Instructor Referral Link",
+            "$84.99",
+            "$18.99 (coupon)",
+            "97.0% creator cut",
+            "$18.42 net payout"
+          ],
+          [
+            "Organic Desktop Search",
+            "$84.99",
+            "$18.99 (promo)",
+            "37.0% creator cut",
+            "$7.03 net payout"
+          ],
+          [
+            "Mobile App Purchase (iOS/Android)",
+            "$84.99",
+            "$18.99 (promo)",
+            "37% of 70% net (25.9%)",
+            "$4.92 net payout"
+          ],
+          [
+            "Udemy Affiliate Network",
+            "$84.99",
+            "$16.99 (promo)",
+            "37.0% creator cut",
+            "$6.29 net payout"
+          ],
+          [
+            "Udemy Business (UB Pool)",
+            "Enterprise sub",
+            "Minutes watched",
+            "Pro-rata consumption",
+            "$0.038 / minute watched"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Aggressively Funnel Your Audience Through Instructor Referral Links",
+          "actionableAdvice": "Every piece of free content you produce on YouTube, LinkedIn, or personal blogs must link to your courses using your dedicated Udemy instructor referral URL. Securing 97% of the sale instead of 37% more than doubles your unit revenue ($18.42 vs $7.03), fundamentally changing the economics of course publishing."
+        },
+        {
+          "title": "Optimize Courses for High Completion in Udemy Business (UB)",
+          "actionableAdvice": "Udemy Business is an enterprise subscription service where Fortune 500 corporations pay annual fees for all-you-can-learn access. Qualified instructors earn royalties based on total minutes consumed by enterprise learners (typically $0.035 to $0.045 per minute). Structuring concise, modular 3-to-5 minute video lessons maximizes corporate completion rates and creates substantial passive monthly recurring pool royalties."
+        },
+        {
+          "title": "Encourage Desktop Purchases to Bypass the 30% Mobile Tax",
+          "actionableAdvice": "When advertising your course, direct students to purchase via desktop browser links rather than the native iOS or Android mobile apps. When a student purchases through the mobile app, Apple or Google deducts a non-negotiable 30% in-app purchase fee off the top before Udemy calculates your 37% or 97% revenue split."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does Udemy's 97% vs 37% revenue share model actually work?",
+          "answer": "Udemy uses a last-touch referral attribution model. If a student enrolls in your course after clicking your specific instructor coupon code or referral link (valid for 30 days via cookies), you receive 97% of the net transaction price (Udemy takes 3%). If the student finds your course through organic search or browsing on Udemy, you receive 37% (Udemy keeps 63%)."
+        },
+        {
+          "question": "Why does Udemy discount courses from $84.99 down to $14.99 or $19.99?",
+          "answer": "Udemy's entire business model relies on high-volume promotional discounting. Over 90% of all marketplace sales occur during site-wide promotional campaigns. While instructors can technically opt out of the Udemy Deals Program to keep prices high, opted-out courses receive virtually zero organic marketplace visibility, typically resulting in 95% fewer total sales."
+        },
+        {
+          "question": "How do Udemy Business (UB) monthly royalty payouts work?",
+          "answer": "Instructors enrolled in the Udemy Business collection earn a share of a dedicated subscription pool. Every month, Udemy allocates 25% of gross enterprise subscription revenues to instructors. Your monthly payout is determined by the exact proportion of total minutes enterprise students spent watching your content relative to the entire platform's minute pool."
+        },
+        {
+          "question": "What is Udemy's student refund policy and how does it affect instructor earnings?",
+          "answer": "Udemy offers a universal 30-day money-back guarantee on all course purchases across desktop and mobile. If a student requests a refund within 30 days of purchase, the full purchase amount is returned to the student, and the instructor's earnings for that transaction are reversed from the current pay cycle's monthly accounting ledger."
+        },
+        {
+          "question": "When does Udemy pay instructors their monthly earnings?",
+          "answer": "Udemy pays instructors on a Net-30 monthly disbursement schedule via PayPal or Payoneer. Earnings generated during the month of January are finalized after the 30-day student refund window closes and are paid out to instructors between March 7th and March 10th, ensuring all potential student returns are accounted for prior to transfer."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stan-store-vs-gumroad-calculator",
+    "title": "Stan Store ($29/mo 0% Fee) vs. Gumroad (10% + $0.50 Fee) Creator Break-Even Calculator",
+    "metaTitle": "Stan Store vs. Gumroad Creator Fee Calculator (2026)",
+    "metaDescription": "Compare Stan Store's $29/mo 0% transaction fee flat SaaS model against Gumroad's 10% + $0.50 per-sale commission fee, credit card processing, and sales break-even thresholds.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "2026-11-16",
+    "officialSourceName": "Stan Store Creator Pricing & Gumroad Fee Documentation (2026)",
+    "officialSourceUrl": "https://www.stan.store/pricing",
+    "defaultInputs": {
+      "productPrice": 42,
+      "monthlyUnits": 35,
+      "refundRate": 2,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Stan Store ($29/mo Flat SaaS, 0% Fee)",
+        "platformAFeePct": 0,
+        "platformAFixed": 0,
+        "platformAGatewayPct": 2.9,
+        "platformAGatewayFixed": 0.3,
+        "platformBName": "Gumroad (10% Platform Fee + $0.50)",
+        "platformBFeePct": 10,
+        "platformBFixed": 0.5,
+        "platformBGatewayPct": 2.9,
+        "platformBGatewayFixed": 0.3,
+        "stanStoreMonthlySubscription": 29,
+        "gumroadPlatformCutPct": 10,
+        "gumroadPlatformFixedFee": 0.5,
+        "breakEvenSalesVolumeUSD": 290
+      }
+    },
+    "relatedSlugs": [
+      "gumroad-fee-calculator",
+      "gumroad-vs-payhip-fee-calculator",
+      "payhip-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "For digital creators, social media coaches, and digital product sellers on TikTok, Instagram, and YouTube, choosing between Stan Store and Gumroad represents a fundamental philosophical choice: a flat monthly software subscription versus a performance-based percentage take-rate. In 2023, Gumroad implemented a controversial pricing overhaul, replacing its tiered sliding scale with a flat 10% platform fee plus $0.50 per transaction on top of credit card payment processing (2.9% + $0.30), bringing total creator deductions to nearly 14% to 16% on low-to-mid ticket digital goods. Conversely, Stan Store pioneered the mobile link-in-bio digital storefront, charging a flat $29.00 per month (Creator tier) with a strictly enforced 0% transaction fee (creators pay only direct Stripe processing of 2.9% + $0.30). Because Stan Store takes zero percent commission, there is an exact mathematical sales volume—specifically $290.00 in monthly digital product gross sales—where Stan Store becomes dramatically cheaper than Gumroad. This calculator models both platforms across identical product prices, unit sales volumes, and refund rates to pinpoint your exact monthly profit divergence.",
+      "formulaBreakdown": {
+        "formulaString": "Stan Store Monthly Cost = $29.00 + (Sales Units × (Price × 0.029 + $0.30)) | Gumroad Monthly Cost = Sales Units × (Price × 0.129 + $0.80)",
+        "variables": [
+          {
+            "symbol": "Price",
+            "meaning": "Retail selling price of your digital product, e-book, Notion template, or coaching call"
+          },
+          {
+            "symbol": "Sales Units",
+            "meaning": "Total number of completed digital customer transactions in a calendar month"
+          },
+          {
+            "symbol": "Stan Store $29/mo",
+            "meaning": "Flat monthly subscription fee for Stan Store's Creator tier with 0% platform transaction fees"
+          },
+          {
+            "symbol": "Gumroad 10% + $0.50",
+            "meaning": "Non-negotiable platform commission fee levied by Gumroad on every customer checkout"
+          },
+          {
+            "symbol": "Stripe Processing",
+            "meaning": "Direct merchant credit card interchange processing rate (2.9% + $0.30) applicable to both platforms"
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Creator Selling a $42.00 Notion Productivity System (35 Sales Monthly)",
+        "narrative": "A digital creator sells a comprehensive Notion life planner and personal operating system for $42.00 via their Instagram and TikTok bio links. The creator averages 35 digital download sales per month, generating $1,470.00 in gross monthly digital revenue. On Gumroad, each $42.00 sale incurs Gumroad's 10% platform fee ($4.20) plus $0.50 fixed fee, alongside standard payment processing of 2.9% ($1.22) + $0.30, totaling $6.22 in deductions per order ($217.70 monthly). On Stan Store, the creator pays zero platform transaction fees. Deductions on each sale consist solely of direct Stripe credit card processing ($1.22 + $0.30 = $1.52 per order, or $53.20 across 35 sales), plus Stan Store's $29.00 flat monthly software subscription fee ($82.20 total monthly cost). Factoring a standard 2.0% refund allowance, this model computes the exact net cash advantage of operating on Stan Store.",
+        "stepByStepMath": [
+          "Gross Monthly Digital Sales Volume: 35 sales × $42.00 = $1,470.00",
+          "Gumroad Platform Fee per Order (10% + $0.50): ($42.00 × 0.10) + $0.50 = $4.70",
+          "Payment Processing Fee per Order (Stripe 2.9% + $0.30): ($42.00 × 0.029) + $0.30 = $1.52",
+          "Total Gumroad Deductions per Order: $4.70 + $1.52 = $6.22 (14.81% total take-rate)",
+          "Total Monthly Deductions on Gumroad (35 sales): 35 × $6.22 = $217.70",
+          "Gumroad Net Creator Payout: $1,470.00 - $217.70 = $1,252.30",
+          "Stan Store Deductions per Order (0% platform + Stripe 2.9% + $0.30): $1.52",
+          "Total Transaction Fees on Stan Store: 35 × $1.52 = $53.20",
+          "Stan Store Monthly Flat SaaS Subscription: $29.00",
+          "Total Monthly Costs on Stan Store: $53.20 + $29.00 = $82.20 (5.59% effective take-rate)",
+          "Stan Store Net Creator Payout: $1,470.00 - $82.20 = $1,387.80",
+          "Monthly Cash Advantage on Stan Store: $1,387.80 - $1,252.30 = +$135.50 (+10.8% net increase)"
+        ],
+        "finalTakeaway": "By avoiding Gumroad's 10% platform tax, the creator saves $135.50 every month ($1,626.00 annually) on just 35 sales. At $1,470 in monthly sales, Stan Store's flat $29/mo fee is five times cheaper than Gumroad's commission cut."
+      },
+      "benchmarkTable": {
+        "title": "Stan Store ($29/mo) vs. Gumroad (10% + $0.50) Monthly Net Earnings Comparison (2026)",
+        "headers": [
+          "Monthly Gross Sales",
+          "Gumroad Total Fees (10% + CC)",
+          "Stan Store Total Fees ($29 + CC)",
+          "Stan Store Monthly Savings",
+          "Stan Store % Fee Advantage"
+        ],
+        "rows": [
+          [
+            "$200.00 / month",
+            "$30.80 (15.4%)",
+            "$36.80 ($29 sub + $7.80 CC)",
+            "-$6.00 (Gumroad cheaper)",
+            "Gumroad wins under $290/mo"
+          ],
+          [
+            "$500.00 / month",
+            "$74.00 (14.8%)",
+            "$48.50 ($29 sub + $19.50 CC)",
+            "+$25.50 / mo on Stan",
+            "+5.1% net margin lift"
+          ],
+          [
+            "$1,500.00 / month",
+            "$222.00 (14.8%)",
+            "$87.50 ($29 sub + $58.50 CC)",
+            "+$134.50 / mo on Stan",
+            "+9.0% net margin lift"
+          ],
+          [
+            "$5,000.00 / month",
+            "$740.00 (14.8%)",
+            "$224.00 ($29 sub + $195.00 CC)",
+            "+$516.00 / mo on Stan",
+            "+10.3% net margin lift"
+          ],
+          [
+            "$10,000.00 / month",
+            "$1,480.00 (14.8%)",
+            "$419.00 ($29 sub + $390.00 CC)",
+            "+$1,061.00 / mo on Stan",
+            "+10.6% net margin lift"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Migrate from Gumroad to Stan Store Above $290 Monthly Revenue",
+          "actionableAdvice": "The mathematical crossover point between Gumroad and Stan Store is exactly $290.00 in monthly digital sales ($290 × 10% = $29.00). If you generate more than $300 in digital downloads, templates, or courses per month, every incremental dollar sold on Gumroad surrenders 10% to the platform that could otherwise remain in your bank account."
+        },
+        {
+          "title": "Capitalize on Stan Store's 1-Click Mobile Checkout Flow",
+          "actionableAdvice": "Stan Store is engineered specifically for mobile traffic originating from TikTok and Instagram bio links. Customers can purchase digital files, book calendar coaching appointments, or join membership tiers with a single mobile screen tap using Apple Pay or Google Pay, increasing checkout conversion rates by 20% to 35% over multi-step desktop checkouts."
+        },
+        {
+          "title": "Leverage Gumroad's Discover Marketplace for Cold Organic Traffic",
+          "actionableAdvice": "The only scenario where Gumroad continues to provide strategic value is for creators without an established social media following who rely on Gumroad Discover marketplace search to generate cold sales. However, sales generated through Gumroad Discover incur an additional 30% affiliate marketplace fee, raising total deductions to over 40%."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "At what exact sales volume does Stan Store become cheaper than Gumroad?",
+          "answer": "Stan Store becomes cheaper than Gumroad at precisely $290.00 in gross monthly digital sales. Because Gumroad charges a 10% platform fee, 10% of $290 equals Stan Store's $29.00 monthly subscription fee. Above $290 per month, Stan Store's 0% platform transaction fee saves you significant money; below $290, Gumroad is cheaper."
+        },
+        {
+          "question": "Does Stan Store charge any hidden transaction fees on digital downloads?",
+          "answer": "No. Stan Store charges zero platform transaction fees on its $29/month Creator tier. The only transaction deductions are direct payment processor fees charged by Stripe (standard 2.9% + $0.30 per successful credit card charge) or PayPal, which go directly to the merchant processor, not Stan Store, maximizing net margins for digital creators."
+        },
+        {
+          "question": "Can I sell recurring memberships and coaching calls on Stan Store?",
+          "answer": "Yes. Stan Store natively integrates booking calendar features (syncing seamlessly with Google Calendar and Zoom) for 1-on-1 client coaching calls, monthly recurring memberships, video courses, and digital file downloads without requiring third-party plugins, custom webhooks, or expensive Zapier automations, consolidating your software stack into one simple, predictable monthly payment. This allows digital operators to run an entire educational business from one centralized dashboard."
+        },
+        {
+          "question": "Why did Gumroad raise its platform fees to 10% in 2023?",
+          "answer": "In January 2023, Gumroad replaced its graduated fee tier system (which previously allowed high-volume sellers to pay as low as 2.9%) with a flat 10% commission on all transactions. Gumroad stated this was necessary to simplify pricing and fund platform infrastructure, but it sparked a mass migration of top creators to flat-fee platforms."
+        },
+        {
+          "question": "How do customer payout schedules compare between Stan Store and Gumroad?",
+          "answer": "Stan Store connects directly to your personal or business Stripe account, meaning customer payments clear within standard 2-business-day rolling Stripe deposits directly to your bank. Gumroad acts as a Merchant of Record, processing payments through its corporate accounts and disbursing funds to creators once weekly on Fridays via direct deposit."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stock-footage-audio-royalty-calculator",
+    "title": "Stock Footage, Motion Graphics & Audio Marketplace Royalty Calculator (Adobe Stock & Shutterstock)",
+    "metaTitle": "Stock Footage & Audio Royalty Calculator | Adobe Stock & Shutterstock (2026)",
+    "metaDescription": "Calculate stock footage, video clip, and audio track contributor royalties, tiered marketplace percentage payouts (15%–40%), and US non-resident tax treaty withholdings (W-8BEN).",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-16",
+    "officialSourceName": "Adobe Stock Contributor Agreement & Shutterstock Earnings Schedule (2026)",
+    "officialSourceUrl": "https://helpx.adobe.com/stock/contributor/help/royalty-details.html",
+    "defaultInputs": {
+      "sellingPrice": 79,
+      "cogs": 3.5,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 55,
+      "planTier": "adobe-stock",
+      "appFeesMonthly": 14,
+      "marketingPerOrder": 0,
+      "returnsRate": 1.2,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "adobe-stock": {
+          "name": "Adobe Stock Contributor (33% Video / 33% Photo & Vector)",
+          "monthlyFee": 0,
+          "percentageRate": 67,
+          "fixedFee": 0,
+          "additionalNotes": "Adobe Stock pays contributors a flat 33% royalty on video footage and vector illustrations based on customer subscription plan pricing."
+        },
+        "shutterstock-tier3": {
+          "name": "Shutterstock Level 3 Contributor (25% Video Payout)",
+          "monthlyFee": 0,
+          "percentageRate": 75,
+          "fixedFee": 0,
+          "additionalNotes": "Shutterstock resets contributor tiers annually on January 1st; Level 3 (50 to 249 video downloads) pays a 25% royalty."
+        },
+        "shutterstock-tier5": {
+          "name": "Shutterstock Level 5 Contributor (35% Video Payout)",
+          "monthlyFee": 0,
+          "percentageRate": 65,
+          "fixedFee": 0,
+          "additionalNotes": "Shutterstock Level 5 (1,000 to 2,999 video downloads) pays a 35% royalty on all customer video clip licensing purchases."
+        }
+      },
+      "extraParameters": {
+        "adobeStockVideoRoyaltyPct": 33,
+        "adobeStockPhotoRoyaltyPct": 33,
+        "shutterstockTier1VideoPct": 15,
+        "shutterstockTier6VideoPct": 40,
+        "envatoElementsSubscriberSharePct": 50,
+        "foreignWithholdingTaxDefaultPct": 30,
+        "foreignWithholdingTreatyPct": 0
+      }
+    },
+    "relatedSlugs": [
+      "3d-model-marketplace-royalty-calculator",
+      "gumroad-fee-calculator",
+      "game-asset-store-royalty-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "For videographers, 3D motion designers, and music producers licensing commercial creative assets, stock media marketplaces represent an attractive passive revenue model paired with intricate royalty distribution mechanics. Major microstock agencies—predominantly Adobe Stock, Shutterstock, Pond5, and Envato—operate under distinct contributor payout paradigms. Adobe Stock maintains a simple, transparent flat royalty rate of 33% on all stock video footage and vector illustrations, calculated against customer subscription credit pricing or on-demand licensing values. Shutterstock operates an annual resetting tiered structure (Levels 1 through 6) based on download volume, where video royalties scale from a meager 15% (Level 1) up to 40% (Level 6 with over 3,000 annual downloads). Crucially, international contributors outside the United States must account for IRS statutory non-resident tax treaty withholdings: creators without a certified Form W-8BEN suffer an automatic 30% backup withholding penalty on all US-derived royalty income. This calculator computes net contributor payouts across licensing tiers, catalog download velocities, and international tax treaty rates.",
+      "formulaBreakdown": {
+        "formulaString": "Net Creator Royalty = (Asset Licensing Price × Contributor Royalty Tier %) × (1 - US Foreign Tax Withholding Rate %) - Catalog Hosting Overhead",
+        "variables": [
+          {
+            "symbol": "Asset Licensing Price",
+            "meaning": "Effective customer purchase price or subscription credit valuation of the stock clip (typically $60 to $120 for 4K video)"
+          },
+          {
+            "symbol": "Contributor Royalty Tier %",
+            "meaning": "Contractual payout percentage (33% on Adobe Stock; 15% to 40% on Shutterstock tiers)"
+          },
+          {
+            "symbol": "US Foreign Tax Withholding",
+            "meaning": "IRS statutory withholding on US-source royalties (30% default without W-8BEN; 0% to 15% with bilateral tax treaty)"
+          },
+          {
+            "symbol": "Catalog Hosting Overhead",
+            "meaning": "Monthly cloud backup, camera gear amortization, and editing software software subscriptions (Adobe Creative Cloud)"
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "4K Aerial Drone Videographer Licensing 55 Video Clips Monthly on Adobe Stock",
+        "narrative": "A commercial drone pilot licenses 4K aerial landscape clips and cinematic establishing shots on Adobe Stock. The catalog generates 55 on-demand commercial HD/4K clip downloads per month, with an average licensing transaction valuation of $79.00 per clip ($4,345.00 gross customer licensing revenue). Under Adobe Stock's standard contributor agreement, the creator receives a guaranteed flat 33.0% royalty ($26.07 per downloaded video clip). The videographer is based in Canada and has a verified Form W-8BEN on file with Adobe, reducing the US-Canada cross-border tax treaty withholding to 0% for copyright royalties. Software overhead (Adobe Premiere Pro and cloud storage archive) totals $14.00 per month ($0.25 per clip). This model computes total monthly royalty income, effective net yield, and annualized asset catalog value.",
+        "stepByStepMath": [
+          "Gross Asset Licensing Volume: 55 downloads × $79.00 average license = $4,345.00",
+          "Adobe Stock Contributor Royalty Rate (Flat Video Tier): 33.0%",
+          "Gross Royalty Payout per Video Download: $79.00 × 33.0% = $26.07",
+          "Total Monthly Gross Royalties (55 downloads): 55 × $26.07 = $1,433.85",
+          "IRS W-8BEN Tax Treaty Withholding (Canada 0% treaty rate): $0.00",
+          "Editing Software & Cloud Backup Overhead: $14.00 monthly",
+          "Net Monthly Creator Take-Home Pay: $1,433.85 - $14.00 = $1,419.85",
+          "Effective Net Creator Yield on Marketplace Sales: ($1,419.85 / $4,345.00) × 100 = 32.68%",
+          "Annualized Contributor Royalty Run-Rate: $1,419.85 × 12 = $17,038.20"
+        ],
+        "finalTakeaway": "With a verified W-8BEN avoiding the 30% IRS tax deduction, the videographer earns $1,419.85 net monthly from 55 downloads. Generating passive video royalties at $26.07 per unit creates an enduring, recurring digital asset portfolio."
+      },
+      "benchmarkTable": {
+        "title": "Stock Footage & Media Contributor Royalty Schedules (2026)",
+        "headers": [
+          "Stock Agency",
+          "Asset Category",
+          "Royalty Rate Structure",
+          "Annual Reset Policy",
+          "Payment Threshold"
+        ],
+        "rows": [
+          [
+            "Adobe Stock",
+            "4K / HD Video Footage",
+            "33.0% flat royalty",
+            "Never resets (permanent rate)",
+            "$25.00 minimum payout"
+          ],
+          [
+            "Adobe Stock",
+            "Photos & Vector Graphics",
+            "33.0% flat royalty",
+            "Never resets (permanent rate)",
+            "$25.00 minimum payout"
+          ],
+          [
+            "Shutterstock",
+            "Video Footage (Level 1-2)",
+            "15% – 20% royalty",
+            "Resets to Level 1 every Jan 1",
+            "$25.00 minimum payout"
+          ],
+          [
+            "Shutterstock",
+            "Video Footage (Level 5-6)",
+            "35% – 40% royalty",
+            "Resets to Level 1 every Jan 1",
+            "$25.00 minimum payout"
+          ],
+          [
+            "Envato Elements",
+            "Audio & Motion Templates",
+            "50% subscriber share",
+            "Monthly pool consumption",
+            "$50.00 minimum payout"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Submit a Certified IRS Form W-8BEN Immediately",
+          "actionableAdvice": "Non-US contributors must submit an electronic Form W-8BEN inside their Adobe Stock and Shutterstock tax profile settings. Without this form, US tax law mandates that agencies withhold a punitive 30% of your gross royalties on all sales to US buyers. Submitting your local Tax Identification Number (TIN) activates bilateral tax treaties, reducing withholding to 0% to 15%."
+        },
+        {
+          "title": "Focus Exclusively on 4K Drone & Commercial B-Roll",
+          "actionableAdvice": "Standard photography and generic lifestyle photos pay microscopic subscription royalties ($0.25 to $0.50 per download). Conversely, specialized 4K aerial drone footage, authentic industrial manufacturing b-roll, and vertical UI motion graphics pay $20.00 to $45.00 per single on-demand download, yielding 40 times more revenue per asset."
+        },
+        {
+          "title": "Diversify Non-Exclusively Across Multiple Agencies",
+          "actionableAdvice": "Neither Adobe Stock nor Shutterstock requires contributor exclusivity for stock video. Distribute your processed stock footage catalog simultaneously across Adobe Stock, Shutterstock, Pond5, and Storyblocks to achieve 3 to 4 times higher cumulative download volume from the identical digital master clips."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does Shutterstock reset contributor royalty levels to zero every January?",
+          "answer": "Shutterstock implemented an annual reset policy where all contributors drop back to Level 1 (15% royalty) on January 1st of every calendar year, regardless of historical catalog performance. As you accumulate video downloads throughout the year, your tier gradually climbs back up to Level 6 (40%), meaning your earnings in Q1 are substantially lower than Q4."
+        },
+        {
+          "question": "How does Adobe Stock's 33% flat royalty compare to Shutterstock?",
+          "answer": "Adobe Stock is widely regarded as more contributor-friendly because its 33% royalty rate is permanent and never resets annually. A videographer on Adobe Stock earns 33% on their very first download of the year, whereas a Shutterstock contributor must first sell 500+ clips in that calendar year just to reach a comparable 30% tier."
+        },
+        {
+          "question": "What is Form W-8BEN and why is it mandatory for international contributors?",
+          "answer": "Form W-8BEN is an official IRS tax document used to certify that an individual contributor is not a US resident for tax purposes. It establishes eligibility for reduced tax withholding rates under bilateral tax treaties between the United States and the contributor's home nation, preventing double taxation on copyright royalties."
+        },
+        {
+          "question": "Can I use AI-generated stock footage or audio on these platforms?",
+          "answer": "Adobe Stock accepts AI-generated imagery and video provided it meets strict quality standards, is explicitly tagged as 'Generative AI', and does not infringe on intellectual property or depict real recognizable people without signed property releases. Shutterstock offers a dedicated AI generation tool and pays contributors through a separate AI Contributor Fund."
+        },
+        {
+          "question": "How are stock media royalties taxed in the creator's home country?",
+          "answer": "Stock royalties are classified as taxable self-employment or business income. In the US, earnings are reported on IRS Schedule C. International creators receive an annual IRS Form 1042-S detailing total US-sourced gross earnings and any tax withheld, which can be claimed as a Foreign Tax Credit on domestic tax returns."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "game-asset-store-royalty-calculator",
+    "title": "Unity Asset Store (70/30) vs. Unreal Engine Fab (88/12) Publisher Royalty & Payout Calculator",
+    "metaTitle": "Unity Asset Store vs. Epic Fab Royalty Calculator (2026)",
+    "metaDescription": "Calculate 3D game asset, shader, and plugin publisher royalties, comparing Unity Asset Store's 70/30 revenue share against Epic Games Fab's 88/12 split, VAT compliance, and net payouts.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-16",
+    "officialSourceName": "Unity Asset Store Provider Agreement & Epic Fab Marketplace Terms (2026)",
+    "officialSourceUrl": "https://assetstore.unity.com/publishing/terms",
+    "defaultInputs": {
+      "sellingPrice": 48,
+      "cogs": 2,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 65,
+      "planTier": "epic-fab",
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 0,
+      "returnsRate": 1.8,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "epic-fab": {
+          "name": "Epic Games Fab Unified Marketplace (88% Publisher Share)",
+          "monthlyFee": 0,
+          "percentageRate": 12,
+          "fixedFee": 0,
+          "additionalNotes": "Epic Games Fab grants publishers an industry-leading 88% revenue share, retaining only a 12% marketplace commission on all digital game assets."
+        },
+        "unity-asset-store": {
+          "name": "Unity Asset Store (70% Publisher Share)",
+          "monthlyFee": 0,
+          "percentageRate": 30,
+          "fixedFee": 0,
+          "additionalNotes": "Unity Asset Store operates on a traditional 70/30 revenue share model, retaining 30% of gross asset sales."
+        }
+      },
+      "extraParameters": {
+        "epicFabPublisherSharePct": 88,
+        "epicFabMarketplaceCutPct": 12,
+        "unityPublisherSharePct": 70,
+        "unityMarketplaceCutPct": 30,
+        "standardRefundRatePct": 1.8,
+        "unityPayoutMinimumUSD": 100,
+        "epicFabPayoutMinimumUSD": 100
+      }
+    },
+    "relatedSlugs": [
+      "3d-model-marketplace-royalty-calculator",
+      "gumroad-fee-calculator",
+      "teachable-vs-kajabi-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "For 3D environmental modelers, technical artists, sound designers, and gameplay tool developers, selling game assets across specialized digital storefronts represents a substantial recurring commercial revenue stream. The game development marketplace landscape is dominated by two primary storefront ecosystems: the legacy Unity Asset Store and Epic Games Fab (the unified marketplace consolidating the Unreal Engine Marketplace, Sketchfab, ArtStation Marketplace, and Quixel). The structural economics between these platforms diverge sharply in publisher take-home rev-share. Unity maintains the legacy commercial software split, paying publishers 70% of gross asset sales while keeping a 30% commission. Conversely, Epic Games Fab upholds Epic's developer-first pricing ethos, offering an industry-leading 88/12 revenue split where creators keep 88% of every sale (Epic retains only 12%). On identical asset sales volume, this 18-percentage-point split differential results in a 25.7% net cash increase on Epic Fab. This calculator models both platforms across equivalent asset pricing tiers, returns policies, and multi-seat studio licensing to isolate exact net publisher payouts.",
+      "formulaBreakdown": {
+        "formulaString": "Publisher Payout = (Asset Sales Units × Selling Price × Publisher Share %) × (1 - Refund Rate %) - Payment Processing/Tax Withholdings",
+        "variables": [
+          {
+            "symbol": "Asset Sales Units",
+            "meaning": "Total individual asset license purchases completed by game developers and studios per month"
+          },
+          {
+            "symbol": "Selling Price",
+            "meaning": "Retail marketplace catalog price of the 3D model pack, procedural shader, or C#/C++ gameplay system"
+          },
+          {
+            "symbol": "Publisher Share %",
+            "meaning": "Contractual creator share: 88.0% on Epic Games Fab vs. 70.0% on Unity Asset Store"
+          },
+          {
+            "symbol": "Refund Rate %",
+            "meaning": "Customer technical refund reserve allowance (industry average: 1.5% to 2.5% for digital game assets)"
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Modular Sci-Fi Environment 3D Asset Pack Selling 65 Licenses Monthly",
+        "narrative": "A 3D environment artist develops a high-fidelity modular sci-fi interior kit complete with PBR textures, custom collision meshes, and optimized LODs. The pack is priced at $48.00 per single-seat license. Across a standard operating month, the asset pack sells 65 units ($3,120.00 gross customer sales). On Epic Games Fab, the artist retains 88.0% of gross revenue, receiving $42.24 per sale ($2,745.60 gross monthly payout; Epic retains $374.40). On the Unity Asset Store, the exact same asset sales volume under Unity's 70/30 split yields $33.60 per sale ($2,184.00 gross monthly payout; Unity retains $936.00). Applying a realistic 1.8% customer refund allowance for incompatible engine versions, this model demonstrates the financial impact of platform revenue-share architecture.",
+        "stepByStepMath": [
+          "Gross Asset Marketplace Sales: 65 units × $48.00 = $3,120.00",
+          "Epic Games Fab Payout (88% Creator Share): $3,120.00 × 88.0% = $2,745.60",
+          "Epic Games Fab Platform Commission (12%): $374.40",
+          "Unity Asset Store Payout (70% Creator Share): $3,120.00 × 70.0% = $2,184.00",
+          "Unity Asset Store Platform Commission (30%): $936.00",
+          "Technical Refund Allowance Reserve (1.8% rate): $3,120.00 × 0.018 = $56.16",
+          "Net Monthly Take-Home on Epic Fab: $2,745.60 - ($56.16 × 0.88) = $2,696.18",
+          "Net Monthly Take-Home on Unity: $2,184.00 - ($56.16 × 0.70) = $2,144.69",
+          "Monthly Cash Advantage on Epic Fab: $2,696.18 - $2,144.69 = +$551.49 (+25.7% more on Fab)",
+          "Annualized Net Earnings Gap: $551.49 × 12 = $6,617.88 extra cash flow on Epic Fab"
+        ],
+        "finalTakeaway": "At 65 monthly sales, Epic Games Fab delivers an extra $551.49 in monthly creator profit ($6,617.88 annually) compared to Unity on the identical gross sales volume, thanks to its developer-friendly 88/12 revenue split."
+      },
+      "benchmarkTable": {
+        "title": "Game Asset Store Publisher Splits & Licensing Mechanics (2026)",
+        "headers": [
+          "Marketplace Ecosystem",
+          "Publisher Share %",
+          "Platform Cut %",
+          "Multi-Engine Support",
+          "Payout Threshold & Schedule"
+        ],
+        "rows": [
+          [
+            "Epic Games Fab",
+            "88.0% creator cut",
+            "12.0% platform fee",
+            "Universal (Unreal, Unity, Blender)",
+            "$100.00 min / Monthly Net-45"
+          ],
+          [
+            "Unity Asset Store",
+            "70.0% creator cut",
+            "30.0% platform fee",
+            "Strictly Unity Engine packages",
+            "$100.00 min / Monthly Net-30"
+          ],
+          [
+            "CGTrader (Non-Exclusive)",
+            "70.0% – 80.0%",
+            "20.0% – 30.0%",
+            "Universal 3D formats (.fbx, .obj)",
+            "$100.00 min / Bi-weekly / Monthly"
+          ],
+          [
+            "TurboSquid (Non-Exclusive)",
+            "40.0% – 60.0%",
+            "40.0% – 60.0%",
+            "Universal 3D / VFX DCC formats",
+            "$100.00 min / Monthly Net-15"
+          ],
+          [
+            "Cults3D / Fab 3D Printing",
+            "80.0% – 88.0%",
+            "12.0% – 20.0%",
+            "STL, OBJ 3D printing assets",
+            "$50.00 min / Direct PayPal"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Format 3D Assets for Universal Fab Multi-Engine Support",
+          "actionableAdvice": "Epic Games Fab is not limited to Unreal Engine; it serves as a universal digital asset repository supporting Unreal, Unity, Blender, Maya, and WebGL formats. Packaging your 3D models with clean standard FBX meshes, standard PBR texture maps (Albedo, Normal, Roughness, Metallic), and universal materials allows both Unity and Unreal developers to buy from your Fab store, capturing the 88% split."
+        },
+        {
+          "title": "Offer Multi-Seat Studio Enterprise Licensing",
+          "actionableAdvice": "Independent solo developers buy single-seat licenses ($48), but mid-sized studios with 10 to 50 developers require Multi-Entity or Studio Site Licenses priced at 3 to 5 times the base rate ($150 to $250). Clearly offering multi-seat commercial licenses in your description unlocks high-ticket B2B studio budgets."
+        },
+        {
+          "title": "Provide Regular Engine Compatibility Updates to Minimize Refunds",
+          "actionableAdvice": "Over 80% of asset store refund requests stem from broken scripts or shader compilation errors when Unity or Unreal releases major version updates. Updating your packages within 14 days of major engine LTS releases preserves a sub-2% refund rate and maintains 5-star marketplace review rankings."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does Epic Games Fab offer an 88% revenue share compared to Unity's 70%?",
+          "answer": "Epic Games established the 88/12 revenue split on the Epic Games Store and Unreal Engine Marketplace in 2018 to challenge the historical 30% industry take-rate established by Apple and Valve. Epic operates on a lower platform margin requirement, passing 88% of gross sales to asset creators to incentivize high-quality ecosystem development."
+        },
+        {
+          "question": "Can I sell the same 3D model on both Unity Asset Store and Epic Fab?",
+          "answer": "Yes. Neither Unity Asset Store nor Epic Games Fab requires non-exclusive publishers to sign exclusivity agreements. You are legally free to sell your 3D models, textures, animations, and audio on both storefronts simultaneously, as well as on your own personal Gumroad or Payhip store, expanding your studio reach and diversifying your income streams."
+        },
+        {
+          "question": "How do Unity and Epic Fab handle international sales taxes and VAT?",
+          "answer": "Both Unity and Epic Games Fab operate as the Merchant of Record for global tax compliance. They automatically calculate, collect, and remit European Union VAT, US state sales tax, and international digital goods consumption taxes at checkout, completely shielding the individual asset publisher from complex global tax registration and filing requirements."
+        },
+        {
+          "question": "What is the minimum payout threshold on the Unity Asset Store and Epic Fab?",
+          "answer": "Both the Unity Asset Store and Epic Games Fab enforce a $100.00 USD minimum earnings threshold before disbursing funds to creators. Payouts are made monthly via direct bank wire transfer or PayPal once your accrued publisher balance reaches or exceeds $100.00 at the end of the accounting cycle, rolling over otherwise."
+        },
+        {
+          "question": "What happens when a customer requests a refund on an asset store purchase?",
+          "answer": "Refund requests are evaluated under store guidelines (e.g., technical defects, corrupted files, inaccurate marketing claims, or accidental duplicate purchases). If a refund is approved by store technical support, the transaction is reversed from your publisher account balance, and the platform commission fee is fully waived by the marketplace without penalties."
+        }
+      ]
+    }
   }
 ]

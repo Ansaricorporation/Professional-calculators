@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Google AdSense & Verification Crawlers
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-AdSense
+Allow: /
+
+# Googlebot & Search Quality Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# XML Sitemap Location
+Sitemap: https://ansaricorporation.github.io/Professional-calculators/sitemap.xml

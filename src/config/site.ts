@@ -35,14 +35,36 @@ export interface SiteConfig {
   };
 }
 
-const isGithubActions = typeof process !== 'undefined' && process.env.GITHUB_ACTIONS === 'true';
-const repoOwner = typeof process !== 'undefined' && process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[0] : '';
-const defaultSiteUrl = isGithubActions && repoOwner ? `https://${repoOwner}.github.io` : 'https://creatorcalclab.com';
-const resolvedSiteUrl = (typeof process !== 'undefined' && process.env.SITE_URL) || defaultSiteUrl;
+/**
+ * Resolves any internal route with Astro's configured BASE_URL (e.g. '/Professional-calculators/').
+ * Guarantees zero broken links and prevents double slashes.
+ */
+export function withBase(path: string = ''): string {
+  const rawBase = import.meta.env.BASE_URL || '/';
+  const base = rawBase.replace(/\/$/, '');
+
+  if (!path || path === '/') {
+    return base ? `${base}/` : '/';
+  }
+
+  // Preserve external URLs
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path;
+  }
+
+  // Prevent duplicating base if already prefixed
+  if (base && path.startsWith(base)) {
+    return path.replace(/\/+/g, '/');
+  }
+
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  const combined = `${base}${cleanPath}`;
+  return combined.replace(/\/+/g, '/');
+}
 
 export const SITE_CONFIG: SiteConfig = {
   siteName: "CreatorCalcLab",
-  siteUrl: resolvedSiteUrl,
+  siteUrl: (typeof process !== 'undefined' && process.env.SITE_URL) || 'https://ansaricorporation.github.io/Professional-calculators',
   tagline: "High-Precision Financial Modeling for Modern Online Businesses",
   description: "Transparent, 100% client-side profit margin, fee audit, and unit economic calculators for digital creators, e-commerce sellers, and independent contractors.",
   establishedYear: 2024,

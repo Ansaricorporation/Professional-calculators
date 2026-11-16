@@ -16,4 +16,4 @@ User-agent: Bingbot
 Allow: /
 
 # XML Sitemap Location
-Sitemap: https://ansaricorporation.github.io/Professional-calculators/sitemap.xml
+Sitemap: https://ansaricorporation.github.io/sitemap.xml

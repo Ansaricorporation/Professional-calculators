@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-// Base URL and Site configuration for GitHub Pages deployment
+// Base URL and Site configuration
 const site = process.env.SITE_URL || 'https://ansaricorporation.github.io';
-const base = process.env.BASE_PATH !== undefined ? process.env.BASE_PATH : '/Professional-calculators';
+const base = '/';
 
 // https://astro.build/config
 export default defineConfig({

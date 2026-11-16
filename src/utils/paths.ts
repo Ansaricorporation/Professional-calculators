@@ -35,7 +35,7 @@ export function withBase(path: string = ''): string {
 export const getPath = withBase;
 
 export function getCanonicalUrl(canonicalPath: string = '', siteUrl: string = ''): string {
-  const rawSite = siteUrl || 'https://ansaricorporation.github.io/Professional-calculators';
+  const rawSite = siteUrl || 'https://ansaricorporation.github.io';
   let origin = rawSite;
   try {
     const parsed = new URL(rawSite);

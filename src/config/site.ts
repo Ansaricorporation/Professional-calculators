@@ -64,7 +64,7 @@ export function withBase(path: string = ''): string {
 
 export const SITE_CONFIG: SiteConfig = {
   siteName: "CreatorCalcLab",
-  siteUrl: (typeof process !== 'undefined' && process.env.SITE_URL) || 'https://ansaricorporation.github.io/Professional-calculators',
+  siteUrl: (typeof process !== 'undefined' && process.env.SITE_URL) || 'https://ansaricorporation.github.io',
   tagline: "High-Precision Financial Modeling for Modern Online Businesses",
   description: "Transparent, 100% client-side profit margin, fee audit, and unit economic calculators for digital creators, e-commerce sellers, and independent contractors.",
   establishedYear: 2024,

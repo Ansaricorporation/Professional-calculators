@@ -60,28 +60,38 @@ const payload = {
 };
 
 async function submitIndexNow() {
-  try {
-    console.log(`Dispatching batch submission payload to https://api.indexnow.org/indexnow ...`);
-    const response = await fetch('https://api.indexnow.org/indexnow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-      body: JSON.stringify(payload)
-    });
+  const endpoints = [
+    'https://api.indexnow.org/indexnow',
+    'https://yandex.com/indexnow',
+    'https://www.bing.com/indexnow'
+  ];
 
-    if (response.ok || response.status === 200 || response.status === 202) {
-      console.log(`✅ IndexNow Submission Succeeded (HTTP ${response.status})!`);
-      console.log(`All ${allUrls.length} URLs submitted to search engines (Bing, Yandex, Seznam, Naver).`);
-    } else {
-      const text = await response.text();
-      console.warn(`⚠️  IndexNow API returned HTTP ${response.status}: ${text}`);
-      console.log(`Note: Search engines will also discover URLs automatically via sitemap.xml.`);
+  for (const endpoint of endpoints) {
+    try {
+      console.log(`Dispatching batch submission payload to ${endpoint} ...`);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok || response.status === 200 || response.status === 202) {
+        console.log(`✅ IndexNow Submission Succeeded via ${endpoint} (HTTP ${response.status})!`);
+        console.log(`All ${allUrls.length} URLs submitted to search engines (Bing, Yandex, Seznam, Naver).`);
+        console.log(`========================================================================\n`);
+        return;
+      } else {
+        const text = await response.text();
+        console.warn(`⚠️  Endpoint ${endpoint} returned HTTP ${response.status}: ${text}`);
+      }
+    } catch (err) {
+      console.warn(`⚠️  Endpoint ${endpoint} network notice: ${err.message}`);
     }
-  } catch (err) {
-    console.warn(`⚠️  IndexNow network request notice: ${err.message}`);
-    console.log(`Payload prepared and validated. URLs remain accessible via sitemap.xml.`);
   }
+
+  console.log(`Note: URLs remain accessible via https://${HOST}/sitemap.xml.`);
   console.log(`========================================================================\n`);
 }
 

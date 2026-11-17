@@ -3,8 +3,8 @@
  * 
  * Safely resolves all internal links, assets, and canonical URLs against Astro's
  * configured BASE_URL. Guarantees 0 broken links whether deployed to:
- * 1. GitHub Pages repository subpath (https://ansaricorporation.github.io/Professional-calculators/) -> base: '/Professional-calculators/'
- * 2. Root custom domain (https://creatorcalclab.com/) -> base: '/'
+ * 1. Root custom domain (https://kitaaab.net/) -> base: '/'
+ * 2. GitHub Pages repository subpath -> base: '/Professional-calculators/'
  * 3. Local development server (http://localhost:4321/)
  */
 
@@ -35,7 +35,7 @@ export function withBase(path: string = ''): string {
 export const getPath = withBase;
 
 export function getCanonicalUrl(canonicalPath: string = '', siteUrl: string = ''): string {
-  const rawSite = siteUrl || 'https://ansaricorporation.github.io';
+  const rawSite = siteUrl || 'https://kitaaab.net';
   let origin = rawSite;
   try {
     const parsed = new URL(rawSite);

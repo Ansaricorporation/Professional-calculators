@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const HOST = 'creatorcalclab.com';
+const HOST = 'kitaaab.net';
 const BASE_URL = `https://${HOST}`;
 const INDEXNOW_KEY = 'c4b8e2197f4a41d996d91bb3a2072e91';
 const KEY_LOCATION = `${BASE_URL}/${INDEXNOW_KEY}.txt`;

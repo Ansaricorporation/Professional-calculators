@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 // Base URL and Site configuration
-const site = process.env.SITE_URL || 'https://ansaricorporation.github.io';
+const site = process.env.SITE_URL || 'https://kitaaab.net';
 const base = '/';
 
 // https://astro.build/config

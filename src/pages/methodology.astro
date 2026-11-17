@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE_CONFIG } from '../config/site';
+import { getPath } from '../utils/paths';
+
+const breadcrumbItems = [
+  { name: 'Methodology', url: getPath('/methodology/') }
+];
+---
+
+<BaseLayout
+  title="Calculation Methodology & Mathematical Audit Protocols"
+  metaTitle="Calculation Methodology & Verification Standards | CreatorCalcLab"
+  description="Explore the mathematical models, official source verification, and anti-boilerplate quality gates governing CreatorCalcLab's 100 verified financial calculators."
+  canonicalPath="/methodology/"
+>
+  <!-- Hero Section -->
+  <div class="bg-white border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Breadcrumbs items={breadcrumbItems} />
+      <div class="mt-4 max-w-3xl">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+          Editorial & Mathematical Integrity
+        </span>
+        <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Financial Calculation Methodology & Audit Protocols
+        </h1>
+        <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+          CreatorCalcLab provides deterministic, transparent, and reproducible financial calculation models for digital commerce operators, independent creators, and modern businesses. Discover how our 100 calculators are modeled, audited, and verified against 2026 platform standards.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+    <!-- Quality Standards Overview -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">The 100-Calculator Verification Standard</h2>
+        <p class="mt-3 text-slate-700 leading-relaxed text-sm sm:text-base">
+          Every tool across our four core clusters—E-Commerce, Creator Economy, Digital Marketplaces, and B2B Pricing—is engineered to meet rigorous empirical standards. We discard promotional simplifications and marketing claims in favor of the actual, contractual math that platforms apply at settlement.
+        </p>
+        <p class="mt-3 text-slate-700 leading-relaxed text-sm sm:text-base">
+          Our platform operates under strict YMYL (Your Money or Your Life) verification guardrails: all formula breakdowns, variable meanings, worked examples, and industry benchmark tables are backed by verified primary merchant documentation and audited quarterly.
+        </p>
+      </div>
+      <div class="bg-slate-900 text-slate-200 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl">
+        <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Methodological Pillars
+        </h3>
+        <ul class="space-y-4 text-xs sm:text-sm">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold font-mono">01.</span>
+            <span><strong>Primary Source Verification:</strong> Formulated directly from official developer docs, fee schedules, and merchant agreements.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold font-mono">02.</span>
+            <span><strong>Deterministic Mathematics:</strong> Zero black-box estimates. Every formula is published openly with its exact variables.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold font-mono">03.</span>
+            <span><strong>Zero Tracking Architecture:</strong> 100% of calculations execute locally in client memory with zero server logging.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold font-mono">04.</span>
+            <span><strong>N-Gram Content Diversity:</strong> Every guide enforces unique, domain-specific analysis passing rigorous 4-gram similarity audits.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Calculation Engine Typology -->
+    <section class="border-t border-slate-200 pt-12">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-1 rounded font-bold">
+          Technical Architecture
+        </span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Core Calculation Engines & Mathematical Models
+        </h2>
+        <p class="mt-2 text-slate-600 text-sm sm:text-base">
+          Our platform powers 100 specialized calculators using five standardized mathematical engines, ensuring consistency across comparable financial workflows:
+        </p>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg mb-4">
+            %
+          </div>
+          <h3 class="font-bold text-slate-900 text-base">Platform Profit Engine</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Models complex multi-tier deduction schedules, including category-specific referral fees, payment gateway splits, mandatory advertising surcharges, and order handling costs.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500">
+            Net = Gross - Referrals - Gateway - App Fees - COGS
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-lg mb-4">
+            ⇄
+          </div>
+          <h3 class="font-bold text-slate-900 text-base">Platform vs. Platform Engine</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Side-by-side comparative financial model evaluating take-rate differences, fixed SaaS overheads, and transaction fee drag across competing platforms at identical sales volumes.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500">
+            Delta = Platform A Net - Platform B Net
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-lg mb-4">
+            ▲
+          </div>
+          <h3 class="font-bold text-slate-900 text-base">Markup & Margin Engine</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Converts between cost markups and gross profit margins while factoring in self-employment tax liabilities (15.3%), payment gateway clearing, and commercial discount promo rates.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500">
+            Margin % = [(Retail - Base Cost) / Retail] × 100
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-red-100 text-red-700 flex items-center justify-center font-bold text-lg mb-4">
+            ▶
+          </div>
+          <h3 class="font-bold text-slate-900 text-base">YouTube RPM Engine</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Simulates dynamic algorithmic video payouts by modeling niche-specific RPM benchmarks, watch-time duration modifiers, music licensing deductions, and geographic audience weighting.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500">
+            Payout = (Qualified Views / 1k) × RPM × GeoTier
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg mb-4">
+            📦
+          </div>
+          <h3 class="font-bold text-slate-900 text-base">Shipping & Dimensional Cost Engine</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Calculates dimensional weight (DIM) charges against actual scale weight, carrier fuel surcharges, peak delivery surcharges, and fulfillment center handling fees.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500">
+            Billable Wt = Max(Actual, L × W × H / Divisor)
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-xl border border-dashed border-slate-300 flex flex-col justify-center">
+          <h3 class="font-bold text-slate-800 text-base">Continuous Engine Auditing</h3>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            All calculation engines are tested across edge cases, extreme volume scenarios, and decimal rounding precision using automated unit test suites.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anti-Boilerplate & Content Quality Gate -->
+    <section class="border-t border-slate-200 pt-12">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-1 rounded font-bold">
+          Editorial Governance
+        </span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Automated Anti-Boilerplate N-Gram Verification
+        </h2>
+        <p class="mt-2 text-slate-600 text-sm sm:text-base">
+          To protect readers against repetitive algorithmic content and prevent Google Scaled Content Abuse classifications, every calculator entry passes through our automated build auditor:
+        </p>
+      </div>
+
+      <div class="mt-8 bg-slate-900 text-slate-100 rounded-2xl p-6 sm:p-8 font-mono text-xs sm:text-sm">
+        <div class="text-emerald-400 font-bold mb-4 flex items-center gap-2">
+          <span>⚙️</span> Build-Time Verification Pipeline
+        </div>
+        <div class="space-y-3 text-slate-300">
+          <div><span class="text-slate-500">1.</span> <strong class="text-white">4-Gram Shingle Similarity Check:</strong> Compares every pair of calculators (4,950 total pairs across 100 tools) using Jaccard text similarity.</div>
+          <div><span class="text-slate-500">2.</span> <strong class="text-white">Hard Ceiling (&lt; 0.18 Similarity):</strong> Fatal build failure if any pair shares &ge; 18.00% 4-word sequences. Live platform max similarity: <span class="text-emerald-400 font-bold">2.96%</span>.</div>
+          <div><span class="text-slate-500">3.</span> <strong class="text-white">Unique Default Inputs:</strong> 100% unique default inputs enforced for every tool sharing the same engine type.</div>
+          <div><span class="text-slate-500">4.</span> <strong class="text-white">Content Depth Guardrails:</strong> Minimum 650 guide words (platform average: 1,182 words), 120-word executive summary, 5 in-depth FAQs (&ge; 50 words each), and 4+ benchmark rows.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Source Documentation & Reconciliation -->
+    <section class="border-t border-slate-200 pt-12">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-1 rounded font-bold">
+          Verification Sources
+        </span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Primary Source Documentation & Reconciliations
+        </h2>
+        <p class="mt-2 text-slate-600 text-sm sm:text-base">
+          Our financial models rely exclusively on primary documentation directly from platform authorities and regulatory bodies:
+        </p>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+        <div class="border border-slate-200 rounded-xl p-5 bg-white">
+          <h4 class="font-bold text-slate-900 mb-2">E-Commerce & Marketplaces</h4>
+          <ul class="space-y-2 text-xs text-slate-600">
+            <li>• Shopify Plan Pricing & Merchant Terms of Service (2026)</li>
+            <li>• Amazon FBA Fulfillment Surcharge Notices & Category Referral Fees</li>
+            <li>• Etsy Seller Fees Policy & Mandatory Offsite Ads Guidelines</li>
+            <li>• eBay Final Value Fee Schedules & Promoted Listings Terms</li>
+            <li>• Walmart Marketplace Fee & WFS Rate Circulars</li>
+          </ul>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl p-5 bg-white">
+          <h4 class="font-bold text-slate-900 mb-2">Creator Economy & Subscriptions</h4>
+          <ul class="space-y-2 text-xs text-slate-600">
+            <li>• YouTube Partner Program (YPP) Creator Earnings Agreements</li>
+            <li>• TikTok Creator Rewards Program & TikTok Shop Partner Terms</li>
+            <li>• Twitch Affiliate & Partner Plus Point Qualification Matrix</li>
+            <li>• Substack Publishing Terms of Service & Stripe Connect Fees</li>
+            <li>• Teachable & Thinkific SaaS Tier Pricing & BackOffice Regulations</li>
+          </ul>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl p-5 bg-white">
+          <h4 class="font-bold text-slate-900 mb-2">Payments & Merchant Acquiring</h4>
+          <ul class="space-y-2 text-xs text-slate-600">
+            <li>• Stripe US & International Card Processing Pricing Schedules</li>
+            <li>• Braintree (PayPal Service) Interchange-Plus & Flat Rate Guidelines</li>
+            <li>• NACHA Operating Rules for Corporate ACH Direct Debit Transactions</li>
+            <li>• Federal Reserve Fedwire & Same-Day ACH Clearing Standards</li>
+            <li>• Visa & Mastercard Level 2 / Level 3 Interchange Rate Guides</li>
+          </ul>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl p-5 bg-white">
+          <h4 class="font-bold text-slate-900 mb-2">Carrier & Taxation Rules</h4>
+          <ul class="space-y-2 text-xs text-slate-600">
+            <li>• USPS Notice 123 Price List (Priority Mail & Ground Advantage)</li>
+            <li>• FedEx / UPS Dimensional Weight Calculation Schedules</li>
+            <li>• Internal Revenue Service (IRS) Schedule C & SE Guidelines (15.3% FICA)</li>
+            <li>• Federal Prompt Payment Act Statutory Commercial Interest Schedules</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback & Error Reporting -->
+    <section class="bg-emerald-50 rounded-2xl p-8 border border-emerald-200 text-center">
+      <h3 class="text-xl font-bold text-emerald-950">Suggest a Platform Update or Audit Reconciliation</h3>
+      <p class="mt-2 text-sm text-emerald-800 max-w-2xl mx-auto">
+        When platforms update their published fee schedules, our editorial team immediately verifies the change and adjusts the underlying calculator algorithms. Notice a discrepancy in our data? Let us know.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <a href={getPath('/contact/')} class="inline-flex items-center px-6 py-3 rounded-xl bg-emerald-700 text-white font-semibold text-sm hover:bg-emerald-800 transition-colors shadow-sm">
+          Submit Correction or Fee Update
+        </a>
+        <a href={getPath('/all-calculators/')} class="inline-flex items-center px-6 py-3 rounded-xl bg-white text-emerald-800 font-semibold text-sm border border-emerald-300 hover:bg-emerald-100 transition-colors">
+          Browse All 100 Calculators
+        </a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

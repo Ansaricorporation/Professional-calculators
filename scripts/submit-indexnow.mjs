@@ -36,6 +36,7 @@ const staticUrls = [
   `${BASE_URL}/category/digital-marketplaces/`,
   `${BASE_URL}/category/b2b-pricing/`,
   `${BASE_URL}/about/`,
+  `${BASE_URL}/methodology/`,
   `${BASE_URL}/contact/`,
   `${BASE_URL}/privacy-policy/`,
   `${BASE_URL}/terms/`

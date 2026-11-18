@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "indexnow": "node scripts/submit-indexnow.mjs",
-    "deploy:gh-pages": "node scripts/deploy-gh-pages.mjs"
+    "deploy:gh-pages": "node scripts/deploy-gh-pages.mjs",
+    "generate:assets": "node scripts/generate-social-assets.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.0",

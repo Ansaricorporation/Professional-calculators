@@ -89,6 +89,13 @@ const CATEGORY_MAP = {
     board: 'B2B Freelance & Agency Pricing',
     color: '#f59e0b',
     accent: '#fbbf24'
+  },
+  'wealth-investing': {
+    name: 'WEALTH, STOCKS & REAL ESTATE',
+    short: 'Wealth & Investing',
+    board: 'Investing, Stocks & Real Estate Models',
+    color: '#059669',
+    accent: '#34d399'
   }
 };
 
@@ -489,9 +496,11 @@ function generatePinterestCsv(allCalculators) {
   }
 
   const csvContent = rows.join('\n');
-  const csvPath = path.join(FEEDS_DIR, 'pinterest-bulk-100.csv');
-  fs.writeFileSync(csvPath, csvContent, 'utf8');
-  console.log(`Generated Pinterest bulk CSV with ${allCalculators.length} items at ${csvPath}`);
+  const csvPath100 = path.join(FEEDS_DIR, 'pinterest-bulk-100.csv');
+  const csvPath120 = path.join(FEEDS_DIR, 'pinterest-bulk-120.csv');
+  fs.writeFileSync(csvPath100, csvContent, 'utf8');
+  fs.writeFileSync(csvPath120, csvContent, 'utf8');
+  console.log(`Generated Pinterest bulk CSV with ${allCalculators.length} items at ${csvPath120}`);
 }
 
 async function main() {
@@ -499,7 +508,7 @@ async function main() {
   console.log('🎨  CREATORCALCLAB AUTOMATED SOCIAL & PINTEREST ASSET PIPELINE');
   console.log('========================================================================');
 
-  const files = ['ecommerce.json', 'creator-economy.json', 'digital-marketplaces.json', 'b2b-pricing.json'];
+  const files = ['ecommerce.json', 'creator-economy.json', 'digital-marketplaces.json', 'b2b-pricing.json', 'wealth-investing.json'];
   const allCalculators = [];
 
   for (const f of files) {
@@ -536,8 +545,8 @@ async function main() {
     process.stdout.write(`  Processed ${Math.min(i + BATCH_SIZE, allCalculators.length)} / ${allCalculators.length} calculators...\r`);
   }
 
-  console.log(`\n✅ Generated 100 Pinterest Pins in public/pins/`);
-  console.log(`✅ Generated 101 OpenGraph Cards in public/og/`);
+  console.log(`\n✅ Generated ${allCalculators.length} Pinterest Pins in public/pins/`);
+  console.log(`✅ Generated ${allCalculators.length + 1} OpenGraph Cards in public/og/`);
 
   // 3. Generate Pinterest Bulk CSV
   generatePinterestCsv(allCalculators);

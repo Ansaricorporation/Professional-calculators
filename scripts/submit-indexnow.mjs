@@ -12,7 +12,7 @@ const INDEXNOW_KEY = 'c4b8e2197f4a41d996d91bb3a2072e91';
 const KEY_LOCATION = `${BASE_URL}/${INDEXNOW_KEY}.txt`;
 
 // Read all calculators from JSON files
-const categories = ['ecommerce', 'creator-economy', 'digital-marketplaces', 'b2b-pricing'];
+const categories = ['ecommerce', 'creator-economy', 'digital-marketplaces', 'b2b-pricing', 'wealth-investing'];
 const calculatorSlugs = [];
 
 for (const cat of categories) {
@@ -35,6 +35,7 @@ const staticUrls = [
   `${BASE_URL}/category/creator-economy/`,
   `${BASE_URL}/category/digital-marketplaces/`,
   `${BASE_URL}/category/b2b-pricing/`,
+  `${BASE_URL}/category/wealth-investing/`,
   `${BASE_URL}/about/`,
   `${BASE_URL}/methodology/`,
   `${BASE_URL}/contact/`,

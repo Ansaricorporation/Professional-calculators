@@ -411,6 +411,87 @@ export const OPTIMIZED_META = {
   'freelance-project-roi-calculator': {
     title: 'Freelance Project ROI Calculator 2026 | Client Value',
     description: 'Calculate client project return on investment: factor freelance service fees ($3,000 to $20,000) against client revenue lift. Quote value pricing instantly.'
+  },
+  // === WEALTH, STOCKS, CRYPTO & REAL ESTATE (20) ===
+  'stock-average-cost-calculator': {
+    title: 'Stock Average Cost Calculator 2026 | Break-Even Price',
+    description: 'Calculate average share cost across buy tranches, blended cost basis, and required rally percentage to break even. Model stock positions instantly.'
+  },
+  'options-profit-calculator': {
+    title: 'Options Profit Calculator 2026 | Call & Put Payoff Math',
+    description: 'Calculate option contract payoffs: factor strike prices, premium multipliers (x100), and underlying prices. Model net call and put profits instantly.'
+  },
+  'pattern-day-trader-margin-calculator': {
+    title: 'PDT Margin Calculator 2026 | Day Trading Buying Power',
+    description: 'Calculate FINRA Pattern Day Trader margin buying power: model 4x intraday leverage, 2x overnight rules, and the $25,000 equity minimum instantly.'
+  },
+  'short-selling-margin-call-calculator': {
+    title: 'Short Selling Margin Call Calculator 2026 | Trigger Math',
+    description: 'Calculate short selling margin call trigger prices: model 30% to 40% maintenance margin requirements and borrow fees. Audit short risk instantly.'
+  },
+  'dividend-reinvestment-drip-calculator': {
+    title: 'Dividend DRIP Calculator 2026 | Compound Yield-on-Cost',
+    description: 'Calculate dividend reinvestment growth: model quarterly DRIP compounding, annual dividend growth, and yield-on-cost yields. Audit wealth growth instantly.'
+  },
+  'crypto-dca-calculator': {
+    title: 'Crypto DCA Calculator 2026 | Dollar Cost Average ROI',
+    description: 'Model recurring crypto dollar-cost averaging: compare fixed periodic BTC/ETH buys against lump-sum entry, exchange fees, and net ROI returns instantly.'
+  },
+  'impermanent-loss-calculator': {
+    title: 'Impermanent Loss Calculator 2026 | DeFi AMM Staking Math',
+    description: 'Calculate AMM 50/50 liquidity pool impermanent loss: model token price divergence (2x, 3x, 5x) vs swap fee APY returns. Audit DeFi LP yields instantly.'
+  },
+  'crypto-mining-profitability-calculator': {
+    title: 'Crypto Mining Profitability Calculator 2026 | ASIC Tool',
+    description: 'Calculate crypto mining profit margins: deduct hardware wattage, electricity $/kWh tariffs, and 1% to 2% mining pool fees. Audit net cash flow instantly.'
+  },
+  'staking-apy-compound-calculator': {
+    title: 'Crypto Staking APY Calculator 2026 | Compound Validator',
+    description: 'Calculate Proof-of-Stake rewards: deduct 5% to 10% validator commissions and model daily/weekly auto-compounding yields. Audit net staking APY instantly.'
+  },
+  'crypto-liquidation-price-calculator': {
+    title: 'Crypto Liquidation Calculator 2026 | Futures Leverage',
+    description: 'Calculate crypto perpetual futures liquidation prices: model 5x to 50x leverage, maintenance margins, and taker fees. Audit long and short risk instantly.'
+  },
+  'capital-gains-tax-calculator': {
+    title: 'Capital Gains Tax Calculator 2026 | Short vs Long-Term',
+    description: 'Compare ordinary rates (10% to 37%) against 0%, 15%, 20% long-term capital gains brackets plus 3.8% NIIT surtax. Calculate net tax liabilities instantly.'
+  },
+  'rsu-vesting-tax-calculator': {
+    title: 'RSU Vesting Tax Calculator 2026 | Sell-to-Cover Shares',
+    description: 'Calculate net vested RSU shares after statutory 22% federal supplemental withholding, FICA, and state income tax cuts. Model equity compensation instantly.'
+  },
+  'espp-discount-profit-calculator': {
+    title: 'ESPP Discount Profit Calculator 2026 | 15% Lookback ROI',
+    description: 'Calculate Employee Stock Purchase Plan returns: model 15% statutory discounts with 6-month lookback provisions. Audit immediate-sale profit gains instantly.'
+  },
+  'wash-sale-rule-calculator': {
+    title: 'Wash Sale Rule Calculator 2026 | Disallowed Tax Loss',
+    description: 'Calculate IRS 30-day wash sale adjustments: add disallowed capital losses to replacement share basis. Audit deferred tax deductions accurately instantly.'
+  },
+  'roth-ira-conversion-calculator': {
+    title: 'Roth IRA Conversion Calculator 2026 | Tax Break-Even',
+    description: 'Compare upfront conversion taxes against decades of tax-free Roth compound growth. Audit marginal tax brackets and break-even retirement rates instantly.'
+  },
+  'brrrr-method-calculator': {
+    title: 'BRRRR Method Calculator 2026 | Real Estate Cash-Out Math',
+    description: 'Model BRRRR real estate deals: purchase, rehab, 75% LTV ARV cash-out refinance, and cash left in deal. Calculate equity velocity and cash returns instantly.'
+  },
+  'rental-property-roi-calculator': {
+    title: 'Rental Property ROI Calculator 2026 | Cap Rate & Cash',
+    description: 'Calculate rental property cash flow: deduct PITI mortgage, 8% management, 5% vacancy, and CapEx reserves. Audit capitalization rates and net ROI instantly.'
+  },
+  'fha-vs-conventional-mortgage-calculator': {
+    title: 'FHA vs Conventional Mortgage Calculator 2026 | PMI Tool',
+    description: 'Compare FHA 3.5% down + 1.75% UFMIP against Conventional loans with cancellable PMI at 78% LTV. Audit monthly mortgage payments and closing costs instantly.'
+  },
+  'airbnb-arbitrage-calculator': {
+    title: 'Airbnb Arbitrage Calculator 2026 | Monthly STR Cash Flow',
+    description: 'Calculate Airbnb rental arbitrage profits: deduct landlord master lease, utilities, cleaning, and 15% platform fees. Model upfront payback months instantly.'
+  },
+  'gold-silver-melt-value-calculator': {
+    title: 'Gold & Silver Melt Value Calculator 2026 | Scrap Purity',
+    description: 'Calculate intrinsic scrap gold and silver melt value: factor live spot prices, karat purities (10k to 24k), and gram weights. Audit dealer buyouts instantly.'
   }
 };
 
@@ -489,8 +570,8 @@ export function runOptimization(applyWrites = false) {
 
   console.log('-'.repeat(80));
   console.log(`Total Calculators Audited:   ${totalCalculators}`);
-  console.log(`Unique Title Count:          ${titlesSeen.size} / 100`);
-  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 100`);
+  console.log(`Unique Title Count:          ${titlesSeen.size} / 120`);
+  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 120`);
   console.log(`Title Tag Format Violations: ${titleErrors}`);
   console.log(`Meta Desc Format Violations: ${descErrors}`);
   console.log('='.repeat(80));
@@ -499,7 +580,7 @@ export function runOptimization(applyWrites = false) {
     throw new Error(`SEO Meta CTR Audit failed with ${titleErrors} title errors and ${descErrors} description errors.`);
   }
 
-  console.log('🎉 100% OF ALL 100 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
+  console.log('🎉 100% OF ALL 120 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
 }
 
 // Auto-run if executed directly via node

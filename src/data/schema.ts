@@ -2,7 +2,8 @@ export type CalculatorCategory =
   | 'ecommerce' 
   | 'creator-economy' 
   | 'digital-marketplaces' 
-  | 'b2b-pricing';
+  | 'b2b-pricing'
+  | 'wealth-investing';
 
 export type EngineType = 
   | 'platform-profit' 

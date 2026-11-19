@@ -7,8 +7,8 @@ import { getPath } from '../utils/paths';
 const calculators = getAllCalculators();
 const categories = Object.values(SITE_CONFIG.categories);
 
-// Top 16 Highest-CPC 2026 Calculators (4 per Cluster) for 1-Click Homepage Equity
-const top16Slugs = [
+// Top 20 Highest-CPC 2026 Calculators (4 per Cluster) for 1-Click Homepage Equity
+const top20Slugs = [
   'shopify-profit-margin-calculator',
   'etsy-fee-calculator',
   'amazon-fba-vs-fbm-profit-calculator',
@@ -24,10 +24,14 @@ const top16Slugs = [
   'freelance-hourly-rate-calculator',
   'self-employment-tax-calculator',
   's-corp-vs-llc-self-employment-tax-calculator',
-  'break-even-roas-calculator'
+  'break-even-roas-calculator',
+  'stock-average-cost-calculator',
+  'options-profit-calculator',
+  'crypto-dca-calculator',
+  'rental-property-roi-calculator'
 ];
 
-const top16Calculators = top16Slugs
+const top20Calculators = top20Slugs
   .map(slug => calculators.find(c => c.slug === slug))
   .filter((c): c is NonNullable<typeof c> => Boolean(c));
 ---
@@ -110,7 +114,7 @@ const top16Calculators = top16Slugs
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
       {categories.map(cat => (
         <a
           href={getPath(`/category/${cat.id}/`)}
@@ -140,7 +144,7 @@ const top16Calculators = top16Slugs
     </div>
   </section>
 
-  <!-- Most Searched 2026 Fee & Profit Calculators (16-Card Rapid-Access Grid) -->
+  <!-- Most Searched 2026 Fee & Profit Calculators (20-Card Rapid-Access Grid) -->
   <section class="bg-white border-t border-slate-200 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
@@ -153,12 +157,12 @@ const top16Calculators = top16Slugs
           </h2>
         </div>
         <p class="text-xs text-slate-500 mt-2 sm:mt-0 font-medium">
-          Instant 1-click access to top-volume models across all four platform clusters
+          Instant 1-click access to top-volume models across all five platform clusters
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {top16Calculators.map(c => (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {top20Calculators.map(c => (
           <a
             href={getPath(`/calculator/${c.slug}/`)}
             class="p-5 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-emerald-500 hover:shadow-md transition-all group flex flex-col justify-between"

@@ -14,6 +14,7 @@ export const GET: APIRoute = () => {
     { url: getCanonicalUrl('/category/creator-economy/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
     { url: getCanonicalUrl('/category/digital-marketplaces/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
     { url: getCanonicalUrl('/category/b2b-pricing/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
+    { url: getCanonicalUrl('/category/wealth-investing/', SITE_CONFIG.siteUrl), priority: '0.8', changefreq: 'weekly' },
     { url: getCanonicalUrl('/about/', SITE_CONFIG.siteUrl), priority: '0.6', changefreq: 'monthly' },
     { url: getCanonicalUrl('/methodology/', SITE_CONFIG.siteUrl), priority: '0.7', changefreq: 'monthly' },
     { url: getCanonicalUrl('/contact/', SITE_CONFIG.siteUrl), priority: '0.5', changefreq: 'monthly' },

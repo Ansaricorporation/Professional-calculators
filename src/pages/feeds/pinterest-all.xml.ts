@@ -6,7 +6,7 @@ export const GET: APIRoute = () => {
   const allCalculators = getAllCalculators();
   const xml = buildPinterestRssXml({
     title: 'All Financial Calculators & Fee Cheat-Sheets (Pinterest Feed)',
-    description: 'Auto-syndication feed for all 100 verified financial calculators, platform fee breakdowns, and profit margin cheat-sheets from kitaaab.net.',
+    description: 'Auto-syndication feed for all 120 verified financial calculators, platform fee breakdowns, and profit margin cheat-sheets from kitaaab.net.',
     feedPath: '/feeds/pinterest-all.xml',
     calculators: allCalculators
   });

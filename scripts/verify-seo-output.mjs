@@ -43,7 +43,7 @@ console.log('Related calculator card count:', relatedCards.length);
 const homeHtml = fs.readFileSync('dist/index.html', 'utf8');
 console.log('Home contains "Most Searched 2026 Fee & Profit Calculators":', homeHtml.includes('Most Searched 2026 Fee & Profit Calculators'));
 const homeCards = [...homeHtml.matchAll(/Open Model/g)];
-console.log('Home top-16 card count:', homeCards.length);
+console.log('Home top-20 card count:', homeCards.length);
 
 // Check Sitemap
 const sitemap = fs.readFileSync('dist/sitemap.xml', 'utf8');

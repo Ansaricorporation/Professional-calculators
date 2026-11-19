@@ -7,7 +7,7 @@ export interface InstitutionalAuditTeam {
 }
 
 export interface CategoryCluster {
-  id: 'ecommerce' | 'creator-economy' | 'digital-marketplaces' | 'b2b-pricing';
+  id: 'ecommerce' | 'creator-economy' | 'digital-marketplaces' | 'b2b-pricing' | 'wealth-investing';
   name: string;
   shortName: string;
   description: string;
@@ -107,6 +107,15 @@ export const SITE_CONFIG: SiteConfig = {
       longDescription: 'Built for independent consultants, specialized agencies, and technical contractors. Calculate true billable capacity factoring unbillable overhead, quarterly IRS SE taxes, and healthcare load.',
       icon: 'briefcase',
       badge: 'Professional Rates'
+    },
+    'wealth-investing': {
+      id: 'wealth-investing',
+      name: 'Wealth, Stocks & Real Estate',
+      shortName: 'Wealth & Investing',
+      description: 'Institutional-grade models for retail equities, options, crypto staking, and real estate cash flow.',
+      longDescription: 'Quantitative decision engines for active traders and passive investors. Model stock dollar-cost averaging, options payoff profiles, FINRA margin call thresholds, crypto liquidity pool impermanent loss, and BRRRR real estate returns.',
+      icon: 'trending-up',
+      badge: 'Portfolio Economics'
     }
   },
 

@@ -2,8 +2,8 @@
   {
     "slug": "wholesale-to-retail-markup-calculator",
     "title": "Wholesale to Retail Markup & Margin Calculator (2026)",
-    "metaTitle": "Wholesale to Retail Markup Calculator 2026 | Margin vs Markup & Break-Even ROAS",
-    "metaDescription": "Convert between markup percentage and gross profit margin, model keystone retail pricing, deduct payment gateway and self-employment taxes, and calculate break-even ROAS.",
+    "metaTitle": "Wholesale to Retail Markup Calculator 2026 | Free Tool",
+    "metaDescription": "Model wholesale to retail markup, 20% to 50% margins, payment gateway cuts, and keystone pricing. Calculate exact net payout and break-even ROAS instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -157,8 +157,8 @@
   {
     "slug": "stripe-fee-calculator",
     "title": "Stripe Processing Fee Calculator (2.9% + 30¢ Cards, +1.5% International & Reverse Fee Math)",
-    "metaTitle": "Stripe Fee Calculator 2026 | Card Interchange & Reverse Invoice Math",
-    "metaDescription": "Calculate Stripe merchant fees, 2.9% + 30¢ domestic rates, 1.5% international card fees, 0.4% Stripe Invoicing, and reverse fee formulas to receive exact net amounts.",
+    "metaTitle": "Stripe Fee Calculator 2026 | 2.9% + 30¢ Card Processing",
+    "metaDescription": "Calculate Stripe merchant fees: model 2.9% + 30¢ domestic cards, 1.5% international fees, and reverse invoice formulas. Receive exact net payouts instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-profit",
     "lastUpdated": "November 2026",
@@ -341,8 +341,8 @@
   {
     "slug": "paypal-fee-calculator",
     "title": "PayPal Business Fee Calculator (3.49% + 49¢ Checkout vs. 2.99% + 49¢ Card Fields)",
-    "metaTitle": "PayPal Business Fee Calculator 2026 | Checkout 3.49% vs Card 2.99%",
-    "metaDescription": "Calculate PayPal commercial merchant fees, 3.49% + 49¢ digital checkout vs 2.99% + 49¢ card fields, international cross-border surcharges, and net merchant payouts.",
+    "metaTitle": "PayPal Business Fee Calculator 2026 | 3.49% vs 2.99%",
+    "metaDescription": "Calculate PayPal merchant fees: compare 3.49% + 49¢ standard checkout against 2.99% + 49¢ card fields and cross-border surcharges. Model net pay instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-profit",
     "lastUpdated": "November 2026",
@@ -525,8 +525,8 @@
   {
     "slug": "stripe-vs-paypal-fee-calculator",
     "title": "Stripe vs. PayPal Fee Comparison Calculator (2.9% + 30¢ vs. 3.49% + 49¢ & Chargeback Costs)",
-    "metaTitle": "Stripe vs PayPal Fee Calculator 2026 | Compare Rates & Annual Savings",
-    "metaDescription": "Compare Stripe 2.9% + 30¢ against PayPal 3.49% + 49¢. Audit fee differentials, cross-border charges, $15 vs $20 dispute costs, and annual business savings.",
+    "metaTitle": "Stripe vs PayPal Fee Calculator 2026 | Rate Comparison",
+    "metaDescription": "Compare Stripe 2.9% + 30¢ against PayPal 3.49% + 49¢. Audit fee differentials, international card surcharges, and annual business savings instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-vs-platform",
     "lastUpdated": "November 2026",
@@ -679,8 +679,8 @@
   {
     "slug": "upwork-vs-fiverr-fee-calculator",
     "title": "Upwork vs. Fiverr Freelancer Fee & Take-Home Pay Calculator (10% Flat Fee vs. 20% Commission)",
-    "metaTitle": "Upwork vs Fiverr Fee Calculator 2026 | Freelance Take-Home Comparison",
-    "metaDescription": "Compare Upwork flat 10% freelancer service fees against Fiverr 20% seller commission. Audit client contract costs, withdrawal fees, and net freelance earnings.",
+    "metaTitle": "Upwork vs Fiverr Fee Calculator 2026 | 10% vs 20% Cut",
+    "metaDescription": "Compare Upwork flat 10% freelancer service fee against Fiverr 20% seller commission. Audit withdrawal costs and calculate net freelance take-home instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-vs-platform",
     "lastUpdated": "November 2026",
@@ -833,8 +833,8 @@
   {
     "slug": "freelance-hourly-rate-calculator",
     "title": "Freelance Hourly Rate & Billable Utilization Calculator (Target Net Salary to Hourly/Day Rate)",
-    "metaTitle": "Freelance Hourly Rate Calculator 2026 | Billable Hours & Overhead Rate",
-    "metaDescription": "Calculate the exact freelance hourly and day rate required to achieve your target net salary, factoring 25%–35% unbillable time, self-employment taxes, and health overhead.",
+    "metaTitle": "Freelance Hourly Rate Calculator 2026 | Billable Math",
+    "metaDescription": "Calculate the exact freelance hourly and day rate required for your target salary, factoring 25% unbillable time and 15.3% SE taxes. Model rates instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -988,8 +988,8 @@
   {
     "slug": "self-employment-tax-calculator",
     "title": "Self-Employment Tax Calculator (2026 Schedule SE 15.3% Social Security & Medicare)",
-    "metaTitle": "Self-Employment Tax Calculator 2026 | Schedule SE 15.3% FICA & 1040-ES",
-    "metaDescription": "Calculate 2026 self-employment taxes: 15.3% Schedule SE rates, 92.35% taxable profit base, $176,100 Social Security wage cap, and quarterly estimated 1040-ES payments.",
+    "metaTitle": "Self-Employment Tax Calculator 2026 | Schedule SE FICA",
+    "metaDescription": "Calculate 2026 self-employment taxes: factor 15.3% Schedule SE rates, 92.35% taxable profit base, and quarterly estimated 1040-ES payments instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -1146,8 +1146,8 @@
   {
     "slug": "consulting-day-rate-calculator",
     "title": "Consulting Day Rate Calculator (Hourly to Per-Diem Pricing with Overhead & Taxes)",
-    "metaTitle": "Consulting Day Rate Calculator 2026 | Per-Diem Pricing & Margin Model",
-    "metaDescription": "Calculate commercial consulting day rates (per diem), convert hourly rates into daily fees, factor 180–220 billable days per year, self-employment taxes, and agency margins.",
+    "metaTitle": "Consulting Day Rate Calculator 2026 | Per Diem Pricing",
+    "metaDescription": "Calculate commercial consulting day rates: convert annual salary targets factoring 180 to 220 billable days, taxes, and overhead. Model per diem instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -1300,8 +1300,8 @@
   {
     "slug": "client-retainer-pricing-calculator",
     "title": "Monthly Client Retainer Calculator (Agency & Freelance Capacity to Retainer Pricing)",
-    "metaTitle": "Monthly Client Retainer Calculator 2026 | Capacity & Scope Creep Pricing",
-    "metaDescription": "Calculate monthly freelance and agency client retainer pricing: allocate billable hours, 15%–25% scope creep buffers, payment processing, and retainer break-even analysis.",
+    "metaTitle": "Client Retainer Pricing Calculator 2026 | Agency Math",
+    "metaDescription": "Calculate monthly agency client retainer pricing: allocate billable hours, 15% scope creep buffers, and gateway processing. Model contract margins instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -1454,8 +1454,8 @@
   {
     "slug": "contractor-late-fee-calculator",
     "title": "Commercial Invoice Late Fee & Statutory Interest Calculator (Net-30 & Usury Limits)",
-    "metaTitle": "Commercial Invoice Late Fee Calculator 2026 | Net-30 Interest & Penalties",
-    "metaDescription": "Calculate overdue B2B invoice interest, 1.5% monthly late fees (18% APR), flat administrative penalties, days past due, and state statutory usury limits.",
+    "metaTitle": "Contractor Late Fee Calculator 2026 | Net-30 Interest",
+    "metaDescription": "Calculate commercial invoice late fees: model 1.5% monthly interest (18% statutory APR), compounding grace periods, and late penalties. Audit math instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -1609,8 +1609,8 @@
   {
     "slug": "break-even-roas-calculator",
     "title": "Break-Even ROAS, Target CPA & Ad Margin Calculator (2026 Marketing Benchmarks)",
-    "metaTitle": "Break-Even ROAS Calculator 2026 | Target ROAS, Max CPA & Ad Margins",
-    "metaDescription": "Calculate Break-Even Return on Ad Spend (ROAS = 1 / Net Margin), target ROAS for 20% net profit, maximum allowable CPA, and paid acquisition thresholds.",
+    "metaTitle": "Break-Even ROAS Calculator 2026 | Target CPA & Margin",
+    "metaDescription": "Calculate break-even ROAS, maximum allowable customer acquisition cost (CPA), and minimum profit margins across paid ad campaigns. Model ROAS instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -1764,8 +1764,8 @@
   {
     "slug": "early-payment-discount-calculator",
     "title": "Early Payment Discount, 2/10 Net 30 Commercial Cost & APR Calculator (2026)",
-    "metaTitle": "Early Payment Discount Calculator 2026 | 2/10 Net 30 APR & Cash Savings",
-    "metaDescription": "Calculate trade credit economics: 2/10 Net 30 annualized interest rate (37.24% APR), buyer cash savings, supplier acceleration costs, and treasury working capital.",
+    "metaTitle": "Early Payment Discount Calculator 2026 | 2/10 Net 30",
+    "metaDescription": "Calculate early payment trade discounts: model 2/10 Net 30 terms, 37.24% annualized APR interest, and supplier cash acceleration costs. Audit math instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -1917,8 +1917,8 @@
   {
     "slug": "wise-international-transfer-fee-calculator",
     "title": "Wise International Business Transfer Fee & Mid-Market Exchange Rate Calculator",
-    "metaTitle": "Wise Transfer Fee Calculator 2026 | Mid-Market Rate vs Bank SWIFT Fees",
-    "metaDescription": "Calculate international B2B wire fees: Wise real mid-market exchange rates, 0.35%–0.65% transfer fees vs traditional SWIFT bank $35 charges and hidden FX markups.",
+    "metaTitle": "Wise Transfer Fee Calculator 2026 | Mid-Market FX Rates",
+    "metaDescription": "Calculate international wire fees: compare Wise mid-market FX rates and 0.45% fees against bank $35 SWIFT charges. Audit foreign exchange savings instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-profit",
     "lastUpdated": "November 2026",
@@ -2076,8 +2076,8 @@
   {
     "slug": "saas-ltv-cac-calculator",
     "title": "SaaS LTV to CAC Ratio, Customer Lifetime Value & Payback Period Calculator (2026)",
-    "metaTitle": "SaaS LTV to CAC Calculator 2026 | Unit Economics & CAC Payback Period",
-    "metaDescription": "Calculate SaaS unit economics: Customer Lifetime Value (LTV), Customer Acquisition Cost (CAC), LTV:CAC ratio (3.0x+ target), and CAC payback period in months.",
+    "metaTitle": "SaaS LTV to CAC Calculator 2026 | Unit Economics Model",
+    "metaDescription": "Calculate SaaS customer lifetime value (LTV), acquisition cost (CAC), LTV/CAC ratios (3x benchmark), and payback months. Model unit SaaS metrics instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -2229,8 +2229,8 @@
   {
     "slug": "margin-vs-markup-converter-calculator",
     "title": "Gross Margin vs. Markup Percentage Converter & Pricing Error Calculator",
-    "metaTitle": "Gross Margin vs. Markup Converter & Pricing Calculator (2026)",
-    "metaDescription": "Convert markup percentage to gross margin percentage and vice versa. Calculate exact profit loss from small business pricing errors, discount leakage, and target dollar yields.",
+    "metaTitle": "Margin vs Markup Converter Calculator 2026 Pricing",
+    "metaDescription": "Convert markup percentage to gross margin percentage and vice versa. Calculate exact profit loss from pricing errors and discount leakage instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "2026-11-16",
@@ -2390,8 +2390,8 @@
   {
     "slug": "invoice-factoring-cost-calculator",
     "title": "B2B Invoice Factoring Fee, Advance Rate & Effective APR Calculator (Net 30 / Net 60 Cash Flow)",
-    "metaTitle": "Invoice Factoring Cost & Effective APR Calculator (2026)",
-    "metaDescription": "Calculate B2B accounts receivable invoice factoring costs, advance rates (80%–90%), weekly factoring discount fees, and true annualized APR equivalents.",
+    "metaTitle": "Invoice Factoring Cost Calculator 2026 | APR & Advance",
+    "metaDescription": "Calculate accounts receivable invoice factoring costs: model 80% to 90% advance rates, 1% to 3% discount fees, and annualized APR. Audit financing instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "2026-11-16",
@@ -2552,8 +2552,8 @@
   {
     "slug": "equipment-financing-vs-cash-calculator",
     "title": "Equipment Financing / Lease vs. Cash Purchase & Section 179 Tax Deduction Calculator",
-    "metaTitle": "Equipment Lease vs. Cash Purchase & Section 179 Calculator (2026)",
-    "metaDescription": "Compare buying business equipment with cash vs. equipment loans and lease financing, factoring the opportunity cost of working capital and IRS Section 179 first-year tax depreciation.",
+    "metaTitle": "Equipment Financing vs Cash Calculator 2026 | Section 179",
+    "metaDescription": "Compare buying business equipment with cash vs commercial equipment loans, factoring IRS Section 179 first-year tax depreciation. Model cash flows instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-vs-platform",
     "lastUpdated": "2026-11-16",
@@ -2720,8 +2720,8 @@
   {
     "slug": "square-vs-clover-vs-toast-pos-fee-calculator",
     "title": "Square vs. Clover vs. Toast POS Credit Card Processing Fee Calculator (2026)",
-    "metaTitle": "Square vs Clover vs Toast POS Fee Calculator | Card Processing & SaaS Costs",
-    "metaDescription": "Compare point-of-sale card processing costs between Square (2.6% + 10¢), Clover, and Toast. Audit card-present transaction fees, hardware leases, and monthly software overhead.",
+    "metaTitle": "Square vs Clover vs Toast POS Fee Calculator 2026 Rates",
+    "metaDescription": "Compare POS card fees: Square 2.6% + 10¢, Clover rates, and Toast restaurant charges plus SaaS hardware leases. Calculate merchant processing costs instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-vs-platform",
     "lastUpdated": "November 2026",
@@ -2879,8 +2879,8 @@
   {
     "slug": "agency-project-fixed-bid-margin-calculator",
     "title": "Fixed-Price Agency Project Margin & Scope Contingency Calculator (2026)",
-    "metaTitle": "Agency Fixed-Bid Project Margin Calculator | Blended Hourly Cost & Buffer",
-    "metaDescription": "Calculate internal delivery costs, project management overhead, and 15% scope contingency to price client fixed-bid contracts for a predictable 50%+ gross margin.",
+    "metaTitle": "Agency Fixed-Bid Project Margin Calculator 2026 Rates",
+    "metaDescription": "Calculate agency fixed-bid project margins: model blended rates ($75 to $150), 20% scope contingency, and net profit targets. Quote agency projects instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -3038,8 +3038,8 @@
   {
     "slug": "saas-annual-vs-monthly-discount-calculator",
     "title": "SaaS Annual Plan Discount ('2 Months Free') Cash Flow & LTV Calculator (2026)",
-    "metaTitle": "SaaS Annual Discount Calculator | 16.7% Cash Upfront vs Monthly Churn LTV",
-    "metaDescription": "Model the net lifetime value impact of offering annual SaaS discounts (e.g., 2 months free / 16.7% off). Quantify churn reduction against upfront cash acceleration.",
+    "metaTitle": "SaaS Annual vs Monthly Discount Calculator 2026 Cash",
+    "metaDescription": "Model SaaS pricing: compare 15% to 20% annual discounts against monthly billing, churn rates, and cash runway. Audit subscription cash flows instantly.",
     "category": "b2b-pricing",
     "engineType": "markup-margin",
     "lastUpdated": "November 2026",
@@ -3202,8 +3202,8 @@
   {
     "slug": "s-corp-vs-llc-self-employment-tax-calculator",
     "title": "LLC Sole Proprietorship vs. S-Corp Self-Employment Tax Savings Calculator (2026)",
-    "metaTitle": "LLC vs S-Corp Tax Savings Calculator | 2026 Reasonable Salary & FICA Audit",
-    "metaDescription": "Compare paying 15.3% SE tax on 100% of LLC profit against an S-Corporation Reasonable Salary split. Calculate net tax savings after accounting and payroll overhead.",
+    "metaTitle": "S-Corp vs LLC Tax Savings Calculator 2026 | Schedule SE",
+    "metaDescription": "Calculate S-Corp vs LLC tax savings: model W-2 salary splits, 15.3% SE tax deductions, and payroll overhead. Audit net annual tax savings instantly.",
     "category": "b2b-pricing",
     "engineType": "platform-vs-platform",
     "lastUpdated": "November 2026",
@@ -3361,8 +3361,8 @@
   {
     "slug": "stripe-vs-braintree-processing-calculator",
     "title": "Stripe vs. Braintree Payment Processing Fee Calculator",
-    "metaTitle": "Stripe vs Braintree Processing Calculator (Flat vs Interchange+)",
-    "metaDescription": "Compare merchant payment processing costs between Stripe standard 2.9% + 30¢ flat rate and Braintree 2.59% + 49¢ rate, PayPal integrations, and interchange-plus.",
+    "metaTitle": "Stripe vs Braintree Processing Calculator 2026 Rates",
+    "metaDescription": "Compare Stripe 2.9% + 30¢ against Braintree 2.59% + 49¢ card rates, dispute fees, and volume interchange. Calculate merchant processing fee savings instantly.",
     "engineType": "platform-vs-platform",
     "defaultInputs": {
       "productPrice": 350,
@@ -3517,8 +3517,8 @@
   {
     "slug": "agency-retainer-vs-hourly-calculator",
     "title": "Agency Retainer vs. Hourly Billing Profitability Calculator",
-    "metaTitle": "Agency Retainer vs Hourly Calculator (Utilization & Scope Creep)",
-    "metaDescription": "Model agency gross margins comparing fixed monthly retainer agreements against hourly client billings, factoring in team utilization, scope creep, and unbilled revisions.",
+    "metaTitle": "Agency Retainer vs Hourly Billing Calculator 2026 Tool",
+    "metaDescription": "Compare agency billing models: steady monthly retainers with 15% buffers vs hourly billing with 30% unbillable risk. Calculate agency profitability instantly.",
     "engineType": "markup-margin",
     "defaultInputs": {
       "baseCost": 2800,
@@ -3667,8 +3667,8 @@
   {
     "slug": "b2b-wire-vs-ach-transfer-fee-calculator",
     "title": "B2B Wire vs. ACH Transfer Fee & Settlement Cost Calculator",
-    "metaTitle": "Wire vs ACH Transfer Fee Calculator (Stripe ACH vs Bank Wires)",
-    "metaDescription": "Compare payment clearing costs on high-ticket commercial invoices between Stripe ACH (0.8%, capped at $5) and domestic/international bank wire flat fees.",
+    "metaTitle": "B2B Wire vs ACH Transfer Fee Calculator 2026 Banking",
+    "metaDescription": "Compare B2B payment rails: domestic ACH (0.8% capped at $5) vs commercial $25 to $40 wire charges. Calculate corporate treasury payment fee savings instantly.",
     "engineType": "platform-profit",
     "defaultInputs": {
       "sellingPrice": 7500,
@@ -3831,8 +3831,8 @@
   {
     "slug": "saas-mrr-growth-churn-calculator",
     "title": "SaaS MRR Growth, Expansion & Net Churn Rate Calculator",
-    "metaTitle": "SaaS MRR Growth & Churn Calculator (Net Negative Churn Modeling)",
-    "metaDescription": "Calculate Monthly Recurring Revenue (MRR) expansion, customer churn, contraction, and Net Revenue Retention (NRR) to model scalable SaaS cash flows.",
+    "metaTitle": "SaaS MRR Growth & Churn Calculator 2026 | Net Retention",
+    "metaDescription": "Model SaaS revenue: factor new MRR expansion, 2% to 5% churn, and net revenue retention (NRR 110%+). Project forward ARR growth trajectories instantly.",
     "engineType": "markup-margin",
     "defaultInputs": {
       "baseCost": 15000,
@@ -3982,8 +3982,8 @@
   {
     "slug": "freelance-project-roi-calculator",
     "title": "Freelance Project ROI & Effective Hourly Rate Calculator",
-    "metaTitle": "Freelance Project ROI Calculator (Fixed-Bid vs True Hourly Rate)",
-    "metaDescription": "Calculate the true return on investment and effective hourly rate of fixed-price client projects after factoring in software subscriptions, revisions, and tax liabilities.",
+    "metaTitle": "Freelance Project ROI Calculator 2026 | Client Value",
+    "metaDescription": "Calculate client project return on investment: factor freelance service fees ($3,000 to $20,000) against client revenue lift. Quote value pricing instantly.",
     "engineType": "markup-margin",
     "defaultInputs": {
       "baseCost": 1800,

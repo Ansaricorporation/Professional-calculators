@@ -26,52 +26,102 @@ interface Props {
 
 const { calc } = Astro.props;
 const categoryInfo = SITE_CONFIG.categories[calc.category];
+const allCalculators = getAllCalculators();
 const relatedCalculators = getRelatedCalculators(calc.slug);
+
+// Deterministic category neighbors for 6-item comparison mesh
+const sameCategory = allCalculators.filter(c => c.category === calc.category);
+const currentIdx = sameCategory.findIndex(c => c.slug === calc.slug);
+const neighbor1 = sameCategory[(currentIdx + 1) % sameCategory.length];
+const neighbor2 = sameCategory[(currentIdx + 2) % sameCategory.length];
+
+const combinedRelated = [...relatedCalculators, neighbor1, neighbor2]
+  .filter((c, idx, arr) => c && c.slug !== calc.slug && arr.findIndex(t => t.slug === c.slug) === idx);
+
+let fillOffset = 3;
+while (combinedRelated.length < 6 && fillOffset < sameCategory.length) {
+  const candidate = sameCategory[(currentIdx + fillOffset) % sameCategory.length];
+  if (candidate && candidate.slug !== calc.slug && !combinedRelated.some(c => c.slug === candidate.slug)) {
+    combinedRelated.push(candidate);
+  }
+  fillOffset++;
+}
+const finalRelated = combinedRelated.slice(0, 6);
 
 const breadcrumbItems = [
   { name: categoryInfo.name, url: getPath(`/category/${calc.category}/`) },
   { name: calc.title, url: getPath(`/calculator/${calc.slug}/`) }
 ];
 
-// SoftwareApplication JSON-LD
-const softwareAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": calc.title,
-  "url": getCanonicalUrl(`/calculator/${calc.slug}/`, SITE_CONFIG.siteUrl),
-  "operatingSystem": "All",
-  "applicationCategory": "BusinessApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "description": calc.metaDescription,
-  "publisher": {
-    "@type": "Organization",
-    "name": SITE_CONFIG.siteName,
-    "url": SITE_CONFIG.siteUrl
-  }
-};
-
-// FAQPage JSON-LD
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": calc.guideContent.faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
-
+const homeUrl = getCanonicalUrl('/', SITE_CONFIG.siteUrl);
+const categoryUrl = getCanonicalUrl(`/category/${calc.category}/`, SITE_CONFIG.siteUrl);
 const canonicalPageUrl = getCanonicalUrl(`/calculator/${calc.slug}/`, SITE_CONFIG.siteUrl);
 const ogImageUrl = getCanonicalUrl(`/og/${calc.slug}.png`, SITE_CONFIG.siteUrl);
 const pinImageUrl = getCanonicalUrl(`/pins/${calc.slug}.png`, SITE_CONFIG.siteUrl);
 const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(canonicalPageUrl)}&media=${encodeURIComponent(pinImageUrl)}&description=${encodeURIComponent(calc.title + ' - 2026 Fee Schedule & Unit Economics Cheat Sheet')}`;
+
+// Unified @graph JSON-LD Schema (WebApplication, FAQPage, BreadcrumbList)
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["WebApplication", "SoftwareApplication"],
+      "@id": `${canonicalPageUrl}#software`,
+      "name": calc.title,
+      "url": canonicalPageUrl,
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": calc.metaDescription,
+      "publisher": {
+        "@type": "Organization",
+        "name": SITE_CONFIG.siteName,
+        "url": homeUrl,
+        "logo": getCanonicalUrl('/favicon.svg', SITE_CONFIG.siteUrl)
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonicalPageUrl}#faq`,
+      "mainEntity": calc.guideContent.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalPageUrl}#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": homeUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": categoryInfo.name,
+          "item": categoryUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": calc.title,
+          "item": canonicalPageUrl
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
@@ -80,14 +130,13 @@ const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encode
   description={calc.metaDescription}
   canonicalPath={`/calculator/${calc.slug}/`}
   ogImage={ogImageUrl}
-  softwareAppSchema={softwareAppSchema}
-  faqSchema={faqSchema}
+  schemaGraph={schemaGraph}
   lastUpdated={calc.lastUpdated}
 >
   <!-- Calculator Header -->
   <div class="bg-white border-b border-slate-200">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} skipSchema={true} />
       
       <div class="mt-3 flex flex-wrap items-center gap-2">
         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
@@ -130,7 +179,7 @@ const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encode
     <div class="bg-slate-900 text-white rounded-2xl p-5 sm:p-6 border border-slate-800 shadow-md flex flex-col md:flex-row items-center justify-between gap-5">
       <div class="flex items-center gap-3.5 w-full md:w-auto">
         <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
           </svg>
         </div>
@@ -148,7 +197,7 @@ const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encode
           data-url={canonicalPageUrl}
           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-semibold border border-slate-700 transition-all cursor-pointer shadow-xs active:scale-95"
         >
-          <svg id="copy-icon" class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg id="copy-icon" class="w-4 h-4 text-emerald-400" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
           </svg>
           <span id="copy-label">Copy Direct Link</span>
@@ -161,7 +210,7 @@ const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encode
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold transition-all shadow-xs active:scale-95"
         >
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 fill-current" width="16" height="16" viewBox="0 0 24 24">
             <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.293 1.199-.334 1.366-.053.225-.177.273-.409.165-1.53-.712-2.486-2.947-2.486-4.744 0-3.864 2.809-7.413 8.098-7.413 4.252 0 7.556 3.03 7.556 7.079 0 4.225-2.664 7.625-6.361 7.625-1.242 0-2.409-.646-2.808-1.409l-.765 2.918c-.277 1.066-1.025 2.402-1.528 3.221C10.279 23.834 11.127 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
           </svg>
           <span>Pin Cheat-Sheet</span>
@@ -175,7 +224,7 @@ const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encode
           class="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold border border-slate-700 transition-all shadow-xs"
           title="Open high-res 1000x1500 Pinterest infographic"
         >
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-emerald-400" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           <span>1000&times;1500 Pin</span>
@@ -391,18 +440,28 @@ const pinterestShareUrl = `https://pinterest.com/pin/create/button/?url=${encode
       </div>
     </section>
 
-    <!-- Cross-Linking: Related Calculators -->
-    {relatedCalculators.length > 0 && (
+    <!-- Cross-Linking: Compare Related Calculators (6-Item Anchor Mesh) -->
+    {finalRelated.length > 0 && (
       <section class="border-t border-slate-200 pt-8">
-        <h3 class="text-base font-bold text-slate-900 mb-4">Related Financial Models</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {relatedCalculators.map(rel => (
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Compare Related Calculators</h3>
+          <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 font-semibold">
+            {categoryInfo.name} Models
+          </span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {finalRelated.map(rel => (
             <a
               href={getPath(`/calculator/${rel.slug}/`)}
-              class="p-4 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 hover:shadow-xs transition-all group"
+              class="p-4 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 hover:shadow-xs transition-all group flex flex-col justify-between"
             >
-              <div class="text-xs font-bold text-slate-900 group-hover:text-emerald-700">{rel.title}</div>
-              <div class="text-[11px] text-slate-500 line-clamp-2 mt-1">{rel.metaDescription}</div>
+              <div>
+                <div class="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">{rel.title}</div>
+                <div class="text-[11px] text-slate-500 line-clamp-2 mt-1.5 leading-relaxed">{rel.metaDescription}</div>
+              </div>
+              <div class="mt-3 text-[11px] font-semibold text-emerald-700 group-hover:text-emerald-800 flex items-center gap-1">
+                <span>Compare Rates &rarr;</span>
+              </div>
             </a>
           ))}
         </div>

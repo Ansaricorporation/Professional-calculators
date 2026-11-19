@@ -6,6 +6,30 @@ import { getPath } from '../utils/paths';
 
 const calculators = getAllCalculators();
 const categories = Object.values(SITE_CONFIG.categories);
+
+// Top 16 Highest-CPC 2026 Calculators (4 per Cluster) for 1-Click Homepage Equity
+const top16Slugs = [
+  'shopify-profit-margin-calculator',
+  'etsy-fee-calculator',
+  'amazon-fba-vs-fbm-profit-calculator',
+  'tiktok-shop-fee-calculator',
+  'youtube-shorts-vs-long-form-calculator',
+  'youtube-finance-rpm-calculator',
+  'patreon-vs-kofi-calculator',
+  'tiktok-creativity-program-calculator',
+  'gumroad-vs-lemon-squeezy-fee-calculator',
+  'stripe-vs-paypal-fee-calculator',
+  'apple-app-store-vs-google-play-fee-calculator',
+  'upwork-vs-fiverr-fee-calculator',
+  'freelance-hourly-rate-calculator',
+  'self-employment-tax-calculator',
+  's-corp-vs-llc-self-employment-tax-calculator',
+  'break-even-roas-calculator'
+];
+
+const top16Calculators = top16Slugs
+  .map(slug => calculators.find(c => c.slug === slug))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
 ---
 
 <BaseLayout
@@ -41,7 +65,7 @@ const categories = Object.values(SITE_CONFIG.categories);
             class="w-full flex items-center justify-between px-5 py-4 rounded-xl border border-slate-300 bg-white shadow-sm hover:border-emerald-500 hover:shadow-md transition-all text-slate-400 group text-left"
           >
             <div class="flex items-center gap-3">
-              <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-600 transition-colors" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               <span class="text-slate-600 text-sm font-medium group-hover:text-slate-900">
@@ -97,7 +121,7 @@ const categories = Object.values(SITE_CONFIG.categories);
               <span class="text-xs font-mono uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-bold">
                 {cat.badge}
               </span>
-              <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
             </div>
@@ -113,6 +137,53 @@ const categories = Object.values(SITE_CONFIG.categories);
           </div>
         </a>
       ))}
+    </div>
+  </section>
+
+  <!-- Most Searched 2026 Fee & Profit Calculators (16-Card Rapid-Access Grid) -->
+  <section class="bg-white border-t border-slate-200 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">
+            High-Search Benchmark Models
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-2">
+            Most Searched 2026 Fee & Profit Calculators
+          </h2>
+        </div>
+        <p class="text-xs text-slate-500 mt-2 sm:mt-0 font-medium">
+          Instant 1-click access to top-volume models across all four platform clusters
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {top16Calculators.map(c => (
+          <a
+            href={getPath(`/calculator/${c.slug}/`)}
+            class="p-5 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-emerald-500 hover:shadow-md transition-all group flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between text-[11px] mb-2.5">
+                <span class="font-mono text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded font-semibold uppercase">
+                  {c.category}
+                </span>
+                <span class="text-slate-400 font-mono text-[10px]">2026</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
+                {c.title}
+              </h3>
+              <p class="text-[11px] text-slate-600 line-clamp-2 mt-2 leading-relaxed">
+                {c.metaDescription}
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] font-semibold text-emerald-700 group-hover:text-emerald-800">
+              <span>Open Model</span>
+              <span>&rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

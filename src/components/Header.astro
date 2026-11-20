@@ -8,45 +8,45 @@ interface Props {
 
 const { currentPath = '/' } = Astro.props;
 
-const rawNavItems = [
-  { name: 'All Calculators', href: '/all-calculators/', icon: 'grid' },
-  { name: 'E-Commerce', href: '/category/ecommerce/', icon: 'cart' },
-  { name: 'Creator Economy', href: '/category/creator-economy/', icon: 'video' },
-  { name: 'Marketplaces', href: '/category/digital-marketplaces/', icon: 'shop' },
-  { name: 'B2B & Freelance', href: '/category/b2b-pricing/', icon: 'briefcase' },
-  { name: 'Wealth & Investing', href: '/category/wealth-investing/', icon: 'trending-up' },
-  { name: 'Methodology', href: '/about/', icon: 'shield' },
+const allCalculatorsPath = getPath('/all-calculators/');
+const methodologyPath = getPath('/methodology/');
+
+const categoryItems = [
+  { name: 'E-Commerce', href: getPath('/category/ecommerce/'), badge: '26 Tools' },
+  { name: 'Creator Economy', href: getPath('/category/creator-economy/'), badge: '26 Tools' },
+  { name: 'Marketplaces', href: getPath('/category/digital-marketplaces/'), badge: '24 Tools' },
+  { name: 'B2B & Freelance', href: getPath('/category/b2b-pricing/'), badge: '24 Tools' },
+  { name: 'Wealth & Investing', href: getPath('/category/wealth-investing/'), badge: '20 Tools' }
 ];
 
-const navItems = rawNavItems.map(item => ({
-  ...item,
-  href: getPath(item.href)
-}));
+const isCategoryActive = categoryItems.some(cat => currentPath === cat.href || currentPath.startsWith(cat.href));
+const isAllCalcActive = currentPath === allCalculatorsPath || currentPath.startsWith(allCalculatorsPath);
+const isMethodologyActive = currentPath === methodologyPath || currentPath.startsWith(methodologyPath) || currentPath.startsWith(getPath('/about/'));
 ---
 
 <header class="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur shadow-xs">
   <!-- Verification Bar -->
-  <div class="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 font-mono tracking-tight">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <div class="flex items-center space-x-2">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-medium text-white">2026 Platform Fee Schedules Active</span>
-        <span class="hidden sm:inline text-slate-400">| Audited against official merchant terms</span>
+  <div class="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 font-mono tracking-tight whitespace-nowrap">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center space-x-2 shrink-0 whitespace-nowrap">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+        <span class="font-medium text-white whitespace-nowrap">2026 Platform Fee Schedules Active</span>
+        <span class="hidden md:inline text-slate-400 whitespace-nowrap">| Audited against official merchant terms</span>
       </div>
-      <div class="flex items-center space-x-4 text-slate-400">
-        <span class="hidden md:inline">100% Client-Side Computation</span>
-        <a href={getPath('/about/#audit-methodology')} class="text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2">Audit Log</a>
+      <div class="flex items-center space-x-4 text-slate-400 shrink-0 whitespace-nowrap">
+        <span class="hidden md:inline whitespace-nowrap">100% Client-Side Computation</span>
+        <a href={getPath('/about/#audit-methodology')} class="text-emerald-400 hover:text-emerald-300 font-medium underline underline-offset-2 whitespace-nowrap">Audit Log</a>
       </div>
     </div>
   </div>
 
   <!-- Main Navigation -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href={getPath('/')} class="flex items-center space-x-3 group">
-        <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold text-xl shadow-sm group-hover:bg-emerald-500 transition-colors">
-          <svg class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <div class="flex items-center justify-between h-16 gap-4">
+      <!-- Logo & Brand Block -->
+      <a href={getPath('/')} class="flex items-center space-x-3 group shrink-0 whitespace-nowrap">
+        <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold text-xl shadow-sm group-hover:bg-emerald-500 transition-colors shrink-0">
+          <svg class="w-6 h-6 shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect width="16" height="20" x="4" y="2" rx="2" />
             <line x1="8" x2="16" y1="6" y2="6" />
             <line x1="16" x2="16" y1="14" y2="18" />
@@ -59,55 +59,124 @@ const navItems = rawNavItems.map(item => ({
             <path d="M8 18h.01" />
           </svg>
         </div>
-        <div class="flex flex-col">
-          <span class="text-lg font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors">
+        <div class="flex flex-col shrink-0">
+          <span class="text-lg font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors whitespace-nowrap leading-tight">
             {SITE_CONFIG.siteName}
           </span>
-          <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-500">
+          <span class="text-[10px] uppercase tracking-wider font-semibold text-slate-500 whitespace-nowrap leading-tight">
             Financial Modeling Lab
           </span>
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden lg:flex items-center space-x-1">
-        {navItems.map(item => {
-          const isActive = currentPath === item.href;
-          return (
-            <a
-              href={item.href}
-              class={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                isActive
-                  ? 'text-emerald-700 bg-emerald-50 font-semibold'
-                  : 'text-slate-700 hover:text-emerald-700 hover:bg-slate-100'
-              }`}
-            >
-              {item.name}
-            </a>
-          );
-        })}
+      <!-- Desktop Nav: Sleek 3-Item Layout + Categories Dropdown -->
+      <nav class="hidden lg:flex items-center space-x-1.5 shrink-0 whitespace-nowrap" aria-label="Main Navigation">
+        <!-- 1. All Calculators -->
+        <a
+          href={allCalculatorsPath}
+          class={`px-3 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            isAllCalcActive
+              ? 'text-emerald-700 bg-emerald-50 font-semibold'
+              : 'text-slate-700 hover:text-emerald-700 hover:bg-slate-100'
+          }`}
+        >
+          All Calculators
+        </a>
+
+        <!-- 2. Categories Dropdown Menu (5 Hubs) -->
+        <div class="relative group shrink-0">
+          <button
+            type="button"
+            id="categories-dropdown-btn"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="categories-dropdown-menu"
+            class={`inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap shrink-0 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 ${
+              isCategoryActive
+                ? 'text-emerald-700 bg-emerald-50 font-semibold'
+                : 'text-slate-700 hover:text-emerald-700 hover:bg-slate-100'
+            }`}
+          >
+            <span>Categories</span>
+            <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-700 transition-transform duration-200 dropdown-arrow" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Dropdown Popover (Static HTML <a> tags for SEO) -->
+          <div
+            id="categories-dropdown-menu"
+            class="categories-dropdown-popover absolute left-0 top-full pt-1.5 z-50 min-w-[240px] hidden group-hover:block focus-within:block"
+          >
+            <div class="bg-white rounded-xl shadow-lg border border-slate-200 py-1.5 overflow-hidden">
+              <div class="px-3.5 py-1.5 text-[10px] font-mono uppercase tracking-wider font-semibold text-slate-400 border-b border-slate-100">
+                Category Hubs (120 Calculators)
+              </div>
+              <div class="py-1">
+                {categoryItems.map(cat => {
+                  const isActive = currentPath === cat.href;
+                  return (
+                    <a
+                      href={cat.href}
+                      class={`flex items-center justify-between px-3.5 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                        isActive
+                          ? 'text-emerald-700 bg-emerald-50 font-semibold'
+                          : 'text-slate-700 hover:text-emerald-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <span class="flex items-center gap-2 whitespace-nowrap">
+                        <span class={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? 'bg-emerald-600' : 'bg-slate-300'}`}></span>
+                        <span>{cat.name}</span>
+                      </span>
+                      <span class="text-[10px] font-mono text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded ml-3 shrink-0">
+                        {cat.badge}
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+              <div class="px-3 py-1.5 bg-slate-50 border-t border-slate-100 text-center">
+                <a href={allCalculatorsPath} class="text-xs font-medium text-emerald-700 hover:text-emerald-800 transition-colors whitespace-nowrap">
+                  View Full Directory &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Methodology -->
+        <a
+          href={methodologyPath}
+          class={`px-3 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            isMethodologyActive
+              ? 'text-emerald-700 bg-emerald-50 font-semibold'
+              : 'text-slate-700 hover:text-emerald-700 hover:bg-slate-100'
+          }`}
+        >
+          Methodology
+        </a>
       </nav>
 
       <!-- Search Trigger & Mobile Menu Toggle -->
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center space-x-3 shrink-0 whitespace-nowrap">
         <button
           type="button"
           id="global-search-btn"
           aria-label="Search financial calculators"
-          class="flex items-center space-x-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg text-sm transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+          class="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg text-sm transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500 whitespace-nowrap shrink-0"
         >
-          <svg class="w-4 h-4 text-slate-500" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-slate-500 shrink-0" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
-          <span class="hidden sm:inline">Search calculators...</span>
-          <kbd class="hidden sm:inline-block bg-white text-slate-500 px-1.5 py-0.5 rounded text-[11px] font-mono border border-slate-300">Ctrl K</kbd>
+          <span class="hidden sm:inline whitespace-nowrap">Search...</span>
+          <kbd class="hidden sm:inline-block bg-white text-slate-500 px-1.5 py-0.5 rounded text-[11px] font-mono border border-slate-300 whitespace-nowrap">Ctrl K</kbd>
         </button>
 
         <!-- Mobile Menu Button -->
         <button
           type="button"
           id="mobile-nav-toggle"
-          class="lg:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-hidden focus:ring-2 focus:ring-emerald-500"
+          class="lg:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shrink-0"
           aria-label="Open mobile menu"
           aria-expanded="false"
         >
@@ -121,19 +190,51 @@ const navItems = rawNavItems.map(item => ({
 
   <!-- Mobile Drawer Menu -->
   <div id="mobile-nav-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1">
-    {navItems.map(item => (
-      <a
-        href={item.href}
-        class="block px-3 py-2 rounded-md text-base font-medium text-slate-800 hover:text-emerald-700 hover:bg-emerald-50"
-      >
-        {item.name}
+    <a
+      href={allCalculatorsPath}
+      class={`block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap ${
+        isAllCalcActive ? 'text-emerald-700 bg-emerald-50 font-semibold' : 'text-slate-800 hover:text-emerald-700 hover:bg-emerald-50'
+      }`}
+    >
+      All Calculators (120)
+    </a>
+
+    <div class="pt-2 pb-1">
+      <div class="px-3 text-xs font-mono uppercase tracking-wider font-semibold text-slate-400">
+        Category Hubs
+      </div>
+      <div class="mt-1 space-y-0.5">
+        {categoryItems.map(item => (
+          <a
+            href={item.href}
+            class={`flex items-center justify-between px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap ${
+              currentPath === item.href ? 'text-emerald-700 bg-emerald-50 font-semibold' : 'text-slate-700 hover:text-emerald-700 hover:bg-slate-50'
+            }`}
+          >
+            <span>{item.name}</span>
+            <span class="text-xs font-mono text-slate-400">{item.badge}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <a
+      href={methodologyPath}
+      class={`block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap ${
+        isMethodologyActive ? 'text-emerald-700 bg-emerald-50 font-semibold' : 'text-slate-800 hover:text-emerald-700 hover:bg-emerald-50'
+      }`}
+    >
+      Methodology & Audit
+    </a>
+
+    <div class="pt-2 border-t border-slate-100 mt-2 space-y-1">
+      <a href={getPath('/about/')} class="block px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-emerald-600 whitespace-nowrap">
+        About CreatorCalcLab
       </a>
-    ))}
-    <div class="pt-2 border-t border-slate-100 mt-2">
-      <a href={getPath('/contact/')} class="block px-3 py-2 text-sm font-medium text-slate-600 hover:text-emerald-600">
+      <a href={getPath('/contact/')} class="block px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-emerald-600 whitespace-nowrap">
         Contact Compliance & Audit Desk
       </a>
-      <a href={getPath('/privacy-policy/')} class="block px-3 py-2 text-sm font-medium text-slate-600 hover:text-emerald-600">
+      <a href={getPath('/privacy-policy/')} class="block px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-emerald-600 whitespace-nowrap">
         Privacy & Data Security Policy
       </a>
     </div>
@@ -141,6 +242,7 @@ const navItems = rawNavItems.map(item => ({
 </header>
 
 <script>
+  // Mobile drawer toggle
   const mobileToggle = document.getElementById('mobile-nav-toggle');
   const mobileMenu = document.getElementById('mobile-nav-menu');
   if (mobileToggle && mobileMenu) {
@@ -155,4 +257,51 @@ const navItems = rawNavItems.map(item => ({
       }
     });
   }
+
+  // Categories Dropdown click toggle (touch & keyboard accessibility)
+  const catBtn = document.getElementById('categories-dropdown-btn');
+  const catMenu = document.getElementById('categories-dropdown-menu');
+  if (catBtn && catMenu) {
+    catBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = catBtn.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        catBtn.setAttribute('aria-expanded', 'false');
+        catMenu.classList.remove('is-open');
+      } else {
+        catBtn.setAttribute('aria-expanded', 'true');
+        catMenu.classList.add('is-open');
+      }
+    });
+
+    // Close dropdown on click outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node;
+      if (!catMenu.contains(target) && !catBtn.contains(target)) {
+        catBtn.setAttribute('aria-expanded', 'false');
+        catMenu.classList.remove('is-open');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && catMenu.classList.contains('is-open')) {
+        catBtn.setAttribute('aria-expanded', 'false');
+        catMenu.classList.remove('is-open');
+        catBtn.focus();
+      }
+    });
+  }
 </script>
+
+<style>
+  /* Ensure hover or is-open opens the popover cleanly */
+  .relative.group:hover .categories-dropdown-popover,
+  .categories-dropdown-popover.is-open {
+    display: block !important;
+  }
+  .relative.group:hover .dropdown-arrow,
+  .categories-dropdown-popover.is-open ~ #categories-dropdown-btn .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+</style>

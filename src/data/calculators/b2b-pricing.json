@@ -335,7 +335,9 @@
     "relatedSlugs": [
       "paypal-fee-calculator",
       "stripe-vs-paypal-fee-calculator",
-      "freelance-hourly-rate-calculator"
+      "freelance-hourly-rate-calculator",
+      "stripe-reverse-fee-calculator",
+      "stripe-international-fx-fee-calculator"
     ]
   },
   {
@@ -673,7 +675,9 @@
     "relatedSlugs": [
       "stripe-fee-calculator",
       "paypal-fee-calculator",
-      "freelance-hourly-rate-calculator"
+      "freelance-hourly-rate-calculator",
+      "stripe-reverse-fee-calculator",
+      "stripe-international-fx-fee-calculator"
     ]
   },
   {
@@ -4129,6 +4133,352 @@
         "paymentGatewayFee": 3,
         "unbilledRevisionContingency": 25
       }
+    }
+  },
+  {
+    "slug": "stripe-reverse-fee-calculator",
+    "title": "Stripe Reverse Fee Calculator: Pass 2.9% + 30¢ Processing Fees to Client",
+    "metaTitle": "Stripe Reverse Fee Calculator 2026 | Gross-Up Invoice Math",
+    "metaDescription": "Calculate exact invoice totals needed to cover Stripe 2.9% + 30¢ processing fees. Pass merchant surcharges to clients and preserve net payout amounts now.",
+    "category": "b2b-pricing",
+    "engineType": "markup-margin",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "Stripe US Merchant Processing Terms & Surcharge Compliance Standards (2026)",
+    "officialSourceUrl": "https://stripe.com/pricing",
+    "defaultInputs": {
+      "baseCost": 2500,
+      "targetMarkup": 2.99,
+      "targetMargin": 2.9,
+      "overheadTaxRate": 0,
+      "gatewayPlatformCut": 2.9,
+      "discountPromoRate": 0
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "targetNetPayout": 2500,
+        "basePercentage": 2.9,
+        "fixedFee": 0.3,
+        "grossInvoiceAmount": 2575,
+        "effectiveFeeAmount": 75
+      }
+    },
+    "relatedSlugs": [
+      "stripe-fee-calculator",
+      "stripe-international-fx-fee-calculator",
+      "stripe-vs-paypal-fee-calculator",
+      "freelance-hourly-rate-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "When independent contractors, digital agencies, and B2B SaaS operators bill corporate clients through Stripe Invoicing, processing fees are deducted directly from the gross transaction amount before funds settle into the merchant bank account. If an agency issues an invoice for $5,000.00, Stripe standard domestic card processing (2.9% + $0.30) deducts exactly $145.30, depositing only $4,854.70. Many professionals mistakenly attempt to offset this loss by simply adding 2.9% to their invoice. However, because Stripe assesses its percentage fee against the newly inflated total, the merchant still suffers an unexpected cash deficit. To receive an exact target payout, merchants must use a mathematical gross-up formula—commonly known as reverse fee calculation. This model computes the precise invoice amount required so that after Stripe deducts its percentage and fixed transaction cut, the remaining balance matches your intended revenue dollar-for-dollar across corporate accounting books and tax reports. Applying reverse fee calculations safeguards gross margins, prevents balance sheet fee drag, and ensures predictable operational budgeting across quarterly corporate accounting cycles.",
+      "formulaBreakdown": {
+        "formulaString": "Gross Invoice Total = (Desired Net Cash Payout + Fixed Processing Fee) / (1 - (Variable Rate % / 100))",
+        "variables": [
+          {
+            "symbol": "Desired Net Cash Payout",
+            "meaning": "The exact net dollar balance you require deposited into your bank account after all processing deductions."
+          },
+          {
+            "symbol": "Variable Rate %",
+            "meaning": "Stripe processing percentage: 2.9% for domestic cards, 4.4% for international cross-border transactions, or custom negotiated interchange."
+          },
+          {
+            "symbol": "Fixed Processing Fee",
+            "meaning": "The mandatory per-transaction fixed charge: $0.30 for standard US transactions or €0.25 / £0.20 in international jurisdictions."
+          },
+          {
+            "symbol": "Gross Invoice Total",
+            "meaning": "The total billable invoice figure presented to the client on the Stripe checkout or invoice payment portal."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Grossing Up a $3,500 Creative Retainer to Net Exactly $3,500.00",
+        "narrative": "A design agency contracts with a corporate client for a $3,500.00 monthly website development retainer. The master service agreement stipulates that if the client chooses credit card payment over ACH bank transfer, the client absorbs the processing fees. The agency owner needs to calculate the exact invoice total to issue on Stripe so that the deposit balance registers exactly $3,500.00 without any unexpected corporate fee deductions across quarterly financial periods.",
+        "stepByStepMath": [
+          "Identify parameters: Desired Net = $3,500.00, Percentage = 2.9% (0.029), Fixed Fee = $0.30.",
+          "Demonstrate the common addition error: $3,500 × 1.029 = $3,601.50. Stripe deducts 2.9% of $3,601.50 ($104.44) + $0.30 = $104.74. Actual payout = $3,496.76 (Agency loses $3.24).",
+          "Apply the correct reverse fee formula: Gross = ($3,500.00 + $0.30) / (1 - 0.029).",
+          "Calculate numerator: $3,500.00 + $0.30 = $3,500.30.",
+          "Calculate denominator: 1 - 0.029 = 0.971.",
+          "Divide numerator by denominator: $3,500.30 / 0.971 = $3,604.84.",
+          "Verify Stripe deduction on $3,604.84: ($3,604.84 × 0.029) + $0.30 = $104.54 + $0.30 = $104.84 fee. Net payout: $3,604.84 - $104.84 = $3,500.00 exact.",
+          "Evaluate annual impact across 12 monthly retainers: Correct gross-up preserves $42,000.00 in full contracted cash receipts rather than absorbing $1,256.88 in cumulative fee drag."
+        ],
+        "finalTakeaway": "Invoicing the client for $3,604.84 ensures that Stripe processing deductions exactly match the $104.84 surcharge, leaving the required $3,500.00 deposit intact in the agency bank account. Over an entire operating year, deploying rigorous mathematical gross-ups preserves thousands of dollars in contracted enterprise revenue that would otherwise be permanently lost to merchant payment gateway friction."
+      },
+      "benchmarkTable": {
+        "title": "Stripe Reverse Fee Gross-Up Schedules Across Common B2B Transaction Values (2026)",
+        "headers": [
+          "Target Net Payout",
+          "Naive Math (+2.9%)",
+          "Correct Gross-Up Amount",
+          "Stripe Deductions",
+          "Net Payout Variance"
+        ],
+        "rows": [
+          [
+            "$500.00 Net Payout",
+            "$514.50 (Short $0.72)",
+            "$515.24 Gross Invoice",
+            "$15.24 Stripe Cut",
+            "$500.00 Exact Payout"
+          ],
+          [
+            "$1,000.00 Net Payout",
+            "$1,029.00 (Short $1.14)",
+            "$1,030.18 Gross Invoice",
+            "$30.18 Stripe Cut",
+            "$1,000.00 Exact Payout"
+          ],
+          [
+            "$2,500.00 Net Payout",
+            "$2,572.50 (Short $2.40)",
+            "$2,575.00 Gross Invoice",
+            "$75.00 Stripe Cut",
+            "$2,500.00 Exact Payout"
+          ],
+          [
+            "$5,000.00 Net Payout",
+            "$5,145.00 (Short $4.51)",
+            "$5,149.64 Gross Invoice",
+            "$149.64 Stripe Cut",
+            "$5,000.00 Exact Payout"
+          ],
+          [
+            "$10,000.00 Net Payout",
+            "$10,290.00 (Short $8.72)",
+            "$10,299.00 Gross Invoice",
+            "$299.00 Stripe Cut",
+            "$10,000.00 Exact Payout"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Offer ACH Direct Debit as a Zero-Fee Incentive for B2B Retainers",
+          "actionableAdvice": "Stripe ACH Direct Debit charges only 0.8% capped at a maximum of $5.00 per transaction. On a $5,000 invoice, credit card processing costs $149.64, whereas ACH debit costs exactly $5.00. Offering clients ACH payment saves substantial capital while eliminating card surcharges, providing an attractive incentive for commercial enterprise accounts to switch payment methods."
+        },
+        {
+          "title": "Review Jurisdiction-Specific Credit Card Surcharging Regulations",
+          "actionableAdvice": "Before adding automatic card surcharges to invoices, verify state and regional regulations. Certain states (such as Connecticut and Massachusetts) and international territories place strict legal restrictions or disclosure requirements on merchant credit card surcharging."
+        },
+        {
+          "title": "Automate Gross-Up Line Items in Stripe Invoicing Workflows",
+          "actionableAdvice": "Instead of manually calculating invoice totals, configure Stripe Invoicing products or billing webhooks to apply the reverse formula automatically whenever a client toggles credit card payment instead of bank wire transfers."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does adding 2.9% to an invoice still leave the merchant short on net payout?",
+          "answer": "Adding 2.9% increases the invoice based solely on the starting balance. However, Stripe applies its 2.9% fee against the entire new, higher payment total (including the additional surcharge dollars you just added), plus the fixed $0.30 fee. This mathematical compounding effect results in an inevitable cash deficit unless calculated using the reciprocal division gross-up formula across all invoice calculations."
+        },
+        {
+          "question": "Is it legally compliant to surcharge clients for credit card processing fees?",
+          "answer": "Credit card surcharging is legal across most US states and commercial B2B contracts, provided the surcharge does not exceed your actual cost of acceptance (capped at 4% under card brand rules) and is clearly disclosed before payment. However, consumer transactions in specific states face regulatory limitations, making cash-discount programs a safer legal alternative for enterprise merchant billing workflows."
+        },
+        {
+          "question": "How do international cards change the Stripe reverse fee formula calculation?",
+          "answer": "International non-US cards incur an additional 1.5% cross-border fee, raising the variable rate from 2.9% to 4.4%. If currency conversion is also required, another 1.0% FX fee applies, lifting the total variable rate to 5.4%. The gross-up denominator must be adjusted accordingly: 1 - 0.044 (0.956) or 1 - 0.054 (0.946) to ensure exact net reconciliation across foreign client disbursements."
+        },
+        {
+          "question": "What happens to processing fees if an invoice with a reverse fee surcharge is refunded?",
+          "answer": "Under standard 2026 Stripe merchant policies, original payment processing fees are never returned when a charge is refunded to a customer. If you issue a full refund to a client who paid a grossed-up invoice, Stripe retains the original fee cut, leaving the merchant responsible for absorbing that transaction cost from operational reserves and working capital accounts."
+        },
+        {
+          "question": "Can Stripe Invoicing handle automatic fee pass-through natively?",
+          "answer": "Stripe does not provide an automated out-of-the-box toggle called \"pass fees to client.\" Instead, merchants add a dedicated invoice line item titled \"Credit Card Processing Convenience Surcharge\" or connect specialized billing integrations that calculate and inject the exact gross-up balance prior to finalizing the invoice for client payment, ensuring full compliance with card brand disclosure guidelines."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stripe-international-fx-fee-calculator",
+    "title": "Stripe International Card, Currency Conversion (FX) & Billing Fee Calculator",
+    "metaTitle": "Stripe International Card & FX Fee Calculator 2026 Rates",
+    "metaDescription": "Model Stripe cross-border card fees, 1.5% international issuance, 1% FX conversions, and 0.7% billing tools. Audit net global merchant revenue payouts now.",
+    "category": "b2b-pricing",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "Stripe Official Global Merchant Pricing & Cross-Border Fee Schedules (2026)",
+    "officialSourceUrl": "https://stripe.com/pricing",
+    "defaultInputs": {
+      "sellingPrice": 480,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 45,
+      "planTier": "intl-fx-billing",
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 0,
+      "returnsRate": 1.2,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "domestic-base": {
+          "name": "Domestic US Cards (2.9% + $0.30)",
+          "monthlyFee": 0,
+          "percentageRate": 2.9,
+          "fixedFee": 0.3,
+          "additionalNotes": "Standard domestic processing for US-issued consumer payment cards."
+        },
+        "intl-cross-border": {
+          "name": "International Non-US Cards (4.4% + $0.30)",
+          "monthlyFee": 0,
+          "percentageRate": 4.4,
+          "fixedFee": 0.3,
+          "additionalNotes": "Adds mandatory 1.5% international payment method fee for cross-border card issuers."
+        },
+        "intl-fx-billing": {
+          "name": "Cross-Border + 1% Currency FX + 0.7% Stripe Billing (6.1% + $0.30)",
+          "monthlyFee": 0,
+          "percentageRate": 6.1,
+          "fixedFee": 0.3,
+          "additionalNotes": "Stacks 2.9% base + 1.5% international card + 1.0% multi-currency conversion + 0.7% recurring billing automation."
+        }
+      },
+      "extraParameters": {
+        "baseDomesticPct": 2.9,
+        "baseFixed": 0.3,
+        "intlCrossBorderSurchargePct": 1.5,
+        "fxConversionSurchargePct": 1,
+        "stripeBillingAddonPct": 0.7,
+        "disputeFeeUsd": 15
+      }
+    },
+    "relatedSlugs": [
+      "stripe-fee-calculator",
+      "stripe-reverse-fee-calculator",
+      "stripe-vs-paypal-fee-calculator",
+      "wise-international-transfer-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Operating a global digital business requires accepting payments from customers located across diverse international banking jurisdictions. While Stripe allows merchants to charge foreign credit cards in over 135 currencies, cross-border payment processing triggers a complex cascade of layered interchange markups, cross-border card fees, currency exchange conversions, and optional billing automation charges. Understanding how Stripe calculates cross-border deductions is critical for SaaS founders, international e-commerce sellers, and multinational service agencies. When an overseas customer pays with a card issued outside your domestic home country, Stripe levies an additional 1.50% international payment fee. If that transaction requires foreign exchange currency conversion into your settlement payout currency, Stripe tacks on an additional 1.00% FX conversion charge, compounding your total merchant processing cost from 2.9% + $0.30 up to 5.40% + $0.30 plus billing add-ons. Without granular modeling of cross-border payment fees, global merchants face severe revenue leakage that degrades gross software margins and net corporate operating income across foreign customer cohorts, international billing profiles, and multi-currency merchant accounts.",
+      "formulaBreakdown": {
+        "formulaString": "Total Stripe International Fee = (Transaction Amount × (Base% + Cross-Border% + FX% + Billing%)) + Fixed Fee",
+        "variables": [
+          {
+            "symbol": "Base %",
+            "meaning": "Domestic payment gateway processing rate: standard 2.9% for credit and debit cards in the United States."
+          },
+          {
+            "symbol": "Cross-Border %",
+            "meaning": "Mandatory 1.5% international card issuance fee assessed on cards registered outside your Stripe account country."
+          },
+          {
+            "symbol": "FX %",
+            "meaning": "Currency conversion fee of 1.0% applied when the charge currency differs from your merchant bank account payout currency."
+          },
+          {
+            "symbol": "Billing %",
+            "meaning": "Optional 0.7% fee for merchants utilizing Stripe Billing recurring subscription management and automated dunning."
+          },
+          {
+            "symbol": "Fixed Fee",
+            "meaning": "Standard $0.30 per-transaction charge assessed regardless of card origin or transaction size."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Selling a $450 Annual Software Subscription to a German Corporate Buyer",
+        "narrative": "A United States-based B2B SaaS company charges a €1,000 monthly subscription to an enterprise client in Germany. The European client pays via a corporate Euro Visa card issued by a German bank. The US company settles in USD and utilizes Stripe Billing tools (0.7% fee). The finance director must calculate the exact dollar deductions withheld by Stripe to understand the true realized net revenue landing in the company Silicon Valley Bank operating account across monthly renewal cycles and evaluate global subscription profitability.",
+        "stepByStepMath": [
+          "Identify transaction value: $450.00 USD equivalent.",
+          "Identify base domestic card rate: 2.9% = $13.05.",
+          "Identify international cross-border card surcharge: 1.5% = $6.75.",
+          "Identify foreign currency FX conversion fee (Euros to USD): 1.0% = $4.50.",
+          "Identify Stripe Billing subscription platform fee: 0.7% = $3.15.",
+          "Sum percentage fees: 2.9% + 1.5% + 1.0% + 0.7% = 6.1% total variable cut ($27.45).",
+          "Add fixed transaction fee: $27.45 + $0.30 = $27.75 total Stripe deduction.",
+          "Calculate net payout: $450.00 - $27.75 = $422.25 net deposited funds (Effective fee rate: 6.17%)."
+        ],
+        "finalTakeaway": "On a €1,000 corporate invoice ($1,080.00 USD gross), layered cross-border deductions total $65.42 (an effective rate of 6.06%), leaving $1,014.58 net. Without establishing local European currency accounts or applying localized pricing buffers, global software companies absorb substantial fee leakage across international subscription portfolios and enterprise cross-border cash accounts."
+      },
+      "benchmarkTable": {
+        "title": "Stripe Fee Stacking Schedules Across Domestic and International Card Scenarios (2026)",
+        "headers": [
+          "Transaction Scenario",
+          "Base Rate",
+          "Cross-Border & FX Add-Ons",
+          "Effective Fee Rate on $500",
+          "Net Merchant Payout"
+        ],
+        "rows": [
+          [
+            "Domestic US Card (USD to USD)",
+            "2.9% + $0.30",
+            "None (0.0%)",
+            "2.96% ($14.80 fee)",
+            "$485.20 Net Payout"
+          ],
+          [
+            "International Card (No Currency Conversion)",
+            "2.9% + $0.30",
+            "+1.5% Cross-Border Card",
+            "4.46% ($22.30 fee)",
+            "$477.70 Net Payout"
+          ],
+          [
+            "International Card + Currency Conversion (FX)",
+            "2.9% + $0.30",
+            "+1.5% Intl + 1.0% FX",
+            "5.46% ($27.30 fee)",
+            "$472.70 Net Payout"
+          ],
+          [
+            "Full Stack: Intl + FX + Stripe Billing",
+            "2.9% + $0.30",
+            "+1.5% Intl + 1.0% FX + 0.7% Billing",
+            "6.16% ($30.80 fee)",
+            "$469.20 Net Payout"
+          ],
+          [
+            "European SEPA Direct Debit Alternative",
+            "0.8% + €0.25",
+            "None (Capped at €5.00)",
+            "1.05% ($5.27 fee)",
+            "$494.73 Net Payout"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Establish Foreign Multi-Currency Settlement Accounts with Stripe",
+          "actionableAdvice": "Eliminate Stripe 1.00% currency conversion fee by connecting localized bank accounts in major customer regions (EUR via SEPA, GBP via Faster Payments, CAD via EFT). Stripe will settle payments in the local collected currency with zero FX fee, allowing merchants to convert balances via mid-market fintech providers and save thousands in annual currency drag."
+        },
+        {
+          "title": "Activate Local Payment Methods (SEPA, iDEAL, Bancontact, Giropay)",
+          "actionableAdvice": "European shoppers often prefer direct bank payment rails over credit cards. Activating SEPA Direct Debit, Dutch iDEAL, or Belgian Bancontact on Stripe reduces transaction fees from 6.1% down to 0.8%–1.4%, dramatically lowering cross-border payment overhead."
+        },
+        {
+          "title": "Price Cross-Border Products in Native Currencies with an Embedded FX Buffer",
+          "actionableAdvice": "When offering localized currency pricing, do not use raw mid-market exchange rates. Build a 2.5% currency stabilization buffer into foreign retail prices to absorb international interchange, currency volatility, and cross-border processing drag."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does Stripe charge 1.5% for international credit card payments?",
+          "answer": "Stripe charges a 1.5% international payment fee to cover elevated interchange rates and cross-border settlement costs imposed by global card networks like Visa and Mastercard. International transactions carry higher clearing overhead, greater fraud exposure, and complex multi-jurisdictional compliance protocols that acquiring payment processors must legally manage across foreign banking corridors, increasing payment network operational expenses."
+        },
+        {
+          "question": "Can a merchant avoid Stripe currency conversion fees by charging in USD globally?",
+          "answer": "Yes. If a merchant charges international customers in USD and settles in USD, Stripe waives the 1.0% currency conversion fee entirely. However, the foreign customer issuing bank will then charge the buyer their own foreign transaction fee (typically 1% to 3%), which often reduces international checkout conversion rates on consumer storefronts and digital subscription checkouts."
+        },
+        {
+          "question": "What is the fee for an international chargeback or disputed transaction on Stripe?",
+          "answer": "Stripe assesses a standard dispute fee of $15.00 per disputed charge for US accounts. For cross-border transactions, resolving disputes involves international arbitration rules that make evidence submission more rigorous. If a dispute is won, Stripe refunds the $15.00 dispute fee, but currency exchange differences and original interchange fees incurred during the dispute process are never refunded to the merchant."
+        },
+        {
+          "question": "Does Stripe Billing 0.7% fee apply to one-time payments or only recurring subscriptions?",
+          "answer": "The 0.7% Stripe Billing fee applies strictly to recurring subscription transactions, customer tier changes, and automated invoices generated through Stripe Billing infrastructure. One-time e-commerce payments processed through Stripe standard checkout or direct PaymentIntents API endpoints do not incur this 0.7% charge, helping merchants maintain lower payment processing overhead on standard one-off retail catalog purchases and digital downloads."
+        },
+        {
+          "question": "How do Wise and OFX international payout rails compare to Stripe native payouts?",
+          "answer": "Stripe native cross-border payouts levy a 1.0% currency conversion fee plus potential wire surcharges. Specialized fintech services like Wise Business or OFX provide local virtual account details (IBANs, routing numbers) that receive native currencies, allowing merchants to convert foreign funds at wholesale mid-market exchange rates with fees between 0.35% and 0.5%, significantly improving corporate international cash margins."
+        }
+      ]
     }
   }
 ]

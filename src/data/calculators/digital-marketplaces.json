@@ -527,7 +527,9 @@
     "relatedSlugs": [
       "patreon-vs-substack-calculator",
       "substack-revenue-calculator",
-      "gumroad-fee-calculator"
+      "gumroad-fee-calculator",
+      "patreon-apple-ios-fee-calculator",
+      "patreon-tier-pricing-payout-calculator"
     ]
   },
   {
@@ -4354,6 +4356,373 @@
         "paymentProcessingRate": 0,
         "fixedPerOrder": 0
       }
+    }
+  },
+  {
+    "slug": "patreon-apple-ios-fee-calculator",
+    "title": "Patreon Apple iOS 30% App Store Fee vs. Web Checkout Payout Calculator",
+    "metaTitle": "Patreon Apple iOS Fee Calculator 2026 | 30% App Cut Math",
+    "metaDescription": "Compare creator payouts between 30% Apple iOS App Store fees and 8% web checkout subscriptions. Calculate exact pricing markups to protect net income now.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "Patreon Official iOS In-App Purchase Fee Integration Policy (2026)",
+    "officialSourceUrl": "https://support.patreon.com/hc/en-us/articles/27918349141005-iOS-In-App-Purchases",
+    "defaultInputs": {
+      "productPrice": 15,
+      "monthlyUnits": 420,
+      "refundRate": 1.5,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Direct Web Checkout (8% + 2.9% + 30¢)",
+        "platformAFeePct": 10.9,
+        "platformAFixed": 0.3,
+        "platformAGatewayPct": 0,
+        "platformAGatewayFixed": 0,
+        "platformBName": "Apple iOS In-App (30% Apple + 8% Patreon)",
+        "platformBFeePct": 35.6,
+        "platformBFixed": 0,
+        "platformBGatewayPct": 0,
+        "platformBGatewayFixed": 0,
+        "iosPriceMarkupMultiplier": 1.43
+      }
+    },
+    "relatedSlugs": [
+      "patreon-fee-calculator",
+      "patreon-tier-pricing-payout-calculator",
+      "patreon-vs-kofi-calculator",
+      "apple-app-store-vs-google-play-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "In late 2024 and continuing through 2026, Apple mandated that Patreon process all new memberships and digital commerce transactions initiated within the Patreon iOS app through Apple In-App Purchase (IAP) system. Under Apple App Store Guidelines, digital goods, creator subscriptions, and exclusive fan access sold inside iOS applications incur Apple standard 30% digital goods platform commission. This 30% Apple fee is deducted directly from the gross patron pledge before Patreon deducts its own platform fee (8% for Pro, 12% for Premium) and standard payment processing surcharges. For creators charging $10.00 per month, an iOS subscriber yields barely $5.80 in net creator take-home pay, compared to over $8.90 for subscribers joining through web checkout. To protect creator livelihood, Patreon enables optional iOS pricing adjustments, allowing creators to automatically mark up tier prices on Apple devices so that mobile subscribers absorb Apple commission directly without reducing creator net take-home earnings across their digital patronage community.",
+      "formulaBreakdown": {
+        "formulaString": "iOS Price Markup = Desired Web Tier Price / (1 - (Apple Commission Rate + Local Tax Withholding))",
+        "variables": [
+          {
+            "symbol": "Web Tier Price",
+            "meaning": "Standard baseline monthly membership price set by the creator on web browsers and desktop platforms."
+          },
+          {
+            "symbol": "Apple Commission (30%)",
+            "meaning": "Apple mandatory 30.0% App Store fee deducted from in-app digital subscriptions."
+          },
+          {
+            "symbol": "Patreon Cut (8% or 12%)",
+            "meaning": "Patreon platform cut assessed on the creator account plan tier."
+          },
+          {
+            "symbol": "Net Creator Payout",
+            "meaning": "Residual funds deposited into the creator account after Apple, Patreon, and payout deductions."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Comparing Creator Take-Home on a $15.00/Month Membership: Web vs. Apple iOS",
+        "narrative": "An independent educational podcast creator operates three membership tiers on Patreon: Bronze ($5.00/mo), Silver ($15.00/mo), and Gold ($50.00/mo) on the Patreon Pro plan (8% fee). With 45% of new monthly supporters joining via iPhones and iPads, the creator is experiencing severe payout dilution. The creator needs to model the financial impact of absorbing Apple 30% fee versus enabling automatic iOS price adjustments across all tiers and calculating exact subscriber pricing differentials.",
+        "stepByStepMath": [
+          "Scenario A: Web Browser Checkout ($15.00 tier):",
+          "  - Patreon Pro platform cut: 8.0% of $15.00 = $1.20.",
+          "  - Standard card payment processing: 2.9% + $0.30 = $0.44 + $0.30 = $0.74.",
+          "  - Total web deductions: $1.20 + $0.74 = $1.94 (12.9% total fee drag).",
+          "  - Creator net payout on Web: $15.00 - $1.94 = $13.06 per patron per month.",
+          "Scenario B: Apple iOS In-App Purchase at Unadjusted $15.00 Price:",
+          "  - Apple App Store cut: 30.0% of $15.00 = $4.50.",
+          "  - Remaining balance: $15.00 - $4.50 = $10.50.",
+          "  - Patreon Pro platform cut (8% on $10.50): $0.84.",
+          "  - Total iOS deductions: $4.50 + $0.84 = $5.34 (35.6% total fee drag).",
+          "  - Creator net payout on iOS: $15.00 - $5.34 = $9.66 per patron per month.",
+          "  - Monthly creator income loss per subscriber: $13.06 - $9.66 = $3.40 (26.0% net loss).",
+          "Scenario C: Implementing Patreon Recommended iOS Price Markup:",
+          "  - To net $13.06, the iOS tier price must increase to approximately $21.50.",
+          "  - On $21.50: Apple takes $6.45 (30%). Residual is $15.05. Patreon takes $1.20 (8%). Net = $13.85."
+        ],
+        "finalTakeaway": "On a $15.00 tier, unadjusted iOS subscribers yield only $8.70 net payout (Apple takes $4.50, Patreon takes $1.20, payment processing takes $0.60), whereas web subscribers yield $13.26. Enabling automatic iOS pricing markup to $21.43 offsets Apple cut completely, preserving the creator full $13.26 net monthly earnings."
+      },
+      "benchmarkTable": {
+        "title": "Patreon Creator Net Payout: Web Checkout vs. Apple iOS In-App Subscriptions (2026)",
+        "headers": [
+          "Membership Tier Price",
+          "Web Checkout Payout (Pro)",
+          "iOS App Payout (No Markup)",
+          "Monthly Net Loss on iOS",
+          "Required iOS Markup Price"
+        ],
+        "rows": [
+          [
+            "$5.00 / Month Tier",
+            "$4.05 Net Payout",
+            "$3.22 Net Payout",
+            "-$0.83 (-20.5%)",
+            "$7.49 iOS Tier Price"
+          ],
+          [
+            "$10.00 / Month Tier",
+            "$8.61 Net Payout",
+            "$6.44 Net Payout",
+            "-$2.17 (-25.2%)",
+            "$14.49 iOS Tier Price"
+          ],
+          [
+            "$15.00 / Month Tier",
+            "$13.06 Net Payout",
+            "$9.66 Net Payout",
+            "-$3.40 (-26.0%)",
+            "$21.49 iOS Tier Price"
+          ],
+          [
+            "$25.00 / Month Tier",
+            "$21.98 Net Payout",
+            "$16.10 Net Payout",
+            "-$5.88 (-26.8%)",
+            "$35.99 iOS Tier Price"
+          ],
+          [
+            "$50.00 / Month Tier",
+            "$44.25 Net Payout",
+            "$32.20 Net Payout",
+            "-$12.05 (-27.2%)",
+            "$71.99 iOS Tier Price"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Enable Patreon Automated iOS In-App Price Adjustment Feature",
+          "actionableAdvice": "Enable Patreon automatic iOS price adjustment feature in your Creator Settings. This automatically recalculates and displays an adjusted price for iOS app users so that after Apple deducts its 30% commission, your net payout per subscriber matches web tier earnings exactly."
+        },
+        {
+          "title": "Direct Audience to Web Links Across Video, Audio & Social Channels",
+          "actionableAdvice": "Never link directly to in-app purchase portals in YouTube descriptions, podcast show notes, or newsletter footers. Use clean web URLs (e.g., yourpatreon.com or your custom domain redirect) encouraging supporters to register on desktop or mobile web browsers."
+        },
+        {
+          "title": "Clearly Communicate Price Disparities to Your Community",
+          "actionableAdvice": "Fans appreciate transparent creator communication. Add a pinned community note: \"Subscribing via desktop web ensures 90% of your pledge supports our production, whereas Apple extracts 30% on iPhone in-app subscriptions.\""
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does Apple take a 30% fee on Patreon memberships started inside the iOS app?",
+          "answer": "Apple App Store Review Guidelines mandate that all digital goods, digital memberships, and digital content sold within iOS applications must process through Apple In-App Purchase (IAP) system. Apple levies a standard 30% commission on these digital transactions, refusing to allow third-party payment gateways or external checkout links inside native iOS mobile applications under standard developer agreements."
+        },
+        {
+          "question": "Does Apple 30% fee apply to existing patrons who subscribed before the iOS rule change?",
+          "answer": "No. Existing patron subscriptions initiated on web browsers, Android devices, or prior to the iOS policy enforcement date continue to renew under standard web payment processing rates. The 30% Apple fee applies exclusively to new subscriptions or tier upgrades initiated inside the iOS app after the policy enforcement date without affecting grandfathered patrons on existing monthly pledges."
+        },
+        {
+          "question": "Does Google Play charge a similar 30% fee on Patreon Android app subscriptions?",
+          "answer": "Patreon Android application currently routes memberships through web checkout or benefits from Google Play Media Experience program rules, avoiding standard 30% fees. As of 2026, the punitive 30% in-app fee structure remains unique to Apple iOS ecosystem on mobile devices, making desktop and Android registration far more creator-friendly for independent artists and podcasters."
+        },
+        {
+          "question": "Can creators manually disable their tiers from being visible on the Patreon iOS app?",
+          "answer": "No. Patreon agreement with Apple requires that if a tier is active on the creator profile, it must be purchasable within the iOS app. However, creators can apply the iOS price markup feature so that mobile subscribers absorb the 30% App Store surcharge directly without reducing creator net take-home income across their active tier roster."
+        },
+        {
+          "question": "How does Apple handle sales tax on in-app Patreon subscriptions?",
+          "answer": "Apple acts as the merchant of record for in-app transactions, calculating, collecting, and remitting local sales tax, VAT, or GST based on the subscriber Apple ID billing country. The 30% commission is deducted before net funds are transferred to Patreon for creator disbursement and final tax reporting on creator dashboards and annual tax statements."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "patreon-tier-pricing-payout-calculator",
+    "title": "Patreon Pro (8%) vs. Premium (12%) Tier Pricing & Payout Fee Calculator",
+    "metaTitle": "Patreon Tier Pricing & Payout Calculator 2026 | Pro vs Pre",
+    "metaDescription": "Calculate creator net take-home pay comparing Patreon Pro (8%) and Premium (12%) tiers. Model micropayment processing and payout bank transfers today.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "Patreon Official Creator Pricing Plans & Payout Transfer Fee Schedules (2026)",
+    "officialSourceUrl": "https://support.patreon.com/hc/en-us/articles/360027878831",
+    "defaultInputs": {
+      "sellingPrice": 25,
+      "cogs": 2.5,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 350,
+      "planTier": "patreon-pro-plan",
+      "appFeesMonthly": 30,
+      "marketingPerOrder": 0,
+      "returnsRate": 1.8,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "patreon-pro-plan": {
+          "name": "Patreon Pro Membership (8% Platform Cut + 2.9% + $0.30)",
+          "monthlyFee": 0,
+          "percentageRate": 10.9,
+          "fixedFee": 0.3,
+          "additionalNotes": "Core Pro tier featuring unlimited membership levels, patron analytics, Discord integration, and special promotional offers."
+        },
+        "patreon-premium-plan": {
+          "name": "Patreon Premium Membership (12% Platform Cut + Dedicated Rep)",
+          "monthlyFee": 0,
+          "percentageRate": 14.9,
+          "fixedFee": 0.3,
+          "additionalNotes": "Enterprise creator tier providing automated merchandise fulfillment, team member sub-accounts, and personal partner manager."
+        },
+        "patreon-micro-community": {
+          "name": "Community Micro-Pledges ($2 Tier: 8% Platform + 5% + $0.10 Processing)",
+          "monthlyFee": 0,
+          "percentageRate": 13,
+          "fixedFee": 0.1,
+          "additionalNotes": "Specialized micropayment transaction schedule optimizing fee drag on pledges strictly below $3.00 per billing cycle."
+        }
+      },
+      "extraParameters": {
+        "proPlatformCutPct": 8,
+        "premiumPlatformCutPct": 12,
+        "standardCardPct": 2.9,
+        "standardCardFixed": 0.3,
+        "microCardPct": 5,
+        "microCardFixed": 0.1,
+        "payoutAchDirectDepositFixed": 0.25,
+        "patronDeclineRatePct": 3.5
+      }
+    },
+    "relatedSlugs": [
+      "patreon-fee-calculator",
+      "patreon-apple-ios-fee-calculator",
+      "patreon-vs-substack-calculator",
+      "substack-revenue-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Monetizing an audience through Patreon requires finding the mathematical equilibrium between tier pricing attractiveness and operating platform friction. While creator subscription models provide predictable recurring monthly revenue, gross pledge totals do not equal net creator bank deposits. Between Patreon platform fees (8% for Pro vs. 12% for Premium), merchant payment processing fees (standard 2.9% + $0.30 or 5.0% + $0.10 for micropledges), currency foreign exchange markups, declined pledge churn (typically 2% to 5% monthly), and withdrawal transfer fees, creators frequently lose 15% to 25% of top-line revenue before personal income taxes. Modeling tier pricing structures across diverse pledge amounts ensures creator sustainable profitability and covers content production costs, team payroll, studio overhead, and merchandise fulfillment expenses across quarterly budget cycles and multi-tier membership architectures. Conducting rigorous scenario analysis protects creators against margin compression while maintaining high community satisfaction across diverse supporter tiers.",
+      "formulaBreakdown": {
+        "formulaString": "Net Take-Home = Gross Pledges - (Gross Pledges × Platform%) - Total Card Processing - Monthly Payout Transfer Fees",
+        "variables": [
+          {
+            "symbol": "Gross Pledges",
+            "meaning": "Total monthly membership revenue generated across all patron subscription tiers."
+          },
+          {
+            "symbol": "Platform Cut (8% / 12%)",
+            "meaning": "Patreon platform commission: 8% on Pro plan tier or 12% on Premium plan tier."
+          },
+          {
+            "symbol": "Standard Processing",
+            "meaning": "Card transaction fee of 2.9% + $0.30 assessed on individual pledges exceeding $3.00."
+          },
+          {
+            "symbol": "Micropayment Processing",
+            "meaning": "Optimized transaction rate of 5.0% + $0.10 assessed on micro-pledges of $3.00 or less."
+          },
+          {
+            "symbol": "Payout Transfer Fee",
+            "meaning": "Disbursement fee: $0.25 per direct deposit ACH withdrawal or 1.0% for PayPal payouts."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Modeling Net Take-Home on $10,000/Month Across Pro vs. Premium Plans",
+        "narrative": "A multimedia digital art studio operates on Patreon with 850 active patrons generating $8,200.00 in monthly gross pledges. The studio uses Patreon Pro (8% platform fee). Tiers include a $2.00 Tip Jar (150 patrons), a $10.00 Early Access tier (500 patrons), and a $35.00 Masterclass tier (80 patrons). The lead creator wants to calculate total payment processing deductions, evaluate micropayment savings on the $2 tier, and project net bank deposits after ACH withdrawal fees across monthly distribution schedules.",
+        "stepByStepMath": [
+          "Calculate gross monthly volume: 800 patrons × $12.50 = $10,000.00 gross revenue.",
+          "Calculate card payment processing fees across 800 orders:",
+          "  - Percentage cut: 2.9% of $10,000.00 = $290.00.",
+          "  - Fixed transaction fees: 800 transactions × $0.30 = $240.00.",
+          "  - Total payment processing = $290.00 + $240.00 = $530.00.",
+          "Option A: Patreon Pro Plan (8.0% platform cut):",
+          "  - Platform fee: 8.0% of $10,000.00 = $800.00.",
+          "  - ACH Payout fee: $0.25.",
+          "  - Total Pro deductions: $800.00 + $530.00 + $0.25 = $1,330.25 (13.3% total fee drag).",
+          "  - Net Creator Take-Home (Pro): $10,000.00 - $1,330.25 = $8,669.75.",
+          "Option B: Patreon Premium Plan (12.0% platform cut):",
+          "  - Platform fee: 12.0% of $10,000.00 = $1,200.00.",
+          "  - ACH Payout fee: $0.25.",
+          "  - Total Premium deductions: $1,200.00 + $530.00 + $0.25 = $1,730.25 (17.3% total fee drag).",
+          "  - Net Creator Take-Home (Premium): $10,000.00 - $1,730.25 = $8,269.75.",
+          "Compare difference: Upgrading to Premium costs the creator $400.00/month ($4,800.00/year) in additional platform fees."
+        ],
+        "finalTakeaway": "On $8,200.00 in monthly gross pledges, platform deductions include $656.00 in Patreon Pro fees (8%), $461.50 in blended payment processing fees, and an estimated $246.00 in credit card decline churn (3%), leaving $6,836.50 before a $0.25 ACH payout fee. Effective total take-rate is 16.63%, delivering $6,836.25 in net monthly operating capital."
+      },
+      "benchmarkTable": {
+        "title": "Patreon Fee Breakdown & Net Take-Home Across Common Tier Price Points (2026)",
+        "headers": [
+          "Tier Price Point",
+          "Processing Type",
+          "Payment Processing Cut",
+          "Patreon Pro (8%) Cut",
+          "Net Take-Home per Patron"
+        ],
+        "rows": [
+          [
+            "$2.00 Community Micro-Tier",
+            "Micropayment (5% + $0.10)",
+            "$0.20 (10.0%)",
+            "$0.16 (8.0%)",
+            "$1.64 Net (82.0% Efficiency)"
+          ],
+          [
+            "$5.00 Standard Support Tier",
+            "Standard (2.9% + $0.30)",
+            "$0.45 (8.9%)",
+            "$0.40 (8.0%)",
+            "$4.15 Net (83.1% Efficiency)"
+          ],
+          [
+            "$10.00 Core Community Tier",
+            "Standard (2.9% + $0.30)",
+            "$0.59 (5.9%)",
+            "$0.80 (8.0%)",
+            "$8.61 Net (86.1% Efficiency)"
+          ],
+          [
+            "$25.00 VIP / Mastermind Tier",
+            "Standard (2.9% + $0.30)",
+            "$1.03 (4.1%)",
+            "$2.00 (8.0%)",
+            "$21.97 Net (87.9% Efficiency)"
+          ],
+          [
+            "$100.00 Executive / Sponsor Tier",
+            "Standard (2.9% + $0.30)",
+            "$3.20 (3.2%)",
+            "$8.00 (8.0%)",
+            "$88.80 Net (88.8% Efficiency)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Avoid Low-Priced \"No-Man Land\" Tiers Between $3.01 and $4.50",
+          "actionableAdvice": "For entry tiers priced at $3.00 or below, ensure Patreon micropayment processing is enabled. Standard processing (2.9% + $0.30) takes 17.9% of a $2.00 pledge, whereas micropayment processing (5.0% + $0.10) takes only 10.0%, saving $0.16 per pledge or $192.00 annually per 100 supporters."
+        },
+        {
+          "title": "Offer Annual Subscriptions with a 10%–15% Discount",
+          "actionableAdvice": "Patreon allows patrons to pay upfront annually. Annual billing cuts payment processing fixed fees from twelve $0.30 charges ($3.60) down to a single $0.30 charge per year, while dramatically reducing monthly credit card churn and involuntary declines."
+        },
+        {
+          "title": "Consolidate Payouts into a Single Monthly ACH Direct Deposit",
+          "actionableAdvice": "While withdrawing funds weekly or daily is tempting, every transfer costs $0.25 (or higher via PayPal). Scheduling a single monthly ACH transfer minimizes payout overhead and simplifies monthly accounting reconciliation."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the main difference between Patreon Pro (8%) and Premium (12%) plans?",
+          "answer": "Patreon Pro charges an 8% platform fee and includes unlimited membership tiers, custom analytics, community tools, and Discord integrations. Patreon Premium charges a 12% fee and adds automated physical merchandise fulfillment, team member sub-accounts, and a dedicated partner manager for established creator businesses seeking full operational scaling and merchandise inventory logistics automation."
+        },
+        {
+          "question": "How does Patreon micropayment pricing work for small pledges?",
+          "answer": "For pledges of $3.00 or less, Patreon automatically applies a micropayment processing rate of 5.0% + $0.10 instead of the standard 2.9% + $0.30. On a $1.00 pledge, standard processing would take $0.33 (33%), whereas micropayment processing takes only $0.15 (15%), preserving vital creator revenue on low-cost entry tiers and micro-supporter pledges across diverse patron demographics."
+        },
+        {
+          "question": "What is involuntary patron churn and how does it impact monthly payouts?",
+          "answer": "Involuntary churn occurs when active patrons credit cards expire, exceed credit limits, or get flagged by fraud algorithms on billing day. On average, 2% to 5% of monthly pledges fail renewal. Patreon automated decline retries and dunning emails recover roughly half of these transactions over the subsequent billing cycle without creator intervention or manual invoicing."
+        },
+        {
+          "question": "What payout method is cheapest for US creators withdrawing Patreon earnings?",
+          "answer": "Direct Deposit (ACH) is the most cost-effective withdrawal method for US creators, costing a flat $0.25 per payout. Payouts to PayPal incur a 1.0% fee (capped at $20.00), which costs significantly more on monthly balances exceeding $25.00, making ACH direct deposit the preferred corporate method for regular creator payouts and balance sheet distributions."
+        },
+        {
+          "question": "Can a creator downgrade from Patreon Premium (12%) back to Pro (8%)?",
+          "answer": "Yes. Creators can downgrade from Premium to Pro through their account settings. However, downgrading disables automated merch for membership fulfillment, removes team account logins, and terminates access to your dedicated partner manager, though existing membership tiers and subscriber billing remain completely intact and active without disrupting monthly community pledges or creator subscriber counts."
+        }
+      ]
     }
   }
 ]

@@ -156,7 +156,9 @@
       "options-profit-calculator",
       "pattern-day-trader-margin-calculator",
       "dividend-reinvestment-drip-calculator",
-      "capital-gains-tax-calculator"
+      "capital-gains-tax-calculator",
+      "stock-cost-basis-fifo-vs-lifo-calculator",
+      "stock-split-cost-basis-calculator"
     ]
   },
   {
@@ -3197,5 +3199,337 @@
       "wholesale-to-retail-markup-calculator",
       "product-landed-cost-calculator"
     ]
+  },
+  {
+    "slug": "stock-cost-basis-fifo-vs-lifo-calculator",
+    "title": "Stock Cost Basis FIFO vs. LIFO & Specific ID Tax Lot Calculator",
+    "metaTitle": "Stock Cost Basis FIFO vs LIFO Calculator | 2026 Tax Lots",
+    "metaDescription": "Compare stock capital gains taxes between FIFO, LIFO, and Specific Identification tax lots. Model realized gains and harvest tax loss deductions today.",
+    "category": "wealth-investing",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "IRS Publication 550 (Investment Income & Expenses) & Form 8949 Cost Basis Rules (2026)",
+    "officialSourceUrl": "https://www.irs.gov/publications/p550",
+    "defaultInputs": {
+      "productPrice": 185,
+      "monthlyUnits": 150,
+      "refundRate": 0,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "FIFO (First-In First-Out)",
+        "platformAFeePct": 20,
+        "platformAFixed": 0,
+        "platformAGatewayPct": 0,
+        "platformAGatewayFixed": 0,
+        "platformBName": "LIFO / HIFO (Highest-Cost)",
+        "platformBFeePct": 15,
+        "platformBFixed": 0,
+        "platformBGatewayPct": 0,
+        "platformBGatewayFixed": 0,
+        "lot1Shares": 100,
+        "lot1CostPerShare": 95,
+        "lot2Shares": 150,
+        "lot2CostPerShare": 160,
+        "salePricePerShare": 185,
+        "sharesToSell": 150
+      }
+    },
+    "relatedSlugs": [
+      "stock-average-cost-calculator",
+      "stock-split-cost-basis-calculator",
+      "capital-gains-tax-calculator",
+      "dividend-reinvestment-drip-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "When buying and selling shares of corporate stock over multi-year investment horizons, accumulating shares across varying market prices creates multiple tax lots. Under United States Internal Revenue Code Section 1012, determining your taxable capital gain or deductible capital loss upon selling a portion of your holdings requires selecting a recognized tax lot accounting methodology. The primary accounting choices include First-In, First-Out (FIFO), Last-In, First-Out (LIFO), and Specific Identification (SpecID)—frequently executed as Highest-In, First-Out (HIFO) for tax minimization. By default, IRS regulations and brokerage custodial platforms mandate FIFO accounting unless the taxpayer explicitly specifies an alternate method prior to trade settlement. In an inflationary equity market where stock valuations rise over time, FIFO matches your oldest, lowest-cost shares against current sale proceeds, producing the highest realized capital gains and immediate tax liabilities. Conversely, LIFO or HIFO matches your newest or most expensive shares, minimizing immediate taxable profits and preserving investment capital for long-term compound growth.",
+      "formulaBreakdown": {
+        "formulaString": "Realized Capital Gain / Loss = (Sale Price per Share - Tax Lot Cost Basis per Share) × Number of Shares Sold",
+        "variables": [
+          {
+            "symbol": "Sale Price per Share",
+            "meaning": "The executed gross market price per share received upon trade execution minus regulatory SEC/FINRA fees."
+          },
+          {
+            "symbol": "Tax Lot Cost Basis",
+            "meaning": "The original purchase price per share of the specific designated accounting lot, adjusted for commissions and splits."
+          },
+          {
+            "symbol": "Holding Period",
+            "meaning": "Duration between acquisition and sale: shares held > 365 days qualify for preferential long-term capital gains tax rates (0%, 15%, or 20%)."
+          },
+          {
+            "symbol": "Realized Gain / Loss",
+            "meaning": "Net taxable income reportable on IRS Form 8949 and Schedule D."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Selling 150 Shares of Tech Stock with Two Distinct Purchase Tranches",
+        "narrative": "An investor holds 250 total shares of an enterprise cloud software company across two separate purchases: Lot 1 consists of 100 shares purchased 18 months ago at $95.00 per share. Lot 2 consists of 150 shares purchased 4 months ago at $160.00 per share. The stock currently trades at $185.00 per share, and the investor decides to sell exactly 150 shares to fund a real estate down payment. The investor wants to compare realized capital gains under FIFO versus Specific Lot Identification (HIFO).",
+        "stepByStepMath": [
+          "Calculate total sale proceeds: 150 shares × $185.00 = $27,750.00 gross proceeds.",
+          "Option A: FIFO Execution (Oldest shares sold first):",
+          "  - Sells all 100 shares of Lot 1 ($95.00 cost): Gain = 100 × ($185.00 - $95.00) = $9,000.00 (Long-Term).",
+          "  - Sells 50 shares of Lot 2 ($160.00 cost): Gain = 50 × ($185.00 - $160.00) = $1,250.00 (Short-Term).",
+          "  - Total FIFO Realized Gain = $9,000.00 Long-Term + $1,250.00 Short-Term = $10,250.00 total taxable gain.",
+          "Option B: Specific Identification / HIFO (Highest cost shares sold first):",
+          "  - Sells all 150 shares of Lot 2 ($160.00 cost): Gain = 150 × ($185.00 - $160.00) = $3,750.00 (Short-Term).",
+          "  - Leaves all 100 shares of Lot 1 untouched.",
+          "  - Total HIFO Realized Gain = $3,750.00 total taxable gain.",
+          "Compare tax outcomes at 15% long-term / 32% short-term federal tax brackets:",
+          "  - FIFO Tax = ($9,000 × 15%) + ($1,250 × 32%) = $1,350.00 + $400.00 = $1,750.00 tax owed.",
+          "  - HIFO Tax = ($3,750 × 32%) = $1,200.00 tax owed.",
+          "Result: HIFO saves $550.00 in immediate cash taxes and defers $6,500.00 in capital gains for future tax years."
+        ],
+        "finalTakeaway": "Selecting Specific Lot Identification over default FIFO allows the investor to defer $6,500.00 in taxable gains, maintaining compounding equity and cutting current-year tax liability by 31.4%."
+      },
+      "benchmarkTable": {
+        "title": "Comparison of IRS Recognized Tax Lot Cost Basis Methods (2026)",
+        "headers": [
+          "Tax Lot Method",
+          "Mechanics & Sequencing",
+          "Gain / Loss Realization in Bull Market",
+          "Holding Period Bias",
+          "Best Strategic Use Case"
+        ],
+        "rows": [
+          [
+            "FIFO (First-In, First-Out)",
+            "Oldest acquired shares sold first",
+            "Maximizes realized capital gains",
+            "Favors Long-Term treatment",
+            "Low-income tax years or charitable gifting"
+          ],
+          [
+            "LIFO (Last-In, First-Out)",
+            "Most recently acquired shares sold first",
+            "Minimizes current realized gains",
+            "Favors Short-Term treatment",
+            "Rising market price trends with short horizons"
+          ],
+          [
+            "HIFO (Highest-In, First-Out)",
+            "Highest purchase cost shares sold first",
+            "Strictly minimizes capital gain tax",
+            "Mixed holding periods",
+            "Standard tax minimization for active traders"
+          ],
+          [
+            "Specific Identification",
+            "Investor picks individual lot by date/ID",
+            "Full customization of gains/losses",
+            "Precise tax bracket control",
+            "Strategic tax-loss harvesting and estate planning"
+          ],
+          [
+            "Average Cost (Mutual Funds/DRIP)",
+            "Total cost divided by total shares",
+            "Smooths gains across all lots",
+            "Proportional holding periods",
+            "Permitted only for mutual funds and DRIPs"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Update Brokerage Account Default from FIFO to Specific ID (HIFO)",
+          "actionableAdvice": "Major brokerages (Fidelity, Schwab, Vanguard, Interactive Brokers) default to FIFO unless configured otherwise. Access your account tax settings and change default standing disposal instructions to \"HIFO\" or \"Tax Optimizer\" to ensure automatic tax minimization across all future equity sales."
+        },
+        {
+          "title": "Beware of the IRS 30-Day Wash-Sale Rule when Selling at a Loss",
+          "actionableAdvice": "When liquidating high-cost tax lots to harvest capital losses, you cannot repurchase substantially identical stock or call options within 30 days before or after the sale. Violating the rule disallows the loss, adding the disallowed amount to the new shares cost basis."
+        },
+        {
+          "title": "Coordinate Long-Term Capital Gains with 0% Federal Tax Brackets",
+          "actionableAdvice": "Taxpayers with taxable income below federal thresholds ($94,050 for married filing jointly in 2026) qualify for a 0% long-term capital gains rate. In low-income years, strategically selling low-basis FIFO lots allows tax-free gain harvesting."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the default stock cost basis method used by the IRS and major brokerages?",
+          "answer": "Under IRS Treasury Regulation § 1.1012-1(c), the mandatory default accounting method for equities is First-In, First-Out (FIFO). Unless the taxpayer explicitly provides standing instructions or designates specific tax lots prior to transaction settlement (T+1), the brokerage must report cost basis on Form 1099-B using FIFO sequencing, which often maximizes immediate capital gains."
+        },
+        {
+          "question": "Can an investor retroactively change tax lot methods after a stock trade has settled?",
+          "answer": "No. IRS regulations strictly prohibit retroactive tax lot reassignments after settlement. Trade settlement occurs on a T+1 business day timeline. Specific tax lots must be identified and confirmed with your broker before or on trade settlement date; once settled, lot selections become permanent and legally binding on your tax return."
+        },
+        {
+          "question": "What is the difference between HIFO and LIFO tax lot accounting?",
+          "answer": "LIFO (Last-In, First-Out) strictly sells shares based on purchase date chronology, liquidating the most recently acquired lot regardless of price. HIFO (Highest-In, First-Out) sorts all lots strictly by purchase price per share, liquidating the most expensive shares first to minimize taxable gains or maximize deductible losses regardless of purchase date."
+        },
+        {
+          "question": "Can average cost basis be used for individual stocks and ETFs under IRS rules?",
+          "answer": "Under IRS Publication 550, average cost basis accounting is permissible exclusively for mutual fund shares and certain dividend reinvestment plans (DRIPs). For individual common stocks, preferred equities, and exchange-traded funds (ETFs), investors must use specific share identification or default to FIFO accounting; average cost is strictly prohibited by federal tax regulations on individual corporate shares."
+        },
+        {
+          "question": "How does tax lot accounting impact wash-sale rule tracking across multiple accounts?",
+          "answer": "The IRS wash-sale rule applies across all accounts controlled by an investor, including spousal accounts, taxable brokerages, and IRAs. If you sell a high-cost lot for a tax loss in a taxable account while buying the same stock inside an IRA within 30 days, the tax loss is permanently forfeited without basis adjustment."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stock-split-cost-basis-calculator",
+    "title": "Stock Split & Reverse Split Adjusted Cost Basis Calculator",
+    "metaTitle": "Stock Split Cost Basis Calculator 2026 | Forward & Reverse",
+    "metaDescription": "Calculate post-split cost basis per share, adjusted share counts, and cash-in-lieu fractions for forward and reverse stock splits. Audit tax records now.",
+    "category": "wealth-investing",
+    "engineType": "markup-margin",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "IRS Publication 550 & Corporate Action Tax Adjustments (IRC Section 305/307)",
+    "officialSourceUrl": "https://www.irs.gov/publications/p550",
+    "defaultInputs": {
+      "baseCost": 120,
+      "targetMarkup": 300,
+      "targetMargin": 75,
+      "overheadTaxRate": 0,
+      "gatewayPlatformCut": 0,
+      "discountPromoRate": 0
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "preSplitShares": 250,
+        "preSplitPricePerShare": 120,
+        "splitRatioNumerator": 4,
+        "splitRatioDenominator": 1,
+        "postSplitShares": 1000,
+        "postSplitAdjustedCostBasis": 30
+      }
+    },
+    "relatedSlugs": [
+      "stock-average-cost-calculator",
+      "stock-cost-basis-fifo-vs-lifo-calculator",
+      "options-profit-calculator",
+      "capital-gains-tax-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Corporate stock splits are administrative actions executed by publicly traded companies to recalibrate share price and circulating share float without changing the total market capitalization or intrinsic enterprise value of the firm. In a standard forward stock split (such as a 2-for-1, 3-for-1, or 10-for-1 split), a corporation issues additional shares to existing stockholders while proportionally reducing the market price and per-share cost basis of each share. Conversely, in a reverse stock split (such as a 1-for-5 or 1-for-10 consolidation), the company combines multiple existing shares into a single share, raising the nominal market price. For investors and portfolio accountants, tracking stock split adjustments is vital for federal tax reporting. When shares split, total invested capital remains constant, but the cost basis per share must be adjusted downward (for forward splits) or upward (for reverse splits) to accurately calculate capital gains taxes upon future sale and prevent IRS reporting penalties across brokerage accounts.",
+      "formulaBreakdown": {
+        "formulaString": "Post-Split Cost Basis per Share = Pre-Split Cost Basis / (Split Ratio Numerator / Split Ratio Denominator)",
+        "variables": [
+          {
+            "symbol": "Split Ratio Numerator",
+            "meaning": "The number of new shares issued per historical share (e.g., 4 in a 4-for-1 forward split, or 1 in a 1-for-5 reverse split)."
+          },
+          {
+            "symbol": "Split Ratio Denominator",
+            "meaning": "The number of old shares surrendered (e.g., 1 in a 4-for-1 forward split, or 5 in a 1-for-5 reverse split)."
+          },
+          {
+            "symbol": "Pre-Split Shares",
+            "meaning": "Total shares held in a specific tax lot immediately prior to the corporate action ex-dividend record date."
+          },
+          {
+            "symbol": "Adjusted Cost Basis per Share",
+            "meaning": "The new mathematical cost basis per share used for tax reporting on IRS Form 8949."
+          },
+          {
+            "symbol": "Cash in Lieu",
+            "meaning": "Cash distributed by the broker when reverse split math results in fractional shares, creating a minor taxable disposition."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Adjusting Cost Basis for a 4-for-1 Forward Split on 250 Shares of Tech Stock",
+        "narrative": "An individual investor purchased 150 shares of a growing technology company at $280.00 per share in 2022 (total capital invested: $42,000.00). In 2026, the company board of directors approves a 4-for-1 forward stock split to increase market liquidity. Shortly after, the investor sells 200 of the newly split shares at $85.00 per share. The investor needs to determine their post-split share balance, new adjusted cost basis per share, and realized capital gain for annual IRS tax reporting across equity investments.",
+        "stepByStepMath": [
+          "Identify pre-split parameters: Shares = 250, Purchase Price = $120.00, Total Cost Basis = $30,000.00.",
+          "Identify split ratio: 4-for-1 (Multiplier = 4 / 1 = 4.0).",
+          "Calculate post-split share count: 250 shares × 4.0 = 1,000 total shares held.",
+          "Calculate adjusted per-share cost basis: $120.00 pre-split price / 4.0 = $30.00 per share.",
+          "Verify total portfolio cost basis: 1,000 shares × $30.00 = $30,000.00 total basis.",
+          "Analyze future tax event: If the investor later sells 200 post-split shares at $45.00 ($9,000 proceeds), cost basis is 200 × $30.00 ($6,000 basis), yielding a $3,000.00 long-term capital gain.",
+          "Confirm tax holding period preservation: All 1,000 post-split shares maintain the original three-year acquisition date, securing long-term capital gains classification."
+        ],
+        "finalTakeaway": "The 4-for-1 split quadrupled the investor share count from 150 to 600 while reducing the cost basis per share from $280.00 to $70.00. Selling 200 shares at $85.00 yielded $17,000.00 in gross proceeds against a cost basis of $14,000.00 ($200 × $70.00), resulting in a taxable long-term capital gain of $3,000.00 with 400 shares remaining in the portfolio."
+      },
+      "benchmarkTable": {
+        "title": "Forward vs. Reverse Stock Split Calculations Across Common Corporate Ratios (2026)",
+        "headers": [
+          "Corporate Action Type",
+          "Split Ratio",
+          "Pre-Split Holdings",
+          "Post-Split Holdings",
+          "Adjusted Cost Basis per Share"
+        ],
+        "rows": [
+          [
+            "Forward Stock Split (Apple/Tesla Style)",
+            "4-for-1 Split",
+            "100 Shares @ $160.00",
+            "400 Shares Held",
+            "$40.00 Adjusted Cost Basis"
+          ],
+          [
+            "Large Forward Split (NVIDIA Style)",
+            "10-for-1 Split",
+            "50 Shares @ $900.00",
+            "500 Shares Held",
+            "$90.00 Adjusted Cost Basis"
+          ],
+          [
+            "Moderate Forward Split (Retail Friendly)",
+            "2-for-1 Split",
+            "200 Shares @ $80.00",
+            "400 Shares Held",
+            "$40.00 Adjusted Cost Basis"
+          ],
+          [
+            "Reverse Stock Split (Exchange Compliance)",
+            "1-for-5 Reverse",
+            "500 Shares @ $1.50",
+            "100 Shares Held",
+            "$7.50 Adjusted Cost Basis"
+          ],
+          [
+            "Severe Reverse Split (Restructuring)",
+            "1-for-10 Reverse",
+            "1,000 Shares @ $0.40",
+            "100 Shares Held",
+            "$4.00 Adjusted Cost Basis"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Audit Brokerage 1099-B Forms for Covered vs. Non-Covered Historical Lots",
+          "actionableAdvice": "Verify that your brokerage trade confirmations accurately report adjusted per-share cost basis following corporate split announcements. Review IRS Form 1099-B at tax year-end to verify that reported proceeds and cost basis match adjusted lot records to prevent double taxation or IRS inquiry flags."
+        },
+        {
+          "title": "Account for \"Cash-in-Lieu\" Tax Consequences on Reverse Splits",
+          "actionableAdvice": "When a reverse split results in fractional shares (e.g., holding 12 shares during a 1-for-5 split yields 2.4 shares), brokers liquidate the 0.4 fraction for cash. This cash-in-lieu distribution is treated as a taxable sale reported on Form 8949."
+        },
+        {
+          "title": "Adjust Options Strike Prices and Contract Multipliers Following Splits",
+          "actionableAdvice": "Stock splits automatically adjust standardized options contracts via the Options Clearing Corporation (OCC). A 4-for-1 split converts one standard 100-share contract with a $200 strike into four contracts with a $50 strike."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is a stock split considered a taxable event by the IRS?",
+          "answer": "No. A standard forward or reverse stock split is not a taxable capital transaction under IRS rules. The IRS treats stock splits as non-taxable capital reorganizations because your total proportional ownership and economic balance remain identical. Taxes become due only when you formally sell the adjusted shares in a subsequent taxable disposal through your brokerage account."
+        },
+        {
+          "question": "What happens to the holding period of stock following a split?",
+          "answer": "The tax holding period for newly split shares traces back directly to the original purchase date of the underlying stock lot. If you held original shares for over one year prior to the split, all split shares retain preferential long-term capital gains tax treatment regardless of when the corporate split occurred in financial markets."
+        },
+        {
+          "question": "How are fractional shares handled when a reverse split does not divide evenly?",
+          "answer": "When a reverse split results in a fractional share fraction (such as holding 0.5 shares), brokerages typically liquidate the fraction on the open market and credit cash-in-lieu to your account. This cash-in-lieu payment represents a partial share redemption and is treated as a taxable capital transaction subject to capital gains tax reporting on Form 1099-B."
+        },
+        {
+          "question": "How do stock splits affect cost basis across multiple distinct tax lots?",
+          "answer": "Stock splits apply proportionally across every distinct tax lot in your brokerage account. If you bought Lot 1 at $100 and Lot 2 at $70, a 2-for-1 split reduces Lot 1 cost basis to $50 and Lot 2 to $35. The lots retain their separate purchase dates and identities for Specific Lot Identification and future tax accounting."
+        },
+        {
+          "question": "Why do companies execute reverse stock splits and how does it impact retail investors?",
+          "answer": "Companies execute reverse stock splits primarily to prevent delisting from major stock exchanges like NASDAQ, which enforce minimum bid price requirements (typically $1.00 per share). While reverse splits maintain total dollar value, they often signal underlying corporate distress or debt restructuring that requires prudent investor reassessment and portfolio rebalancing across equity holdings."
+        }
+      ]
+    }
   }
 ]

@@ -498,9 +498,11 @@ function generatePinterestCsv(allCalculators) {
   const csvContent = rows.join('\n');
   const csvPath100 = path.join(FEEDS_DIR, 'pinterest-bulk-100.csv');
   const csvPath120 = path.join(FEEDS_DIR, 'pinterest-bulk-120.csv');
+  const csvPath130 = path.join(FEEDS_DIR, 'pinterest-bulk-130.csv');
   fs.writeFileSync(csvPath100, csvContent, 'utf8');
   fs.writeFileSync(csvPath120, csvContent, 'utf8');
-  console.log(`Generated Pinterest bulk CSV with ${allCalculators.length} items at ${csvPath120}`);
+  fs.writeFileSync(csvPath130, csvContent, 'utf8');
+  console.log(`Generated Pinterest bulk CSV with ${allCalculators.length} items at ${csvPath130}`);
 }
 
 async function main() {
@@ -531,15 +533,24 @@ async function main() {
   for (let i = 0; i < allCalculators.length; i += BATCH_SIZE) {
     const batch = allCalculators.slice(i, i + BATCH_SIZE);
     await Promise.all(batch.map(async calc => {
-      // Pin
-      const pinSvg = generatePinSvg(calc);
       const pinPath = path.join(PINS_DIR, `${calc.slug}.png`);
-      await sharp(Buffer.from(sanitizeSvg(pinSvg))).png({ quality: 88 }).toFile(pinPath);
+      const ogPath = path.join(OG_DIR, `${calc.slug}.png`);
+
+      if (fs.existsSync(pinPath) && fs.existsSync(ogPath)) {
+        return;
+      }
+
+      // Pin
+      if (!fs.existsSync(pinPath)) {
+        const pinSvg = generatePinSvg(calc);
+        await sharp(Buffer.from(sanitizeSvg(pinSvg))).png({ quality: 88 }).toFile(pinPath);
+      }
 
       // OG Card
-      const ogSvg = generateOgSvg(calc);
-      const ogPath = path.join(OG_DIR, `${calc.slug}.png`);
-      await sharp(Buffer.from(sanitizeSvg(ogSvg))).png({ quality: 88 }).toFile(ogPath);
+      if (!fs.existsSync(ogPath)) {
+        const ogSvg = generateOgSvg(calc);
+        await sharp(Buffer.from(sanitizeSvg(ogSvg))).png({ quality: 88 }).toFile(ogPath);
+      }
     }));
 
     process.stdout.write(`  Processed ${Math.min(i + BATCH_SIZE, allCalculators.length)} / ${allCalculators.length} calculators...\r`);

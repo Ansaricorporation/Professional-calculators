@@ -492,6 +492,46 @@ export const OPTIMIZED_META = {
   'gold-silver-melt-value-calculator': {
     title: 'Gold & Silver Melt Value Calculator 2026 | Scrap Purity',
     description: 'Calculate intrinsic scrap gold and silver melt value: factor live spot prices, karat purities (10k to 24k), and gram weights. Audit dealer buyouts instantly.'
+  },
+  'shopify-dimensional-weight-shipping-calculator': {
+    title: 'Shopify DIM Weight Calculator 2026 | Box Size Shipping Cost',
+    description: 'Calculate Shopify dimensional weight with 139 and 166 cubic divisors. Compare actual scale weight to billable freight charges and audit margin decay today.'
+  },
+  'shopify-free-shipping-threshold-calculator': {
+    title: 'Shopify Free Shipping Threshold Calculator | 2026 AOV Tool',
+    description: 'Model Shopify free shipping thresholds against average order value and product margins. Audit cart subsidies, postage absorption, and boost net profit today.'
+  },
+  'stripe-reverse-fee-calculator': {
+    title: 'Stripe Reverse Fee Calculator 2026 | Gross-Up Invoice Math',
+    description: 'Calculate exact invoice totals needed to cover Stripe 2.9% + 30¢ processing fees. Pass merchant surcharges to clients and preserve net payout amounts now.'
+  },
+  'stripe-international-fx-fee-calculator': {
+    title: 'Stripe International Card & FX Fee Calculator 2026 Rates',
+    description: 'Model Stripe cross-border card fees, 1.5% international issuance, 1% FX conversions, and 0.7% billing tools. Audit net global merchant revenue payouts now.'
+  },
+  'ebay-promoted-listings-fee-calculator': {
+    title: 'eBay Promoted Listings Fee Calculator 2026 | Ad Rate ROI',
+    description: 'Calculate eBay net seller profit after stacking 13.25% Final Value Fees with 2% to 15% Promoted Listings Standard ad rates. Model advertising margins today.'
+  },
+  'ebay-international-shipping-fee-calculator': {
+    title: 'eBay International Shipping Fee Calculator 2026 | EIS Cut',
+    description: 'Calculate eBay cross-border profits deducting 1.65% International Fees, domestic hub shipping, and Final Value Fees. Model global export net margins today.'
+  },
+  'stock-cost-basis-fifo-vs-lifo-calculator': {
+    title: 'Stock Cost Basis FIFO vs LIFO Calculator | 2026 Tax Lots',
+    description: 'Compare stock capital gains taxes between FIFO, LIFO, and Specific Identification tax lots. Model realized gains and harvest tax loss deductions today.'
+  },
+  'stock-split-cost-basis-calculator': {
+    title: 'Stock Split Cost Basis Calculator 2026 | Forward & Reverse',
+    description: 'Calculate post-split cost basis per share, adjusted share counts, and cash-in-lieu fractions for forward and reverse stock splits. Audit tax records now.'
+  },
+  'patreon-apple-ios-fee-calculator': {
+    title: 'Patreon Apple iOS Fee Calculator 2026 | 30% App Cut Math',
+    description: 'Compare creator payouts between 30% Apple iOS App Store fees and 8% web checkout subscriptions. Calculate exact pricing markups to protect net income now.'
+  },
+  'patreon-tier-pricing-payout-calculator': {
+    title: 'Patreon Tier Pricing & Payout Calculator 2026 | Pro vs Pre',
+    description: 'Calculate creator net take-home pay comparing Patreon Pro (8%) and Premium (12%) tiers. Model micropayment processing and payout bank transfers today.'
   }
 };
 
@@ -570,8 +610,8 @@ export function runOptimization(applyWrites = false) {
 
   console.log('-'.repeat(80));
   console.log(`Total Calculators Audited:   ${totalCalculators}`);
-  console.log(`Unique Title Count:          ${titlesSeen.size} / 120`);
-  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 120`);
+  console.log(`Unique Title Count:          ${titlesSeen.size} / 130`);
+  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 130`);
   console.log(`Title Tag Format Violations: ${titleErrors}`);
   console.log(`Meta Desc Format Violations: ${descErrors}`);
   console.log('='.repeat(80));
@@ -580,7 +620,7 @@ export function runOptimization(applyWrites = false) {
     throw new Error(`SEO Meta CTR Audit failed with ${titleErrors} title errors and ${descErrors} description errors.`);
   }
 
-  console.log('🎉 100% OF ALL 120 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
+  console.log('🎉 100% OF ALL 130 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
 }
 
 // Auto-run if executed directly via node

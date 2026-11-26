@@ -347,7 +347,9 @@
     "relatedSlugs": [
       "shopify-profit-margin-calculator",
       "etsy-shipping-calculator",
-      "etsy-vs-shopify-fee-calculator"
+      "etsy-vs-shopify-fee-calculator",
+      "shopify-dimensional-weight-shipping-calculator",
+      "shopify-free-shipping-threshold-calculator"
     ]
   },
   {
@@ -1704,7 +1706,9 @@
     "relatedSlugs": [
       "amazon-fba-vs-fbm-profit-calculator",
       "etsy-fee-calculator",
-      "shopify-profit-margin-calculator"
+      "shopify-profit-margin-calculator",
+      "ebay-promoted-listings-fee-calculator",
+      "ebay-international-shipping-fee-calculator"
     ]
   },
   {
@@ -4360,5 +4364,696 @@
       "shopify-profit-margin-calculator",
       "poshmark-vs-mercari-vs-depop-fee-calculator"
     ]
+  },
+  {
+    "slug": "shopify-dimensional-weight-shipping-calculator",
+    "title": "Shopify Dimensional Weight (DIM) & Box Size Shipping Calculator",
+    "metaTitle": "Shopify DIM Weight Calculator 2026 | Box Size Shipping Cost",
+    "metaDescription": "Calculate Shopify dimensional weight with 139 and 166 cubic divisors. Compare actual scale weight to billable freight charges and audit margin decay today.",
+    "category": "ecommerce",
+    "engineType": "markup-margin",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "Shopify Shipping Carrier Rates & USPS Notice 123 Dimensional Rules (2026)",
+    "officialSourceUrl": "https://help.shopify.com/en/manual/shipping/rates-and-plans/dimensional-weight",
+    "defaultInputs": {
+      "baseCost": 18.5,
+      "targetMarkup": 135,
+      "targetMargin": 57.45,
+      "overheadTaxRate": 12.5,
+      "gatewayPlatformCut": 2.9,
+      "discountPromoRate": 5
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "dimDivisorCommercial": 139,
+        "dimDivisorRetail": 166,
+        "shopifyShippingDiscountPct": 88,
+        "boxLengthInches": 14,
+        "boxWidthInches": 12,
+        "boxHeightInches": 8,
+        "actualScaleWeightLbs": 3.2,
+        "dimensionalWeightLbs": 9.67
+      }
+    },
+    "relatedSlugs": [
+      "shopify-shipping-calculator",
+      "shopify-free-shipping-threshold-calculator",
+      "shopify-profit-margin-calculator",
+      "dimensional-weight-shipping-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "In modern direct-to-consumer e-commerce fulfillment, logistics parcel carriers do not price shipments solely based on physical weight on a scale. Major commercial logistics carriers—including United Parcel Service (UPS), FedEx Express, DHL Worldwide, and the United States Postal Service (USPS)—enforce Dimensional Weight (DIM weight) pricing models. These protocols calculate billable shipping density based on total carton exterior volume. When an online retailer packages lightweight goods such as winter coats, apparel items, handcrafted toys, or bedding inside an oversized corrugated cardboard carton, the carrier bills for the cubic space occupied inside delivery vans rather than actual scale weight. Under standard Shopify Shipping merchant agreements, packages exceeding one cubic foot (1,728 cubic inches) trigger dimensional weight assessments using standard commercial divisors—typically 139 for private daily pickup carriers and 166 for USPS domestic mail. If merchants fail to account for dimensional surcharges during checkout configuration, unrecovered freight surcharges directly erode gross margin, turning otherwise profitable orders into net operating losses.",
+      "formulaBreakdown": {
+        "formulaString": "Billable Freight Weight = Max(Actual Physical Scale Weight, (Carton Length × Width × Height) / Dimensional Divisor)",
+        "variables": [
+          {
+            "symbol": "Length, Width, Height",
+            "meaning": "Exterior package carton dimensions in inches, rounded up to the nearest whole integer per carrier operating standards."
+          },
+          {
+            "symbol": "DIM Divisor",
+            "meaning": "Volumetric carrier divisor factor: 139 for commercial UPS and FedEx accounts; 166 for domestic USPS Ground Advantage parcels over 1,728 cubic inches."
+          },
+          {
+            "symbol": "Actual Scale Weight",
+            "meaning": "True physical gross weight in pounds including product unit, interior protective bubble wrap or paper dunnage, and packaging tape."
+          },
+          {
+            "symbol": "Billable Freight Weight",
+            "meaning": "The higher value between physical scale weight and calculated cubic dimensional weight used to compute postage rates."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Shipping a 2.8 lb Puffer Jacket in an Oversized 16x14x10 Corrugated Box",
+        "narrative": "A direct-to-consumer apparel store on Shopify fulfills a technical winter puffer jacket that weighs exactly 2.80 pounds on a certified digital postal scale. The shipping station team packs the uncompressed jacket into an uncreased 16 × 14 × 10 inch single-wall corrugated carton filled with inflatable plastic air pillows. During checkout, the customer was charged a standard flat shipping fee of $7.50 based on estimated scale weight. Upon induction at the regional sorting facility, automated optical laser scanners scan the parcel dimensions using the commercial 139 divisor. The merchant must analyze the carrier adjustment and margin variance.",
+        "stepByStepMath": [
+          "Calculate total exterior cubic displacement: 16 inches × 14 inches × 10 inches = 2,240 cubic inches.",
+          "Verify cubic threshold applicability: 2,240 cubic inches exceeds the statutory 1,728 cubic inch (1.0 cubic foot) threshold, triggering mandatory dimensional rating.",
+          "Calculate volumetric dimensional weight using standard 139 commercial divisor: 2,240 / 139 = 16.115 pounds.",
+          "Round up to next billable integer pound per carrier billing tariffs: 16.115 lbs rounds up to 17.0 billable pounds.",
+          "Compare billable rating against actual physical scale weight: Max(2.80 lbs, 17.00 lbs) = 17.0 billable pounds.",
+          "Calculate commercial postage discrepancy: UPS Zone 5 commercial rate for a 3 lb parcel is $9.80, whereas a 17 lb parcel costs $21.45.",
+          "Compute merchant cash deficit: $21.45 actual postage cost - $7.50 collected shipping revenue = $13.95 unrecovered freight deficit absorbed by the store."
+        ],
+        "finalTakeaway": "By replacing the 16x14x10 carton with a compressed poly mailer or utilizing a multi-depth box scored down to 14x12x4 inches (672 cubic inches), the package falls well below 1,728 cubic inches. This allows the order to bill at its actual 2.80 lb weight, saving $11.65 per shipment."
+      },
+      "benchmarkTable": {
+        "title": "Carrier Dimensional Weight Divisors & Cubic Billable Thresholds (2026)",
+        "headers": [
+          "Carrier & Service Class",
+          "DIM Divisor",
+          "Cubic Threshold",
+          "Measurement Rule",
+          "Packaging Recommendation"
+        ],
+        "rows": [
+          [
+            "USPS Ground Advantage (Commercial)",
+            "166",
+            "> 1,728 cu in (1.0 cu ft)",
+            "Length × Width × Height / 166",
+            "Heavy poly mailers or flat-rate envelopes"
+          ],
+          [
+            "USPS Priority Mail (Commercial Base)",
+            "166",
+            "> 1,728 cu in (1.0 cu ft)",
+            "Length × Width × Height / 166",
+            "Regional rate boxes or custom mailers"
+          ],
+          [
+            "UPS Ground (Shopify Shipping Discount)",
+            "139",
+            "All package volumes",
+            "Length × Width × Height / 139",
+            "Variable-depth scored corrugated cartons"
+          ],
+          [
+            "FedEx Home Delivery (Commercial Account)",
+            "139",
+            "All package volumes",
+            "Length × Width × Height / 139",
+            "Exact-fit folding cartons with minimal void fill"
+          ],
+          [
+            "DHL Express Worldwide (Cross-Border)",
+            "139 (or 5000 metric)",
+            "All package volumes",
+            "L × W × H (cm) / 5000",
+            "Reinforced corrugated mailers with corner protectors"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Deploy Multi-Depth Pre-Scored Corrugated Cartons at Packing Benches",
+          "actionableAdvice": "Standardizing your warehouse benches with multi-depth boxes allows packers to crease carton walls down to the exact product height with a utility knife. Trimming two vertical inches from a 14x12x10 box eliminates 336 cubic inches, reducing dimensional billing weight by 2.42 pounds on every single carrier parcel."
+        },
+        {
+          "title": "Transition Soft Goods and Apparel from Rigid Boxes to Flexible Poly Mailers",
+          "actionableAdvice": "Rigid corrugated boxes contribute unnecessary tare weight and fixed exterior volume dimensions. Apparel and soft goods packaged in water-resistant tear-proof poly mailers conform directly to product contours, eliminating empty air and bypassing dimensional billing thresholds entirely for domestic ground delivery."
+        },
+        {
+          "title": "Configure Shopify Carrier-Calculated Shipping Box Dimensions Accurately",
+          "actionableAdvice": "Within Shopify Admin under Settings > Shipping and Delivery, store owners frequently input product weight but leave default package dimensions empty or set to an oversized default box. Populating exact default package dimensions ensures checkout algorithms pull accurate DIM-adjusted carrier rates dynamically."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the standard dimensional weight divisor for Shopify Shipping carriers in 2026?",
+          "answer": "Under standard 2026 commercial carrier agreements available through Shopify Shipping, UPS and FedEx apply a dimensional divisor of 139 to both domestic ground and express shipments across all parcel sizes. The United States Postal Service (USPS) utilizes a more favorable commercial divisor of 166 for Ground Advantage and Priority Mail, but enforces dimensional weight only when total exterior parcel volume strictly exceeds 1,728 cubic inches (exactly one cubic foot)."
+        },
+        {
+          "question": "How do carrier automated laser scanners measure package dimensions during transit?",
+          "answer": "Modern parcel distribution hubs utilize high-speed automated overhead laser dimensioners that scan parcels as they travel across high-velocity sorting conveyor belts. These optical laser systems measure the maximum protrusion point along each package axis. Any bulge caused by overfilled plastic air pillows, protruding tape flaps, or warped carton walls expands the billable length, width, or height to the next whole integer inch."
+        },
+        {
+          "question": "Can dimensional weight adjustments trigger retroactive carrier balance deductions on Shopify?",
+          "answer": "Yes. When an automated carrier scanner detects that actual box dimensions exceed the specifications declared during shipping label purchase, the carrier submits an automated carrier adjustment. Shopify bills this difference directly to the merchant account balance or billing credit card, often weeks after the order was fulfilled, creating unexpected reconciliation discrepancies that erode store operating income."
+        },
+        {
+          "question": "What is USPS Cubic Pricing and how does it relate to dimensional weight?",
+          "answer": "USPS Commercial Cubic Pricing is a specialized discounted rate structure for small, heavy packages weighing under 20 pounds with total exterior volume of 0.50 cubic feet or less. Instead of evaluating physical scale weight or applying dimensional divisors, the shipment is classified into five distinct cubic volume tiers (from Tier 1 up to Tier 5), allowing substantial postage savings for dense items like cosmetics, hardware, and books."
+        },
+        {
+          "question": "How should e-commerce merchants calculate shipping fees for multi-item orders with irregular shapes?",
+          "answer": "Multi-item orders require dynamic 3D cartonization algorithms to calculate the optimal box size based on combined product cubic metrics. Merchants should audit their historical order combinations using realistic carton sizes and set up checkout package rules. Alternatively, merchants can add a 10% to 15% volumetric contingency buffer to custom shipping rates to prevent margin leakage on complex multi-item checkout baskets."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "shopify-free-shipping-threshold-calculator",
+    "title": "Shopify Free Shipping Threshold & AOV Break-Even Calculator",
+    "metaTitle": "Shopify Free Shipping Threshold Calculator | 2026 AOV Tool",
+    "metaDescription": "Model Shopify free shipping thresholds against average order value and product margins. Audit cart subsidies, postage absorption, and boost net profit today.",
+    "category": "ecommerce",
+    "engineType": "markup-margin",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "Shopify Commerce Economics & National Retail Federation Cart Studies (2026)",
+    "officialSourceUrl": "https://help.shopify.com/en/manual/shipping/setting-up-shipping-rates/free-shipping-rates",
+    "defaultInputs": {
+      "baseCost": 22.75,
+      "targetMarkup": 165,
+      "targetMargin": 62.26,
+      "overheadTaxRate": 14,
+      "gatewayPlatformCut": 2.9,
+      "discountPromoRate": 8
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "currentAov": 54,
+        "proposedThreshold": 75,
+        "averagePostageCost": 8.4,
+        "grossProductMarginPct": 62.26,
+        "cartAbandonmentBaselinePct": 68.5
+      }
+    },
+    "relatedSlugs": [
+      "shopify-shipping-calculator",
+      "shopify-dimensional-weight-shipping-calculator",
+      "shopify-aov-calculator",
+      "shopify-profit-margin-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Offering unconditional free shipping across an entire e-commerce store catalog is one of the quickest ways to erode operating profit margins. Shipping is never truly free; commercial parcel carriers invoice the merchant for every ounce transported across regional delivery postal zones. To harness the proven conversion power of complimentary delivery without sacrificing balance sheet health, merchants deploy a mathematically calibrated Free Shipping Threshold. By requiring shoppers to achieve a minimum cart dollar value before unlocking complimentary freight, merchants incentivize customers to add higher-margin cross-sells, accessories, and multi-packs to their digital baskets. The optimal threshold sits strategically between 15% and 30% above the store baseline Average Order Value (AOV). This mathematical gap provides sufficient gross margin expansion on the incremental basket revenue to completely absorb outbound carrier postage, shipping supplies, and warehouse pick-and-pack fulfillment overhead, creating a sustainable conversion engine that scales transaction profits.",
+      "formulaBreakdown": {
+        "formulaString": "Break-Even Free Shipping Threshold = Baseline AOV + (Average Outbound Shipping Cost / Gross Profit Margin Percentage)",
+        "variables": [
+          {
+            "symbol": "Baseline AOV",
+            "meaning": "Current store average order value across trailing 90-day order volume before introducing the threshold incentive."
+          },
+          {
+            "symbol": "Average Shipping Cost",
+            "meaning": "True net postage, parcel packaging, and warehouse pick-and-pack handling costs incurred to fulfill an average order."
+          },
+          {
+            "symbol": "Gross Margin %",
+            "meaning": "Product revenue minus cost of goods sold (COGS) divided by product revenue, expressed as a decimal ratio."
+          },
+          {
+            "symbol": "Threshold Target",
+            "meaning": "The minimum order cart total required to unlock free standard ground delivery at checkout."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Calibrating a Free Shipping Bar for a $48 Baseline AOV Skincare Brand",
+        "narrative": "A direct-to-consumer organic skincare company has an established average order value of $48.00 with a healthy 65% gross product margin ($31.20 gross profit per order). Currently, customers pay a $6.95 flat shipping charge, which contributes to an elevated 72% cart abandonment rate across domestic checkout sessions. Average outbound parcel fulfillment actually costs the brand $7.80. The marketing director wants to launch a free shipping threshold that increases checkout completion while preventing net profit dilution across daily operating cash flows and maintaining healthy balance sheet returns.",
+        "stepByStepMath": [
+          "Identify baseline metrics: Baseline AOV = $48.00, Gross Product Margin = 65% (0.65), Outbound Shipping Cost = $7.80.",
+          "Calculate required incremental gross margin dollars needed to cover postage: $7.80 shipping cost.",
+          "Calculate incremental cart revenue needed to generate $7.80 at 65% margin: $7.80 / 0.65 = $12.00 in additional cart spending.",
+          "Determine mathematical break-even threshold: $48.00 baseline AOV + $12.00 incremental spend = $60.00 minimum cart value.",
+          "Apply strategic retail pricing buffer: Standardize threshold to an attractive retail psychological milestone such as $65.00 or $70.00.",
+          "Evaluate profit outcome at $68.00 threshold: Customer adds a $20.00 cleanser to reach $68.00. Incremental gross profit = $20.00 × 65% = $13.00. Absorbing $7.80 shipping leaves $5.20 in net incremental profit per converted cart.",
+          "Measure annual upside across 2,000 monthly orders: Generating $5.20 incremental profit on 40% of orders produces $49,920.00 in new annual net contribution margin."
+        ],
+        "finalTakeaway": "Setting the free shipping threshold at $65.00 or $70.00 rather than $50.00 guarantees that every customer who stretches their cart value generates enough incremental gross contribution dollars to fund their own parcel postage."
+      },
+      "benchmarkTable": {
+        "title": "Free Shipping Threshold Financial Impact by Product Gross Margin Tier (2026)",
+        "headers": [
+          "Product Margin Tier",
+          "Baseline AOV",
+          "Average Postage Cost",
+          "Required Cart Lift",
+          "Recommended Free Shipping Threshold"
+        ],
+        "rows": [
+          [
+            "High Margin (75%–85% Cosmetics/Jewelry)",
+            "$45.00",
+            "$6.50",
+            "+$8.12 to +$8.66",
+            "$55.00 to $60.00 Cart Tier"
+          ],
+          [
+            "Healthy DTC (60%–70% Apparel/Footwear)",
+            "$65.00",
+            "$8.50",
+            "+$12.14 to +$14.16",
+            "$80.00 to $85.00 Cart Tier"
+          ],
+          [
+            "Moderate Margin (45%–55% Home/Kitchen)",
+            "$85.00",
+            "$11.20",
+            "+$20.36 to +$24.88",
+            "$110.00 to $115.00 Cart Tier"
+          ],
+          [
+            "Low Margin (30%–40% Electronics/Hardware)",
+            "$120.00",
+            "$14.50",
+            "+$36.25 to +$48.33",
+            "$160.00 to $175.00 Cart Tier"
+          ],
+          [
+            "Heavy / Bulky Freight (25%–35% Furniture)",
+            "$250.00",
+            "$38.00",
+            "+$108.57 to +$152.00",
+            "$375.00 to $400.00 Cart Tier"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Implement Dynamic Progress Bars Inside the Cart Slide-Out Drawer",
+          "actionableAdvice": "Visual progress trackers (\"You are only $14.00 away from Free Shipping!\") update in real time as items enter the cart. Pair this visual indicator with one-click \"quick-add\" accessories priced between $10 and $20 to eliminate checkout friction and accelerate basket expansion."
+        },
+        {
+          "title": "Restrict Free Shipping to Economy Ground and Regional Postal Services",
+          "actionableAdvice": "Never unlock expedited or priority air delivery services under standard threshold rules. Program Shopify shipping scripts to map threshold qualifications exclusively to economy ground carriers such as USPS Ground Advantage, UPS Ground Saver, or FedEx Ground Economy."
+        },
+        {
+          "title": "Exclude Heavy and Oversized SKUs from Threshold Qualification",
+          "actionableAdvice": "Bulky items exceeding 15 pounds or 1,728 cubic inches incur severe carrier surcharges that erase gross margins. Create specialized shipping profiles in Shopify Admin that enforce dimensional freight fees on heavy SKUs regardless of overall cart subtotal."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does setting a free shipping threshold too low destroy e-commerce profitability?",
+          "answer": "When a threshold is placed below or directly equal to the baseline Average Order Value (for example, setting a $45 threshold when average checkout is already $48), existing customers unlock free postage without adding any extra items. The merchant immediately absorbs 100% of outbound delivery costs without gaining incremental gross margin revenue to offset the expense, severely degrading overall store profitability and operating cash flow across daily fulfillment operations."
+        },
+        {
+          "question": "What is the optimal percentage gap between current AOV and the free shipping milestone?",
+          "answer": "Empirical e-commerce conversion benchmarks consistently demonstrate that the most effective threshold sits between 15% and 30% above trailing 90-day AOV. A gap below 15% fails to generate sufficient gross margin lift to absorb postage, while an aggressive gap exceeding 35% feels unachievable to shoppers, triggering cart abandonment rather than profitable basket expansion across checkout sessions and marketing campaigns."
+        },
+        {
+          "question": "How do product returns impact the unit economics of free shipping thresholds?",
+          "answer": "When a customer purchases two sizes of a garment to qualify for free shipping and subsequently returns one item, the merchant incurs outbound freight, reverse return postage, non-refundable 2.9% payment merchant fees, and restocking labor. Return policies should specify that returns dropping net cart values below the threshold forfeit original postage subsidies and refund deductions across customer accounts."
+        },
+        {
+          "question": "Can free shipping thresholds improve customer lifetime value (LTV) and repeat purchase frequency?",
+          "answer": "Yes. Customers who expand their initial baskets to reach threshold tiers experience a broader representation of your product catalog. Increased product trial correlates directly with higher 180-day retention rates, transforming the initial subsidized shipping investment into sustainable multi-order customer lifetime value across subsequent quarters. Repurchase velocity expands significantly as satisfied customers reorder complementary items discovered during threshold basket expansion."
+        },
+        {
+          "question": "How should brands with international cross-border traffic configure shipping thresholds?",
+          "answer": "Domestic thresholds should never be applied globally. Cross-border delivery incurs customs duties, brokerage tariffs, and carrier international surcharges. Merchants should deploy localized Shopify market configurations with dedicated regional thresholds (e.g., $75 for US domestic, $150 CAD for Canada, and $200 for European destinations to absorb international carrier freight). Failing to segment international thresholds forces merchants to subsidize expensive air freight out of operating margins."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ebay-promoted-listings-fee-calculator",
+    "title": "eBay Promoted Listings Ad Rate & Final Value Fee Profit Calculator",
+    "metaTitle": "eBay Promoted Listings Fee Calculator 2026 | Ad Rate ROI",
+    "metaDescription": "Calculate eBay net seller profit after stacking 13.25% Final Value Fees with 2% to 15% Promoted Listings Standard ad rates. Model advertising margins today.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "eBay Advertising Terms & Final Value Fee Schedules (2026)",
+    "officialSourceUrl": "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees",
+    "defaultInputs": {
+      "sellingPrice": 85,
+      "cogs": 24,
+      "shippingCharged": 8.5,
+      "shippingActualCost": 9.25,
+      "monthlyUnits": 120,
+      "planTier": "promoted-standard-8pct",
+      "appFeesMonthly": 27.95,
+      "marketingPerOrder": 0,
+      "returnsRate": 2.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "organic-basic-store": {
+          "name": "Basic Store Organic Sale (12.35% FVF + $0.30 Order Fee)",
+          "monthlyFee": 27.95,
+          "percentageRate": 12.35,
+          "fixedFee": 0.3,
+          "additionalNotes": "Baseline eBay Basic Store Final Value Fee charged when an order originates without ad clicks."
+        },
+        "promoted-standard-5pct": {
+          "name": "Promoted Listings Standard 5% Ad Rate (17.35% + $0.30 Total Cut)",
+          "monthlyFee": 27.95,
+          "percentageRate": 17.35,
+          "fixedFee": 0.3,
+          "additionalNotes": "Stacks 12.35% store FVF with a 5.0% dynamic ad fee assessed on total sale including shipping and sales tax."
+        },
+        "promoted-standard-8pct": {
+          "name": "Promoted Listings Standard 8% Aggressive Ad Rate (20.35% + $0.30 Total Cut)",
+          "monthlyFee": 27.95,
+          "percentageRate": 20.35,
+          "fixedFee": 0.3,
+          "additionalNotes": "Recommended for competitive categories requiring top-of-search placement against aggressive multi-quantity sellers."
+        }
+      },
+      "extraParameters": {
+        "basicStoreFvfPct": 12.35,
+        "perOrderFixed": 0.3,
+        "promotedAdRateStandardPct": 8,
+        "attributionWindowDays": 30,
+        "salesTaxEstimatePct": 7.5
+      }
+    },
+    "relatedSlugs": [
+      "ebay-fee-calculator",
+      "ebay-international-shipping-fee-calculator",
+      "ebay-promoted-listings-roas-calculator",
+      "amazon-fba-vs-fbm-profit-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Standing out among billions of active product listings on eBay requires strategic promotional visibility. To capture prime top-of-search placements across search results and competing product pages, sellers leverage Promoted Listings Standard. Unlike traditional pay-per-click (PPC) advertising models, Promoted Listings Standard operates on a pure cost-per-sale (CPS) performance basis: you only incur an advertising fee when a buyer clicks your promoted link and purchases any item from your store within a 30-day attribution window. However, the chosen ad rate (ranging from 2% to over 20%) is calculated against the total buyer transaction amount—including item sale price, shipping charged to the buyer, and applicable sales tax collected by eBay. This ad fee stacks directly on top of eBay standard Final Value Fee (typically 13.25% + $0.30 for most categories) and regulatory operating fees. Without careful margin modeling, advertising fees can consume the entire net operating profit on an order, turning high sales volume into balance sheet losses and operational cash flow drain across high-velocity seller accounts.",
+      "formulaBreakdown": {
+        "formulaString": "Total eBay Promoted Fee = ((Item Price + Shipping Charged + Sales Tax) × (FVF% + Ad Rate%)) + Fixed Order Fee",
+        "variables": [
+          {
+            "symbol": "Gross Order Value",
+            "meaning": "Total transaction amount including item retail price, buyer-paid shipping, and estimated state sales tax."
+          },
+          {
+            "symbol": "FVF %",
+            "meaning": "Category Final Value Fee percentage: typically 13.25% for standard accounts or 12.35% for Basic Store subscribers."
+          },
+          {
+            "symbol": "Ad Rate %",
+            "meaning": "Seller-selected Promoted Listings Standard percentage bid (e.g., 5.0%, 8.0%, or eBay dynamic trending rate)."
+          },
+          {
+            "symbol": "Sales Tax Effect",
+            "meaning": "eBay collects and remits sales tax on behalf of buyers, but charges FVF and ad percentage fees on that tax amount."
+          },
+          {
+            "symbol": "Fixed Fee",
+            "meaning": "Mandatory per-order transaction charge: $0.40 for standard individual sellers or $0.30 for Store subscribers."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Selling a $120 Vintage Leather Jacket with an 8% Promoted Listings Ad Rate",
+        "narrative": "An experienced e-commerce merchant sells refurbished enterprise laptops on eBay for $450.00 each with $20.00 shipping charged to the buyer. The buyer resides in a state with an 8% sales tax ($37.60 tax collected by eBay). Category Final Value Fee is 13.25% + $0.30. To dominate keyword search rankings against aggressive competitor listings, the seller configures an 8.0% Promoted Listings Standard ad rate. The merchant must calculate the exact net payout and true advertising cost percentage relative to product profit.",
+        "stepByStepMath": [
+          "Calculate gross transaction total: $120.00 item + $10.00 shipping = $130.00 customer total.",
+          "Calculate state sales tax (8% on $130.00): $10.40 tax. Total gross order amount = $140.40.",
+          "Calculate Basic Store Final Value Fee (12.35% on $140.40): $17.34.",
+          "Calculate Promoted Listings ad fee (8.0% on $140.40): $11.23.",
+          "Add fixed per-order fee: $0.30.",
+          "Sum total eBay fees: $17.34 FVF + $11.23 Ad Fee + $0.30 Fixed = $28.87 total platform cut.",
+          "Calculate net payout received by seller: ($120.00 + $10.00) - $28.87 = $101.13.",
+          "Deduct inventory COGS ($45.00) and actual shipping ($11.50): $101.13 - $45.00 - $11.50 = $44.63 net operating profit (34.3% net margin on $130 revenue)."
+        ],
+        "finalTakeaway": "Although eBay fees totaled $28.87 (equivalent to 22.2% of seller revenue), the high product gross margin yielded $44.63 in cash profit. If the ad rate had climbed to 15%, net profit would have plummeted to $34.80."
+      },
+      "benchmarkTable": {
+        "title": "eBay Final Value Fee & Promoted Listings Stacking Comparison (2026)",
+        "headers": [
+          "Listing Visibility Strategy",
+          "Final Value Fee (Store)",
+          "Promoted Ad Rate",
+          "Total eBay Cut on $100",
+          "Net Seller Profit Margin"
+        ],
+        "rows": [
+          [
+            "Pure Organic (No Ads)",
+            "12.35% + $0.30",
+            "0.0% (Organic)",
+            "13.3% of Order Total",
+            "High (Protected Unit Margin)"
+          ],
+          [
+            "Conservative Promoted (2.0% Minimum)",
+            "12.35% + $0.30",
+            "2.0% Ad Rate",
+            "15.4% of Order Total",
+            "Balanced (Low Curation Cost)"
+          ],
+          [
+            "Competitive Benchmark (5.5% Average)",
+            "12.35% + $0.30",
+            "5.5% Ad Rate",
+            "19.2% of Order Total",
+            "Moderate (Volume Scaling)"
+          ],
+          [
+            "Aggressive Category Leader (8.5% Rate)",
+            "12.35% + $0.30",
+            "8.5% Ad Rate",
+            "22.4% of Order Total",
+            "Thin (High-Velocity Clearance)"
+          ],
+          [
+            "Trending Maximum Cap (12.0% Rate)",
+            "12.35% + $0.30",
+            "12.0% Ad Rate",
+            "26.2% of Order Total",
+            "Vulnerable (Risk of Cash Loss)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Never Match eBay Automated \"Suggested Ad Rate\" Blindly",
+          "actionableAdvice": "eBay automated algorithm frequently recommends ad rates between 9% and 15% based on peak competitor bids. Start campaigns manually at 2.5% to 3.5%, evaluate 14-day impression share, and only increase bids in 0.5% increments on slow-moving inventory to maintain positive advertising ROAS."
+        },
+        {
+          "title": "Utilize Promoted Listings Advanced (PPC) for High-Volume SKUs",
+          "actionableAdvice": "For multi-quantity listings with high search demand, Promoted Listings Advanced operates on a cost-per-click (CPC) auction rather than a percentage of sale. When managed with negative keywords, PPC can achieve lower advertising cost of sale (ACOS) than percentage-of-sale ads."
+        },
+        {
+          "title": "Incorporate Free Shipping into Item Price to Minimize Tax Fee Drag",
+          "actionableAdvice": "Because eBay assesses both FVF and ad fees on shipping charges and sales tax, building shipping into a competitive retail price with complimentary delivery improves organic Best Match search ranking, reducing the need for aggressive ad rates."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Does eBay charge Promoted Listings fees on sales tax collected from the buyer?",
+          "answer": "Yes. eBay calculates Promoted Listings Standard fees based on the entire transaction amount paid by the buyer, which explicitly includes the item price, shipping fees, applicable sales taxes, and government regulatory fees. This gross calculation method inflates the effective advertising cost relative to the pure product sale price, requiring sellers to model ad rate margins carefully before setting campaigns."
+        },
+        {
+          "question": "How long is the attribution window for eBay Promoted Listings Standard?",
+          "answer": "eBay Promoted Listings Standard enforces a 30-day attribution window. If a buyer clicks on your sponsored listing and purchases that item—or any other promoted item from your store—within 30 calendar days of the click, eBay assesses the promoted listing fee, even if the buyer returned to your store organically through bookmarks or direct search before purchasing."
+        },
+        {
+          "question": "What is the minimum ad rate percentage required for Promoted Listings Standard?",
+          "answer": "The minimum allowable ad rate for Promoted Listings Standard is 2.0% of the total transaction amount. Sellers can bid in 0.1% increments up to 100%. While eBay suggests dynamic trending ad rates (often between 8% and 15%), starting at 2.0% to 5.0% allows sellers to test visibility without sacrificing unit profit margins or risking severe net capital losses."
+        },
+        {
+          "question": "Does Promoted Listings Standard charge for clicks that do not result in a sale?",
+          "answer": "No. Promoted Listings Standard is a pure cost-per-sale (CPS) advertising model. You are charged an advertising fee only when a buyer clicks your sponsored placement and completes a transaction within 30 days. Unconverted clicks and impressions cost zero dollars, making it completely risk-free from a pure pay-per-click budget standpoint, unlike keyword-based Promoted Listings Advanced campaigns."
+        },
+        {
+          "question": "How can sellers verify whether an order was organic or originated from a promoted ad?",
+          "answer": "In the eBay Seller Hub under Orders, each completed sale displays a \"Promoted\" badge if the transaction was attributed to an ad click within the 30-day window. You can also generate detailed Advertising Reports that cross-reference sold item IDs, ad rate percentages, attribution timestamps, and net advertising fees deducted, providing complete financial transparency for accounting and tax reconciliation."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ebay-international-shipping-fee-calculator",
+    "title": "eBay International Fee (1.65%) & Cross-Border Seller Profit Calculator",
+    "metaTitle": "eBay International Shipping Fee Calculator 2026 | EIS Cut",
+    "metaDescription": "Calculate eBay cross-border profits deducting 1.65% International Fees, domestic hub shipping, and Final Value Fees. Model global export net margins today.",
+    "category": "ecommerce",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-26",
+    "officialSourceName": "eBay International Shipping (EIS) Terms & Global Seller Fee Schedules (2026)",
+    "officialSourceUrl": "https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping",
+    "defaultInputs": {
+      "sellingPrice": 140,
+      "cogs": 45,
+      "shippingCharged": 12,
+      "shippingActualCost": 11.5,
+      "monthlyUnits": 65,
+      "planTier": "eis-standard",
+      "appFeesMonthly": 27.95,
+      "marketingPerOrder": 4,
+      "returnsRate": 1.5,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "domestic-baseline": {
+          "name": "Domestic US Order Baseline (12.35% FVF + $0.30)",
+          "monthlyFee": 27.95,
+          "percentageRate": 12.35,
+          "fixedFee": 0.3,
+          "additionalNotes": "Standard eBay Basic Store rate assessed on domestic shipping addresses within the 50 US states."
+        },
+        "eis-standard": {
+          "name": "eBay International Shipping EIS (14.00% Combined Fee + $0.30)",
+          "monthlyFee": 27.95,
+          "percentageRate": 14,
+          "fixedFee": 0.3,
+          "additionalNotes": "Stacks 12.35% store FVF and 1.65% international cross-border fee; seller ships domestically to EIS hub with zero customs liability."
+        },
+        "direct-international": {
+          "name": "Direct International Fulfillment (14.00% + Private Export Carrier)",
+          "monthlyFee": 27.95,
+          "percentageRate": 14,
+          "fixedFee": 0.3,
+          "additionalNotes": "Seller directly fulfills parcel to foreign destination; incurs 1.65% cross-border fee and retains full return and customs transit liability."
+        }
+      },
+      "extraParameters": {
+        "basicStoreFvfPct": 12.35,
+        "internationalFeePct": 1.65,
+        "perOrderFixed": 0.3,
+        "domesticHubTransitCostEstimate": 11.5,
+        "currencyConversionRatePct": 3
+      }
+    },
+    "relatedSlugs": [
+      "ebay-fee-calculator",
+      "ebay-promoted-listings-fee-calculator",
+      "product-landed-cost-calculator",
+      "shopify-shipping-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Selling internationally on eBay opens access to millions of active buyers across more than 200 countries and territories. To eliminate cross-border friction, eBay introduced the eBay International Shipping (EIS) program, replacing the legacy Global Shipping Program (GSP). Under EIS, US sellers simply ship sold items to a domestic forwarding logistics hub in Glendale Heights, Illinois, or Erlanger, Kentucky. Once delivered to the domestic hub, eBay assumes 100% legal responsibility for international customs clearance, cross-border transit, international tracking, buyer returns, and damage claims. In exchange for this frictionless global infrastructure, eBay charges US sellers a 1.65% International Fee on orders fulfilled to non-US addresses. This cross-border fee stacks directly on top of category Final Value Fees and domestic postage, requiring precise net margin modeling to avoid cross-border balance sheet erosion and unrecovered freight costs across international orders and global retail accounts.",
+      "formulaBreakdown": {
+        "formulaString": "Net Cross-Border Profit = Gross Revenue - Domestic Shipping Cost - (Total Sale × (FVF% + 1.65% International Fee)) - Fixed Fee - COGS",
+        "variables": [
+          {
+            "symbol": "Total Sale",
+            "meaning": "Total order value including item retail price, domestic shipping charged to the buyer, and applicable sales taxes."
+          },
+          {
+            "symbol": "FVF %",
+            "meaning": "Category Final Value Fee percentage: 12.35% for Basic Store subscribers or 13.25% for standard accounts."
+          },
+          {
+            "symbol": "International Fee (1.65%)",
+            "meaning": "Mandatory 1.65% cross-border seller fee assessed when the buyer registration address is outside the United States."
+          },
+          {
+            "symbol": "Domestic Hub Shipping",
+            "meaning": "Postage cost paid by the seller to transport the parcel from their facility to the regional eBay EIS export hub."
+          },
+          {
+            "symbol": "Fixed Fee",
+            "meaning": "Standard per-order transaction charge: $0.30 for Store subscribers or $0.40 for non-store sellers."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Exporting a $180 Collectible Mechanical Watch to a Buyer in Australia via EIS",
+        "narrative": "A vintage watch dealer in Texas lists a rare chronograph on eBay for $850.00 with free domestic shipping (actual postage cost to Illinois hub: $12.50). A collector in Tokyo, Japan, purchases the timepiece. The buyer pays international shipping and Japanese import consumption tax directly to eBay. The eBay category Final Value Fee is 13.25% + $0.30, and eBay levies the 1.65% International Fee. The seller needs to model exact deductions to verify export profit margins.",
+        "stepByStepMath": [
+          "Calculate seller gross revenue: $180.00 item + $12.00 domestic shipping = $192.00 gross collected.",
+          "Calculate Basic Store Final Value Fee (12.35% on $192.00): $192.00 × 0.1235 = $23.71.",
+          "Calculate eBay International Fee (1.65% on $192.00): $192.00 × 0.0165 = $3.17.",
+          "Add fixed per-order fee: $0.30.",
+          "Sum total eBay marketplace deductions: $23.71 FVF + $3.17 International + $0.30 Fixed = $27.18 total fees.",
+          "Calculate net payout from eBay: $192.00 - $27.18 = $164.82 deposited funds.",
+          "Deduct actual domestic hub postage ($9.85) and watch COGS ($70.00): $164.82 - $9.85 - $70.00 = $84.97 net profit.",
+          "Determine net margin percentage: ($84.97 / $192.00) = 44.25% realized profit margin."
+        ],
+        "finalTakeaway": "On an $850.00 international luxury sale, total platform deductions equal $126.95 Final Value Fee + $14.03 International Fee + $12.50 domestic shipping = $153.48 (18.06% of sales price), netting $696.52. Despite the 1.65% cross-border fee, the total protection against international chargebacks, loss in transit, and return costs makes EIS highly profitable for high-value merchandise."
+      },
+      "benchmarkTable": {
+        "title": "eBay Cross-Border Fee Structures: EIS vs. Direct International Shipping (2026)",
+        "headers": [
+          "Shipping Method",
+          "Marketplace FVF",
+          "International Fee",
+          "Return & Customs Liability",
+          "Seller Operational Burden"
+        ],
+        "rows": [
+          [
+            "eBay International Shipping (EIS)",
+            "12.35% / 13.25%",
+            "1.65% of Order Total",
+            "Assumed 100% by eBay",
+            "Ship to Domestic US Hub Only"
+          ],
+          [
+            "Direct International (USPS Priority)",
+            "12.35% / 13.25%",
+            "1.65% of Order Total",
+            "Seller Bears 100% Risk",
+            "Fill Customs Declarations & Tariffs"
+          ],
+          [
+            "Direct Carrier (DHL Express / FedEx)",
+            "12.35% / 13.25%",
+            "1.65% of Order Total",
+            "Seller Handles Claims",
+            "Coordinate Commercial Invoices"
+          ],
+          [
+            "Legacy Global Shipping Program (GSP)",
+            "12.35% / 13.25%",
+            "1.65% of Order Total",
+            "Partial eBay Protection",
+            "Phased out in favor of EIS"
+          ],
+          [
+            "Domestic Order Baseline (No Export)",
+            "12.35% / 13.25%",
+            "0.00% (Zero Surcharge)",
+            "Standard Domestic Rules",
+            "Standard Delivery to 50 US States"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Enroll Fully in eBay International Shipping (EIS) for Zero Return Liability",
+          "actionableAdvice": "Under eBay International Shipping, the buyer covers all international freight costs, but the seller remains responsible for domestic shipping to eBay forwarding hub. Use discounted commercial ground shipping services like USPS Ground Advantage or UPS Ground via eBay Labels to keep domestic hub delivery costs under $8.00."
+        },
+        {
+          "title": "Optimize Packaging for Domestic Hub Inbound Scanning",
+          "actionableAdvice": "EIS hubs process millions of parcels daily. Ensure barcodes are flat, unobstructed, and printed with thermal label printers. Damaged or illegible domestic labels result in delayed export routing or return-to-sender carrier adjustments."
+        },
+        {
+          "title": "Audit Restricted Commodity Lists by Destination Country",
+          "actionableAdvice": "Certain categories—such as lithium batteries, aerosol liquids, animal furs, and precious coins—are barred from export in specific nations. Review eBay country-specific import restriction lists to avoid having items confiscated at the consolidation facility."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the eBay International Fee and when does it apply to US sellers?",
+          "answer": "The eBay International Fee is a 1.65% surcharge levied on the gross order value (including item price, domestic shipping, and regional taxes) whenever an item is sold to a buyer with an international delivery address, regardless of whether the transaction ships via eBay International Shipping or independent global mail carriers, compensating eBay for cross-border financial processing and currency management."
+        },
+        {
+          "question": "Who pays for international shipping and customs duties under the EIS program?",
+          "answer": "The international buyer pays all cross-border shipping costs, customs tariffs, import taxes, and import brokerage charges directly to eBay during checkout. The seller only pays for standard domestic economy shipping from their warehouse or home to eBay US domestic forwarding hub in Illinois or Kentucky, eliminating unexpected customs brokerage charges or international freight invoices for the seller."
+        },
+        {
+          "question": "What happens if an international item is lost or damaged in transit after reaching the EIS hub?",
+          "answer": "Once a package arrives safely at the domestic EIS hub, eBay assumes full legal and financial responsibility. If the shipment is damaged during international transit or lost overseas, eBay handles the refund directly out of platform funds. The seller keeps their full payment payout with zero impact on seller performance metrics or defect ratings on their dashboard."
+        },
+        {
+          "question": "Does the 1.65% International Fee apply to domestic sales to military APO/FPO addresses?",
+          "answer": "No. Shipments sent to US military personnel stationed overseas at APO, FPO, or DPO postal zip codes are classified as domestic US shipments by the United States Postal Service and eBay. Consequently, sales delivered to military postal addresses do not incur the 1.65% International Fee or cross-border payment surcharges, preserving domestic profit margins for sellers."
+        },
+        {
+          "question": "Can sellers opt out of specific countries while keeping international shipping enabled?",
+          "answer": "Yes. Sellers can access their eBay Shipping Preferences and exclude specific international regions, continents, or individual countries from receiving their merchandise, allowing precise geopolitical and logistical control over where their catalog is marketed. This prevents fulfillment issues in countries with unreliable postal infrastructure, strict trade embargoes, or complex local product compliance regulations across specific international jurisdictions."
+        }
+      ]
+    }
   }
 ]

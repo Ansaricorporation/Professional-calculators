@@ -13,7 +13,7 @@ execSync('git init', { cwd: distDir, stdio: 'inherit' });
 execSync('git config user.name "github-actions[bot]"', { cwd: distDir, stdio: 'inherit' });
 execSync('git config user.email "github-actions[bot]@users.noreply.github.com"', { cwd: distDir, stdio: 'inherit' });
 execSync('git add -A', { cwd: distDir, stdio: 'inherit' });
-execSync('git commit -m "deploy: task 11 (v2) - batch 5 (20 high-cpc stock, options, crypto & real estate calculators - 120 total live)"', { cwd: distDir, stdio: 'inherit' });
+execSync('git commit -m "deploy: task 13 - topical authority booster (10 spoke calculators for top GSC winners - 130 total live)"', { cwd: distDir, stdio: 'inherit' });
 execSync('git push -f https://github.com/Ansaricorporation/Professional-calculators.git main:gh-pages', { cwd: distDir, stdio: 'inherit' });
 fs.rmSync(path.join(distDir, '.git'), { recursive: true, force: true });
 console.log('✅ origin/gh-pages updated successfully!');

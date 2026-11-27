@@ -556,22 +556,6 @@ export const OPTIMIZED_META = {
   'stock-wash-sale-capital-gains-calculator': {
     title: 'Stock Wash Sale Rule Capital Gains Calculator (2026 IRS)',
     description: 'Calculate disallowed losses, cost basis adjustments, and taxable net capital gains under the IRS 30-day wash sale rule for stock and ETF trading accounts now.'
-  },
-  'finance-youtube-rpm-calculator': {
-    title: 'Finance YouTube Channel RPM & AdSense Calculator (2026 CPM)',
-    description: 'Calculate high-RPM finance YouTube channel AdSense earnings, personal finance CPM rates, and video sponsorship payouts across US and global audiences now.'
-  },
-  'gaming-youtube-rpm-calculator': {
-    title: 'Gaming YouTube Channel RPM & AdSense Calculator (2026 CPM)',
-    description: 'Calculate gaming YouTube channel earnings across long-form views, Shorts Creator Pool payouts, Super Chats, and channel memberships at 2026 CPM rates now.'
-  },
-  'podcast-youtube-rpm-calculator': {
-    title: 'Podcast YouTube Channel RPM & AdSense Calculator (2026 CPM)',
-    description: 'Calculate video podcast YouTube AdSense earnings, mid-roll ad density returns, and host-read sponsor CPM revenue to forecast monthly studio income now.'
-  },
-  'tech-saas-youtube-rpm-calculator': {
-    title: 'Tech & SaaS YouTube RPM & AdSense Calculator (2026 CPM)',
-    description: 'Calculate tech software tutorial YouTube AdSense revenue, B2B advertiser CPMs, and recurring SaaS affiliate commissions to forecast creator earnings now.'
   }
 };
 
@@ -650,8 +634,8 @@ export function runOptimization(applyWrites = false) {
 
   console.log('-'.repeat(80));
   console.log(`Total Calculators Audited:   ${totalCalculators}`);
-  console.log(`Unique Title Count:          ${titlesSeen.size} / 140`);
-  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 140`);
+  console.log(`Unique Title Count:          ${titlesSeen.size} / 136`);
+  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 136`);
   console.log(`Title Tag Format Violations: ${titleErrors}`);
   console.log(`Meta Desc Format Violations: ${descErrors}`);
   console.log('='.repeat(80));
@@ -660,7 +644,7 @@ export function runOptimization(applyWrites = false) {
     throw new Error(`SEO Meta CTR Audit failed with ${titleErrors} title errors and ${descErrors} description errors.`);
   }
 
-  console.log('🎉 100% OF ALL 140 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
+  console.log('🎉 100% OF ALL 136 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
 }
 
 // Auto-run if executed directly via node

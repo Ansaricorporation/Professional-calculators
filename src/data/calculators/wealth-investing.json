@@ -3038,7 +3038,8 @@
       "rental-property-roi-calculator",
       "brrrr-method-calculator",
       "airbnb-vs-vrbo-host-fee-calculator",
-      "fha-vs-conventional-mortgage-calculator"
+      "fha-vs-conventional-mortgage-calculator",
+      "airbnb-host-only-fee-calculator"
     ]
   },
   {

@@ -3721,5 +3721,200 @@
         }
       ]
     }
+  },
+  {
+    "slug": "roblox-devex-payout-calculator",
+    "title": "Roblox DevEx Calculator: Robux to USD Payout Rates (2026)",
+    "metaTitle": "Roblox DevEx Calculator 2026 | Robux to USD Payout Rates",
+    "metaDescription": "Convert earned Robux to USD under 2026 DevEx rates ($0.0038 standard and $0.0054 eligible 18+ spend). Model 30k minimum thresholds and net profits now.",
+    "category": "creator-economy",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-27",
+    "officialSourceName": "Roblox Developer Exchange (DevEx) Terms of Service & Rates",
+    "officialSourceUrl": "https://en.help.roblox.com/hc/en-us/articles/203314100",
+    "defaultInputs": {
+      "sellingPrice": 114,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 100,
+      "planTier": "devex-standard-30k",
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 15,
+      "returnsRate": 0,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "devex-standard-30k": {
+          "name": "Standard DevEx Rate ($0.0038 / Robux)",
+          "monthlyFee": 0,
+          "percentageRate": 0,
+          "fixedFee": 0,
+          "additionalNotes": "Standard 2026 rate of $0.0038 per earned Robux ($114 USD per 30,000 Robux threshold)."
+        },
+        "devex-18plus-boosted": {
+          "name": "18+ Eligible Spend DevEx Rate ($0.0054 / Robux)",
+          "monthlyFee": 0,
+          "percentageRate": 0,
+          "fixedFee": 0,
+          "additionalNotes": "Enhanced rate of $0.0054 per Robux for qualifying experiences monetizing verified 18+ user spend."
+        },
+        "devex-legacy-rate": {
+          "name": "Legacy Pre-Sept 2025 Rate ($0.0035 / Robux)",
+          "monthlyFee": 0,
+          "percentageRate": 0,
+          "fixedFee": 0,
+          "additionalNotes": "Historical benchmark rate of $0.0035 per Robux ($105 USD per 30,000 Robux threshold)."
+        }
+      },
+      "standardPercentage": 0,
+      "standardFixed": 0,
+      "extraParameters": {
+        "minimumDevExThresholdRobux": 30000,
+        "standardConversionRateUsd": 0.0038,
+        "eligible18PlusConversionRateUsd": 0.0054,
+        "legacyConversionRateUsd": 0.0035,
+        "robloxMarketplaceTakeRate": 30
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Building virtual experiences, 3D avatar accessories, and custom mechanics on Roblox has matured into a multi-billion-dollar creator economy ecosystem, with elite development studios generating millions of dollars in annual enterprise cash flow. However, converting in-game virtual currency (Robux) into legal tender cash through the official Roblox Developer Exchange (DevEx) program involves strict compliance hurdles, tiered exchange rates, and substantial platform revenue shares. Under Roblox updated 2026 DevEx framework, the minimum cash-out threshold stands at 30,000 earned Robux (lowered from the historical 50k and 100k benchmarks), unlocking accessibility for indie scripters and 3D modelers. The standard exchange rate provides $0.0038 USD per earned Robux, yielding exactly $114.00 per 30,000 Robux cash-out. Furthermore, Roblox has introduced an enhanced incentive tier paying up to $0.0054 USD per Robux ($162.00 per 30k) for developers monetizing verified 18+ audience engagement. Crucially, before Robux ever reach a developer balance, Roblox deducts a baseline 30% marketplace transaction fee on developer product sales, game passes, and avatar UGC catalog items. Modeling gross Robux sales against platform cuts, Tipalti payout transfer fees, and US self-employment tax liabilities provides essential clarity for game developers scaling on Roblox.",
+      "formulaBreakdown": {
+        "formulaString": "USD Cash Payout = Earned Robux × DevEx Conversion Rate - Wire / Transfer Fees",
+        "variables": [
+          {
+            "symbol": "Earned Robux",
+            "meaning": "Clean Robux accumulated through virtual experience sales, game passes, or UGC items (excluding bought currency)."
+          },
+          {
+            "symbol": "DevEx Conversion Rate",
+            "meaning": "Current exchange rate ($0.0038 standard rate; $0.0054 for verified 18+ audience spend)."
+          },
+          {
+            "symbol": "Platform Cut (30%)",
+            "meaning": "Roblox pre-deduction applied automatically at the point of in-game virtual purchase."
+          },
+          {
+            "symbol": "USD Cash Payout",
+            "meaning": "Final legal tender funds transferred to the creator verified Tipalti banking account."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Converting 500,000 Earned Robux into USD Cash Payout",
+        "narrative": "An independent game developer creates an adventure RPG that generates 714,286 gross Robux in player game pass purchases during a 30-day operating sprint. After Roblox deducts its standard 30% in-game marketplace fee, the developer receives exactly 500,000 clean earned Robux in their creator group treasury. The developer has an active DevEx portal through Tipalti and applies for cash-out under the standard $0.0038 exchange rate. The studio needs to calculate gross cash proceeds, Tipalti ACH transfer fees ($1.50), and estimated quarterly self-employment taxes (25%).",
+        "stepByStepMath": [
+          "Calculate Gross Player Robux Spend: 714,286 gross Robux spent by players in-game.",
+          "Deduct Roblox 30% In-Game Platform Cut: 714,286 × 0.30 = 214,286 Robux retained by Roblox.",
+          "Calculate Net Earned Robux in Group Treasury: 714,286 - 214,286 = 500,000 earned Robux eligible for DevEx.",
+          "Apply Standard 2026 DevEx Exchange Rate: 500,000 Robux × $0.0038 USD/Robux = $1,900.00 USD gross payout.",
+          "Deduct Tipalti US ACH Payout Transfer Fee: $1,900.00 - $1.50 = $1,898.50 net cash deposited into studio bank.",
+          "Model 18+ Incentive Rate Comparison ($0.0054): 500,000 Robux × $0.0054 = $2,700.00 (an extra $800.00 USD in revenue).",
+          "Calculate Estimated Self-Employment Tax Reserves (25%): $1,898.50 net payout × 0.25 = $474.63 tax liability.",
+          "Calculate Final Spendable Studio Cash Flow: $1,898.50 - $474.63 tax reserve = $1,423.87 net after-tax income.",
+          "Evaluate Effective Dollar-per-Gross-Robux Yield: $1,900.00 gross cash / 714,286 gross Robux = ~$0.00266 effective cash rate."
+        ],
+        "finalTakeaway": "The developer converts 500,000 clean earned Robux into $1,900.00 USD gross ($1,898.50 net ACH), highlighting how Roblox 30% in-game take rate and $0.0038 DevEx multiplier determine studio cash flow."
+      },
+      "benchmarkTable": {
+        "title": "2026 Roblox DevEx Cash Payout Tiers Across Standard and 18+ Rates",
+        "headers": [
+          "Earned Robux Amount",
+          "Standard DevEx ($0.0038)",
+          "18+ Qualified DevEx ($0.0054)",
+          "Legacy Benchmark ($0.0035)",
+          "Tipalti US ACH Payout"
+        ],
+        "rows": [
+          [
+            "30,000 (Minimum)",
+            "$114.00",
+            "$162.00",
+            "$105.00",
+            "$112.50"
+          ],
+          [
+            "100,000",
+            "$380.00",
+            "$540.00",
+            "$350.00",
+            "$378.50"
+          ],
+          [
+            "500,000",
+            "$1,900.00",
+            "$2,700.00",
+            "$1,750.00",
+            "$1,898.50"
+          ],
+          [
+            "2,000,000",
+            "$7,600.00",
+            "$10,800.00",
+            "$7,000.00",
+            "$7,598.50"
+          ],
+          [
+            "10,000,000",
+            "$38,000.00",
+            "$54,000.00",
+            "$35,000.00",
+            "$37,998.50"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Ensure 100% Earned Robux Eligibility Before Application",
+          "actionableAdvice": "Roblox DevEx compliance teams perform rigorous fraud audits on every cash-out request. Robux acquired through gift card redemptions, direct credit card purchases, or trading items do NOT qualify as earned. Only Robux originating from genuine player spending on your experiences or UGC catalog sales can be cashed out."
+        },
+        {
+          "title": "Monetize Mature Themes to Unlock the $0.0054 18+ Incentive Rate",
+          "actionableAdvice": "Roblox provides an elevated $0.0054/Robux cash-out rate for experiences officially categorized under 18+ age guidelines. Designing sophisticated social lounges, tactical shooters, or immersive roleplaying games targeting verified 18+ players increases developer cash yields by 42.1% per Robux."
+        },
+        {
+          "title": "Optimize Virtual Goods Pricing to Maximize Robux Velocity",
+          "actionableAdvice": "Because Roblox retains a mandatory 30% cut on all in-game passes and clothing, price consumable boosts and cosmetics at psychological price points (99, 249, 499 Robux). Testing bundle discounts increases overall player conversion rates, compensating for the platform marketplace cut."
+        },
+        {
+          "title": "Select Direct ACH Deposit Over International Wire Transfers",
+          "actionableAdvice": "Inside the Tipalti payment portal, configure domestic ACH direct deposit ($1.50 flat fee) rather than international wire transfers ($25.00 to $45.00 fee + foreign exchange currency markups). For creators outside the US, receiving payouts in local currency via local bank rails prevents substantial banking friction."
+        },
+        {
+          "title": "Establish a Registered Corporate Entity for Studio Deductions",
+          "actionableAdvice": "Full-time developers cashing out over $10,000 annually through DevEx should establish an LLC or S-Corporation. Operating as a corporate business allows you to deduct developer hardware, server costs, software subscriptions, and freelance contractor payouts against your 1099 taxable income."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the absolute minimum Robux requirement to cash out via DevEx in 2026?",
+          "answer": "The official minimum threshold required to submit a developer DevEx cash-out application is 30,000 earned Robux. At the standard baseline 2026 exchange rate of $0.0038 per Robux, this converts into exactly $114.00 USD in gross cash earnings, making professional creator monetization significantly more accessible to emerging independent developers and 3D modders."
+        },
+        {
+          "question": "What qualifies as \"Earned Robux\" versus ineligible currency for DevEx?",
+          "answer": "Earned Robux are virtual platform funds acquired legally by developers through direct sales of in-game access passes, developer products, private VIP server subscriptions, engagement-based payouts (Premium Playtime), or avatar creator store marketplace items. Robux acquired through gift card redemptions, direct purchasing, group fund transfers without clear professional services, or secondary trading are strictly ineligible for DevEx."
+        },
+        {
+          "question": "How long does a Roblox DevEx request take to process and deposit into a bank?",
+          "answer": "First-time DevEx applications typically require between 5 and 14 business days to allow Roblox compliance teams to perform identity verification, tax document (W-9 or W-8BEN) validation, and Tipalti account registration. Subsequent recurring monthly cash-out requests submitted by verified developers generally process smoothly and clear into designated bank accounts within 3 to 5 business days."
+        },
+        {
+          "question": "Does Roblox withhold federal or state income taxes from DevEx payouts?",
+          "answer": "Roblox does not withhold taxes for US tax residents who have submitted an approved Form W-9; US developers receive 100% of their gross DevEx payment (less Tipalti fees) and receive a Form 1099-NEC at year-end. For non-US residents without a tax treaty, Roblox may withhold up to 30% in statutory US foreign withholding tax."
+        },
+        {
+          "question": "Why does Roblox take 30% of in-game Robux transactions before DevEx?",
+          "answer": "Roblox operates an all-inclusive closed-loop virtual platform ecosystem and automatically deducts a standard 30% marketplace commission on every virtual item, avatar cosmetic, or game pass transaction. This 30% platform cut covers high-bandwidth global cloud multiplayer servers, client software updates, anti-cheat security, and merchant card processing overhead without extra hosting charges."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "steam-game-developer-net-revenue-calculator",
+      "game-asset-store-royalty-calculator",
+      "twitch-streamer-earnings-calculator",
+      "whop-fee-calculator"
+    ]
   }
 ]

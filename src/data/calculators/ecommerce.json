@@ -1711,7 +1711,9 @@
       "ebay-promoted-listings-fee-calculator",
       "ebay-international-shipping-fee-calculator",
       "ebay-store-subscription-break-even-calculator",
-      "ebay-vs-mercari-vs-poshmark-fee-calculator"
+      "ebay-vs-mercari-vs-poshmark-fee-calculator",
+      "depop-seller-fee-boosted-listing-calculator",
+      "whatnot-seller-fee-profit-calculator"
     ]
   },
   {
@@ -3229,7 +3231,9 @@
       "ebay-fee-calculator",
       "etsy-fee-calculator",
       "etsy-vs-shopify-fee-calculator",
-      "walmart-marketplace-fee-calculator"
+      "walmart-marketplace-fee-calculator",
+      "depop-seller-fee-boosted-listing-calculator",
+      "whatnot-seller-fee-profit-calculator"
     ]
   },
   {
@@ -4742,7 +4746,8 @@
       "ebay-fee-calculator",
       "ebay-international-shipping-fee-calculator",
       "ebay-promoted-listings-roas-calculator",
-      "amazon-fba-vs-fbm-profit-calculator"
+      "amazon-fba-vs-fbm-profit-calculator",
+      "whatnot-seller-fee-profit-calculator"
     ],
     "guideContent": {
       "executiveSummary": "Standing out among billions of active product listings on eBay requires strategic promotional visibility. To capture prime top-of-search placements across search results and competing product pages, sellers leverage Promoted Listings Standard. Unlike traditional pay-per-click (PPC) advertising models, Promoted Listings Standard operates on a pure cost-per-sale (CPS) performance basis: you only incur an advertising fee when a buyer clicks your promoted link and purchases any item from your store within a 30-day attribution window. However, the chosen ad rate (ranging from 2% to over 20%) is calculated against the total buyer transaction amount—including item sale price, shipping charged to the buyer, and applicable sales tax collected by eBay. This ad fee stacks directly on top of eBay standard Final Value Fee (typically 13.25% + $0.30 for most categories) and regulatory operating fees. Without careful margin modeling, advertising fees can consume the entire net operating profit on an order, turning high sales volume into balance sheet losses and operational cash flow drain across high-velocity seller accounts.",

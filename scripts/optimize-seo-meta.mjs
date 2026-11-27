@@ -556,6 +556,22 @@ export const OPTIMIZED_META = {
   'stock-wash-sale-capital-gains-calculator': {
     title: 'Stock Wash Sale Rule Capital Gains Calculator (2026 IRS)',
     description: 'Calculate disallowed losses, cost basis adjustments, and taxable net capital gains under the IRS 30-day wash sale rule for stock and ETF trading accounts now.'
+  },
+  'airbnb-host-only-fee-calculator': {
+    title: 'Airbnb Host-Only Fee Calculator 2026 | 15.5% Price Markup',
+    description: 'Calculate net host payouts under Airbnb 15.5% host-only service fees. Model exact 18.34% nightly rate markups to protect listing profit margins today.'
+  },
+  'depop-seller-fee-boosted-listing-calculator': {
+    title: 'Depop Seller Fee Calculator 2026 | 12% Boosted Net Profit',
+    description: 'Calculate Depop seller earnings with 0% marketplace fees, 3.3% + $0.45 payment processing, and 12% boosted listings. Model true net take-home pay now.'
+  },
+  'roblox-devex-payout-calculator': {
+    title: 'Roblox DevEx Calculator 2026 | Robux to USD Payout Rates',
+    description: 'Convert earned Robux to USD under 2026 DevEx rates ($0.0038 standard and $0.0054 eligible 18+ spend). Model 30k minimum thresholds and net profits now.'
+  },
+  'whatnot-seller-fee-profit-calculator': {
+    title: 'Whatnot Seller Fee Calculator 2026 | Live Auction Profits',
+    description: 'Calculate Whatnot live stream selling profits factoring 8% commission, 2.9% + $0.30 payment processing, and volume tier discounts. Audit net margins now.'
   }
 };
 
@@ -634,8 +650,8 @@ export function runOptimization(applyWrites = false) {
 
   console.log('-'.repeat(80));
   console.log(`Total Calculators Audited:   ${totalCalculators}`);
-  console.log(`Unique Title Count:          ${titlesSeen.size} / 136`);
-  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 136`);
+  console.log(`Unique Title Count:          ${titlesSeen.size} / 140`);
+  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 140`);
   console.log(`Title Tag Format Violations: ${titleErrors}`);
   console.log(`Meta Desc Format Violations: ${descErrors}`);
   console.log('='.repeat(80));
@@ -644,7 +660,7 @@ export function runOptimization(applyWrites = false) {
     throw new Error(`SEO Meta CTR Audit failed with ${titleErrors} title errors and ${descErrors} description errors.`);
   }
 
-  console.log('🎉 100% OF ALL 136 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
+  console.log('🎉 100% OF ALL 140 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
 }
 
 // Auto-run if executed directly via node

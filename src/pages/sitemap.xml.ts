@@ -5,7 +5,7 @@ import { getCanonicalUrl } from '../utils/paths';
 
 export const GET: APIRoute = () => {
   const calculators = getAllCalculators();
-  const today = '2026-11-26';
+  const today = '2026-11-27';
 
   const staticPages = [
     { url: getCanonicalUrl('/', SITE_CONFIG.siteUrl), priority: '1.0', changefreq: 'daily' },

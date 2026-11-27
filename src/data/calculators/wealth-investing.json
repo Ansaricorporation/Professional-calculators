@@ -158,7 +158,8 @@
       "dividend-reinvestment-drip-calculator",
       "capital-gains-tax-calculator",
       "stock-cost-basis-fifo-vs-lifo-calculator",
-      "stock-split-cost-basis-calculator"
+      "stock-split-cost-basis-calculator",
+      "stock-wash-sale-capital-gains-calculator"
     ]
   },
   {
@@ -3528,6 +3529,172 @@
         {
           "question": "Why do companies execute reverse stock splits and how does it impact retail investors?",
           "answer": "Companies execute reverse stock splits primarily to prevent delisting from major stock exchanges like NASDAQ, which enforce minimum bid price requirements (typically $1.00 per share). While reverse splits maintain total dollar value, they often signal underlying corporate distress or debt restructuring that requires prudent investor reassessment and portfolio rebalancing across equity holdings."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stock-wash-sale-capital-gains-calculator",
+    "title": "Stock Wash Sale Rule & Short-Term vs. Long-Term Capital Gains Tax Calculator",
+    "metaTitle": "Stock Wash Sale Rule Capital Gains Calculator (2026 IRS)",
+    "metaDescription": "Calculate disallowed losses, cost basis adjustments, and taxable net capital gains under the IRS 30-day wash sale rule for stock and ETF trading accounts now.",
+    "category": "wealth-investing",
+    "engineType": "platform-profit",
+    "lastUpdated": "2026-11-27",
+    "officialSourceName": "IRS Publication 550 (Investment Income and Expenses) & Internal Revenue Code Section 1091 (2026)",
+    "officialSourceUrl": "https://www.irs.gov/publications/p550",
+    "defaultInputs": {
+      "sellingPrice": 145,
+      "cogs": 175,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 80,
+      "planTier": "wash-sale-loss",
+      "appFeesMonthly": 0,
+      "marketingPerOrder": 0,
+      "returnsRate": 0,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "originalPurchasePricePerShare": 175,
+        "salePricePerShare": 145,
+        "sharesSold": 80,
+        "realizedLossAmount": 2400,
+        "replacementPurchasePricePerShare": 148,
+        "replacementSharesPurchased": 80,
+        "disallowedLossAmount": 2400,
+        "adjustedCostBasisPerShare": 178,
+        "shortTermTaxRatePct": 32,
+        "longTermTaxRatePct": 15
+      }
+    },
+    "relatedSlugs": [
+      "stock-average-cost-calculator",
+      "stock-cost-basis-fifo-vs-lifo-calculator",
+      "stock-split-cost-basis-calculator",
+      "wash-sale-rule-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Tax-loss harvesting is a premier wealth preservation strategy employed by equity investors to offset realized capital gains and reduce ordinary taxable income. However, executing tax-loss sales without rigorous calendar tracking exposes investors to IRS Section 1091: the Wash-Sale Rule. Under federal tax law, if an investor sells corporate stock or securities at a tax loss and, within a 61-day window (30 calendar days before the sale, the day of the sale, or 30 calendar days after the sale), purchases \"substantially identical\" stock or acquires options contracts to buy replacement shares, the realized loss is legally disallowed for current tax year deduction. The disallowed capital loss is not permanently forfeited; instead, the IRS mandates that the unallowable loss amount is added directly to the cost basis of the newly acquired replacement shares. Furthermore, the holding period of the original liquidated stock lot is tacked onto the replacement shares, dictating whether future sales qualify for short-term ordinary income rates (up to 37%) or preferential long-term capital gains rates (0%, 15%, or 20%). Understanding wash sale mathematics protects tax deductions across active brokerage portfolios.",
+      "formulaBreakdown": {
+        "formulaString": "Adjusted Replacement Cost Basis = Replacement Purchase Price + (Disallowed Realized Loss / Replacement Shares)",
+        "variables": [
+          {
+            "symbol": "Disallowed Realized Loss",
+            "meaning": "The dollar loss generated on the sale of original shares that cannot be deducted on Schedule D due to the 30-day repurchase rule."
+          },
+          {
+            "symbol": "Replacement Purchase Price",
+            "meaning": "The gross execution price per share paid to acquire the new substantially identical stock or options contract."
+          },
+          {
+            "symbol": "Adjusted Cost Basis",
+            "meaning": "The new IRS-compliant cost basis per share of the replacement shares, incorporating the deferred tax loss."
+          },
+          {
+            "symbol": "Tax Holding Period",
+            "meaning": "Original share purchase date duration tacked onto replacement shares to determine long-term status (366+ days)."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Tax-Loss Harvesting 80 Shares of a Tech Stock and Repurchasing Within 14 Days",
+        "narrative": "An investor holds 80 shares of an enterprise cloud software company purchased in February 2026 at $175.00 per share (cost basis: $14,000.00). In October 2026, the stock drops to $145.00. The investor sells all 80 shares to claim a $2,400.00 capital loss to offset earlier capital gains. However, 14 days later, the stock dips to $148.00 and the investor repurchases 80 replacement shares. The investor needs to model the disallowed loss and calculate their new adjusted cost basis for IRS Form 8949.",
+        "stepByStepMath": [
+          "Calculate Realized Loss: 80 shares × ($145.00 sale price - $175.00 original cost basis) = 80 × (-$30.00) = -$2,400.00 realized loss.",
+          "Identify Wash Sale Violation: Repurchasing identical shares within 14 days falls squarely within the mandatory 30-day post-sale wash window (Day 1 to Day 30).",
+          "Calculate Disallowed Loss on Schedule D: 100% of the $2,400.00 loss is disallowed for current 2026 tax deductions (reported on Form 8949 with adjustment code \"W\").",
+          "Calculate Disallowed Loss Per Share: $2,400.00 disallowed loss / 80 replacement shares = $30.00 per share.",
+          "Calculate Adjusted Replacement Share Cost Basis: $148.00 replacement price + $30.00 disallowed loss = $178.00 adjusted cost basis per share.",
+          "Determine Total Adjusted Lot Basis: 80 shares × $178.00 = $14,240.00 ($11,840.00 cash paid + $2,400.00 deferred tax loss).",
+          "Evaluate Future Liquidation at $195.00: If sold at $195.00 next year, taxable gain = $195.00 - $178.00 = $17.00/share ($1,360.00 total gain) rather than $47.00/share ($3,760.00 gain), finally recovering the $2,400.00 tax benefit.",
+          "Calculate Holding Period Tacking: The 8-month holding period of the original lot tacks onto the replacement shares, allowing the investor to reach long-term status (12+ months) just 4 months after the replacement purchase."
+        ],
+        "finalTakeaway": "The investor cannot deduct the $2,400.00 loss on their 2026 tax return. However, by adding $30.00/share to their replacement cost basis (raising it to $178.00/share), the $2,400.00 tax shield is preserved, reducing future taxable capital gains dollar-for-dollar when the replacement stock is sold."
+      },
+      "benchmarkTable": {
+        "title": "Wash Sale Impact Across Replacement Purchase Scenarios (2026)",
+        "headers": [
+          "Initial Loss Realized",
+          "Replacement Timing",
+          "Disallowed Loss Amount",
+          "Cost Basis Adjustment",
+          "Current Tax Year Deductibility"
+        ],
+        "rows": [
+          [
+            "$1,500.00 Stock Loss",
+            "Repurchased 10 Days Later",
+            "$1,500.00 Disallowed",
+            "Added to replacement share basis",
+            "0% Deductible (Deferred to future)"
+          ],
+          [
+            "$3,000.00 Stock Loss",
+            "Repurchased 28 Days Later",
+            "$3,000.00 Disallowed",
+            "Added to replacement share basis",
+            "0% Deductible (Deferred to future)"
+          ],
+          [
+            "$5,000.00 Stock Loss",
+            "Waited 31 Calendar Days",
+            "$0.00 Disallowed (Clean)",
+            "None (Basis matches purchase price)",
+            "100% Deductible in Current Year"
+          ],
+          [
+            "$2,000.00 Stock Loss",
+            "Purchased in Roth IRA",
+            "$2,000.00 Disallowed",
+            "Permanently Lost (Cannot adjust IRA)",
+            "0% Deductible (Tax Trap Warning)"
+          ],
+          [
+            "$4,000.00 Stock Loss",
+            "Bought Uncorrelated ETF",
+            "$0.00 Disallowed (Clean)",
+            "None (Different non-identical asset)",
+            "100% Deductible in Current Year"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Substitute Non-Identical Sector ETFs During the 30-Day Window",
+          "actionableAdvice": "To harvest a tax loss without losing market exposure, sell an individual stock (e.g., Nvidia) and immediately invest the proceeds into a diversified semiconductor ETF (e.g., SMH or SOXX). The IRS does not consider a diversified ETF substantially identical to a single company stock, locking in 100% of the tax deduction."
+        },
+        {
+          "title": "Never Trigger a Wash Sale Inside a Traditional or Roth IRA",
+          "actionableAdvice": "Under IRS Revenue Ruling 2008-5, if you sell stock at a loss in a taxable brokerage account and repurchase replacement shares in a Roth or Traditional IRA within 30 days, the loss is disallowed AND cannot be added to the IRA basis. The tax loss is permanently lost forever."
+        },
+        {
+          "title": "Wait Full 31 Calendar Days Before Re-Entering Core Equity Positions",
+          "actionableAdvice": "Count calendar days carefully: Day 0 is the sale date. You must wait through Day 30 and execute the repurchase on Day 31 or later. Setting automated calendar alerts prevents premature repurchases that accidentally disallow valuable five-figure capital loss deductions."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Does the IRS wash sale rule apply to cryptocurrency trading in 2026?",
+          "answer": "As of 2026 federal tax regulations, cryptocurrency is classified as property rather than stock or securities under IRC Section 1091. Consequently, traditional wash sale rules do not currently apply to Bitcoin and digital assets, allowing crypto investors to sell at a loss and immediately repurchase, though proposed Congressional legislation seeks to close this loophole."
+        },
+        {
+          "question": "What constitutes \"substantially identical\" securities under IRS guidelines?",
+          "answer": "Common stock and preferred stock of the same corporation with voting rights are considered substantially identical by the IRS. Similarly, call options contracts and forward agreements on the same underlying stock trigger wash sales. However, stock of two different competing companies in the same industry (e.g., Apple vs. Microsoft) is not substantially identical under tax law."
+        },
+        {
+          "question": "Can I sell shares at a loss in one brokerage and buy in another without triggering a wash sale?",
+          "answer": "No. The IRS wash sale rule applies across all accounts owned by the same taxpayer (and their spouse if filing jointly), including taxable accounts at multiple brokerage custodians (Schwab, Fidelity, Robinhood) and retirement accounts. Brokerages only track wash sales within their own accounts, making manual reconciliation on Form 8949 mandatory."
+        },
+        {
+          "question": "How much net capital loss can an individual deduct against ordinary income each year?",
+          "answer": "Under federal tax law, taxpayers can use realized capital losses to offset unlimited realized capital gains. If net capital losses exceed total capital gains, individuals can deduct up to $3,000.00 ($1,500.00 if married filing separately) against ordinary income per year. Unused net losses roll forward indefinitely to future tax years."
+        },
+        {
+          "question": "How does the holding period tacking rule work on wash-sale replacement shares?",
+          "answer": "When a wash sale occurs, the holding period of the original loss-making stock is added to the holding period of the replacement shares. If you held the original stock for 7 months before selling at a loss, your replacement shares start with 7 months of accrued holding time, reaching the 12-month long-term capital gains threshold after just 5 additional months."
         }
       ]
     }

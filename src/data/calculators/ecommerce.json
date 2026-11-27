@@ -349,7 +349,8 @@
       "etsy-shipping-calculator",
       "etsy-vs-shopify-fee-calculator",
       "shopify-dimensional-weight-shipping-calculator",
-      "shopify-free-shipping-threshold-calculator"
+      "shopify-free-shipping-threshold-calculator",
+      "shopify-usps-vs-ups-vs-fedex-shipping-calculator"
     ]
   },
   {
@@ -1708,7 +1709,9 @@
       "etsy-fee-calculator",
       "shopify-profit-margin-calculator",
       "ebay-promoted-listings-fee-calculator",
-      "ebay-international-shipping-fee-calculator"
+      "ebay-international-shipping-fee-calculator",
+      "ebay-store-subscription-break-even-calculator",
+      "ebay-vs-mercari-vs-poshmark-fee-calculator"
     ]
   },
   {
@@ -5052,6 +5055,168 @@
         {
           "question": "Can sellers opt out of specific countries while keeping international shipping enabled?",
           "answer": "Yes. Sellers can access their eBay Shipping Preferences and exclude specific international regions, continents, or individual countries from receiving their merchandise, allowing precise geopolitical and logistical control over where their catalog is marketed. This prevents fulfillment issues in countries with unreliable postal infrastructure, strict trade embargoes, or complex local product compliance regulations across specific international jurisdictions."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "shopify-usps-vs-ups-vs-fedex-shipping-calculator",
+    "title": "Shopify USPS vs. UPS vs. FedEx Shipping Rate & Margin Calculator",
+    "metaTitle": "Shopify USPS vs UPS vs FedEx Shipping Calculator (2026 Rates)",
+    "metaDescription": "Compare commercial carrier rates, parcel dimensional weight pricing, and delivery speed across USPS, UPS, and FedEx to maximize Shopify shipping margins now.",
+    "category": "ecommerce",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "2026-11-27",
+    "officialSourceName": "Shopify Shipping Carrier Partnerships & Notice 123 Rate Schedules (2026)",
+    "officialSourceUrl": "https://help.shopify.com/en/manual/shipping/rates-and-plans/carrier-calculated-rates",
+    "defaultInputs": {
+      "productPrice": 52,
+      "monthlyUnits": 125,
+      "refundRate": 2,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "uspsGroundAdvantageDiscountPct": 88,
+        "upsGroundDiscountPct": 82,
+        "fedExHomeDeliveryDiscountPct": 75,
+        "averageBoxWeightLbs": 3.5,
+        "packageZone": 5,
+        "dimDivisorUsps": 166,
+        "dimDivisorCommercial": 139
+      }
+    },
+    "relatedSlugs": [
+      "shopify-shipping-calculator",
+      "shopify-dimensional-weight-shipping-calculator",
+      "shopify-free-shipping-threshold-calculator",
+      "etsy-shipping-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Direct-to-consumer e-commerce brands fulfilling parcels through Shopify Shipping have access to deeply discounted commercial freight contracts across the three major domestic delivery carriers: the United States Postal Service (USPS), United Parcel Service (UPS), and FedEx. Shopify pre-negotiated commercial partnerships offer discounts up to 88% off USPS retail rates, up to 82% off UPS daily rates, and up to 75% off FedEx ground shipping. However, determining which carrier provides the lowest net landed cost requires evaluating parcel physical weight, cubic dimensions, postal delivery zones (Zone 1 local to Zone 8 transcontinental), and mandatory accessorial surcharges. USPS Ground Advantage dominates lightweight shipments under 1 pound and residential deliveries without fuel surcharges. UPS Ground provides the most cost-effective rates for dense, heavy cartons traveling intermediate distances (Zones 3–5). FedEx Home Delivery delivers superior transit reliability and weekend service for high-value merchandise, but enforces dimensional weight divisors of 139 and residential surcharges. This calculator models carrier selection trade-offs to protect e-commerce shipping margins.",
+      "formulaBreakdown": {
+        "formulaString": "Net Landed Postage = Base Zone Freight Rate + Fuel Surcharge + Residential Delivery Fee - Commercial Shopify Discount",
+        "variables": [
+          {
+            "symbol": "Base Zone Freight Rate",
+            "meaning": "The mileage-based postal zone rate determined by origin zip code and destination delivery zone (Zones 1 through 8)."
+          },
+          {
+            "symbol": "Billable Weight",
+            "meaning": "The greater of actual physical scale weight versus dimensional cubic weight (Length × Width × Height / Divisor)."
+          },
+          {
+            "symbol": "Accessorial Surcharges",
+            "meaning": "Carrier add-ons including residential delivery fees ($4.00–$5.50 on private carriers) and weekly variable fuel surcharges."
+          },
+          {
+            "symbol": "Shopify Commercial Discount",
+            "meaning": "Pre-negotiated contract savings automatically deducted when printing shipping labels directly within Shopify Admin."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Fulfilling a 3.5-Pound Apparel Order to Postal Zone 5 (500–1,000 Miles)",
+        "narrative": "A Shopify apparel brand ships a 3.5-pound package (12 × 10 × 6 inches = 720 cubic inches) from an Atlanta warehouse to a residential customer in Chicago (Postal Zone 5). The product sells for $52.00 with $6.95 flat-rate shipping charged to the customer. The fulfillment manager compares discounted Shopify Shipping rates across USPS Ground Advantage, UPS Ground, and FedEx Home Delivery to maximize order net profit.",
+        "stepByStepMath": [
+          "Calculate Dimensional Weight: Carton volume = 720 cubic inches. USPS DIM weight (divisor 166) = 720 / 166 = 4.33 lbs (exempt because volume is under 1,728 cu in; billable at 3.5 lbs). UPS/FedEx DIM weight (divisor 139) = 720 / 139 = 5.18 lbs -> Billable at 6 lbs.",
+          "Calculate USPS Ground Advantage Rate: Commercial Zone 5 rate for 3.5 lbs = $8.45. Residential surcharge = $0.00. Fuel surcharge = $0.00. Net USPS cost = $8.45.",
+          "Calculate UPS Ground Rate: Commercial Zone 5 rate for 6 lbs DIM = $10.80. Shopify commercial discount (-45%) = $5.94. Fuel surcharge (14.5%) = +$0.86. Residential delivery surcharge = +$3.85. Net UPS cost = $10.65.",
+          "Calculate FedEx Home Delivery Rate: Commercial Zone 5 rate for 6 lbs DIM = $12.50. Shopify commercial discount (-40%) = $7.50. Fuel surcharge (15%) = +$1.12. Residential delivery fee = +$4.20. Net FedEx cost = $12.82.",
+          "Compare Carrier Costs: USPS Ground Advantage = $8.45 | UPS Ground = $10.65 (+$2.20) | FedEx Home Delivery = $12.82 (+$4.37).",
+          "Calculate Order Net Profit with USPS: $52.00 product revenue + $6.95 shipping charged - $16.00 COGS - $8.45 postage = $34.50 net profit (65.7% net margin).",
+          "Evaluate Annual Savings across 1,500 Yearly Orders: Choosing USPS over UPS saves $3,300.00 annually; choosing USPS over FedEx saves $6,555.00 annually."
+        ],
+        "finalTakeaway": "For this 3.5-pound apparel order, USPS Ground Advantage ($8.45) is $2.20 cheaper than UPS Ground and $4.37 cheaper than FedEx Home Delivery. Because USPS does not penalize cartons under one cubic foot (1,728 cu in) with dimensional divisors and charges zero residential delivery fees, it delivers superior e-commerce margins on medium-weight residential parcels."
+      },
+      "benchmarkTable": {
+        "title": "Shopify Shipping Carrier Cost Comparison Across Weight & Distance (2026)",
+        "headers": [
+          "Parcel Weight & Size",
+          "Destination Zone",
+          "USPS Ground Advantage",
+          "UPS Ground (Shopify Cut)",
+          "FedEx Home Delivery",
+          "Lowest-Cost Carrier"
+        ],
+        "rows": [
+          [
+            "8 oz Small Padded Mailer",
+            "Zone 3 (150–300 miles)",
+            "$4.15 (Zero Surcharges)",
+            "$7.85 (Base + Fuel + Resi)",
+            "$9.20 (Base + Fuel + Resi)",
+            "USPS Ground Advantage (-47%)"
+          ],
+          [
+            "2 lbs Shoe Box Carton",
+            "Zone 4 (301–600 miles)",
+            "$6.90 (Zero Surcharges)",
+            "$8.75 (Discounted Freight)",
+            "$10.40 (Residential Cut)",
+            "USPS Ground Advantage (-21%)"
+          ],
+          [
+            "5 lbs Apparel Box",
+            "Zone 6 (1,001–1,400 miles)",
+            "$11.85 (Commercial Rate)",
+            "$10.95 (Deep Weight Cut)",
+            "$13.20 (Home Delivery Fee)",
+            "UPS Ground (-8% cheaper)"
+          ],
+          [
+            "12 lbs Kitchenware Carton",
+            "Zone 5 (601–1,000 miles)",
+            "$18.40 (Scale Weight)",
+            "$14.25 (Heavy Parcel Cut)",
+            "$17.10 (Fuel + Residential)",
+            "UPS Ground (-23% cheaper)"
+          ],
+          [
+            "25 lbs Heavy Hardware",
+            "Zone 8 (1,801+ miles)",
+            "$44.50 (Postal High Zone)",
+            "$28.80 (Consolidated Freight)",
+            "$33.50 (Residential Surcharges)",
+            "UPS Ground (-35% cheaper)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Route Lightweight (< 3 lbs) Residential Parcels to USPS Ground Advantage",
+          "actionableAdvice": "USPS Ground Advantage charges zero residential delivery fees and zero variable fuel surcharges. For consumer parcels weighing under 3 pounds, USPS consistently beats UPS and FedEx ground services by $2.00 to $4.00 per package across all postal zones."
+        },
+        {
+          "title": "Shift Heavy Bulky Parcels (> 5 lbs) to UPS Ground in Shopify Admin",
+          "actionableAdvice": "Once physical or dimensional weight exceeds 5 pounds, UPS Ground freight efficiency overtakes USPS postal rates. Configure Shopify shipping profiles to automatically select UPS Ground for multi-item orders and heavy bulk merchandise."
+        },
+        {
+          "title": "Standardize Packaging Below 1,728 Cubic Inches to Evade USPS DIM Surcharges",
+          "actionableAdvice": "USPS enforces dimensional weight only when box volume strictly exceeds 1,728 cubic inches (1 cubic foot). Keep custom shipping cartons at or below 12 × 12 × 12 inches to maintain billing on actual physical scale weight rather than inflated dimensional size."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Do I need a separate corporate shipping account to access Shopify carrier discounts?",
+          "answer": "No. Commercial Shopify Shipping discounts are pre-activated on every active Shopify merchant store without extra monthly fees. You can purchase, customize, and print heavily discounted USPS, UPS, and FedEx shipping labels directly within your Shopify Admin orders dashboard without signing individual carrier contracts, paying setup fees, or maintaining minimum monthly shipping volume quotas."
+        },
+        {
+          "question": "What is the primary difference between USPS Ground Advantage and Priority Mail?",
+          "answer": "USPS Ground Advantage replaced First-Class Package Service and Parcel Select, delivering parcels nationwide in 2 to 5 business days with $100 included insurance at economy rates. Priority Mail delivers in 1 to 3 business days via air networks at a premium price, but is rarely necessary for standard non-perishable consumer retail merchandise."
+        },
+        {
+          "question": "Why do UPS and FedEx charge residential delivery fees while USPS does not?",
+          "answer": "USPS postal carriers visit every residential address across America six days a week as a public universal service mandate, adding zero incremental operational cost for residential stops. Private carriers (UPS and FedEx) must dispatch commercial vans specifically to residential neighborhoods, assessing a $4.00 to $5.50 residential surcharge per home stop."
+        },
+        {
+          "question": "Does Shopify Shipping include free package pickup from warehouses and homes?",
+          "answer": "USPS provides completely free daily package pickups when scheduled during regular mail delivery routes by your local postal carrier. In contrast, UPS and FedEx offer scheduled pickups through Shopify Shipping, but assess nominal residential or commercial pickup fees unless drop-offs are made in person at local carrier retail stores, drop boxes, or authorized access point locations in your neighborhood."
+        },
+        {
+          "question": "How do carrier insurance claim policies compare on lost or damaged Shopify orders?",
+          "answer": "USPS Ground Advantage, UPS Ground, and FedEx Home Delivery all include $100.00 of complimentary declared value carrier liability protection for lost or transit-damaged goods. For high-value merchandise exceeding $100.00, merchants can purchase supplemental Shipsurance parcel coverage directly within Shopify during label generation for roughly $0.80 per $100 of declared merchandise value."
         }
       ]
     }

@@ -337,7 +337,8 @@
       "stripe-vs-paypal-fee-calculator",
       "freelance-hourly-rate-calculator",
       "stripe-reverse-fee-calculator",
-      "stripe-international-fx-fee-calculator"
+      "stripe-international-fx-fee-calculator",
+      "stripe-vs-square-vs-shopify-payments-calculator"
     ]
   },
   {
@@ -677,7 +678,8 @@
       "paypal-fee-calculator",
       "freelance-hourly-rate-calculator",
       "stripe-reverse-fee-calculator",
-      "stripe-international-fx-fee-calculator"
+      "stripe-international-fx-fee-calculator",
+      "stripe-vs-square-vs-shopify-payments-calculator"
     ]
   },
   {
@@ -4477,6 +4479,163 @@
         {
           "question": "How do Wise and OFX international payout rails compare to Stripe native payouts?",
           "answer": "Stripe native cross-border payouts levy a 1.0% currency conversion fee plus potential wire surcharges. Specialized fintech services like Wise Business or OFX provide local virtual account details (IBANs, routing numbers) that receive native currencies, allowing merchants to convert foreign funds at wholesale mid-market exchange rates with fees between 0.35% and 0.5%, significantly improving corporate international cash margins."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "stripe-vs-square-vs-shopify-payments-calculator",
+    "title": "Stripe vs. Square vs. Shopify Payments Processing Fee Calculator",
+    "metaTitle": "Stripe vs Square vs Shopify Payments Fee Calculator 2026",
+    "metaDescription": "Compare payment processing fees, in-person POS swipes, and online checkout margins across Stripe, Square, and Shopify Payments to minimize merchant costs now.",
+    "category": "b2b-pricing",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "2026-11-27",
+    "officialSourceName": "Stripe, Square & Shopify Payments US Merchant Fee Terms (2026)",
+    "officialSourceUrl": "https://stripe.com/pricing",
+    "defaultInputs": {
+      "productPrice": 85,
+      "monthlyUnits": 160,
+      "refundRate": 1.5,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "stripeOnlinePct": 2.9,
+        "stripeFixedFee": 0.3,
+        "squareOnlinePct": 2.9,
+        "squareInPersonPct": 2.6,
+        "squareFixedFee": 0.3,
+        "shopifyBasicOnlinePct": 2.9,
+        "shopifyGrowOnlinePct": 2.7,
+        "shopifyThirdPartyPenaltyBasic": 2,
+        "shopifyThirdPartyPenaltyGrow": 1
+      }
+    },
+    "relatedSlugs": [
+      "stripe-fee-calculator",
+      "stripe-vs-paypal-fee-calculator",
+      "stripe-reverse-fee-calculator",
+      "square-vs-clover-vs-toast-pos-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Selecting the optimal payment processing gateway is a foundational financial decision for direct-to-consumer e-commerce retailers, omnichannel merchants, and B2B digital vendors. Stripe, Square, and Shopify Payments represent the three dominant merchant processing ecosystems in modern commerce, yet each enforces distinct pricing mechanisms across online checkout, in-person point-of-sale (POS), and multi-currency transactions. Stripe provides the industry benchmark developer infrastructure, charging 2.9% + $0.30 per domestic online transaction with zero monthly gateway fees. Square charges an identical 2.9% + $0.30 for online checkouts and invoices, but excels in omnichannel retail with an aggressive 2.6% + $0.10 rate for swiped or tapped in-person transactions. Shopify Payments—which is built upon Stripe white-label processing infrastructure—charges 2.9% + $0.30 on the Basic Shopify plan, dropping to 2.7% + $0.30 on Shopify and 2.5% + $0.30 on Advanced. Crucially, Shopify penalizes merchants who connect external gateways (like third-party Stripe or Square) by levying an additional 2.0% (Basic), 1.0% (Shopify), or 0.6% (Advanced) surcharge on every order. Modeling these platform dynamics prevents unnecessary margin erosion across high-volume checkout channels and protects operating cash flow.",
+      "formulaBreakdown": {
+        "formulaString": "Net Merchant Payout = Gross Sales - (Transaction Value × Processing Rate %) - Fixed Per-Order Fee - Platform Gateway Surcharge",
+        "variables": [
+          {
+            "symbol": "Transaction Value",
+            "meaning": "The total charge processed on the customer payment card, including item price, shipping fees, and sales tax."
+          },
+          {
+            "symbol": "Processing Rate %",
+            "meaning": "Contracted interchange gateway rate: 2.9% for standard online cards or 2.6% for Square card-present POS transactions."
+          },
+          {
+            "symbol": "Fixed Per-Order Fee",
+            "meaning": "Mandatory network transaction cut: $0.30 for online card payments or $0.10 for Square in-person transactions."
+          },
+          {
+            "symbol": "Shopify Gateway Penalty",
+            "meaning": "The punitive 0.6% to 2.0% additional fee assessed by Shopify when merchants bypass Shopify Payments."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Comparing Gateways for a Multichannel Boutique with $13,600.00 in Monthly Sales",
+        "narrative": "A direct-to-consumer apparel brand processes 160 transactions per month at an average ticket size of $85.00 ($13,600.00 gross monthly revenue). The brand operates an e-commerce storefront on Shopify (Basic plan, $39/mo) and attends weekend pop-up markets. The business owner needs to compare processing expenses between using native Shopify Payments, integrating third-party Stripe, or deploying Square across web and POS registers to identify optimal processor margins and annual cash savings.",
+        "stepByStepMath": [
+          "Calculate Gross Monthly Volume: 160 transactions × $85.00 = $13,600.00 gross sales.",
+          "Model Shopify Payments (Basic Plan): 2.9% + $0.30. Fee = ($13,600.00 × 0.029) + (160 × $0.30) = $394.40 + $48.00 = $442.40. Third-party penalty = $0.00. Total processing cost = $442.40 (Effective rate: 3.25%).",
+          "Model Third-Party Stripe on Shopify: Stripe charges 2.9% + $0.30 = $442.40. In addition, Shopify assesses a 2.0% third-party gateway penalty on $13,600.00 = $272.00. Total processing cost = $442.40 + $272.00 = $714.40 (Effective rate: 5.25%).",
+          "Model Square (Integrated Online on Web): Square charges 2.9% + $0.30 = $442.40. If routed through Shopify, the 2.0% penalty applies (+$272.00). If routed through Square Online store, penalty = $0.00, costing $442.40.",
+          "Model Square (In-Person Card-Present POS): For $5,000 of the volume conducted in-person: Square charges 2.6% + $0.10. Fee = ($5,000 × 0.026) + (59 transactions × $0.10) = $130.00 + $5.90 = $135.90 (Effective rate: 2.72%).",
+          "Calculate Penalty Impact: Bypassing Shopify Payments on a Shopify store wastes $272.00/mo ($3,264.00/yr) in unnecessary platform gateway penalties."
+        ],
+        "finalTakeaway": "For stores hosted on Shopify, using native Shopify Payments is mathematically mandatory; connecting external Stripe triggers a 2.0% penalty that inflates processing overhead from $442.40 to $714.40/mo. For independent custom web apps, Stripe and Square tie at 2.9% + $0.30, while Square dominates physical in-person sales at 2.6% + $0.10."
+      },
+      "benchmarkTable": {
+        "title": "Stripe vs. Square vs. Shopify Payments Feature & Cost Matrix (2026)",
+        "headers": [
+          "Processing Feature / Metric",
+          "Stripe",
+          "Square",
+          "Shopify Payments",
+          "Cost Advantage Winner"
+        ],
+        "rows": [
+          [
+            "Online Card Processing Rate",
+            "2.9% + $0.30",
+            "2.9% + $0.30",
+            "2.9% + $0.30 (Basic)",
+            "3-Way Tie on Baseline"
+          ],
+          [
+            "In-Person (POS) Card Rate",
+            "2.7% + $0.05 (Terminal)",
+            "2.6% + $0.10 (Reader)",
+            "2.7% + $0.00 (POS Pro)",
+            "Square (Lower Volume POS)"
+          ],
+          [
+            "Third-Party Shopify Penalty",
+            "Incurs 0.6% to 2.0% fee",
+            "Incurs 0.6% to 2.0% fee",
+            "$0.00 Gateway Penalty",
+            "Shopify Payments (On Shopify)"
+          ],
+          [
+            "International Card Surcharge",
+            "+1.5% Cross-Border",
+            "Not Supported Online",
+            "+1.0% to +1.5% Market",
+            "Stripe (Global Currency Reach)"
+          ],
+          [
+            "Chargeback Dispute Fee",
+            "$15.00 per dispute",
+            "$0.00 (Dispute Protection)",
+            "$15.00 per dispute",
+            "Square (Free Dispute Support)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Activate Shopify Payments to Avoid the 2.0% External Gateway Penalty",
+          "actionableAdvice": "If operating on Shopify, never route transactions through third-party Stripe or PayPal gateways as your primary checkout. Activating Shopify Payments eliminates the 2.0% Basic plan penalty, saving $20.00 on every $1,000.00 in gross customer checkout volume."
+        },
+        {
+          "title": "Deploy Square Terminal Hardware for Physical Pop-Up Retail",
+          "actionableAdvice": "For hybrid merchants selling at trade shows, farmer markets, or retail pop-ups, use Square contactless card readers. Card-present rates of 2.6% + $0.10 save substantial capital compared to manually keyed online invoice transactions at 3.5% + $0.15."
+        },
+        {
+          "title": "Negotiate Custom Interchange-Plus Pricing Above $80k Monthly Volume",
+          "actionableAdvice": "Both Stripe and Shopify Payments offer custom enterprise Interchange-Plus pricing once gross monthly transaction volume consistently surpasses $80,000.00. Moving from flat 2.9% down to Interchange + 0.35% recovers thousands in annual margin."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Is Shopify Payments actually powered by Stripe under the hood?",
+          "answer": "Yes. Shopify Payments is built directly upon Stripe payment infrastructure through an official long-standing white-label technology partnership. When you activate and use Shopify Payments, credit card authorizations, tokenization, and bank clearances process seamlessly via Stripe payment rails, but payouts, dispute management, and financial reporting are consolidated entirely inside your unified Shopify admin dashboard without separate Stripe merchant logins."
+        },
+        {
+          "question": "Why does Square charge less for in-person transactions than online sales?",
+          "answer": "In-person transactions where a customer taps a contactless chip card or uses Apple Pay carry significantly lower fraud and stolen-card dispute risks because EMV chip cryptography verifies physical card possession. Card networks assess much lower interchange rates on card-present sales, allowing Square to offer its competitive 2.6% + $0.10 in-person rate to brick-and-mortar merchants."
+        },
+        {
+          "question": "Can I use both Stripe and Square simultaneously on the same website?",
+          "answer": "Yes, but not within a single integrated checkout flow. Custom web applications often deploy Stripe for automated subscription billing and digital checkouts, while integrating Square terminals for point-of-sale retail inventory and curbside pickup. However, maintaining two separate merchant accounts requires managing separate daily bank deposits and dual bookkeeping reconciliation across distinct financial accounting software dashboards."
+        },
+        {
+          "question": "What happens to processing fees when a merchant issues a customer refund?",
+          "answer": "Under standard 2026 merchant processing policies across Stripe, Square, and Shopify Payments, original interchange and gateway processing fees are strictly non-refundable. If you refund an $85.00 transaction to a customer, the payment gateway retains the original $2.77 fee, requiring the merchant to absorb that transaction cost out of operating cash reserves without reimbursement or credit."
+        },
+        {
+          "question": "How do international cross-border card fees compare between Stripe and Shopify Payments?",
+          "answer": "Stripe charges an additional 1.50% fee for cards issued outside your home country, plus 1.00% if currency conversion is required (totaling 5.40% + $0.30). Shopify Payments charges a 1.00% to 1.50% cross-border fee through Shopify Markets, but allows multi-currency payout settlement to localized foreign bank accounts to minimize currency drag."
         }
       ]
     }

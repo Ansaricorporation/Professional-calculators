@@ -529,7 +529,8 @@
       "substack-revenue-calculator",
       "gumroad-fee-calculator",
       "patreon-apple-ios-fee-calculator",
-      "patreon-tier-pricing-payout-calculator"
+      "patreon-tier-pricing-payout-calculator",
+      "patreon-vs-kofi-vs-substack-fee-calculator"
     ]
   },
   {
@@ -4721,6 +4722,326 @@
         {
           "question": "Can a creator downgrade from Patreon Premium (12%) back to Pro (8%)?",
           "answer": "Yes. Creators can downgrade from Premium to Pro through their account settings. However, downgrading disables automated merch for membership fulfillment, removes team account logins, and terminates access to your dedicated partner manager, though existing membership tiers and subscriber billing remain completely intact and active without disrupting monthly community pledges or creator subscriber counts."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ebay-store-subscription-break-even-calculator",
+    "title": "eBay Store Subscription Break-Even Calculator: Basic vs. No Store",
+    "metaTitle": "eBay Store Subscription Break-Even Calculator (2026 Tiers)",
+    "metaDescription": "Calculate your eBay store subscription break-even point across Starter, Basic, Premium, and Anchor tiers with insertion fee savings and net margins today.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "2026-11-27",
+    "officialSourceName": "eBay Seller Center Store Subscription Plans & Fee Schedules (2026)",
+    "officialSourceUrl": "https://www.ebay.com/help/selling/fees-credits-invoices/store-fees",
+    "defaultInputs": {
+      "productPrice": 42.5,
+      "monthlyUnits": 65,
+      "refundRate": 1.8,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "noStoreFvfPct": 13.6,
+        "noStorePerOrderFee": 0.4,
+        "noStoreFreeListings": 250,
+        "noStoreInsertionFee": 0.35,
+        "basicStoreMonthlyAnnual": 21.95,
+        "basicStoreMonthlyMonthToMonth": 27.95,
+        "basicStoreFvfPct": 12.35,
+        "basicStorePerOrderFee": 0.4,
+        "basicStoreFreeListings": 1000,
+        "basicStoreInsertionFee": 0.25
+      }
+    },
+    "relatedSlugs": [
+      "ebay-fee-calculator",
+      "ebay-promoted-listings-fee-calculator",
+      "ebay-international-shipping-fee-calculator",
+      "ebay-vs-mercari-vs-poshmark-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Deciding whether to subscribe to an eBay Store subscription is one of the most critical financial inflection points for independent e-commerce merchants. Operating on eBay without an active store subscription subjects sellers to standard non-store fee structures: a baseline 13.25% Final Value Fee (FVF) plus regional regulatory operating charges (bringing effective fees to approximately 13.60%), a fixed $0.30 to $0.40 per-order transaction cut, and only 250 zero-insertion-fee listings per calendar month. Once an inventory catalog expands beyond 250 active SKUs, eBay charges an insertion penalty of $0.35 per listing per month. In contrast, opening an eBay Basic Store costs $21.95 per month with an annual commitment (or $27.95 month-to-month). A Basic Store immediately grants 1,000 free fixed-price listings, reduced insertion rates ($0.25 per surplus SKU), quarterly shipping supply credits, and discounted category Final Value Fees that drop to between 9.0% and 12.35% across popular consumer categories. By modeling your average selling price, monthly transaction volume, and active listing counts, this calculator determines your exact mathematical break-even point where subscription fee savings outpace monthly overhead.",
+      "formulaBreakdown": {
+        "formulaString": "Break-Even Monthly GMV = Monthly Store Subscription Cost / (No Store FVF % - Store Discounted FVF %)",
+        "variables": [
+          {
+            "symbol": "Monthly Store Subscription Cost",
+            "meaning": "The contracted monthly fee: $21.95 per month under an annual billing agreement or $27.95 for month-to-month flexibility."
+          },
+          {
+            "symbol": "No Store FVF %",
+            "meaning": "Standard eBay non-store Final Value Fee percentage: typically 13.60% (13.25% base + 0.35% regulatory fee)."
+          },
+          {
+            "symbol": "Store Discounted FVF %",
+            "meaning": "Discounted category Final Value Fee unlocked by store tiers: typically 12.35% for most general merchandise or 9.0% for enterprise tech."
+          },
+          {
+            "symbol": "Insertion Fee Savings",
+            "meaning": "Dollar savings realized when catalog listing count exceeds the 250 non-store free monthly allocation threshold."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "A Reseller Scaling from 200 to 500 Inventory Listings on eBay",
+        "narrative": "A vintage clothing and collectibles seller averages 65 orders per month at an average sales price of $42.50 ($2,762.50 in monthly gross merchandise value). The seller currently maintains 450 active product listings. Without an eBay Store, the seller pays standard 13.60% Final Value Fees plus insertion charges on the 200 listings that exceed the free 250-listing monthly threshold ($70.00/mo in extra listing fees). The seller wants to determine whether upgrading to an eBay Basic Store ($21.95/mo annual) produces immediate net savings.",
+        "stepByStepMath": [
+          "Calculate Gross Sales Volume: 65 orders × $42.50 = $2,762.50 monthly GMV.",
+          "Calculate No Store Final Value Fees: ($2,762.50 × 13.60%) + (65 orders × $0.40) = $375.70 + $26.00 = $401.70.",
+          "Calculate No Store Insertion Surcharges: 450 listings - 250 free listings = 200 excess listings × $0.35 = $70.00.",
+          "Calculate Total No Store Monthly Cost: $401.70 FVF + $70.00 insertion fees = $471.70 total platform expense.",
+          "Calculate Basic Store Final Value Fees: ($2,762.50 × 12.35%) + (65 orders × $0.40) = $341.17 + $26.00 = $367.17.",
+          "Calculate Basic Store Insertion Fees: 450 listings are fully covered within the 1,000 free store allocation = $0.00.",
+          "Calculate Total Basic Store Monthly Cost: $367.17 FVF + $21.95 subscription = $389.12 total platform expense.",
+          "Determine Net Monthly Savings: $471.70 (No Store) - $389.12 (Basic Store) = +$82.58 net profit increase per month ($990.96 annually)."
+        ],
+        "finalTakeaway": "At $2,762.50 in monthly gross sales and 450 active listings, upgrading to an eBay Basic Store saves the seller $82.58 every month. Even without counting insertion fees, the 1.25% FVF reduction alone offsets the $21.95 subscription at just $1,756.00 in monthly sales volume."
+      },
+      "benchmarkTable": {
+        "title": "eBay Store Tier Break-Even Sales & Listing Allocations (2026)",
+        "headers": [
+          "Store Plan Tier",
+          "Monthly Cost (Annual)",
+          "Free Listings",
+          "Excess Insertion Fee",
+          "Category FVF Discount",
+          "Break-Even Monthly Sales"
+        ],
+        "rows": [
+          [
+            "Starter Store",
+            "$4.95 / mo",
+            "250 fixed-price",
+            "$0.30 per SKU",
+            "None (Standard FVF)",
+            "Over 270 Listings Only"
+          ],
+          [
+            "Basic Store (Most Popular)",
+            "$21.95 / mo",
+            "1,000 fixed-price",
+            "$0.25 per SKU",
+            "0.90% to 4.25% lower",
+            "$1,756 to $2,440 GMV"
+          ],
+          [
+            "Premium Store",
+            "$59.95 / mo",
+            "10,000 fixed-price",
+            "$0.10 per SKU",
+            "0.90% to 4.25% lower",
+            "$4,800 to $6,660 GMV"
+          ],
+          [
+            "Anchor Store",
+            "$299.95 / mo",
+            "25,000 fixed-price",
+            "$0.05 per SKU",
+            "0.90% to 4.25% lower",
+            "$24,000 to $33,330 GMV"
+          ],
+          [
+            "Enterprise Store",
+            "$2,999.95 / mo",
+            "100,000 fixed-price",
+            "$0.05 per SKU",
+            "Custom Negotiated",
+            "$240,000+ Enterprise GMV"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Claim Quarterly eBay-Branded Shipping Supply Credits",
+          "actionableAdvice": "eBay Basic Store subscribers receive a $25.00 quarterly coupon code for official eBay-branded shipping boxes, bubble mailers, and poly tape ($100.00 annual value). Redeeming this coupon effectively lowers the net cost of the Basic Store subscription from $263.40/yr down to just $163.40/yr."
+        },
+        {
+          "title": "Leverage Promotions Manager and Markdown Sales Manager",
+          "actionableAdvice": "Store subscribers unlock the eBay Promotions Manager tool, enabling volume discounts (\"Buy 2, Get 15% Off\") and order discounts (\"Save $10 on orders over $50\"). Running structured promotions increases average order value (AOV) and accelerates sales past the break-even threshold."
+        },
+        {
+          "title": "Audit Active Listings Across Multi-Variation Format",
+          "actionableAdvice": "Avoid creating separate single-item listings for items with multiple sizes or colors. Grouping items into multi-variation listings consumes only one listing credit against your monthly 1,000 store allowance, preventing unnecessary insertion charges."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the exact monthly sales volume needed to justify an eBay Basic Store subscription?",
+          "answer": "If you maintain under 250 active listings, the decision depends entirely on Final Value Fee savings. In categories where the store discount is 1.25% (dropping from 13.60% to 12.35%), the mathematical break-even sales volume is $1,756.00 per month ($21.95 / 0.0125). In categories with a narrower 0.90% fee reduction, the break-even GMV threshold is $2,438.89 per month on an annual subscription agreement."
+        },
+        {
+          "question": "Does the eBay Basic Store subscription reduce Final Value Fees in every category?",
+          "answer": "No. While most popular retail categories (such as Electronics, Clothing, Home & Garden, and Sporting Goods) enjoy significant Final Value Fee reductions ranging from 0.90% to 4.25%, certain specialized niches—such as Books, DVDs, and Musical Instruments—retain identical fee percentages with or without a store. Always audit your category-specific fee schedules before subscribing."
+        },
+        {
+          "question": "What happens if I cancel an annual eBay Store subscription early?",
+          "answer": "eBay enforces early termination penalties on annual store subscriptions. If you cancel prior to the expiration of your 12-month commitment, eBay charges an early termination fee equal to one-third of your remaining contractual subscription balance. Sellers uncertain about sales consistency should test the month-to-month option ($27.95/mo) before committing to annual terms."
+        },
+        {
+          "question": "Do free store listing allocations renew on the first of each calendar month?",
+          "answer": "Yes. Free store listing allocations reset at 00:00:00 Pacific Time on the first day of each calendar month. Unused listing credits do not roll over to subsequent months. Any active multi-quantity Good Til Cancelled (GTC) listing that auto-renews consumes one monthly listing allocation on its monthly renewal date, requiring sellers to monitor catalog sizes carefully."
+        },
+        {
+          "question": "Can I use Terapeak Sourcing and Research tools without an eBay Store?",
+          "answer": "Basic Terapeak product research is available to all sellers in Seller Hub. However, an eBay Basic Store subscription unlocks advanced Terapeak Sourcing Insights, providing competitor sales velocity, average pricing trends, unsold inventory rates, and market share data that help sellers identify high-margin sourcing opportunities across diverse product categories and regional buyer markets."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ebay-vs-mercari-vs-poshmark-fee-calculator",
+    "title": "eBay vs. Mercari vs. Poshmark Fee & Net Seller Payout Calculator",
+    "metaTitle": "eBay vs Mercari vs Poshmark Fee Calculator (2026 Payouts)",
+    "metaDescription": "Compare seller fees, payment processing rates, and net profits across eBay, Mercari, and Poshmark to choose the most profitable marketplace to sell now.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "2026-11-27",
+    "officialSourceName": "Mercari, Poshmark & eBay Seller Fee Documentation (2026)",
+    "officialSourceUrl": "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees",
+    "defaultInputs": {
+      "productPrice": 38,
+      "monthlyUnits": 45,
+      "refundRate": 2.2,
+      "internationalSales": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "ebayFvfPct": 13.6,
+        "ebayFixedFee": 0.4,
+        "mercariSellerFeePct": 10,
+        "mercariFixedFee": 0,
+        "poshmarkCommissionPct": 20,
+        "poshmarkFlatFeeUnder15": 2.95
+      }
+    },
+    "relatedSlugs": [
+      "ebay-fee-calculator",
+      "ebay-store-subscription-break-even-calculator",
+      "poshmark-vs-mercari-vs-depop-fee-calculator",
+      "etsy-fee-calculator"
+    ],
+    "guideContent": {
+      "executiveSummary": "Online resellers and apparel merchants face distinct monetization trade-offs when distributing secondhand clothing, collectibles, and consumer electronics across major peer-to-peer marketplaces. eBay, Mercari, and Poshmark operate fundamentally different commission architectures, payment processing structures, and shipping models. eBay charges an effective 13.60% Final Value Fee plus a mandatory $0.40 per-order transaction cut calculated against the total buyer payment—including sales tax and shipping charged to the customer. Mercari charges a 10% flat seller commission on the item sale price while shifting payment processing and shipping costs to the buyer. Poshmark levies a steep 20% platform commission on all orders of $15.00 or higher (or a flat $2.95 fee on orders under $15.00), but eliminates seller shipping packaging friction by offering pre-paid 5-pound USPS Priority Mail labels paid by the shopper. Understanding how these conflicting fee structures impact net margin across varying price tiers is critical for multi-platform cross-listing profitability.",
+      "formulaBreakdown": {
+        "formulaString": "Net Take-Home = Gross Selling Price - Platform Commission - Fixed Transaction Fees - Seller Shipping Subsidies",
+        "variables": [
+          {
+            "symbol": "Gross Selling Price",
+            "meaning": "The listed retail sale price of the merchandise agreed to by the buyer during checkout."
+          },
+          {
+            "symbol": "eBay Cut",
+            "meaning": "13.25% category FVF + 0.35% regulatory fee + $0.40 fixed fee calculated on gross transaction value (including shipping & tax)."
+          },
+          {
+            "symbol": "Mercari Cut",
+            "meaning": "10.0% flat seller commission assessed on item sale price, with $0 payment gateway deduction for the seller."
+          },
+          {
+            "symbol": "Poshmark Cut",
+            "meaning": "Flat $2.95 for sales under $15.00, or 20.0% commission for sales $15.00 and above, with shipping paid entirely by the buyer."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Selling a Designer Winter Jacket for $85.00 Across All Three Marketplaces",
+        "narrative": "A clothing reseller acquires a high-end designer winter coat for $25.00 COGS. The merchant lists the item for $85.00 across eBay, Mercari, and Poshmark. The buyer pays an estimated $10.00 for standard shipping and 7% sales tax ($6.65). The reseller needs to compare net cash proceeds and true profit margins across all three platforms before finalizing listing allocations.",
+        "stepByStepMath": [
+          "Calculate eBay Payout: Buyer total = $85.00 + $10.00 shipping + $6.65 tax = $101.65. eBay fee = (13.60% × $101.65) + $0.40 = $13.82 + $0.40 = $14.22. Seller receives $85.00 + $10.00 shipping - $14.22 fee - $10.00 actual shipping label = $70.78 net take-home (Gross Margin: 53.86%).",
+          "Calculate Mercari Payout: Mercari charges 10.0% on $85.00 item price = $8.50. Buyer pays shipping ($10.00) directly. Seller net payout = $85.00 - $8.50 = $76.50 net take-home (Gross Margin: 60.59%).",
+          "Calculate Poshmark Payout: Poshmark charges 20.0% on $85.00 = $17.00. Buyer pays $7.97 flat shipping. Seller net payout = $85.00 - $17.00 = $68.00 net take-home (Gross Margin: 50.59%).",
+          "Compare Absolute Take-Home: Mercari delivers $76.50, eBay delivers $70.78, and Poshmark delivers $68.00.",
+          "Analyze Platform Differential: Mercari nets +$5.72 more than eBay (+8.08%) and +$8.50 more than Poshmark (+12.50%).",
+          "Factor in Selling Velocity: While Mercari yields the highest dollar payout, eBay commands 130 million active buyers worldwide compared to Mercari 50 million and Poshmark 80 million, often resulting in 3x faster inventory turnover."
+        ],
+        "finalTakeaway": "Mercari provides the highest net payout ($76.50) on an $85.00 apparel sale due to its 10% fee. However, Poshmark pre-paid USPS Priority Mail shipping eliminates box measurement stress, while eBay global buyer volume ensures faster liquidity on specialized or vintage SKUs."
+      },
+      "benchmarkTable": {
+        "title": "eBay vs. Mercari vs. Poshmark Net Payout Comparison by Price Point",
+        "headers": [
+          "Merchandise Price Tier",
+          "eBay Net Take-Home (Est.)",
+          "Mercari Net Take-Home",
+          "Poshmark Net Take-Home",
+          "Highest Net Payout Platform"
+        ],
+        "rows": [
+          [
+            "$12.00 Budget Tee",
+            "$8.97 (13.6% + $0.40 on gross)",
+            "$10.80 (10% fee)",
+            "$9.05 ($2.95 flat fee)",
+            "Mercari (+$1.75 over eBay)"
+          ],
+          [
+            "$25.00 Vintage Shirt",
+            "$19.85 (after FVF & cut)",
+            "$22.50 (10% fee)",
+            "$20.00 (20% fee)",
+            "Mercari (+$2.65 over eBay)"
+          ],
+          [
+            "$60.00 Athletic Shoes",
+            "$49.44 (after FVF & cut)",
+            "$54.00 (10% fee)",
+            "$48.00 (20% fee)",
+            "Mercari (+$4.56 over eBay)"
+          ],
+          [
+            "$120.00 Winter Parka",
+            "$100.88 (after FVF & cut)",
+            "$108.00 (10% fee)",
+            "$96.00 (20% fee)",
+            "Mercari (+$7.12 over eBay)"
+          ],
+          [
+            "$300.00 Luxury Handbag",
+            "$255.20 (after FVF & cut)",
+            "$270.00 (10% fee)",
+            "$240.00 (20% fee)",
+            "Mercari (+$14.80 over eBay)"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Cross-List High-Margin Inventory Simultaneously",
+          "actionableAdvice": "Use cross-listing software (such as Vendoo or List Perfectly) to push listings to eBay, Mercari, and Poshmark simultaneously. Once an item sells on one platform, auto-delist it from the others within minutes to capture maximum audience exposure without double-selling."
+        },
+        {
+          "title": "Direct Heavy Overweight Goods to Poshmark Priority Mail",
+          "actionableAdvice": "Poshmark flat-rate $7.97 shipping allows parcels up to 5 pounds shipped via expedited USPS Priority Mail (including Priority Mail flat rate boxes). For heavy boots, denim jackets, or bulky coats, Poshmark shipping saves buyers $10 to $15 compared to commercial rates, boosting sales velocity."
+        },
+        {
+          "title": "Price 10% Higher on Poshmark to Offset the 20% Commission Cut",
+          "actionableAdvice": "Because Poshmark culture revolves around making offers and counter-offers, list items 15% to 20% higher than your target price. This markup accommodates Poshmark 20% commission cut while leaving room to offer shoppers 10% to 20% discounts during promotional Closet Clear Out events."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does eBay charge Final Value Fees on sales tax collected from the buyer?",
+          "answer": "Following United States Supreme Court marketplace facilitator tax legislation, eBay collects and remits state sales tax on behalf of sellers. However, payment card networks (Visa, Mastercard, Amex) charge transaction processing fees on the gross payment amount. eBay assesses its Final Value Fee on total funds collected to offset payment processing charges and platform infrastructure costs."
+        },
+        {
+          "question": "Does Mercari charge a fee to transfer sales earnings to a seller bank account?",
+          "answer": "Mercari provides free direct deposit ACH bank transfers for payouts of $10.00 or more, typically taking 2 to 5 business days to clear into your bank account. If a seller requests an instant cash-out transfer to a linked debit card, Mercari charges a flat $3.00 instant transfer fee regardless of transaction balance size, making ACH the preferred option for regular profit sweeps."
+        },
+        {
+          "question": "What is the maximum package weight allowed under standard Poshmark shipping?",
+          "answer": "Standard Poshmark buyer shipping covers packages weighing up to 5 pounds. If an order exceeds 5 pounds, the seller must purchase an upgraded shipping label in the Poshmark app. Additional weight increments cost $4.50 for up to 6 pounds, escalating up to $22.50 for the maximum 10-pound parcel limit, which must be absorbed out of seller profits."
+        },
+        {
+          "question": "Which platform offers the best seller protection against fraudulent buyer returns?",
+          "answer": "Poshmark and eBay offer the strongest institutional protections. Poshmark enforces a strict all-sales-are-final policy; buyers have 3 days after delivery to inspect items and cannot return items for fit or buyer remorse. eBay provides up to $6.00 return shipping credits and top-rated seller protections for accounts maintaining top performance metrics."
+        },
+        {
+          "question": "How do buyer shipping fees affect conversion rates across eBay and Mercari?",
+          "answer": "Mercari buyers frequently abandon carts when shipping charges exceed 20% of item price. On eBay, offering Free Shipping or blended Economy Ground delivery (USPS Ground Advantage) increases organic search ranking in Best Match algorithms by up to 25%, making subsidized shipping a powerful conversion lever on competitive resale items across crowded marketplace categories."
         }
       ]
     }

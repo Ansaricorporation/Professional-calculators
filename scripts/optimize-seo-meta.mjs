@@ -532,6 +532,46 @@ export const OPTIMIZED_META = {
   'patreon-tier-pricing-payout-calculator': {
     title: 'Patreon Tier Pricing & Payout Calculator 2026 | Pro vs Pre',
     description: 'Calculate creator net take-home pay comparing Patreon Pro (8%) and Premium (12%) tiers. Model micropayment processing and payout bank transfers today.'
+  },
+  'ebay-store-subscription-break-even-calculator': {
+    title: 'eBay Store Subscription Break-Even Calculator (2026 Tiers)',
+    description: 'Calculate your eBay store subscription break-even point across Starter, Basic, Premium, and Anchor tiers with insertion fee savings and net margins today.'
+  },
+  'ebay-vs-mercari-vs-poshmark-fee-calculator': {
+    title: 'eBay vs Mercari vs Poshmark Fee Calculator (2026 Payouts)',
+    description: 'Compare seller fees, payment processing rates, and net profits across eBay, Mercari, and Poshmark to choose the most profitable marketplace to sell now.'
+  },
+  'patreon-vs-kofi-vs-substack-fee-calculator': {
+    title: 'Patreon vs Ko-fi vs Substack Fee Calculator (2026 Rates)',
+    description: 'Compare platform cut percentages, payment processing fees, and creator take-home pay across Patreon, Ko-fi, and Substack to maximize monthly revenue now.'
+  },
+  'stripe-vs-square-vs-shopify-payments-calculator': {
+    title: 'Stripe vs Square vs Shopify Payments Fee Calculator 2026',
+    description: 'Compare payment processing fees, in-person POS swipes, and online checkout margins across Stripe, Square, and Shopify Payments to minimize merchant costs now.'
+  },
+  'shopify-usps-vs-ups-vs-fedex-shipping-calculator': {
+    title: 'Shopify USPS vs UPS vs FedEx Shipping Calculator (2026 Rates)',
+    description: 'Compare commercial carrier rates, parcel dimensional weight pricing, and delivery speed across USPS, UPS, and FedEx to maximize Shopify shipping margins now.'
+  },
+  'stock-wash-sale-capital-gains-calculator': {
+    title: 'Stock Wash Sale Rule Capital Gains Calculator (2026 IRS)',
+    description: 'Calculate disallowed losses, cost basis adjustments, and taxable net capital gains under the IRS 30-day wash sale rule for stock and ETF trading accounts now.'
+  },
+  'finance-youtube-rpm-calculator': {
+    title: 'Finance YouTube Channel RPM & AdSense Calculator (2026 CPM)',
+    description: 'Calculate high-RPM finance YouTube channel AdSense earnings, personal finance CPM rates, and video sponsorship payouts across US and global audiences now.'
+  },
+  'gaming-youtube-rpm-calculator': {
+    title: 'Gaming YouTube Channel RPM & AdSense Calculator (2026 CPM)',
+    description: 'Calculate gaming YouTube channel earnings across long-form views, Shorts Creator Pool payouts, Super Chats, and channel memberships at 2026 CPM rates now.'
+  },
+  'podcast-youtube-rpm-calculator': {
+    title: 'Podcast YouTube Channel RPM & AdSense Calculator (2026 CPM)',
+    description: 'Calculate video podcast YouTube AdSense earnings, mid-roll ad density returns, and host-read sponsor CPM revenue to forecast monthly studio income now.'
+  },
+  'tech-saas-youtube-rpm-calculator': {
+    title: 'Tech & SaaS YouTube RPM & AdSense Calculator (2026 CPM)',
+    description: 'Calculate tech software tutorial YouTube AdSense revenue, B2B advertiser CPMs, and recurring SaaS affiliate commissions to forecast creator earnings now.'
   }
 };
 
@@ -610,8 +650,8 @@ export function runOptimization(applyWrites = false) {
 
   console.log('-'.repeat(80));
   console.log(`Total Calculators Audited:   ${totalCalculators}`);
-  console.log(`Unique Title Count:          ${titlesSeen.size} / 130`);
-  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 130`);
+  console.log(`Unique Title Count:          ${titlesSeen.size} / 140`);
+  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 140`);
   console.log(`Title Tag Format Violations: ${titleErrors}`);
   console.log(`Meta Desc Format Violations: ${descErrors}`);
   console.log('='.repeat(80));
@@ -620,7 +660,7 @@ export function runOptimization(applyWrites = false) {
     throw new Error(`SEO Meta CTR Audit failed with ${titleErrors} title errors and ${descErrors} description errors.`);
   }
 
-  console.log('🎉 100% OF ALL 130 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
+  console.log('🎉 100% OF ALL 140 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
 }
 
 // Auto-run if executed directly via node

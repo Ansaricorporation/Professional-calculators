@@ -501,12 +501,14 @@ function generatePinterestCsv(allCalculators) {
   const csvPath130 = path.join(FEEDS_DIR, 'pinterest-bulk-130.csv');
   const csvPath136 = path.join(FEEDS_DIR, 'pinterest-bulk-136.csv');
   const csvPath140 = path.join(FEEDS_DIR, 'pinterest-bulk-140.csv');
+  const csvPath144 = path.join(FEEDS_DIR, 'pinterest-bulk-144.csv');
   fs.writeFileSync(csvPath100, csvContent, 'utf8');
   fs.writeFileSync(csvPath120, csvContent, 'utf8');
   fs.writeFileSync(csvPath130, csvContent, 'utf8');
   fs.writeFileSync(csvPath136, csvContent, 'utf8');
   fs.writeFileSync(csvPath140, csvContent, 'utf8');
-  console.log(`Generated Pinterest bulk CSV with ${allCalculators.length} items at ${csvPath140}`);
+  fs.writeFileSync(csvPath144, csvContent, 'utf8');
+  console.log(`Generated Pinterest bulk CSV with ${allCalculators.length} items at ${csvPath144}`);
 }
 
 async function main() {

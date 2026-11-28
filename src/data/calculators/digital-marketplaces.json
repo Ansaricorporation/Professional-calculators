@@ -3082,7 +3082,9 @@
       "3d-model-marketplace-royalty-calculator",
       "apple-app-store-vs-google-play-fee-calculator",
       "whop-fee-calculator",
-      "roblox-devex-payout-calculator"
+      "roblox-devex-payout-calculator",
+      "steam-vs-epic-games-store-revenue-calculator",
+      "steam-regional-pricing-tax-withholding-calculator"
     ]
   },
   {
@@ -5609,6 +5611,346 @@
       "ebay-promoted-listings-fee-calculator",
       "ebay-vs-mercari-vs-poshmark-fee-calculator",
       "poshmark-vs-mercari-vs-depop-fee-calculator"
+    ]
+  },
+  {
+    "slug": "steam-vs-epic-games-store-revenue-calculator",
+    "title": "Steam (30%) vs. Epic Games Store (12%) Game Developer Revenue Calculator",
+    "metaTitle": "Steam vs Epic Games Store Fee Calculator 2026 | Payouts",
+    "metaDescription": "Compare Steam 30% revenue cut ($100 Direct fee, tiered 25%/20%) vs Epic Games Store 12% flat split across indie unit volume. Model payouts instantly.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-vs-platform",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Valve Steamworks Revenue Tiers & Epic Games Store Distribution Agreement (2026)",
+    "officialSourceUrl": "https://store.epicgames.com/en-US/news",
+    "defaultInputs": {
+      "productPrice": 19.99,
+      "monthlyUnits": 1250,
+      "refundRate": 8.5,
+      "internationalSales": true
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "extraParameters": {
+        "platformAName": "Valve Steam (30% Standard Tier)",
+        "platformAFeePct": 30,
+        "platformAFixed": 0,
+        "platformAGatewayPct": 0,
+        "platformAGatewayFixed": 0,
+        "platformBName": "Epic Games Store (12% Flat Cut)",
+        "platformBFeePct": 12,
+        "platformBFixed": 0,
+        "platformBGatewayPct": 0,
+        "platformBGatewayFixed": 0,
+        "steamDirectFee": 100,
+        "steamTier2CutPct": 25,
+        "steamTier3CutPct": 20,
+        "unrealRoyaltyWaiverPct": 5,
+        "internationalFxSurcharge": 1.2
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "Selecting between Valve Steam and the Epic Games Store (EGS) in 2026 hinges on balancing per-unit take-rate economics against organic storefront discovery and wishlist velocity. Valve charges an initial 30% store share on Adjusted Gross Revenue up to $10 million, steps down to 25% between $10 million and $50 million, and drops to 20% above $50 million, alongside a $100 Steam Direct app deposit that Valve recoups once your title surpasses $1,000 in net sales. By contrast, Epic Games Store charges a flat 12% revenue share from dollar one and waives the standard 5% Unreal Engine commercial royalty on EGS sales—a combined 18 to 23 percentage point fee advantage on Unreal-built PC titles. However, because Steam captures the dominant share of PC discovery queues, seasonal sale traffic, Next Fest demo loops, and Steam Deck verified play, most studios deploy simultaneous or staggered cross-store launches rather than treating the two storefronts as mutually exclusive distribution channels.",
+      "formulaBreakdown": {
+        "formulaString": "Net Studio Payout = [(Gross Units × Price) − Refunds − Regional VAT] × (1 − Store Cut % − Unreal Royalty %)",
+        "variables": [
+          {
+            "symbol": "Store Cut %",
+            "meaning": "30% initial Valve Steam split (25% at $10M+, 20% at $50M+) versus 12% flat on Epic Games Store."
+          },
+          {
+            "symbol": "Direct Recoupment",
+            "meaning": "The $100 Steam Direct deposit is returned in the payout cycle following $1,000 in Adjusted Gross Revenue."
+          },
+          {
+            "symbol": "Unreal Royalty %",
+            "meaning": "5% gross royalty on Unreal Engine projects over $1M lifetime revenue, waived on Epic Games Store sales."
+          },
+          {
+            "symbol": "Refund Allowance",
+            "meaning": "Standard PC storefront refund allowance (~7%–10% across 2-hour play windows) deducted before revenue share."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "Indie PC Action Roguelike ($19.99 Launch, 1,250 Monthly Units)",
+        "narrative": "Suppose a two-person studio ships a $19.99 indie roguelike built in Unreal Engine 5 and moves 1,250 units in its launch month with an 8.5% buyer refund rate inside the 14-day/2-hour window. After refunds, net adjusted storefront receipts equal roughly $22,864 before regional VAT adjustments. On Steam, Valve retains 30% ($6,859) and pays out $16,005—minus the 5% Unreal Engine royalty if lifetime cross-store Unreal revenue exceeds $1 million. On the Epic Games Store, Epic retains 12% ($2,744) and pays out $20,120 with zero Unreal royalty owed on those copies, creating a $4,115 per-month take-home difference on identical unit velocity.",
+        "stepByStepMath": [
+          "Gross Monthly Receipts: 1,250 units × $19.99 = $24,987.50 gross buyer spend.",
+          "Post-Refund Net Receipts (8.5% returns): $24,987.50 × (1 − 0.085) = $22,863.56 Adjusted Gross Revenue.",
+          "Steam Store Cut (30% Tier 1): $22,863.56 × 0.30 = $6,859.07 -> Studio Pre-Tax Net = $16,004.49.",
+          "Epic Games Store Cut (12% Flat): $22,863.56 × 0.12 = $2,743.63 -> Studio Pre-Tax Net = $20,119.93 (+$4,115.44 fee spread)."
+        ],
+        "finalTakeaway": "Epic yields 25.7% more cash per copy sold than Tier-1 Steam (88% vs. 70%), and up to 35% more for Unreal Engine games subject to the 5% engine royalty. Because Steam typically drives 4× to 8× higher organic volume for mid-tier indies, modeling break-even traffic multipliers prevents sacrificing total dollars for a lower percentage cut."
+      },
+      "benchmarkTable": {
+        "title": "Steam vs. Epic Games Store Developer Economics by Revenue Tier (2026)",
+        "headers": [
+          "Storefront & Revenue Tier",
+          "Platform Revenue Cut",
+          "Engine / App Overhead",
+          "Effective Studio Share",
+          "Strategic Break-Even Role"
+        ],
+        "rows": [
+          [
+            "Valve Steam (Up to $10M Gross)",
+            "30.0% revenue share",
+            "$100 Direct fee (recouped at $1k)",
+            "70.0% of adjusted net",
+            "Primary PC organic discovery & Steam Deck hub"
+          ],
+          [
+            "Valve Steam ($10M to $50M Tier)",
+            "25.0% marginal cut",
+            "$0 recurring app fee",
+            "75.0% marginal payout",
+            "AA/breakout hit scale discount threshold"
+          ],
+          [
+            "Valve Steam (Over $50M Tier)",
+            "20.0% marginal cut",
+            "$0 recurring app fee",
+            "80.0% marginal payout",
+            "AAA & mega-indie franchise margin parity"
+          ],
+          [
+            "Epic Games Store (Non-Unreal Game)",
+            "12.0% flat cut",
+            "$100 submission fee per product",
+            "88.0% from first copy",
+            "Maximum margin on direct creator-driven traffic"
+          ],
+          [
+            "Epic Games Store (Unreal Engine Title)",
+            "12.0% flat cut",
+            "5% UE royalty waived on EGS",
+            "88.0% (+5% royalty saved)",
+            "Highest net unit yield for Unreal 5 studios"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Route Creator & Off-Platform Traffic to 12% Storefront Links",
+          "impact": "Saves 18% Gross Revenue Share",
+          "actionableAdvice": "When running paid sponsorships with YouTube or Twitch creators, test sending direct UTM purchase links to Epic Games Store (or Epic First Run 100%-for-6-months eligibility) for audiences not locked into Steam libraries, capturing 88% to 100% of external marketing conversions."
+        },
+        {
+          "title": "Leverage Steam Keys at 0% Platform Fee for Authorized Bundles",
+          "impact": "Reduces Blended Valve Cut Below 24%",
+          "actionableAdvice": "Valve allows developers to request Steam product keys at zero fee to sell through Humble Store, Fanatical, or studio direct shops. Keeping external key volume proportionate to Steam store purchases lowers your blended effective distribution cost without leaving the Steam ecosystem."
+        },
+        {
+          "title": "Time Seasonal 20%–35% Discounts Around Wishlist Thresholds",
+          "impact": "+35% Conversion Spike",
+          "actionableAdvice": "Steam automatically emails every user with a wishlisted title when a discount hits 20% or higher. Concentrating launch discounts cleanly around 20% triggers automated Steam notification waves while preserving strong post-cut dollar profit per unit."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "When does Valve reduce the Steam 30% cut to 25% and 20%?",
+          "answer": "Valve uses marginal revenue tiers calculated on cumulative game sales plus DLC and in-game purchases since October 2018. Your studio pays 30% on the first $10 million in Adjusted Gross Revenue, 25% on every dollar earned between $10 million and $50 million, and 20% on all revenue exceeding $50 million. Earlier revenue is not retroactively refunded."
+        },
+        {
+          "question": "How does the $100 Steam Direct fee recoupment actually work?",
+          "answer": "Developers pay a one-time $100 deposit per game build through Steamworks before publishing a store page or testing multiplayer builds. Once the released title crosses $1,000 in Adjusted Gross Revenue (after customer refunds, credit card chargebacks, and regional VAT/sales taxes are stripped out), Valve automatically credits that exact $100 deposit back inside your next scheduled monthly bank wire payout without manual requests."
+        },
+        {
+          "question": "Is the Epic Games Store First Run 100% revenue share program still worth considering?",
+          "answer": "Under Epic First Run, qualifying studios that grant Epic Games Store six months of PC storefront exclusivity keep 100% of net revenue (0% Epic cut) during that six-month launch window before reverting to the standard 88%/12% split. Only studios with strong external marketing or Epic minimum guarantees benefit, as delaying Steam delays wishlist conversion."
+        },
+        {
+          "question": "Does Valve charge a 30% fee on Steam keys sold on my own website?",
+          "answer": "No. Valve generates standard Steam retail keys for developers free of charge and collects zero commission when those keys are sold directly on a studio store or partner sites like Humble Bundle. However, Steamworks guidelines require offering Steam customers comparable pricing and disallow disproportionate free key generation relative to Steam sales."
+        },
+        {
+          "question": "How do Unreal Engine royalties interact with Steam vs. Epic Games Store payouts?",
+          "answer": "Epic Games charges a 5% gross royalty on commercial Unreal Engine games only after the product exceeds $1 million in lifetime gross revenue. That 5% royalty applies to copies sold on Steam, console stores, and direct sites, whereas copies purchased directly through the Epic Games Store are permanently exempt from the 5% engine fee."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "steam-game-developer-net-revenue-calculator",
+      "steam-regional-pricing-tax-withholding-calculator",
+      "game-asset-store-royalty-calculator",
+      "apple-app-store-vs-google-play-fee-calculator"
+    ]
+  },
+  {
+    "slug": "steam-regional-pricing-tax-withholding-calculator",
+    "title": "Steam Regional Pricing, VAT & 30% US Tax Withholding Net Payout Calculator",
+    "metaTitle": "Steam VAT & 30% Tax Withholding Calculator 2026 Payout",
+    "metaDescription": "Model Steam regional pricing net deposits after country VAT, 9% refunds, Valve 30% split, and 0%–30% IRS W-8BEN tax withholding. Audit payouts instantly.",
+    "category": "digital-marketplaces",
+    "engineType": "platform-profit",
+    "lastUpdated": "November 2026",
+    "officialSourceName": "Steamworks Payments, Regional Pricing & IRS W-8BEN Treaty Documentation (2026)",
+    "officialSourceUrl": "https://partner.steamgames.com/doc/finance/taxfaq",
+    "defaultInputs": {
+      "sellingPrice": 14.99,
+      "cogs": 0,
+      "shippingCharged": 0,
+      "shippingActualCost": 0,
+      "monthlyUnits": 2400,
+      "planTier": "steam-treaty-0pct",
+      "appFeesMonthly": 100,
+      "marketingPerOrder": 1.85,
+      "returnsRate": 9,
+      "useThirdPartyGateway": false
+    },
+    "platformRates": {
+      "baseCurrency": "USD",
+      "tiers": {
+        "steam-treaty-0pct": {
+          "name": "W-8BEN Treaty Country (0% US Tax Withholding + ~12% VAT Avg + 30% Valve Cut)",
+          "monthlyFee": 0,
+          "percentageRate": 38.4,
+          "fixedFee": 0,
+          "additionalNotes": "Models ~12% blended global VAT/sales tax backed out before Valve takes 30% on Net Receipts, yielding 0% IRS withholding under valid treaty."
+        },
+        "steam-treaty-15pct": {
+          "name": "Partial Treaty Country (15% US Withholding on US Sales + VAT + 30% Valve Cut)",
+          "monthlyFee": 0,
+          "percentageRate": 42.1,
+          "fixedFee": 0,
+          "additionalNotes": "Applies 15% IRS US-source royalty withholding (~35% US buyer share) alongside global VAT deduction and Valve 30% distribution cut."
+        },
+        "steam-no-treaty-30pct": {
+          "name": "Non-Treaty / No W-8BEN (Full 30% IRS Withholding on US Sales + VAT + 30% Cut)",
+          "monthlyFee": 0,
+          "percentageRate": 45.8,
+          "fixedFee": 0,
+          "additionalNotes": "Without a valid W-8BEN tax treaty reduction, Steam withholds 30% of US-derived net royalties for the IRS in addition to VAT and Valve 30% cut."
+        }
+      }
+    },
+    "guideContent": {
+      "executiveSummary": "First-time Steam developers routinely calculate launch projections by multiplying unit sales by $19.99 and taking 70%, only to discover their actual bank wire arrives 15% to 32% lower than expected. Three silent deductions explain the gap before a single dollar reaches your studio checking account: tax-inclusive regional pricing (where 19% to 25% European VAT, UK VAT, or Australian GST is backed out of the sticker price), Valve’s 30% distribution cut on net receipts, and IRS statutory tax withholding of up to 30% on US customer sales for international developers without a valid W-8BEN treaty certificate. Furthermore, purchasing-power-parity regional currencies across Latin America, Southeast Asia, and Eastern Europe compress blended global average selling prices well below the headline US USD sticker. Modeling every layered deduction ensures indie teams forecast cash runway and publishing break-even points accurately.",
+      "formulaBreakdown": {
+        "formulaString": "Bank Wire Deposit = [(Gross Sticker ÷ (1 + VAT %)) − Refunds] × (1 − 30% Valve Cut) × (1 − US Share × Withholding %)",
+        "variables": [
+          {
+            "symbol": "VAT %",
+            "meaning": "Tax-inclusive buyer consumption tax (e.g., 19% Germany, 20% UK, 25% Sweden) backed out prior to revenue split."
+          },
+          {
+            "symbol": "Valve 30% Cut",
+            "meaning": "Applied strictly to Net Adjusted Receipts after local VAT/GST and buyer refunds are deducted."
+          },
+          {
+            "symbol": "US Share %",
+            "meaning": "Proportion of total game revenue generated by United States buyers (typically 30%–45% for English-first indie titles)."
+          },
+          {
+            "symbol": "Withholding %",
+            "meaning": "0% under full US tax treaties (e.g., UK, Canada, Germany), 10%–15% under partial treaties, or 30% statutory fallback."
+          }
+        ]
+      },
+      "workedExample": {
+        "scenarioTitle": "International Developer Selling 2,400 Copies at $14.99 Blended Price",
+        "narrative": "Consider an independent game developer incorporated in a country without a 0% US royalty tax treaty (such as Brazil or an unverified sole proprietor missing a TIN on Form W-8BEN), selling 2,400 copies monthly at an effective blended price of $14.99 ($35,976 gross). First, an average 12% global tax-inclusive VAT/GST is stripped out ($32,121 ex-VAT), followed by a 9% refund adjustment ($29,230 Net Receipts). Valve takes its 30% cut ($8,769), leaving $20,461 studio share. Because 35% of buyers reside in the US ($7,161 share) and the account lacks a W-8BEN treaty rate, Steam must remit 30% of that US share ($2,148) directly to the IRS—reducing actual cash wired to $18,313, or just 50.9% of gross buyer sticker spend.",
+        "stepByStepMath": [
+          "Gross Buyer Sticker Revenue: 2,400 units × $14.99 = $35,976.00.",
+          "VAT-Exclusive Base (~12% blended global VAT): $35,976 ÷ 1.12 = $32,121.43.",
+          "Post-Refund Net Receipts (9% returns): $32,121.43 × (1 − 0.09) = $29,230.50 -> Valve 30% Cut = $8,769.15.",
+          "Studio Pre-Withholding Share: $20,461.35 -> Less 30% IRS Withholding on 35% US Sales ($2,148.44) = $18,312.91 Wire."
+        ],
+        "finalTakeaway": "Filing a complete Form W-8BEN or W-8BEN-E with a local Tax Identification Number (TIN) immediately recovers up to 10.5% of global cash flow by dropping US royalty withholding from 30% down to your nation’s bilateral treaty rate."
+      },
+      "benchmarkTable": {
+        "title": "Steam Effective Studio Take-Home Waterfall by Tax & Treaty Status (2026)",
+        "headers": [
+          "Developer Tax Jurisdiction Profile",
+          "Blended Global VAT Deducted",
+          "Valve Share (Net)",
+          "IRS US Withholding Rate",
+          "Net Wire % of Gross Sticker"
+        ],
+        "rows": [
+          [
+            "US Studio (Form W-9 Filed)",
+            "~11.5% foreign VAT avg",
+            "30.0% of net",
+            "0% withheld at source",
+            "61.9% net wired pre-income tax"
+          ],
+          [
+            "UK / Germany / Canada (W-8BEN 0%)",
+            "~12.0% global VAT avg",
+            "30.0% of net",
+            "0% (full royalty treaty)",
+            "61.6% net wired cleanly"
+          ],
+          [
+            "Australia / Japan / Korea (5%–10% Treaty)",
+            "~12.0% global VAT avg",
+            "30.0% of net",
+            "5%–10% on US revenue share",
+            "59.4%–60.5% net wired"
+          ],
+          [
+            "Partial Treaty Country (15% Rate)",
+            "~12.0% global VAT avg",
+            "30.0% of net",
+            "15% on ~35% US buyer share",
+            "58.3% net wired"
+          ],
+          [
+            "No Treaty / Missing W-8BEN TIN (30%)",
+            "~12.0% global VAT avg",
+            "30.0% of net",
+            "30% statutory on US sales",
+            "55.1% net wired"
+          ]
+        ]
+      },
+      "optimizationLevers": [
+        {
+          "title": "Submit Valid Foreign TIN on Steamworks W-8BEN Immediately",
+          "impact": "Recovers 15%–30% of US Revenue",
+          "actionableAdvice": "Many non-US indie devs leave the Foreign Tax ID field blank during Steamworks onboarding, forcing Valve to default to the punitive 30% IRS withholding rate even when their home country holds a 0% bilateral royalty tax treaty with Washington. Double-checking treaty eligibility and entering your local tax registration number restores immediate cash flow."
+        },
+        {
+          "title": "Audit Valve Suggested Regional Conversions Against Grey-Market Key Risk",
+          "impact": "Protects Blended ASP by +11%",
+          "actionableAdvice": "While regional pricing in Brazil, Turkey, and LATAM dramatically expands unit volume, setting regions more than 55% below USD parity encourages VPN account switching. Review Valve recommended regional price matrices quarterly against current FX volatility and raise severely devalued currencies proactively."
+        },
+        {
+          "title": "Account for Minimum $100 Wire Payout Threshold & Monthly Timing",
+          "impact": "Prevents Working Capital Gaps",
+          "actionableAdvice": "Valve processes monthly revenue shares around the 30th of the following month (for example, May sales pay out June 30) only once accrued earnings exceed your configured minimum bank wire threshold ($50–$1,000) to minimize intermediary SWIFT banking charges and maintain predictable payroll liquidity."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Why does Steam deduct VAT from my payout instead of adding it at checkout like US sales tax?",
+          "answer": "In the United States and Canada, sales tax is added on top of the $19.99 sticker at checkout, so you never notice it in gross pricing. Across the European Union, UK, Japan, and Australia, consumer law mandates tax-inclusive storefront pricing—meaning 19% to 25% VAT is inside the sticker price and backed out before Valve calculates your 70% share."
+        },
+        {
+          "question": "Who pays the 30% US IRS withholding tax on Steam game earnings?",
+          "answer": "IRS withholding applies only to non-US developers and strictly on the portion of sales made to United States buyers (treated as US-source copyright royalties). US studios submitting Form W-9 have 0% withheld, while foreign developers can reduce that 30% withholding down to 0%–15% by completing the Steamworks tax interview with a valid W-8BEN and Tax ID."
+        },
+        {
+          "question": "Can a developer reclaim Steam IRS tax withholding at year-end?",
+          "answer": "In most treaty jurisdictions, taxes withheld by Valve and remitted to the IRS on Form 1042-S can be claimed as a foreign tax credit against your domestic corporate or personal income tax return, provided your home tax authority recognizes the treaty credit. However, recovering cash via credit still harms short-term studio liquidity compared to upfront treaty exemption."
+        },
+        {
+          "question": "What is a realistic blended average selling price (ASP) when Steam regional pricing is enabled?",
+          "answer": "If a game launches at a $19.99 USD base price using Valve standard regional recommendations across 39 currencies without discounts, its actual blended gross price per copy worldwide usually settles between $14.20 and $16.50 depending on what share of players originate from North America versus Europe, China, and Latin America."
+        },
+        {
+          "question": "Do Steam chargebacks or fraud refunds reduce my future payouts?",
+          "answer": "Yes. Any customer refund within Valve standard 14-day or 2-hour play window, as well as fraudulent credit card chargebacks or payment reversals, are deducted directly from Adjusted Gross Revenue during the month the reversal posts. High-refund launches above 12% reduce net bank deposits and delay reaching the $1,000 Steam Direct fee recoupment milestone."
+        }
+      ]
+    },
+    "relatedSlugs": [
+      "steam-game-developer-net-revenue-calculator",
+      "steam-vs-epic-games-store-revenue-calculator",
+      "roblox-devex-payout-calculator",
+      "game-asset-store-royalty-calculator"
     ]
   }
 ]

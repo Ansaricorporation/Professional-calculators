@@ -325,7 +325,8 @@
       "youtube-finance-rpm-calculator",
       "youtube-tech-channel-rpm-calculator",
       "youtube-podcast-rpm-calculator",
-      "twitch-streamer-earnings-calculator"
+      "twitch-streamer-earnings-calculator",
+      "youtube-kids-vs-standard-rpm-calculator"
     ]
   },
   {
@@ -488,7 +489,8 @@
       "youtube-gaming-rpm-calculator",
       "youtube-tech-channel-rpm-calculator",
       "youtube-podcast-rpm-calculator",
-      "twitch-streamer-earnings-calculator"
+      "twitch-streamer-earnings-calculator",
+      "youtube-kids-vs-standard-rpm-calculator"
     ]
   },
   {
@@ -2303,7 +2305,8 @@
       "youtube-education-rpm-calculator",
       "youtube-shorts-vs-long-form-calculator",
       "youtube-tech-channel-rpm-calculator",
-      "youtube-gaming-rpm-calculator"
+      "youtube-gaming-rpm-calculator",
+      "youtube-finance-rpm-calculator"
     ]
   },
   {

@@ -572,6 +572,22 @@ export const OPTIMIZED_META = {
   'whatnot-seller-fee-profit-calculator': {
     title: 'Whatnot Seller Fee Calculator 2026 | Live Auction Profits',
     description: 'Calculate Whatnot live stream selling profits factoring 8% commission, 2.9% + $0.30 payment processing, and volume tier discounts. Audit net margins now.'
+  },
+  'steam-vs-epic-games-store-revenue-calculator': {
+    title: 'Steam vs Epic Games Store Fee Calculator 2026 | Payouts',
+    description: 'Compare Steam 30% revenue cut ($100 Direct fee, tiered 25%/20%) vs Epic Games Store 12% flat split across indie unit volume. Model payouts instantly.'
+  },
+  'steam-regional-pricing-tax-withholding-calculator': {
+    title: 'Steam VAT & 30% Tax Withholding Calculator 2026 Payout',
+    description: 'Model Steam regional pricing net deposits after country VAT, 9% refunds, Valve 30% split, and 0%–30% IRS W-8BEN tax withholding. Audit payouts instantly.'
+  },
+  'walmart-wfs-vs-amazon-fba-fee-calculator': {
+    title: 'Walmart WFS vs Amazon FBA Fee Calculator 2026 Compare',
+    description: 'Compare Walmart WFS base fees ($3.45–$5.75+) and 5%–15% referral rates against Amazon FBA 2026 pick-and-pack and referral charges. Audit margins instantly.'
+  },
+  'walmart-wfs-storage-return-fee-calculator': {
+    title: 'Walmart WFS Storage & Return Fee Calculator 2026 Audit',
+    description: 'Model Walmart WFS storage ($0.75–$2.25/cu ft), June 30, 2026 aged inventory tiers (366+ and 450+ days), and $4.70–$6.70 return fees. Audit costs instantly.'
   }
 };
 
@@ -650,8 +666,8 @@ export function runOptimization(applyWrites = false) {
 
   console.log('-'.repeat(80));
   console.log(`Total Calculators Audited:   ${totalCalculators}`);
-  console.log(`Unique Title Count:          ${titlesSeen.size} / 140`);
-  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 140`);
+  console.log(`Unique Title Count:          ${titlesSeen.size} / 144`);
+  console.log(`Unique Description Count:    ${descriptionsSeen.size} / 144`);
   console.log(`Title Tag Format Violations: ${titleErrors}`);
   console.log(`Meta Desc Format Violations: ${descErrors}`);
   console.log('='.repeat(80));
@@ -660,7 +676,7 @@ export function runOptimization(applyWrites = false) {
     throw new Error(`SEO Meta CTR Audit failed with ${titleErrors} title errors and ${descErrors} description errors.`);
   }
 
-  console.log('🎉 100% OF ALL 140 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
+  console.log('🎉 100% OF ALL 144 CALCULATORS MEET STRICT CTR ARCHITECTURE (50–62 char titles, 140–158 char descriptions, 0 duplicates)!');
 }
 
 // Auto-run if executed directly via node
